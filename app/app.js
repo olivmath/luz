@@ -393,6 +393,171 @@ function buildSidebar(courseId, activeModuleId, activeLessonId) {
 }
 
 // ============================================
+// QUIZ SYSTEM
+// ============================================
+
+function parseQuiz(markdown) {
+  const quizStart = markdown.indexOf('## Questionario');
+  if (quizStart === -1) return null;
+
+  const quizText = markdown.substring(quizStart);
+  const questions = [];
+  const blocks = quizText.split(/\*\*(\d+)\.\s/);
+
+  for (let i = 1; i < blocks.length; i += 2) {
+    const number = parseInt(blocks[i]);
+    const rest = blocks[i + 1];
+    if (!rest) continue;
+
+    const textMatch = rest.match(/^(.*?)\*\*/);
+    if (!textMatch) continue;
+    const text = textMatch[1].trim();
+
+    const options = [];
+    const optionRegex = /^([a-d])\)\s*(.+)$/gm;
+    let optMatch;
+    while ((optMatch = optionRegex.exec(rest)) !== null) {
+      options.push({ letter: optMatch[1], text: optMatch[2].trim() });
+    }
+
+    const answerMatch = rest.match(/\*\*Resposta:\s*(\w)\*\*/);
+    if (!answerMatch) continue;
+
+    questions.push({ number, text, options, correctAnswer: answerMatch[1].toLowerCase() });
+  }
+
+  return questions.length > 0 ? questions : null;
+}
+
+function stripQuizFromMarkdown(markdown) {
+  const idx = markdown.indexOf('## Questionario');
+  return idx === -1 ? markdown : markdown.substring(0, idx).trim();
+}
+
+function buildQuizHTML(questions, courseId, moduleId, lessonId, alreadyDone) {
+  if (alreadyDone) {
+    return `<div class="quiz-section quiz-done">
+      <div class="quiz-header">
+        <div class="quiz-title">Questionario</div>
+        <div class="quiz-status-badge">&#10003; Concluido</div>
+      </div>
+    </div>`;
+  }
+
+  let html = `<div class="quiz-section" id="quiz-section">
+    <div class="quiz-header">
+      <div class="quiz-title">Questionario</div>
+      <div class="quiz-subtitle">Responda corretamente para concluir esta aula</div>
+    </div>
+    <form id="quiz-form" onsubmit="return handleQuizSubmit(event,'${courseId}','${moduleId}','${lessonId}')">`;
+
+  questions.forEach((q, i) => {
+    html += `<div class="quiz-question" data-question="${i}" data-correct="${q.correctAnswer}">
+      <div class="quiz-question-text"><span class="quiz-q-num">${q.number}.</span> ${q.text}</div>
+      <div class="quiz-options">`;
+    q.options.forEach(opt => {
+      html += `<label class="quiz-option" data-letter="${opt.letter}">
+        <input type="radio" name="q${i}" value="${opt.letter}" required>
+        <span class="quiz-option-letter">${opt.letter})</span>
+        <span class="quiz-option-text">${opt.text}</span>
+      </label>`;
+    });
+    html += `</div><div class="quiz-feedback" id="feedback-${i}"></div></div>`;
+  });
+
+  html += `<div class="quiz-actions">
+      <button type="submit" class="btn btn-primary quiz-submit-btn" id="quiz-submit">Verificar respostas</button>
+    </div>
+    <div class="quiz-result" id="quiz-result"></div>
+  </form></div>`;
+  return html;
+}
+
+function handleQuizSubmit(event, courseId, moduleId, lessonId) {
+  event.preventDefault();
+  const questions = document.querySelectorAll('.quiz-question');
+  let allCorrect = true, correctCount = 0;
+
+  questions.forEach((q, i) => {
+    const correct = q.dataset.correct;
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const feedback = document.getElementById(`feedback-${i}`);
+
+    q.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect'));
+
+    if (!selected) { allCorrect = false; return; }
+
+    const answer = selected.value;
+    const selectedOpt = q.querySelector(`[data-letter="${answer}"]`);
+    const correctOpt = q.querySelector(`[data-letter="${correct}"]`);
+
+    if (answer === correct) {
+      correctCount++;
+      selectedOpt.classList.add('correct');
+      feedback.innerHTML = '<span class="quiz-feedback-correct">&#10003; Correto</span>';
+    } else {
+      allCorrect = false;
+      selectedOpt.classList.add('incorrect');
+      correctOpt.classList.add('correct');
+      feedback.innerHTML = '<span class="quiz-feedback-incorrect">&#10007; Incorreto</span>';
+    }
+  });
+
+  const result = document.getElementById('quiz-result');
+  if (allCorrect) {
+    result.innerHTML = `<div class="quiz-success">
+      <span class="quiz-success-icon">&#10003;</span>
+      <span class="quiz-success-text">Parabens! Voce acertou todas as ${questions.length} questoes.</span>
+    </div>`;
+    handleQuizComplete(courseId, moduleId, lessonId);
+  } else {
+    result.innerHTML = `<div class="quiz-retry">
+      <span class="quiz-retry-text">Voce acertou ${correctCount} de ${questions.length}. Revise e tente novamente.</span>
+    </div>`;
+    document.getElementById('quiz-submit').textContent = 'Verificar novamente';
+  }
+  result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return false;
+}
+
+function handleQuizComplete(courseId, moduleId, lessonId) {
+  Progress.markCompleted(courseId, moduleId, lessonId);
+
+  const active = document.querySelector('.sidebar-lesson.active');
+  if (active) {
+    active.classList.add('completed-lesson');
+    const check = active.querySelector('.sidebar-check');
+    if (check) check.innerHTML = '&#10003;';
+  }
+  const progress = Progress.getCourseProgress(courseId);
+  const progressEl = document.querySelector('.sidebar-progress');
+  if (progressEl) progressEl.textContent = `${progress.completed}/${progress.total}`;
+
+  // Add completion badge to footer
+  const footer = document.querySelector('.lesson-footer');
+  if (footer && !footer.querySelector('.lesson-complete-btn')) {
+    const badge = document.createElement('div');
+    badge.className = 'lesson-complete-btn completed';
+    badge.innerHTML = '&#10003; Aula concluida';
+    footer.insertBefore(badge, footer.firstChild);
+  }
+
+  if (Progress.isCourseComplete(courseId)) {
+    const adj = getAdjacentLessons(courseId, moduleId, lessonId);
+    if (!adj.next) {
+      const pagination = document.querySelector('.lesson-pagination');
+      if (pagination && !pagination.querySelector('.next')) {
+        const link = document.createElement('a');
+        link.href = `#/certificado/${courseId}`;
+        link.className = 'lesson-page-link next';
+        link.innerHTML = '<span class="page-direction">Concluir &rarr;</span><span class="page-title">Ver certificado</span>';
+        pagination.appendChild(link);
+      }
+    }
+  }
+}
+
+// ============================================
 // VIEWS
 // ============================================
 function renderCatalog() {
@@ -557,9 +722,13 @@ async function renderLesson(courseId, moduleId, lessonId) {
 
   try {
     const markdown = await loadMarkdown(courseId, moduleId, lessonId);
-    const htmlContent = marked.parse(markdown);
+    const quiz = parseQuiz(markdown);
+    const cleanMd = quiz ? stripQuizFromMarkdown(markdown) : markdown;
+    const htmlContent = marked.parse(cleanMd);
     const timeKey = `${courseId}/${moduleId}/${lessonId}`;
     const readTime = readingTimeCache[timeKey] || 8;
+    const quizHTML = quiz ? buildQuizHTML(quiz, courseId, moduleId, lessonId, done) : '';
+    const hasQuizGate = quiz && !done;
 
     const main = document.querySelector('.lesson-main');
     main.innerHTML = `
@@ -569,11 +738,12 @@ async function renderLesson(courseId, moduleId, lessonId) {
         <div class="lesson-topbar-count">${adj.currentIndex + 1}/${adj.total}</div>
       </div>
       <article class="lesson-content">${htmlContent}</article>
+      ${quizHTML}
       <div class="lesson-footer">
-        <button class="lesson-complete-btn ${done ? 'completed' : ''}" id="complete-btn"
-          onclick="handleComplete('${courseId}','${moduleId}','${lessonId}')">
-          ${done ? '&#10003; Aula concluida' : 'Marcar como concluida'}
-        </button>
+        ${hasQuizGate ? '' : done
+          ? '<div class="lesson-complete-btn completed">&#10003; Aula concluida</div>'
+          : `<button class="lesson-complete-btn" id="complete-btn" onclick="handleComplete('${courseId}','${moduleId}','${lessonId}')">Marcar como concluida</button>`
+        }
         <div class="lesson-pagination">
           ${adj.prev ? `<a href="${lp(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId)}" class="lesson-page-link">
             <span class="page-direction">&larr; Anterior</span>

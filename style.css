@@ -137,6 +137,59 @@
   --radius-lg: 10px;
 }
 
+/* --- DARK THEME OVERRIDES --- */
+[data-theme="dark"] {
+  --bg-page: #0c0e12;
+  --bg-surface: #14171e;
+  --bg-subtle: #1a1e27;
+  --bg-muted: #21262f;
+  --bg-sidebar: #111419;
+
+  --text-heading: #e8e6e1;
+  --text-primary: #c5c8cf;
+  --text-secondary: #8890a0;
+  --text-muted: #5c6375;
+  --text-disabled: #3d4455;
+  --text-on-primary: #ffffff;
+
+  --border-subtle: #1e222c;
+  --border-default: #282d3a;
+  --border-strong: #363d4c;
+
+  --primary: #4faa7a;
+  --primary-hover: #5cba88;
+  --primary-active: #3a9c5c;
+  --primary-bg: rgba(79, 170, 122, 0.08);
+  --primary-border: rgba(79, 170, 122, 0.2);
+  --primary-text: #4faa7a;
+
+  --accent: #caa23a;
+  --accent-hover: #d6b044;
+  --accent-bg: rgba(202, 162, 58, 0.08);
+  --accent-border: rgba(202, 162, 58, 0.2);
+
+  --success: #4faa7a;
+  --success-bg: rgba(79, 170, 122, 0.1);
+  --success-border: rgba(79, 170, 122, 0.2);
+
+  --link: #5cba88;
+  --link-hover: #7ec5a0;
+  --link-underline: rgba(92, 186, 136, 0.35);
+}
+[data-theme="dark"] header {
+  background: rgba(12, 14, 18, 0.88);
+}
+[data-theme="dark"] .grain { opacity: 0.03; }
+[data-theme="dark"] .course-card:hover {
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .lesson-content pre {
+  background: #0a0c10; border-color: #1a1e28;
+}
+[data-theme="dark"] .lesson-content pre code { color: #b8bcc6; }
+[data-theme="dark"] .lesson-content code { background: var(--bg-muted); color: var(--primary); }
+[data-theme="dark"] .certificate { background: #111419; }
+
 /* --- RESET --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }

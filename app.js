@@ -144,34 +144,86 @@ const COURSES = {
 };
 
 // ============================================
+// READING TIME
+// ============================================
+const WORDS_PER_MINUTE = 200;
+const readingTimeCache = {};
+
+function estimateReadingTime(wordCount) {
+  return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
+}
+
+function getCourseTime(courseId) {
+  const flat = getFlatLessons(courseId);
+  let total = 0;
+  for (const l of flat) {
+    const key = `${l.courseId}/${l.moduleId}/${l.lessonId}`;
+    total += readingTimeCache[key] || 8; // default 8 min per lesson
+  }
+  return total;
+}
+
+function formatTime(minutes) {
+  if (minutes < 60) return `${minutes} min`;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return m > 0 ? `${h}h ${m}min` : `${h}h`;
+}
+
+// ============================================
+// THEME
+// ============================================
+const Theme = {
+  KEY: 'oken-theme',
+
+  get() {
+    try { return localStorage.getItem(this.KEY) || 'light'; } catch { return 'light'; }
+  },
+
+  set(theme) {
+    try { localStorage.setItem(this.KEY, theme); } catch {}
+    document.documentElement.setAttribute('data-theme', theme);
+  },
+
+  toggle() {
+    const next = this.get() === 'light' ? 'dark' : 'light';
+    this.set(next);
+    this.updateButton();
+  },
+
+  init() {
+    this.set(this.get());
+    this.updateButton();
+  },
+
+  updateButton() {
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = this.get() === 'light' ? 'Escuro' : 'Claro';
+  }
+};
+
+// ============================================
 // PROGRESS MANAGER
 // ============================================
 const Progress = {
   KEY: 'oken-curso-progress',
 
   _get() {
-    try {
-      return JSON.parse(localStorage.getItem(this.KEY)) || {};
-    } catch { return {}; }
+    try { return JSON.parse(localStorage.getItem(this.KEY)) || {}; } catch { return {}; }
   },
-
   _save(data) {
     try { localStorage.setItem(this.KEY, JSON.stringify(data)); } catch {}
   },
-
   isCompleted(courseId, moduleId, lessonId) {
     const data = this._get();
-    const key = `${moduleId}/${lessonId}`;
-    return !!(data[courseId] && data[courseId][key]);
+    return !!(data[courseId] && data[courseId][`${moduleId}/${lessonId}`]);
   },
-
   markCompleted(courseId, moduleId, lessonId) {
     const data = this._get();
     if (!data[courseId]) data[courseId] = {};
     data[courseId][`${moduleId}/${lessonId}`] = { completedAt: new Date().toISOString() };
     this._save(data);
   },
-
   getCourseProgress(courseId) {
     const course = COURSES[courseId];
     if (!course) return { completed: 0, total: 0 };
@@ -184,7 +236,6 @@ const Progress = {
     }
     return { completed, total };
   },
-
   getModuleProgress(courseId, moduleId) {
     const course = COURSES[courseId];
     if (!course) return { completed: 0, total: 0 };
@@ -196,12 +247,10 @@ const Progress = {
     }
     return { completed, total: mod.lessons.length };
   },
-
   isCourseComplete(courseId) {
     const { completed, total } = this.getCourseProgress(courseId);
     return total > 0 && completed === total;
   },
-
   getNextLesson(courseId) {
     const course = COURSES[courseId];
     if (!course) return null;
@@ -214,11 +263,9 @@ const Progress = {
     }
     return null;
   },
-
   getStudentName() {
     try { return localStorage.getItem('oken-student-name') || ''; } catch { return ''; }
   },
-
   setStudentName(name) {
     try { localStorage.setItem('oken-student-name', name); } catch {}
   }
@@ -250,7 +297,7 @@ function getAdjacentLessons(courseId, moduleId, lessonId) {
   };
 }
 
-function lessonPath(courseId, moduleId, lessonId) {
+function lp(courseId, moduleId, lessonId) {
   return `#/${courseId}/${moduleId}/${lessonId}`;
 }
 
@@ -266,11 +313,14 @@ async function loadMarkdown(courseId, moduleId, lessonId) {
   if (!res.ok) throw new Error(`${res.status}`);
   const text = await res.text();
   mdCache[path] = text;
+  // Cache reading time
+  const wordCount = text.split(/\s+/).length;
+  readingTimeCache[`${courseId}/${moduleId}/${lessonId}`] = estimateReadingTime(wordCount);
   return text;
 }
 
 // ============================================
-// READING PROGRESS BAR
+// READING PROGRESS
 // ============================================
 let scrollHandler = null;
 
@@ -287,10 +337,7 @@ function enableReadingProgress() {
 }
 
 function disableReadingProgress() {
-  if (scrollHandler) {
-    window.removeEventListener('scroll', scrollHandler);
-    scrollHandler = null;
-  }
+  if (scrollHandler) { window.removeEventListener('scroll', scrollHandler); scrollHandler = null; }
   document.getElementById('reading-progress').style.width = '0';
 }
 
@@ -307,22 +354,62 @@ async function transitionTo(renderFn) {
 }
 
 // ============================================
+// SIDEBAR BUILDER
+// ============================================
+function buildSidebar(courseId, activeModuleId, activeLessonId) {
+  const course = COURSES[courseId];
+  const progress = Progress.getCourseProgress(courseId);
+
+  let html = `<aside class="lesson-sidebar" id="lesson-sidebar">
+    <div class="sidebar-header">
+      <a href="#/${courseId}" class="sidebar-back">&larr; Curso</a>
+      <div class="sidebar-progress">${progress.completed}/${progress.total}</div>
+    </div>
+    <nav class="sidebar-nav">`;
+
+  for (const mod of course.modules) {
+    const mi = course.modules.indexOf(mod);
+    html += `<div class="sidebar-module">
+      <div class="sidebar-module-label">Modulo ${String(mi + 1).padStart(2, '0')}</div>
+      <div class="sidebar-module-title">${mod.title}</div>`;
+
+    for (const lesson of mod.lessons) {
+      const done = Progress.isCompleted(courseId, mod.id, lesson.id);
+      const isActive = mod.id === activeModuleId && lesson.id === activeLessonId;
+      let cls = 'sidebar-lesson';
+      if (isActive) cls += ' active';
+      else if (done) cls += ' completed-lesson';
+
+      html += `<a href="${lp(courseId, mod.id, lesson.id)}" class="${cls}">
+        <span class="sidebar-check">${done || isActive ? '&#10003;' : ''}</span>
+        <span class="sidebar-num">${lesson.number}</span>
+        <span class="sidebar-lesson-title">${lesson.title}</span>
+      </a>`;
+    }
+    html += `</div>`;
+  }
+  html += `</nav></aside>`;
+  return html;
+}
+
+// ============================================
 // VIEWS
 // ============================================
 function renderCatalog() {
   disableReadingProgress();
-  document.getElementById('header-meta').innerHTML = '';
+  document.getElementById('header-meta').innerHTML =
+    `<button id="theme-toggle" class="nav-link" onclick="Theme.toggle()">${Theme.get() === 'light' ? 'Escuro' : 'Claro'}</button>`;
 
   const app = document.getElementById('app');
   let html = `<div class="catalog">
     <div class="catalog-header animate-in">
       <div class="catalog-label">Plataforma de Cursos</div>
       <h1 class="catalog-title">Agronegocio Financeiro</h1>
+      <p class="catalog-subtitle">Cursos especializados sobre o sistema de financiamento do agronegocio brasileiro.</p>
     </div>
     <div class="course-grid">`;
 
-  const courseIds = Object.keys(COURSES);
-  courseIds.forEach((cid, i) => {
+  Object.keys(COURSES).forEach((cid, i) => {
     const course = COURSES[cid];
     const progress = Progress.getCourseProgress(cid);
     const flat = getFlatLessons(cid);
@@ -330,30 +417,24 @@ function renderCatalog() {
     const isComplete = Progress.isCourseComplete(cid);
     const pct = progress.total > 0 ? Math.round((progress.completed / progress.total) * 100) : 0;
     const locked = !hasContent;
+    const totalTime = getCourseTime(cid);
 
     html += `<div class="course-card animate-in delay-${i + 1} ${locked ? 'locked' : ''}" ${!locked ? `onclick="navigate('#/${cid}')"` : ''}>
-      <div class="card-level">${course.level}</div>
+      <div class="card-level"><span class="badge badge-primary">${course.level}</span></div>
       <div class="card-title">${course.title}</div>
       <div class="card-subtitle">${course.subtitle}</div>
       <div class="card-description">${course.description}</div>
-      <div class="card-meta">${course.modules.length} modulos &middot; ${flat.length} aulas</div>`;
+      <div class="card-meta">${course.modules.length} modulos &middot; ${flat.length} aulas &middot; ~${formatTime(totalTime)}</div>`;
 
     if (!locked) {
       html += `<div class="card-progress">
-        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
-        <div class="progress-text">${progress.completed} de ${progress.total} aulas concluidas${isComplete ? ' &mdash; Completo' : ''}</div>
-      </div>`;
-      if (isComplete) {
-        html += `<div class="card-action">Ver certificado <span class="arrow">&rarr;</span></div>`;
-      } else if (progress.completed > 0) {
-        html += `<div class="card-action">Continuar <span class="arrow">&rarr;</span></div>`;
-      } else {
-        html += `<div class="card-action">Comecar <span class="arrow">&rarr;</span></div>`;
-      }
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+        <div class="progress-label">${progress.completed} de ${progress.total} concluidas${isComplete ? ' — Completo' : ''}</div>
+      </div>
+      <div class="card-action">${isComplete ? 'Ver certificado' : progress.completed > 0 ? 'Continuar' : 'Comecar'} <span>&rarr;</span></div>`;
     } else {
       html += `<div class="card-locked-text">Em breve</div>`;
     }
-
     html += `</div>`;
   });
 
@@ -369,21 +450,23 @@ function renderCourse(courseId) {
   const progress = Progress.getCourseProgress(courseId);
   const flat = getFlatLessons(courseId);
   const isComplete = Progress.isCourseComplete(courseId);
+  const totalTime = getCourseTime(courseId);
 
   document.getElementById('header-meta').innerHTML =
-    `<strong>${progress.completed}</strong> / ${progress.total} aulas`;
+    `<strong>${progress.completed}</strong>/${progress.total} aulas &nbsp;&middot;&nbsp; <button id="theme-toggle" class="nav-link" onclick="Theme.toggle()">${Theme.get() === 'light' ? 'Escuro' : 'Claro'}</button>`;
 
   const app = document.getElementById('app');
   let html = `<div class="course-view">
-    <a href="#/" class="back-link animate-in">&larr; Cursos</a>
+    <a href="#/" class="nav-link animate-in">&larr; Cursos</a>
     <div class="course-view-header animate-in delay-1">
-      <div class="course-view-level">${course.level}</div>
+      <div class="course-view-level"><span class="badge badge-primary">${course.level}</span></div>
       <h1 class="course-view-title">${course.title}</h1>
       <div class="course-view-subtitle">${course.subtitle}</div>
       <p class="course-view-description">${course.description}</p>
       <div class="course-view-stats">
         <span><strong>${course.modules.length}</strong> modulos</span>
         <span><strong>${flat.length}</strong> aulas</span>
+        <span><strong>~${formatTime(totalTime)}</strong> total</span>
         <span><strong>${progress.completed}</strong> concluidas</span>
       </div>
     </div>`;
@@ -391,12 +474,11 @@ function renderCourse(courseId) {
   if (isComplete) {
     html += `<div class="cert-banner animate-in delay-2">
       <span class="cert-banner-text">&#9670; Curso concluido com sucesso</span>
-      <a href="#/certificado/${courseId}" class="btn btn-accent-ghost">Ver certificado</a>
+      <a href="#/certificado/${courseId}" class="btn btn-accent">Ver certificado</a>
     </div>`;
   }
 
   html += `<div class="module-list">`;
-
   course.modules.forEach((mod, mi) => {
     const mp = Progress.getModuleProgress(courseId, mod.id);
     const modComplete = mp.completed === mp.total;
@@ -408,33 +490,32 @@ function renderCourse(courseId) {
           <div class="module-title">${mod.title}</div>
           <div class="module-objective">${mod.objective}</div>
         </div>
-        <div class="module-progress-badge ${modComplete ? 'complete' : ''}">
-          ${mp.completed}/${mp.total}${modComplete ? ' &#10003;' : ''}
-        </div>
+        <div class="module-progress-badge ${modComplete ? 'complete' : ''}">${mp.completed}/${mp.total}${modComplete ? ' &#10003;' : ''}</div>
       </div>
       <div class="lesson-list">`;
 
     mod.lessons.forEach(lesson => {
       const done = Progress.isCompleted(courseId, mod.id, lesson.id);
-      html += `<div class="lesson-item ${done ? 'is-completed' : ''}" onclick="navigate('${lessonPath(courseId, mod.id, lesson.id)}')">
+      const timeKey = `${courseId}/${mod.id}/${lesson.id}`;
+      const time = readingTimeCache[timeKey] || 8;
+      html += `<div class="lesson-item ${done ? 'is-completed' : ''}" onclick="navigate('${lp(courseId, mod.id, lesson.id)}')">
         <div class="lesson-status ${done ? 'completed' : ''}">${done ? '&#10003;' : ''}</div>
         <div class="lesson-number-label">${lesson.number}</div>
         <div class="lesson-title-text">${lesson.title}</div>
+        <div class="lesson-time" style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-disabled);flex-shrink:0">~${time}min</div>
       </div>`;
     });
 
     html += `</div></div>`;
   });
-
   html += `</div>`;
 
-  // Continue button
   if (!isComplete) {
     const next = Progress.getNextLesson(courseId);
     if (next) {
       html += `<div class="course-footer animate-in delay-6">
-        <a href="${lessonPath(next.courseId, next.moduleId, next.lessonId)}" class="btn btn-primary">
-          ${progress.completed > 0 ? 'Continuar' : 'Comecar'} &mdash; Aula ${next.lesson.number} <span>&rarr;</span>
+        <a href="${lp(next.courseId, next.moduleId, next.lessonId)}" class="btn btn-primary">
+          ${progress.completed > 0 ? 'Continuar' : 'Comecar'} &mdash; Aula ${next.lesson.number} &rarr;
         </a>
       </div>`;
     }
@@ -447,10 +528,8 @@ function renderCourse(courseId) {
 async function renderLesson(courseId, moduleId, lessonId) {
   const course = COURSES[courseId];
   if (!course) { navigate('#/'); return; }
-
   const mod = course.modules.find(m => m.id === moduleId);
   if (!mod) { navigate(`#/${courseId}`); return; }
-
   const lesson = mod.lessons.find(l => l.id === lessonId);
   if (!lesson) { navigate(`#/${courseId}`); return; }
 
@@ -458,27 +537,36 @@ async function renderLesson(courseId, moduleId, lessonId) {
   const done = Progress.isCompleted(courseId, moduleId, lessonId);
 
   document.getElementById('header-meta').innerHTML =
-    `Aula <strong>${adj.currentIndex + 1}</strong> de ${adj.total}`;
+    `Aula <strong>${adj.currentIndex + 1}</strong> de ${adj.total} &nbsp;&middot;&nbsp; <button id="theme-toggle" class="nav-link" onclick="Theme.toggle()">${Theme.get() === 'light' ? 'Escuro' : 'Claro'}</button>`;
 
   const app = document.getElementById('app');
+  const sidebar = buildSidebar(courseId, moduleId, lessonId);
 
-  // Show loading
-  app.innerHTML = `<div class="lesson-view">
-    <div class="lesson-nav">
-      <a href="#/${courseId}" class="lesson-nav-back">&larr; ${mod.title}</a>
-      <div class="lesson-nav-count">${adj.currentIndex + 1} / ${adj.total}</div>
+  // Loading state
+  app.innerHTML = `<div class="lesson-layout">
+    ${sidebar}
+    <div class="lesson-main">
+      <div class="lesson-topbar">
+        <button class="sidebar-toggle" onclick="document.getElementById('lesson-sidebar').classList.toggle('open')">&#9776; Aulas</button>
+        <div class="lesson-topbar-title">Aula ${lesson.number} &mdash; ${mod.title}</div>
+        <div class="lesson-topbar-count">${adj.currentIndex + 1}/${adj.total}</div>
+      </div>
+      <div class="lesson-loading">Carregando...</div>
     </div>
-    <div class="lesson-loading">Carregando aula...</div>
   </div>`;
 
   try {
     const markdown = await loadMarkdown(courseId, moduleId, lessonId);
     const htmlContent = marked.parse(markdown);
+    const timeKey = `${courseId}/${moduleId}/${lessonId}`;
+    const readTime = readingTimeCache[timeKey] || 8;
 
-    let lessonHtml = `<div class="lesson-view">
-      <div class="lesson-nav">
-        <a href="#/${courseId}" class="lesson-nav-back">&larr; ${mod.title}</a>
-        <div class="lesson-nav-count">${adj.currentIndex + 1} / ${adj.total}</div>
+    const main = document.querySelector('.lesson-main');
+    main.innerHTML = `
+      <div class="lesson-topbar">
+        <button class="sidebar-toggle" onclick="document.getElementById('lesson-sidebar').classList.toggle('open')">&#9776; Aulas</button>
+        <div class="lesson-topbar-title">Aula ${lesson.number} &middot; ~${readTime} min de leitura</div>
+        <div class="lesson-topbar-count">${adj.currentIndex + 1}/${adj.total}</div>
       </div>
       <article class="lesson-content">${htmlContent}</article>
       <div class="lesson-footer">
@@ -486,41 +574,42 @@ async function renderLesson(courseId, moduleId, lessonId) {
           onclick="handleComplete('${courseId}','${moduleId}','${lessonId}')">
           ${done ? '&#10003; Aula concluida' : 'Marcar como concluida'}
         </button>
-        <div class="lesson-pagination">`;
+        <div class="lesson-pagination">
+          ${adj.prev ? `<a href="${lp(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId)}" class="lesson-page-link">
+            <span class="page-direction">&larr; Anterior</span>
+            <span class="page-title">${adj.prev.lessonNumber} ${adj.prev.lessonTitle}</span>
+          </a>` : '<span></span>'}
+          ${adj.next ? `<a href="${lp(adj.next.courseId, adj.next.moduleId, adj.next.lessonId)}" class="lesson-page-link next">
+            <span class="page-direction">Proxima &rarr;</span>
+            <span class="page-title">${adj.next.lessonNumber} ${adj.next.lessonTitle}</span>
+          </a>` : Progress.isCourseComplete(courseId) || done ? `<a href="#/certificado/${courseId}" class="lesson-page-link next">
+            <span class="page-direction">Concluir &rarr;</span>
+            <span class="page-title">Ver certificado</span>
+          </a>` : ''}
+        </div>
+      </div>`;
 
-    if (adj.prev) {
-      lessonHtml += `<a href="${lessonPath(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId)}" class="lesson-page-link">&larr; ${adj.prev.lessonNumber} ${adj.prev.lessonTitle}</a>`;
-    } else {
-      lessonHtml += `<span></span>`;
-    }
-    if (adj.next) {
-      lessonHtml += `<a href="${lessonPath(adj.next.courseId, adj.next.moduleId, adj.next.lessonId)}" class="lesson-page-link next">${adj.next.lessonNumber} ${adj.next.lessonTitle} &rarr;</a>`;
-    } else if (Progress.isCourseComplete(courseId) || (done && !adj.next)) {
-      lessonHtml += `<a href="#/certificado/${courseId}" class="lesson-page-link next">Ver certificado &rarr;</a>`;
-    }
-
-    lessonHtml += `</div></div></div>`;
-    app.innerHTML = lessonHtml;
     enableReadingProgress();
 
-  } catch (err) {
-    app.innerHTML = `<div class="lesson-view">
-      <div class="lesson-nav">
-        <a href="#/${courseId}" class="lesson-nav-back">&larr; ${mod.title}</a>
-        <div class="lesson-nav-count">${adj.currentIndex + 1} / ${adj.total}</div>
+  } catch {
+    const main = document.querySelector('.lesson-main');
+    main.innerHTML = `
+      <div class="lesson-topbar">
+        <button class="sidebar-toggle" onclick="document.getElementById('lesson-sidebar').classList.toggle('open')">&#9776; Aulas</button>
+        <div class="lesson-topbar-title">Aula ${lesson.number}</div>
+        <div class="lesson-topbar-count">${adj.currentIndex + 1}/${adj.total}</div>
       </div>
       <div class="lesson-error">
-        <div style="font-size:1.5rem;color:var(--text-faint);margin-bottom:1rem;">&#9671;</div>
-        <p>Conteudo desta aula ainda nao disponivel.</p>
-        <p style="color:var(--text-faint);margin-top:0.5rem;">Em breve</p>
+        <p style="font-size:1.5rem;color:var(--text-disabled);margin-bottom:var(--space-4)">&#9671;</p>
+        <p>Conteudo ainda nao disponivel.</p>
+        <p style="color:var(--text-disabled);margin-top:var(--space-2)">Em breve</p>
       </div>
       <div class="lesson-footer">
         <div class="lesson-pagination">
-          ${adj.prev ? `<a href="${lessonPath(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId)}" class="lesson-page-link">&larr; Anterior</a>` : '<span></span>'}
-          ${adj.next ? `<a href="${lessonPath(adj.next.courseId, adj.next.moduleId, adj.next.lessonId)}" class="lesson-page-link next">Proxima &rarr;</a>` : ''}
+          ${adj.prev ? `<a href="${lp(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId)}" class="lesson-page-link"><span class="page-direction">&larr; Anterior</span></a>` : '<span></span>'}
+          ${adj.next ? `<a href="${lp(adj.next.courseId, adj.next.moduleId, adj.next.lessonId)}" class="lesson-page-link next"><span class="page-direction">Proxima &rarr;</span></a>` : ''}
         </div>
-      </div>
-    </div>`;
+      </div>`;
   }
 }
 
@@ -528,30 +617,25 @@ function renderCertificate(courseId) {
   disableReadingProgress();
   const course = COURSES[courseId];
   if (!course) { navigate('#/'); return; }
-
-  const isComplete = Progress.isCourseComplete(courseId);
-  if (!isComplete) { navigate(`#/${courseId}`); return; }
+  if (!Progress.isCourseComplete(courseId)) { navigate(`#/${courseId}`); return; }
 
   const flat = getFlatLessons(courseId);
   const savedName = Progress.getStudentName();
+  const totalTime = getCourseTime(courseId);
   const now = new Date();
-  const dateStr = now.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
-  const dateStrFull = now.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  const dateStr = now.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 
-  document.getElementById('header-meta').innerHTML = '';
+  document.getElementById('header-meta').innerHTML =
+    `<button id="theme-toggle" class="nav-link" onclick="Theme.toggle()">${Theme.get() === 'light' ? 'Escuro' : 'Claro'}</button>`;
 
   const app = document.getElementById('app');
   app.innerHTML = `<div class="certificate-view">
-    <a href="#/${courseId}" class="back-link animate-in">&larr; Voltar ao curso</a>
-
+    <a href="#/${courseId}" class="nav-link animate-in">&larr; Voltar ao curso</a>
     <div class="cert-form animate-in delay-1">
       <div class="cert-form-title">Certificado de Conclusao</div>
-      <div class="cert-form-subtitle">Insira seu nome completo para gerar o certificado</div>
-      <input type="text" class="cert-input" id="cert-name-input"
-        placeholder="Seu nome completo" value="${savedName}"
-        oninput="updateCertName(this.value)">
+      <div class="cert-form-subtitle">Insira seu nome completo</div>
+      <input type="text" class="cert-input" id="cert-name-input" placeholder="Seu nome completo" value="${savedName}" oninput="updateCertName(this.value)">
     </div>
-
     <div class="certificate animate-in delay-2" id="certificate-card">
       <div class="cert-diamond">&#9670;</div>
       <div class="cert-heading">Certificado de Conclusao</div>
@@ -560,14 +644,13 @@ function renderCertificate(courseId) {
       <div class="cert-body">concluiu com exito o curso</div>
       <div class="cert-course-name">${course.title}</div>
       <div class="cert-course-subtitle">${course.subtitle}</div>
-      <div class="cert-details">${course.modules.length} modulos &middot; ${flat.length} aulas &middot; ${dateStrFull}</div>
+      <div class="cert-details">${course.modules.length} modulos &middot; ${flat.length} aulas &middot; ~${formatTime(totalTime)} &middot; ${dateStr}</div>
       <div class="cert-divider"></div>
       <div class="cert-issuer">OKEN</div>
     </div>
-
     <div class="cert-actions animate-in delay-3">
       <button class="btn btn-primary" onclick="window.print()">Imprimir</button>
-      <a href="#/${courseId}" class="btn btn-ghost">Voltar ao curso</a>
+      <a href="#/${courseId}" class="btn btn-secondary">Voltar ao curso</a>
     </div>
   </div>`;
 }
@@ -577,26 +660,33 @@ function renderCertificate(courseId) {
 // ============================================
 function handleComplete(courseId, moduleId, lessonId) {
   if (Progress.isCompleted(courseId, moduleId, lessonId)) return;
-
   Progress.markCompleted(courseId, moduleId, lessonId);
 
   const btn = document.getElementById('complete-btn');
-  if (btn) {
-    btn.classList.add('completed');
-    btn.innerHTML = '&#10003; Aula concluida';
+  if (btn) { btn.classList.add('completed'); btn.innerHTML = '&#10003; Aula concluida'; }
+
+  // Update sidebar
+  const sidebarLesson = document.querySelector(`.sidebar-lesson.active`);
+  if (sidebarLesson) {
+    sidebarLesson.classList.add('completed-lesson');
+    const check = sidebarLesson.querySelector('.sidebar-check');
+    if (check) check.innerHTML = '&#10003;';
   }
 
-  // Check if course is now complete
+  // Update progress in sidebar
+  const progress = Progress.getCourseProgress(courseId);
+  const progressEl = document.querySelector('.sidebar-progress');
+  if (progressEl) progressEl.textContent = `${progress.completed}/${progress.total}`;
+
   if (Progress.isCourseComplete(courseId)) {
     const adj = getAdjacentLessons(courseId, moduleId, lessonId);
     if (!adj.next) {
-      // Add certificate link
       const pagination = document.querySelector('.lesson-pagination');
       if (pagination && !pagination.querySelector('.next')) {
         const link = document.createElement('a');
         link.href = `#/certificado/${courseId}`;
         link.className = 'lesson-page-link next';
-        link.innerHTML = 'Ver certificado &rarr;';
+        link.innerHTML = '<span class="page-direction">Concluir &rarr;</span><span class="page-title">Ver certificado</span>';
         pagination.appendChild(link);
       }
     }
@@ -612,39 +702,36 @@ function updateCertName(name) {
 // ============================================
 // ROUTER
 // ============================================
-function navigate(hash) {
-  location.hash = hash;
-}
+function navigate(hash) { location.hash = hash; }
 
 function route() {
   const hash = location.hash.slice(1) || '/';
   const parts = hash.split('/').filter(Boolean);
 
-  if (parts.length === 0) {
-    transitionTo(() => renderCatalog());
-  } else if (parts[0] === 'certificado' && parts[1]) {
-    transitionTo(() => renderCertificate(parts[1]));
-  } else if (parts.length === 1) {
-    transitionTo(() => renderCourse(parts[0]));
-  } else if (parts.length === 3) {
-    transitionTo(() => renderLesson(parts[0], parts[1], parts[2]));
-  } else {
-    transitionTo(() => renderCatalog());
-  }
+  if (parts.length === 0) transitionTo(() => renderCatalog());
+  else if (parts[0] === 'certificado' && parts[1]) transitionTo(() => renderCertificate(parts[1]));
+  else if (parts.length === 1) transitionTo(() => renderCourse(parts[0]));
+  else if (parts.length === 3) transitionTo(() => renderLesson(parts[0], parts[1], parts[2]));
+  else transitionTo(() => renderCatalog());
 }
 
-// Keyboard navigation
+// Keyboard
 document.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT') return;
-  const hash = location.hash.slice(1) || '/';
-  const parts = hash.split('/').filter(Boolean);
-
+  const parts = (location.hash.slice(1) || '/').split('/').filter(Boolean);
   if (parts.length === 3) {
     const adj = getAdjacentLessons(parts[0], parts[1], parts[2]);
-    if (e.key === 'ArrowRight' && adj.next) {
-      navigate(lessonPath(adj.next.courseId, adj.next.moduleId, adj.next.lessonId));
-    } else if (e.key === 'ArrowLeft' && adj.prev) {
-      navigate(lessonPath(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId));
+    if (e.key === 'ArrowRight' && adj.next) navigate(lp(adj.next.courseId, adj.next.moduleId, adj.next.lessonId));
+    else if (e.key === 'ArrowLeft' && adj.prev) navigate(lp(adj.prev.courseId, adj.prev.moduleId, adj.prev.lessonId));
+  }
+});
+
+// Click outside sidebar to close on mobile
+document.addEventListener('click', (e) => {
+  const sidebar = document.getElementById('lesson-sidebar');
+  if (sidebar && sidebar.classList.contains('open')) {
+    if (!sidebar.contains(e.target) && !e.target.classList.contains('sidebar-toggle')) {
+      sidebar.classList.remove('open');
     }
   }
 });
@@ -654,6 +741,7 @@ document.addEventListener('keydown', (e) => {
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   marked.setOptions({ breaks: true, gfm: true });
+  Theme.init();
   window.addEventListener('hashchange', route);
   route();
 });

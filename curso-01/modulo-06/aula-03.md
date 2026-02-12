@@ -99,3 +99,52 @@ Este foi o ultimo modulo do Curso 1. Ao longo de seis modulos, voce construiu um
 3. [Resolucao CVM 175 - Fundos de Investimento e Ativos Digitais (CVM)](https://conteudo.cvm.gov.br/legislacao/resolucoes/resol175.html)
 4. [CPR Digital - Cedula de Produto Rural Eletronica (Ministerio da Agricultura)](https://www.gov.br/agricultura/pt-br/assuntos/politica-agricola/outras-publicacoes/cedula-de-produto-rural-cpr)
 5. [Drex e Tokenizacao de Ativos - Piloto do Real Digital (Banco Central)](https://www.bcb.gov.br/estabilidadefinanceira/drex)
+
+---
+
+## Questionario
+
+**1. Qual e a principal diferenca entre um token de CRA e uma criptomoeda como o Bitcoin, segundo o conceito apresentado na aula?**
+
+a) O token de CRA e negociado apenas em bolsas internacionais, enquanto o Bitcoin e negociado no Brasil
+b) O token de CRA e lastreado em recebiveis agropecuarios reais com fluxo de caixa e garantias, enquanto o Bitcoin nao tem lastro em ativo produtivo
+c) O token de CRA nao utiliza blockchain, enquanto o Bitcoin utiliza
+d) O token de CRA tem validade ilimitada, enquanto o Bitcoin tem prazo de vencimento
+
+**Resposta: b**
+
+**2. Qual dos seguintes ativos da cadeia agro pode ser tokenizado, segundo a aula?**
+
+a) Apenas CPRs e CRAs, pois sao os unicos com estrutura juridica definida
+b) CPRs, CRAs, estoques fisicos representados por CDA/WA e producao futura, cada um com grau distinto de maturidade
+c) Apenas estoques fisicos armazenados, pois a tokenizacao exige ativo tangivel presente
+d) Apenas titulos ja registrados na B3, pois a blockchain depende de autorizacao da bolsa
+
+**Resposta: b**
+
+**3. Qual era o volume aproximado de ativos agro tokenizados no Brasil em 2024, comparado ao mercado total de credito rural?**
+
+a) Aproximadamente 10% do mercado total, evidenciando adocao rapida
+b) Inferior a R$ 2 bilhoes, representando menos de 0,3% do mercado de credito agro
+c) Superior a R$ 50 bilhoes, ja ultrapassando o volume de CRAs tradicionais
+d) Aproximadamente R$ 20 bilhoes, equivalente ao volume de emissoes de CRA de 2018
+
+**Resposta: b**
+
+**4. Como a tokenizacao de CDA/WA registrado em blockchain, integrado a sensores IoT nos armazens, poderia reduzir um risco especifico do mercado agro?**
+
+a) Eliminaria o risco climatico ao monitorar as condicoes meteorologicas em tempo real
+b) Reduziria o risco de fraude por emissao de titulos sobre estoques inexistentes, ao detectar inconsistencias entre estoque declarado e estoque real
+c) Eliminaria a necessidade de seguro rural, pois a blockchain garante o pagamento automatico em caso de sinistro
+d) Reduziria o custo dos insumos agricolas ao conectar produtores diretamente a fornecedores internacionais
+
+**Resposta: b**
+
+**5. A aula destaca que a tokenizacao possui limitacoes estruturais importantes. Qual das afirmativas abaixo reflete corretamente uma dessas limitacoes?**
+
+a) A tokenizacao impede o acesso de investidores internacionais ao credito agro brasileiro por questoes regulatorias
+b) O token elimina os riscos do ativo subjacente ao registra-lo em blockchain, tornando a analise de credito desnecessaria
+c) O token nao altera a qualidade do ativo subjacente: uma CPR tokenizada de produtor com alto risco de credito continua sendo de alto risco, e a regulacao brasileira ainda esta em desenvolvimento
+d) A tokenizacao aumenta os custos de intermediacao em comparacao com a emissao tradicional de CRAs
+
+**Resposta: c**

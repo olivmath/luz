@@ -99,3 +99,52 @@ Na proxima aula, vamos mapear todos os participantes do ecossistema financeiro d
 3. [B3 — Registro de Titulos do Agronegocio](https://www.b3.com.br/pt_br/produtos-e-servicos/registro/renda-fixa-e-valores-mobiliarios/)
 4. [Banco Central — Manual de Credito Rural (MCR)](https://www3.bcb.gov.br/mcr)
 5. [CVM — Ofertas Publicas de Distribuicao](https://www.gov.br/cvm/pt-br/assuntos/regulados/ofertas-publicas-de-distribuicao)
+
+---
+
+## Questionario
+
+**1. No fluxo de credito publico, qual e a principal fonte de recursos utilizada pelos bancos para conceder credito rural?**
+
+a) Emissao de CRAs no mercado de capitais
+b) Depositos a vista (exigibilidade), poupanca rural e recursos do Tesouro Nacional (equalizacao)
+c) Aportes diretos de investidores estrangeiros
+d) Venda de titulos publicos federais no mercado secundario
+
+**Resposta: b**
+
+**2. Qual e a principal vantagem do fluxo de mercado de capitais (via CRA e CPR) em relacao ao credito publico?**
+
+a) Taxas de juros sempre menores do que as do Plano Safra
+b) Ausencia total de intermediarios entre investidor e produtor
+c) Capacidade de captar recursos de investidores privados em larga escala, sem depender do orcamento governamental
+d) Garantia integral do governo federal contra inadimplencia dos produtores
+
+**Resposta: c**
+
+**3. No fluxo de financiamento via CRA, qual e a sequencia correta do caminho do capital?**
+
+a) Produtor emite CRA, investidor compra CRA, securitizadora repassa ao banco, banco paga o produtor
+b) Investidor compra CRA da securitizadora, securitizadora compra CPR do produtor, produtor recebe o recurso, apos colheita e venda o produtor paga a CPR, securitizadora repassa ao investidor
+c) Banco empresta ao produtor, produtor emite CPR para o investidor, investidor recebe a producao diretamente
+d) Securitizadora empresta ao investidor, investidor compra insumos para o produtor, produtor paga a securitizadora com a colheita
+
+**Resposta: b**
+
+**4. O casamento de prazos entre CRAs e CPRs e considerado critico na estruturacao de operacoes porque:**
+
+a) Os prazos das CPRs sao sempre superiores aos dos CRAs, gerando sobra de caixa
+b) Os pagamentos das CPRs precisam gerar caixa suficiente para honrar os pagamentos do CRA nas datas corretas, e atrasos podem comprometer o fluxo ao investidor
+c) O prazo do CRA e definido exclusivamente pelo produtor rural, sem participacao da securitizadora
+d) A legislacao brasileira proibe que CRAs e CPRs tenham prazos diferentes
+
+**Resposta: b**
+
+**5. Um CRA de R$ 100 milhoes envolve custos de agente fiduciario, custodiante e registradora que somam entre 0,3% e 0,8% ao ano do valor da emissao. Considerando tambem a comissao do coordenador lider (0,5% a 1,5%), qual e a consequencia pratica desses custos para o produtor rural?**
+
+a) Os custos sao integralmente absorvidos pelo investidor, sem impacto para o produtor
+b) Os custos sao cobertos pelo Tesouro Nacional por meio de equalizacao de taxas
+c) Os custos sao incorporados a taxa de juros paga pelo produtor, tornando o credito via mercado de capitais mais caro que o credito publico subsidiado
+d) Os custos sao fixos e independem do volume da emissao, beneficiando operacoes menores
+
+**Resposta: c**

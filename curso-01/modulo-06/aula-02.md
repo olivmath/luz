@@ -99,3 +99,52 @@ Na proxima aula, vamos encerrar o curso com uma introducao a tokenizacao no agro
 3. [Credito Rural - Dados e Estatisticas (Banco Central)](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
 4. [FIAGRO - Fundos de Investimento nas Cadeias Produtivas Agroindustriais (B3)](https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/fundos-de-investimento/fiagro/)
 5. [Financiamento do Agronegocio - Linhas e Programas (BNDES)](https://www.bndes.gov.br/wps/portal/site/home/financiamento/produto/bndes-credito-rural)
+
+---
+
+## Questionario
+
+**1. Qual foi o crescimento aproximado das emissoes de CRA entre 2018 e 2023, segundo dados da ANBIMA e da B3?**
+
+a) Dobraram, de R$ 50 bilhoes para R$ 100 bilhoes
+b) Quintuplicaram, de aproximadamente R$ 20 bilhoes para mais de R$ 100 bilhoes
+c) Triplicaram, de R$ 30 bilhoes para R$ 90 bilhoes
+d) Cresceram dez vezes, de R$ 10 bilhoes para R$ 100 bilhoes
+
+**Resposta: b**
+
+**2. Por que o aumento da taxa Selic eleva o custo fiscal do credito rural subsidiado para o governo federal?**
+
+a) Porque a Selic determina diretamente a taxa cobrada do produtor rural
+b) Porque o Tesouro Nacional paga aos bancos a diferenca entre a taxa de mercado e a taxa subsidiada via equalizacao, e essa diferenca cresce com a Selic
+c) Porque o governo precisa emitir mais titulos publicos para financiar o Plano Safra
+d) Porque a alta da Selic reduz automaticamente o volume de credito rural disponivel
+
+**Resposta: b**
+
+**3. Qual e o papel principal do PRONAF no modelo hibrido de credito agro brasileiro?**
+
+a) Financiar grandes produtores de commodities de exportacao a taxas de mercado
+b) Atender agricultores familiares com taxas subsidiadas que o mercado privado nao praticaria, garantindo inclusao financeira
+c) Substituir o mercado de CRAs e FIAGROs como principal fonte de credito agro
+d) Captar recursos de investidores internacionais para repassar a pequenos produtores
+
+**Resposta: b**
+
+**4. A Lei 13.986/2020 (Lei do Agro) trouxe diversas inovacoes para o credito agro privado. Qual das alternativas abaixo NAO e uma inovacao introduzida por essa lei?**
+
+a) Possibilidade de emissao de CPR em moeda estrangeira
+b) Criacao do Patrimonio Rural em Afetacao como mecanismo de garantia
+c) Extincao do Plano Safra e do credito publico subsidiado
+d) Facilitacao da cessao de recebiveis e da securitizacao de titulos agro
+
+**Resposta: c**
+
+**5. O modelo hibrido brasileiro de credito agro enfrenta desafios relevantes. Qual das alternativas descreve corretamente um desses desafios?**
+
+a) O excesso de padronizacao entre securitizadoras dificulta a diferenciacao dos produtos ofertados ao investidor
+b) A assimetria de informacao entre originadores e investidores permanece significativa, pois o investidor de FIAGRO muitas vezes nao consegue verificar a qualidade do lastro agro
+c) O volume de credito publico cresceu tao rapido que tornou o mercado privado irrelevante
+d) A isencao fiscal de CRAs e LCAs para pessoa fisica foi revogada pela Lei do Agro, reduzindo o apetite do investidor
+
+**Resposta: b**

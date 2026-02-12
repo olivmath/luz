@@ -99,3 +99,52 @@ Na proxima aula, vamos rastrear o fluxo real do capital, do investidor ao produt
 3. [EMBRAPA Soja — Tecnologias de Producao de Soja](https://www.embrapa.br/soja)
 4. [Banco Central do Brasil — Credito Rural](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
 5. [CONAB — Politica de Comercializacao Agricola](https://www.conab.gov.br/comercializacao)
+
+---
+
+## Questionario
+
+**1. Qual e a principal funcao do credito de custeio no ciclo produtivo do agronegocio?**
+
+a) Financiar a compra de terras para expansao da area plantada
+b) Financiar a aquisicao de insumos e as operacoes de plantio antes de qualquer receita
+c) Cobrir prejuizos causados por quebras de safra
+d) Remunerar a mao de obra permanente da propriedade rural ao longo do ano
+
+**Resposta: b**
+
+**2. No ciclo da soja no Centro-Oeste, o periodo de carencia se caracteriza por:**
+
+a) Alta receita com vendas parciais da producao ainda no campo
+b) Ausencia de receita e de pagamento do credito, com custos operacionais continuos
+c) Liquidacao antecipada do credito de custeio com recursos proprios do produtor
+d) Reducao total dos custos operacionais, pois a lavoura nao exige manejo
+
+**Resposta: b**
+
+**3. Qual das alternativas descreve corretamente a modalidade de comercializacao conhecida como barter?**
+
+a) Venda da producao no mercado a vista pelo preco vigente no dia da transacao
+b) Contrato em que o produtor trava o preco de venda antes da colheita, eliminando o risco de preco
+c) Operacao em que o produtor adquire insumos e se compromete a pagar com produto na colheita, a preco previamente acordado
+d) Financiamento bancario concedido com base na garantia de entrega futura de graos
+
+**Resposta: c**
+
+**4. Por que o preco da soja tende a ser pressionado para baixo no momento da colheita?**
+
+a) Porque os custos de transporte aumentam significativamente nesse periodo
+b) Porque os compradores internacionais reduzem suas importacoes durante a safra brasileira
+c) Porque a oferta se concentra com todos os produtores colhendo e vendendo ao mesmo tempo
+d) Porque o governo estabelece tabelamento de precos durante a colheita para proteger o consumidor
+
+**Resposta: c**
+
+**5. Uma fazenda de 5.000 hectares de soja no Mato Grosso, com custo medio de R$ 5.000 por hectare, precisa mobilizar aproximadamente qual montante para iniciar a safra, e em que periodo esse capital e demandado?**
+
+a) R$ 5 milhoes, distribuidos ao longo de 12 meses
+b) R$ 25 milhoes, concentrados em dois a tres meses no periodo de compra de insumos e plantio
+c) R$ 50 milhoes, divididos igualmente entre as fases de plantio, desenvolvimento e colheita
+d) R$ 10 milhoes, desembolsados integralmente no dia do plantio
+
+**Resposta: b**

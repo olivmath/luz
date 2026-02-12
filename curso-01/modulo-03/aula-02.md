@@ -99,3 +99,52 @@ Na proxima aula, vamos entender como o mercado de capitais entrou no financiamen
 3. [Relatorio de Economia Bancaria - Credito Direcionado e Livre - Banco Central](https://www.bcb.gov.br/publicacoes/relatorioeconomiabancaria)
 4. [Lei 10.931/2004 - Cedula de Credito Bancario - Planalto](https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.931.htm)
 5. [Estatisticas de Credito Rural - Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
+
+---
+
+## Questionario
+
+**1. Qual e a principal diferenca entre a CPR fisica e a CPR financeira?**
+
+a) A CPR fisica e emitida apenas por grandes produtores, enquanto a CPR financeira e exclusiva para pequenos produtores
+b) A CPR fisica e liquidada pela entrega do produto agropecuario, enquanto a CPR financeira e liquidada em dinheiro
+c) A CPR fisica tem prazo maximo de 90 dias, enquanto a CPR financeira pode ter prazo de ate 10 anos
+d) A CPR fisica e regulamentada pelo Banco Central, enquanto a CPR financeira e regulamentada pela CVM
+
+**Resposta: b**
+
+**2. Qual caracteristica da LCA a torna especialmente atrativa para investidores pessoas fisicas?**
+
+a) Garantia do Fundo Garantidor de Creditos (FGC) de ate R$ 1 milhao
+b) Rendimento minimo garantido de 100% do CDI
+c) Isencao de Imposto de Renda sobre os rendimentos
+d) Possibilidade de resgate imediato a qualquer momento
+
+**Resposta: c**
+
+**3. Na CCB rural, qual mecanismo juridico permite ao banco retomar o bem financiado de forma extrajudicial em caso de inadimplencia?**
+
+a) Penhora judicial com mandado de busca e apreensao
+b) Alienacao fiduciaria do bem dado como garantia
+c) Hipoteca convencional registrada em cartorio
+d) Cessao de direitos creditorios ao Banco Central
+
+**Resposta: b**
+
+**4. Segundo dados do Banco Central apresentados na aula, qual era a participacao aproximada do credito livre no volume total de credito ao agronegocio em 2024?**
+
+a) 15%
+b) 25%
+c) 42%
+d) 60%
+
+**Resposta: c**
+
+**5. Um produtor de algodao precisa de R$ 20 milhoes para custeio, mas o limite de credito subsidiado do Plano Safra disponivel para ele e de apenas R$ 5 milhoes. Qual alternativa descreve corretamente a estrategia que esse produtor pode adotar no sistema dual de credito?**
+
+a) Solicitar a ampliacao do limite subsidiado diretamente ao Banco Central, que deve atender integralmente a demanda do produtor
+b) Combinar o credito direcionado a taxa subsidiada para os R$ 5 milhoes disponiveis e complementar os R$ 15 milhoes restantes com credito livre a taxas de mercado
+c) Emitir titulos do Tesouro Rural para captar o montante restante diretamente de investidores
+d) Recorrer exclusivamente ao credito livre para o valor total, pois nao e permitido combinar fontes subsidiadas e livres na mesma safra
+
+**Resposta: b**

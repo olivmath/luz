@@ -111,3 +111,52 @@ Na proxima aula, vamos encerrar o curso analisando os riscos do sistema, as tend
 3. [B3 — FIAGROs Listados](https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/fundos-de-investimento/fiagro/)
 4. [OCB — Cooperativismo Agropecuario no Brasil](https://www.ocb.org.br/ramo-agropecuario)
 5. [Fitch Ratings — Financas Estruturadas e Agronegocio Brasil](https://www.fitchratings.com/topics/brazilian-agribusiness)
+
+---
+
+## Questionario
+
+**1. Qual e o papel principal das cooperativas agropecuarias no ecossistema de financiamento do agro?**
+
+a) Regular as taxas de juros do credito rural em ambito nacional
+b) Centralizar a producao, a comercializacao e o acesso a credito de milhares de produtores associados
+c) Substituir os bancos publicos na concessao direta de credito ao produtor rural
+d) Fiscalizar o cumprimento das normas ambientais nas propriedades rurais
+
+**Resposta: b**
+
+**2. Qual instituicao e responsavel por aproximadamente 50% a 55% de todo o credito rural concedido anualmente no Brasil?**
+
+a) BNDES
+b) Caixa Economica Federal
+c) Banco do Brasil
+d) BTG Pactual
+
+**Resposta: c**
+
+**3. Os FIAGROs, criados pela Lei 14.130/2021, sao atrativos para investidores pessoa fisica principalmente porque:**
+
+a) Garantem rentabilidade minima fixada pelo governo federal
+b) Investem exclusivamente em imoveis rurais com valorizacao garantida
+c) Distribuem rendimentos isentos de imposto de renda e permitem acesso ao credito agro a partir de valores baixos
+d) Sao segurados pelo Fundo Garantidor de Credito (FGC) ate R$ 250.000
+
+**Resposta: c**
+
+**4. Qual e a funcao das registradoras, como a B3 e a CERC, no ecossistema de financiamento do agronegocio?**
+
+a) Conceder credito diretamente aos produtores rurais com recursos proprios
+b) Registrar titulos em sistemas centralizados, garantindo unicidade e rastreabilidade, e impedindo fraudes de duplicidade
+c) Definir as taxas de juros das emissoes de CRA com base na politica monetaria
+d) Avaliar o risco de credito dos produtores e atribuir ratings as operacoes
+
+**Resposta: b**
+
+**5. Uma agroindutria como a Cargill desempenha um papel duplo no ecossistema de credito do agro. Qual das alternativas descreve corretamente esse duplo papel?**
+
+a) Atua como reguladora do mercado de commodities e como emissora de moeda para transacoes rurais
+b) Financia produtores por meio de contratos de compra antecipada (barter, forward) e, ao mesmo tempo, capta recursos no mercado de capitais para financiar suas proprias operacoes
+c) Concede credito subsidiado aos produtores com recursos do Plano Safra e administra fundos de investimento em direitos creditorios
+d) Fornece seguros rurais aos produtores e atua como agente fiduciario em emissoes de CRA
+
+**Resposta: b**

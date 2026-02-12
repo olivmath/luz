@@ -105,3 +105,52 @@ Na proxima aula, vamos conhecer o credito bancario comercial e os produtos como 
 3. [Matriz de Dados do Credito Rural - Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/micaboram)
 4. [Fundos Constitucionais de Financiamento (FNO, FNE e FCO) - Ministerio da Integracao e do Desenvolvimento Regional](https://www.gov.br/mdr/pt-br/assuntos/fundos/fundos-constitucionais-de-financiamento)
 5. [Plano Safra - Ministerio da Agricultura e Pecuaria](https://www.gov.br/agricultura/pt-br/assuntos/politica-agricola/plano-safra)
+
+---
+
+## Questionario
+
+**1. Qual e a principal fonte de recursos do credito rural brasileiro, segundo o Sistema Nacional de Credito Rural (SNCR)?**
+
+a) Emissao de titulos do Tesouro Nacional
+b) Depositos a vista captados pelos bancos comerciais
+c) Investimentos estrangeiros diretos no setor agropecuario
+d) Lucros retidos das cooperativas de credito rural
+
+**Resposta: b**
+
+**2. Qual e o percentual minimo dos depositos a vista que os bancos sao obrigados a destinar para operacoes de credito rural a taxas controladas?**
+
+a) 10%
+b) 15%
+c) 25%
+d) 50%
+
+**Resposta: c**
+
+**3. O subsidio implicito no credito rural corresponde a qual diferenca?**
+
+a) A diferenca entre o valor do emprestimo e o valor efetivamente desembolsado pelo banco
+b) A diferenca entre a taxa de juros de mercado (Selic/CDI) e a taxa praticada no credito rural pelo Plano Safra
+c) A diferenca entre a taxa de inadimplencia do credito rural e a taxa de inadimplencia do credito livre
+d) A diferenca entre o custo de producao do agricultor e o preco de venda da commodity
+
+**Resposta: b**
+
+**4. Quais sao os tres agentes que absorvem o custo do subsidio implicito no credito rural?**
+
+a) Produtor rural, trading de commodities e investidor estrangeiro
+b) Governo federal, bancos e depositantes/poupadores
+c) Banco Central, cooperativas de credito e seguradoras rurais
+d) Tesouro Nacional, fundos de pensao e exportadores
+
+**Resposta: b**
+
+**5. Por que a transicao do credito publico dirigido para o mercado de capitais e considerada uma necessidade estrutural, e nao apenas conjuntural?**
+
+a) Porque os bancos privados se recusam a operar com credito rural subsidiado
+b) Porque a legislacao vigente proibe a expansao do Plano Safra alem de determinado limite
+c) Porque a demanda crescente do agronegocio por credito supera a capacidade fiscal do Estado de subsidiar taxas, especialmente com a elevacao da Selic
+d) Porque o mercado de capitais oferece taxas de juros sempre inferiores as do credito publico
+
+**Resposta: c**

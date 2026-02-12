@@ -107,3 +107,52 @@ Na proxima aula, vamos completar o panorama dos instrumentos financeiros do agro
 3. [ANBIMA — Boletim de Securitizacao: emissoes de CRA](https://www.anbima.com.br/pt_br/informar/estatisticas/mercado-de-capitais/boletim-de-securitizacao.htm)
 4. [B3 — Titulos do agronegocio: registro e negociacao de CRA](https://www.b3.com.br/pt_br/produtos-e-servicos/registro/titulos-do-agronegocio/)
 5. [Lei 11.033/2004 — Isencao de IR para pessoa fisica em CRA e LCA](https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11033.htm)
+
+---
+
+## Questionario
+
+**1. Quem pode emitir um Certificado de Recebiveis do Agronegocio (CRA)?**
+
+a) Bancos comerciais e de investimento
+b) Produtores rurais e cooperativas agropecuarias
+c) Companhias securitizadoras registradas na CVM
+d) Tradings de commodities e agroindustrias
+
+**Resposta: c**
+
+**2. Qual e a principal vantagem tributaria do CRA para o investidor pessoa fisica?**
+
+a) Aliquota reduzida de 10% de Imposto de Renda sobre os rendimentos
+b) Isencao total de Imposto de Renda sobre os rendimentos
+c) Possibilidade de compensar perdas com outros investimentos tributados
+d) Tributacao exclusiva na fonte com aliquota fixa de 15%
+
+**Resposta: b**
+
+**3. O que significa a constituicao de patrimonio separado em uma emissao de CRA?**
+
+a) Que os recebiveis que lastreiam o CRA ficam segregados dos demais ativos da securitizadora, protegendo o investidor em caso de falencia da empresa
+b) Que o investidor deve manter os recursos aplicados em uma conta separada junto a securitizadora
+c) Que a CVM exige que a securitizadora mantenha reserva de capital equivalente ao valor da emissao
+d) Que os rendimentos do CRA sao depositados em conta especifica do Banco Central
+
+**Resposta: a**
+
+**4. Em uma emissao de CRA com estrutura de subordinacao contendo serie senior e serie subordinada, qual e a funcao da serie subordinada?**
+
+a) Oferecer liquidez diaria aos investidores que desejam resgatar antecipadamente
+b) Absorver as primeiras perdas decorrentes de inadimplencia, protegendo os investidores da serie senior
+c) Garantir a cobertura do Fundo Garantidor de Creditos (FGC) para toda a emissao
+d) Remunerar a securitizadora pelos custos de estruturacao da operacao
+
+**Resposta: b**
+
+**5. Um investidor compara um CRA que paga CDI + 2,5% ao ano (isento de IR) com uma debenture comum que paga CDI + 3,5% ao ano (tributada com aliquota de 15%). Considerando que ambos possuem o mesmo prazo e risco semelhante, qual analise esta correta?**
+
+a) A debenture e sempre mais vantajosa porque oferece spread maior sobre o CDI
+b) O CRA pode oferecer rentabilidade liquida superior, pois a isencao de IR compensa o spread menor em relacao a debenture tributada
+c) Os dois investimentos sao identicos em rentabilidade liquida, pois o spread adicional da debenture compensa exatamente a tributacao
+d) A debenture e preferivel porque conta com cobertura do FGC, ao contrario do CRA
+
+**Resposta: b**

@@ -99,3 +99,52 @@ Na proxima aula, vamos entender o Plano Safra e os programas governamentais que 
 3. [Sicoob - Cooperativa de credito e solucoes para o agro](https://www.sicoob.com.br/web/sicoob/agronegocio)
 4. [Banco da Amazonia - FNO: Fundo Constitucional de Financiamento do Norte](https://www.bancoamazonia.com.br/index.php/financiamentos-do-fno)
 5. [Matriz de Dados do Credito Rural - Participacao dos agentes financeiros](https://www.bcb.gov.br/estabilidadefinanceira/reportmicam)
+
+---
+
+## Questionario
+
+**1. Qual instituicao financeira e o maior operador de credito rural do Brasil, respondendo historicamente por mais de 50% do total concedido?**
+
+a) Bradesco
+b) Sicredi
+c) Banco do Brasil
+d) BNDES
+
+**Resposta: c**
+
+**2. Qual e o segundo maior operador de credito rural no Brasil, atras apenas do Banco do Brasil?**
+
+a) Itau Unibanco
+b) Sicredi
+c) Banco do Nordeste
+d) Cresol
+
+**Resposta: b**
+
+**3. Os fundos constitucionais FNO e FNE sao operados, respectivamente, por quais instituicoes?**
+
+a) Banco do Brasil e Banco do Nordeste
+b) Banco da Amazonia e Banco do Brasil
+c) Banco da Amazonia e Banco do Nordeste
+d) Banco do Nordeste e Banco da Amazonia
+
+**Resposta: c**
+
+**4. Qual das alternativas descreve corretamente uma vantagem competitiva das cooperativas de credito em relacao aos bancos privados no financiamento agropecuario?**
+
+a) Possuem maior volume de capital proprio para operacoes de grande porte
+b) Operam com spreads menores por nao visarem lucro para acionistas externos
+c) Tem acesso exclusivo aos recursos do Plano Safra empresarial
+d) Sao isentas do cumprimento de exigibilidades bancarias
+
+**Resposta: b**
+
+**5. As fintechs de credito agro, como a TerraMagna, utilizam tecnologias como imagens de satelite para analise de credito. Apesar das vantagens em agilidade, qual e o principal desafio que limita a participacao dessas empresas no mercado total de credito rural?**
+
+a) Proibicao regulatoria de operar credito rural no Brasil
+b) Ausencia de demanda por parte dos produtores rurais
+c) Escala ainda limitada em comparacao com o sistema bancario tradicional, regulacao em construcao e necessidade de educacao financeira do produtor
+d) Impossibilidade tecnica de analisar risco agropecuario por meios digitais
+
+**Resposta: c**

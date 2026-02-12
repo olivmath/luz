@@ -103,3 +103,52 @@ Na proxima aula, vamos aprofundar nos instrumentos financeiros do agro, comecand
 3. [FIAGRO - Fundos de Investimento nas Cadeias Produtivas Agroindustriais - CVM](https://www.gov.br/cvm/pt-br/assuntos/regulados/fundos-de-investimento/fiagro)
 4. [Lei 14.130/2021 - FIAGRO - Planalto](https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14130.htm)
 5. [Boletim de Financas Privadas do Agronegocio - ANBIMA](https://www.anbima.com.br/pt_br/informar/estatisticas/mercado-de-capitais/boletim-de-financas-privadas-do-agronegocio.htm)
+
+---
+
+## Questionario
+
+**1. Qual e a principal razao pela qual o mercado de capitais passou a desempenhar papel relevante no financiamento do agronegocio brasileiro?**
+
+a) A proibicao legal de os bancos publicos concederem credito rural
+b) A insuficiencia do credito publico dirigido diante da escala crescente de demanda do setor agropecuario
+c) A preferencia dos produtores por taxas de juros mais elevadas oferecidas pelo mercado privado
+d) A extincao do Plano Safra pelo governo federal a partir de 2020
+
+**Resposta: b**
+
+**2. Qual e a lei conhecida como Lei do Agro, que modernizou o arcabouco juridico do financiamento agropecuario em 2020?**
+
+a) Lei 8.929/1994
+b) Lei 11.076/2004
+c) Lei 13.986/2020
+d) Lei 14.130/2021
+
+**Resposta: c**
+
+**3. Qual e a diferenca fundamental entre o CRA e o CDCA quanto ao tipo de emissor?**
+
+a) O CRA e emitido por bancos comerciais, enquanto o CDCA e emitido por securitizadoras
+b) O CRA e emitido por securitizadoras, enquanto o CDCA e emitido por cooperativas de produtores
+c) O CRA e emitido pelo Tesouro Nacional, enquanto o CDCA e emitido por bancos de desenvolvimento
+d) O CRA e emitido por produtores rurais, enquanto o CDCA e emitido por fundos de investimento
+
+**Resposta: b**
+
+**4. O FIAGRO, criado pela Lei 14.130/2021, possui tres modalidades. Qual delas investe predominantemente em CRAs e CPRs?**
+
+a) FIAGRO-FII
+b) FIAGRO-FIP
+c) FIAGRO-FIDC
+d) FIAGRO-ETF
+
+**Resposta: c**
+
+**5. Considerando o encadeamento que forma a espinha dorsal do mercado de capitais agro, qual e a sequencia correta do fluxo entre produtor e investidor final?**
+
+a) O produtor emite um CRA, que e adquirido pela securitizadora, que emite uma CPR para o investidor
+b) O investidor emite uma CPR, que e repassada ao banco, que concede credito ao produtor via CRA
+c) O produtor emite uma CPR, a securitizadora adquire essa CPR e emite um CRA que e distribuido aos investidores
+d) A securitizadora emite uma CPR em nome do produtor, que e diretamente negociada na B3 pelos investidores
+
+**Resposta: c**

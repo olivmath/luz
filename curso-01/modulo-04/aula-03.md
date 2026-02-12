@@ -111,3 +111,52 @@ Na proxima aula, vamos entender como o dinheiro circula no agronegocio, do inves
 3. [B3 — Titulos do agronegocio: CDA, WA e CDCA](https://www.b3.com.br/pt_br/produtos-e-servicos/registro/titulos-do-agronegocio/)
 4. [CVM — Informacoes sobre titulos do agronegocio para investidores](https://www.investidor.gov.br/menu/Menu_Investidor/valores_mobiliarios/CRA.html)
 5. [Banco Central — Manual de Credito Rural: normas e instrumentos](https://www3.bcb.gov.br/mcr)
+
+---
+
+## Questionario
+
+**1. Qual e o emissor da Letra de Credito do Agronegocio (LCA)?**
+
+a) Produtores rurais e cooperativas agropecuarias
+b) Companhias securitizadoras registradas na CVM
+c) Instituicoes financeiras (bancos)
+d) Armazens certificados pela Conab
+
+**Resposta: c**
+
+**2. Qual e a principal diferenca entre o CDCA e a CPR em relacao ao emissor do titulo?**
+
+a) A CPR e emitida pelo devedor (produtor rural), enquanto o CDCA e emitido pelo credor (cooperativa ou empresa do agro que possui recebiveis a receber)
+b) A CPR e emitida por bancos, enquanto o CDCA e emitido por securitizadoras
+c) Ambos sao emitidos pelo produtor rural, mas o CDCA exige garantia real e a CPR nao
+d) A CPR e emitida por cooperativas, enquanto o CDCA e emitido por tradings exportadoras
+
+**Resposta: a**
+
+**3. Qual das seguintes afirmacoes sobre a LCA e verdadeira?**
+
+a) A LCA nao possui cobertura do Fundo Garantidor de Creditos (FGC)
+b) A LCA possui isencao de Imposto de Renda para pessoa fisica e conta com cobertura do FGC ate R$ 250.000
+c) A LCA e isenta de IR apenas para investidores institucionais
+d) A LCA e lastreada em recebiveis do setor imobiliario
+
+**Resposta: b**
+
+**4. Qual e a funcao do Warrant Agropecuario (WA) e como ele se diferencia do CDA?**
+
+a) O WA comprova a propriedade do produto depositado, enquanto o CDA serve como garantia de credito
+b) O WA e o CDA sao identicos e cumprem a mesma funcao juridica
+c) O WA representa um direito de penhor sobre o produto depositado, servindo como garantia de credito, enquanto o CDA comprova a propriedade do estoque
+d) O WA e emitido pelo banco financiador, enquanto o CDA e emitido pelo armazem certificado
+
+**Resposta: c**
+
+**5. Um produtor deposita 20.000 sacas de milho em armazem certificado e recebe CDA e WA. Ele endossa o WA em favor de um banco para obter credito equivalente a 80% do valor de mercado do estoque. Se o produtor nao quitar a divida no vencimento, qual e a consequencia juridica?**
+
+a) O banco perde o direito ao credito, pois o estoque fisico nao pode ser executado judicialmente
+b) O banco pode executar o WA e tomar posse do produto depositado no armazem como forma de liquidar a divida
+c) O produtor perde automaticamente a propriedade do CDA, e o banco assume a gestao do armazem
+d) O armazem certificado assume a divida do produtor junto ao banco e se torna o novo devedor da operacao
+
+**Resposta: b**

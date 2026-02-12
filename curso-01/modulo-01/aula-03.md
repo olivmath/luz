@@ -131,3 +131,52 @@ Na proxima aula, vamos mergulhar na estrutura institucional do financiamento agr
 3. [Manual de Credito Rural (MCR) — Banco Central do Brasil](https://www3.bcb.gov.br/mcr)
 4. [Historia do Credito Rural no Brasil — Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
 5. [EMBRAPA — Historia e Papel na Modernizacao da Agricultura Brasileira](https://www.embrapa.br/memoria-embrapa)
+
+---
+
+## Questionario
+
+**1. Qual lei instituiu o Sistema Nacional de Credito Rural (SNCR) e em que ano ela foi promulgada?**
+
+a) Lei 8.929, em 1994
+b) Lei 4.829, em 1965
+c) Lei 11.076, em 2004
+d) Lei 13.986, em 2020
+
+**Resposta: b**
+
+**2. Quais sao as tres modalidades de credito rural definidas pela lei que criou o SNCR e que permanecem ate hoje?**
+
+a) Custeio, investimento e comercializacao
+b) Custeio, seguro rural e exportacao
+c) Investimento, comercializacao e armazenagem
+d) Custeio, investimento e securitizacao
+
+**Resposta: a**
+
+**3. Qual instrumento financeiro, regulamentado pela Lei 8.929 de 1994, permitiu que o produtor acessasse credito diretamente do mercado sem depender exclusivamente do sistema bancario?**
+
+a) Certificado de Recebiveis do Agronegocio (CRA)
+b) Letra de Credito do Agronegocio (LCA)
+c) Cedula de Produto Rural (CPR)
+d) Certificado de Deposito Agropecuario (CDA)
+
+**Resposta: c**
+
+**4. Qual foi a principal consequencia da crise fiscal dos anos 1980 para o credito rural no Brasil?**
+
+a) O governo ampliou os subsidios para evitar a queda da producao agricola
+b) O volume real de credito concedido caiu drasticamente, gerando inadimplencia e falencias no campo
+c) Os bancos privados assumiram integralmente o financiamento, sem impacto para os produtores
+d) O mercado de capitais substituiu imediatamente o credito estatal subsidiado
+
+**Resposta: b**
+
+**5. A Lei 13.986 de 2020, conhecida como Lei do Agro, trouxe diversas inovacoes para o financiamento do agronegocio. Dentre as alternativas abaixo, qual combina corretamente duas dessas inovacoes?**
+
+a) Criacao do SNCR e regulamentacao da CPR em moeda estrangeira
+b) Criacao do Fundo Garantidor Solidario (FGS) e permissao para emissao de CPRs em moeda estrangeira
+c) Extincao do credito rural subsidiado e criacao da Letra de Credito do Agronegocio (LCA)
+d) Instituicao do Certificado de Recebiveis do Agronegocio (CRA) e criacao do programa PRODECER
+
+**Resposta: b**

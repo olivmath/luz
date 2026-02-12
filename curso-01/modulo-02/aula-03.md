@@ -99,3 +99,52 @@ Na proxima aula, vamos mapear as tres grandes fontes de financiamento do agroneg
 3. [Pronamp - Programa Nacional de Apoio ao Medio Produtor Rural (Banco Central - MCR)](https://www3.bcb.gov.br/mcr/completo)
 4. [BNDES - Programas agropecuarios: Moderfrota, Inovagro e outros](https://www.bndes.gov.br/wps/portal/site/home/financiamento/agropecuaria)
 5. [Programa ABC+ - Agricultura de Baixo Carbono (BNDES)](https://www.bndes.gov.br/wps/portal/site/home/financiamento/produto/abc)
+
+---
+
+## Questionario
+
+**1. Em que periodo do ano o Plano Safra e geralmente anunciado pelo governo federal, e qual e a vigencia do ano safra?**
+
+a) Anunciado em janeiro, com vigencia de marco a fevereiro
+b) Anunciado entre maio e junho, com vigencia de 1 de julho a 30 de junho do ano seguinte
+c) Anunciado em outubro, com vigencia de janeiro a dezembro
+d) Anunciado em marco, com vigencia de abril a marco do ano seguinte
+
+**Resposta: b**
+
+**2. Qual e o limite de receita bruta agropecuaria anual para que um produtor se enquadre no Pronamp?**
+
+a) R$ 500 mil
+b) R$ 1,2 milhao
+c) R$ 2,4 milhoes
+d) R$ 5 milhoes
+
+**Resposta: c**
+
+**3. Qual programa de credito rural oferece as menores taxas de juros do sistema, podendo chegar a 1,5% ao ano para investimento nos grupos mais vulneraveis?**
+
+a) Pronamp
+b) Moderfrota
+c) Pronaf
+d) Inovagro
+
+**Resposta: c**
+
+**4. Como o BNDES opera na maioria das suas linhas de credito agropecuario em relacao ao produtor rural?**
+
+a) Concede credito diretamente ao produtor rural por meio de agencias proprias
+b) Opera por meio de repasses a bancos parceiros credenciados, que sao responsaveis pela analise e formalizacao da operacao
+c) Atua exclusivamente como regulador, sem fornecer recursos financeiros
+d) Financia apenas cooperativas de credito, que repassam ao produtor sem adicao de spread
+
+**Resposta: b**
+
+**5. No Plano Safra 2024/2025, qual foi o volume total aproximado de credito disponibilizado somando agricultura empresarial e agricultura familiar, e quais sao algumas das fontes de recursos que compoem esse montante?**
+
+a) R$ 250 bilhoes, provenientes exclusivamente de depositos a vista dos bancos comerciais
+b) R$ 476 bilhoes, provenientes de fontes diversas como exigibilidades, fundos constitucionais, BNDES, LCAs e equalizacoes do Tesouro Nacional
+c) R$ 600 bilhoes, provenientes integralmente do orcamento da Uniao
+d) R$ 476 bilhoes, provenientes exclusivamente de recursos do BNDES e dos fundos constitucionais
+
+**Resposta: b**

@@ -99,3 +99,52 @@ Na proxima aula, vamos analisar a tendencia de privatizacao do funding agro e o 
 3. [PROAGRO - Programa de Garantia da Atividade Agropecuaria (Banco Central)](https://www.bcb.gov.br/estabilidadefinanceira/proagro)
 4. [Matriz de Dados do Credito Rural (Banco Central)](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
 5. [Indicadores de Precos Agropecuarios - CEPEA/ESALQ/USP](https://www.cepea.esalq.usp.br/br/indicador/soja.aspx)
+
+---
+
+## Questionario
+
+**1. Qual e o percentual aproximado da area agricola brasileira que opera em regime de sequeiro, ou seja, sem irrigacao?**
+
+a) Menos de 50%
+b) Aproximadamente 70%
+c) Mais de 90%
+d) Aproximadamente 60%
+
+**Resposta: c**
+
+**2. Por que uma queda no preco internacional da soja pode transformar uma operacao de credito rural saudavel em uma posicao deficitaria, mesmo com boa producao fisica?**
+
+a) Porque a queda de preco provoca automaticamente a revogacao do credito pelo banco
+b) Porque o produtor brasileiro e tomador de preco em mercados internacionais, e a receita obtida pode ficar abaixo do custo financeiro da operacao
+c) Porque os contratos de credito rural exigem que o produtor venda a producao pelo preco vigente na data da contratacao
+d) Porque a queda de preco internacional nao afeta o mercado interno brasileiro
+
+**Resposta: b**
+
+**3. Na safra 2023/2024, o que os analistas do setor chamaram de "tempestade perfeita" para o credito agro foi causado pela materializacao simultanea de quais fatores?**
+
+a) Alta nos precos das commodities, reducao da Selic e safra recorde
+b) Perdas produtivas por El Nino, precos deprimidos da soja e custo financeiro elevado
+c) Aumento das exportacoes, valorizacao do dolar e expansao do PRONAF
+d) Reducao da area plantada, aumento do credito subsidiado e queda do dolar
+
+**Resposta: b**
+
+**4. Um produtor contratou R$ 10 milhoes em CPR financeira indexada ao CDI + 3% quando a Selic estava em 2% ao ano. Quando a Selic subiu para 13,75%, qual foi o impacto aproximado no encargo financeiro anual dessa operacao?**
+
+a) O encargo permaneceu estavel, pois o credito rural tem taxa fixa
+b) O encargo anual caiu de R$ 1,675 milhao para R$ 500 mil
+c) O encargo anual saltou de R$ 500 mil para R$ 1,675 milhao, um acrescimo de R$ 1,175 milhao
+d) O encargo anual dobrou de R$ 500 mil para R$ 1 milhao
+
+**Resposta: c**
+
+**5. Como a inadimplencia no credito rural se propaga do produtor ate o investidor de varejo, segundo o mecanismo descrito na aula?**
+
+a) O produtor inadimplente aciona o PROAGRO, que repassa a perda ao investidor de varejo via imposto
+b) O produtor deixa de pagar a CPR, o CRA lastreado nessa CPR entra em evento de credito, e o FIAGRO que investiu no CRA remarca suas cotas negativamente, gerando prejuizo ao cotista
+c) O banco que financiou o produtor repassa automaticamente a divida ao investidor de FIAGRO
+d) O governo federal assume a divida do produtor e desconta o valor do rendimento do FIAGRO
+
+**Resposta: b**

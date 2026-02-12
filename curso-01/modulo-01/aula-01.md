@@ -99,3 +99,52 @@ Na proxima aula, vamos entender por que o agronegocio precisa de credito estrutu
 3. [ComexStat — Estatisticas de Comercio Exterior do Brasil (MDIC)](http://comexstat.mdic.gov.br/pt/home)
 4. [Censo Agropecuario — IBGE](https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/21814-2017-censo-agropecuario.html)
 5. [Visao de Futuro do Agronegocio Brasileiro — EMBRAPA](https://www.embrapa.br/visao-de-futuro)
+
+---
+
+## Questionario
+
+**1. Qual conceito formalizado por Davis e Goldberg em 1957 define o agronegocio como toda a cadeia economica, desde a fabricacao de insumos ate a chegada do produto ao consumidor final?**
+
+a) Commodity chain
+b) Agribusiness
+c) Supply chain management
+d) Agroindustria integrada
+
+**Resposta: b**
+
+**2. Na divisao classica do agronegocio em "antes da porteira", "dentro da porteira" e "depois da porteira", qual segmento concentra a maior parte do valor agregado?**
+
+a) Dentro da porteira, pois e onde ocorre a producao primaria
+b) Antes da porteira, devido ao alto custo dos insumos importados
+c) Os segmentos antes e depois da porteira (a montante e a jusante)
+d) Todos os segmentos participam de forma equivalente no valor agregado
+
+**Resposta: c**
+
+**3. Aproximadamente qual percentual das exportacoes totais do Brasil e representado pelo agronegocio?**
+
+a) Entre 20% e 25%
+b) Entre 30% e 35%
+c) Entre 48% e 50%
+d) Entre 60% e 65%
+
+**Resposta: c**
+
+**4. Qual regiao brasileira e designada pela sigla MATOPIBA e representa uma importante fronteira agricola para a producao de soja?**
+
+a) Mato Grosso, Tocantins, Piaui e Bahia
+b) Maranhao, Tocantins, Piaui e Bahia
+c) Mato Grosso, Tocantins, Para e Bahia
+d) Maranhao, Tocantins, Para e Amapa
+
+**Resposta: b**
+
+**5. Considerando os dados apresentados na aula sobre a balanca comercial de 2023, o que aconteceria com o saldo comercial do Brasil caso as exportacoes do agronegocio fossem desconsideradas?**
+
+a) O pais manteria um superavit menor, porem ainda positivo
+b) O saldo comercial ficaria proximo ao equilibrio
+c) O pais registraria deficit comercial
+d) O impacto seria irrelevante, pois outros setores compensariam a diferenca
+
+**Resposta: c**

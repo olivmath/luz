@@ -117,3 +117,52 @@ Na proxima aula, vamos explorar a origem historica do credito rural no Brasil, d
 3. [Custos de Producao de Culturas — CONAB](https://www.conab.gov.br/info-agro/custos-de-producao)
 4. [Zoneamento Agricola de Risco Climatico (ZARC) — MAPA](https://www.gov.br/agricultura/pt-br/assuntos/riscos-seguro/programa-nacional-de-zoneamento-agricola-de-risco-climatico)
 5. [Matriz de Dados do Credito Rural — Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/micrrural)
+
+---
+
+## Questionario
+
+**1. Qual e a principal caracteristica do fluxo de caixa do produtor rural que diferencia a atividade agropecuaria da maioria dos outros setores economicos?**
+
+a) O produtor rural nao possui custos fixos ao longo do ano
+b) As despesas sao distribuidas ao longo do ano, mas a receita se concentra no periodo da colheita
+c) As receitas e despesas ocorrem de forma equilibrada a cada mes
+d) O produtor recebe adiantamentos regulares do governo durante todo o ciclo
+
+**Resposta: b**
+
+**2. De acordo com a aula, qual percentual aproximado dos fertilizantes consumidos no Brasil e importado?**
+
+a) 50%
+b) 65%
+c) 75%
+d) 85%
+
+**Resposta: d**
+
+**3. Quais sao as tres funcoes fundamentais do credito rural descritas na aula?**
+
+a) Subsidiar a producao, eliminar riscos climaticos e garantir precos minimos
+b) Antecipar recursos para custeio, distribuir o risco ao longo do tempo e viabilizar investimentos de longo prazo
+c) Financiar exportacoes, reduzir impostos e compensar perdas por eventos climaticos
+d) Capitalizar bancos rurais, regular precos de commodities e financiar logistica
+
+**Resposta: b**
+
+**4. Na safra 2021/2022, qual fenomeno climatico causou perdas estimadas em mais de R$ 80 bilhoes na regiao Sul do Brasil?**
+
+a) El Nino, que provocou excesso de chuvas e inundacoes
+b) La Nina, que causou seca severa
+c) Geadas tardias provocadas por uma massa de ar polar atipica
+d) Granizo generalizado durante o periodo de colheita
+
+**Resposta: b**
+
+**5. Considerando que um produtor de soja em Mato Grosso com 5.000 hectares tem custo operacional total entre R$ 25 milhoes e R$ 35 milhoes, e que 60% a 70% desse valor e gasto antes da colheita, por que o modelo de autofinanciamento e considerado inviavel para a maioria dos produtores?**
+
+a) Porque os bancos oferecem taxas de juros negativas, tornando o credito mais vantajoso do que o uso de recursos proprios
+b) Porque a legislacao brasileira obriga o produtor a utilizar credito rural oficial
+c) Porque manter entre R$ 15 milhoes e R$ 24 milhoes em caixa durante meses sem receita e impraticavel para a esmagadora maioria dos produtores
+d) Porque os fornecedores de insumos so aceitam pagamento via financiamento bancario
+
+**Resposta: c**

@@ -99,3 +99,52 @@ Na proxima aula, vamos conhecer os agentes financeiros que executam o credito ru
 3. [Matriz de Dados do Credito Rural - Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/reportmicam)
 4. [Credito Rural - Pagina institucional do Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
 5. [Resolucoes do CMN sobre credito rural - Banco Central do Brasil](https://www.bcb.gov.br/estabilidadefinanceira/exiaboram)
+
+---
+
+## Questionario
+
+**1. Qual lei criou o Sistema Nacional de Credito Rural (SNCR) no Brasil?**
+
+a) Lei 8.171 de 1991
+b) Lei 4.829 de 1965
+c) Lei 4.595 de 1964
+d) Lei 10.406 de 2002
+
+**Resposta: b**
+
+**2. No SNCR, qual orgao e responsavel por definir as diretrizes gerais e as taxas de juros do credito rural?**
+
+a) Banco Central do Brasil
+b) Ministerio da Agricultura
+c) Conselho Monetario Nacional (CMN)
+d) Banco do Brasil
+
+**Resposta: c**
+
+**3. Qual modalidade de credito rural financia as despesas do ciclo produtivo, como sementes, fertilizantes e defensivos, e responde por mais de 50% do total contratado?**
+
+a) Investimento
+b) Comercializacao
+c) Industrializacao
+d) Custeio
+
+**Resposta: d**
+
+**4. Qual e o percentual minimo dos depositos a vista que as instituicoes financeiras devem destinar obrigatoriamente ao credito rural, conforme as regras de exigibilidades do Banco Central?**
+
+a) 25%
+b) 34%
+c) 40%
+d) 53%
+
+**Resposta: b**
+
+**5. Se um banco possui R$ 200 bilhoes em depositos a vista e consegue emprestar apenas R$ 50 bilhoes ao agro, o que acontece com os R$ 18 bilhoes restantes necessarios para cumprir a exigibilidade?**
+
+a) O banco e isento da exigibilidade ate o proximo ano safra
+b) O valor e aplicado automaticamente em titulos do Tesouro Nacional com remuneracao reduzida
+c) O valor deve ser recolhido ao Banco Central sem remuneracao
+d) O banco pode compensar o deficit com operacoes de credito imobiliario
+
+**Resposta: c**

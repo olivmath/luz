@@ -101,3 +101,52 @@ Na proxima aula, vamos conhecer o CRA — o instrumento que conecta o produtor r
 3. [B3 — Registro de titulos do agronegocio (CPR, CRA, CDCA)](https://www.b3.com.br/pt_br/produtos-e-servicos/registro/titulos-do-agronegocio/)
 4. [Banco Central — Manual de Credito Rural (MCR)](https://www3.bcb.gov.br/mcr)
 5. [CVM — Caderno de Educacao Financeira: Certificados de Recebiveis do Agronegocio](https://www.investidor.gov.br/menu/Menu_Investidor/valores_mobiliarios/CRA.html)
+
+---
+
+## Questionario
+
+**1. Quem pode emitir uma Cedula de Produto Rural (CPR)?**
+
+a) Instituicoes financeiras, tradings e cooperativas de credito
+b) Produtores rurais, cooperativas de producao agropecuaria e associacoes de produtores
+c) Securitizadoras registradas na CVM e bancos comerciais
+d) Qualquer pessoa fisica ou juridica que atue no agronegocio
+
+**Resposta: b**
+
+**2. Qual e a principal diferenca entre a CPR fisica e a CPR financeira?**
+
+a) A CPR fisica e emitida por bancos, enquanto a CPR financeira e emitida por produtores
+b) A CPR fisica tem prazo maximo de 6 meses, enquanto a CPR financeira nao tem limite de prazo
+c) Na CPR fisica o produtor se compromete a entregar produto, enquanto na CPR financeira ele se compromete a pagar em dinheiro
+d) A CPR fisica e isenta de Imposto de Renda, enquanto a CPR financeira e tributada
+
+**Resposta: c**
+
+**3. Qual legislacao instituiu a obrigatoriedade de registro das CPRs em sistemas autorizados pelo Banco Central, como a B3 e a CERC?**
+
+a) Lei 8.929/1994
+b) Lei 10.200/2001
+c) Lei 11.076/2004
+d) Lei 13.986/2020 (Lei do Agro)
+
+**Resposta: d**
+
+**4. Por que a CPR e considerada o alicerce do mercado de capitais voltado ao agronegocio?**
+
+a) Porque e o unico titulo de credito que pode ser negociado na B3
+b) Porque serve como lastro para instrumentos como CRA, FIAGRO e FIDC agro
+c) Porque possui isencao de Imposto de Renda para todos os investidores
+d) Porque e garantida pelo Fundo Garantidor de Creditos (FGC)
+
+**Resposta: b**
+
+**5. Um produtor emitiu uma CPR fisica comprometendo-se a entregar 10.000 sacas de soja a R$ 120 por saca. Na data de entrega, o preco de mercado subiu para R$ 160 por saca. Qual e a consequencia para o produtor e qual risco esse cenario ilustra?**
+
+a) O produtor lucra com a diferenca de precos, pois a CPR fisica permite renegociacao automatica
+b) O produtor entrega as sacas pelo preco de mercado e recebe R$ 160 por saca, pois a CPR acompanha a cotacao
+c) O produtor deixa de capturar o ganho de R$ 40 por saca, ilustrando o risco de preco da CPR fisica para o emissor
+d) O produtor pode cancelar a CPR e vender no mercado spot, desde que pague multa contratual ao credor
+
+**Resposta: c**

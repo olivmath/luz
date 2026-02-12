@@ -28,7 +28,7 @@ export default function CatalogPage() {
           const course = COURSES[cid]
           const prog = progress.getCourseProgress(cid)
           const flat = getFlatLessons(cid)
-          const hasContent = cid === 'curso-01'
+          const hasContent = cid === 'curso-01' || cid === 'curso-02'
           const isComplete = progress.isCourseComplete(cid)
           const pct = prog.total > 0 ? Math.round((prog.completed / prog.total) * 100) : 0
           const locked = !hasContent

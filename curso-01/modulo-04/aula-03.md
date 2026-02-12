@@ -100,7 +100,7 @@ Nesta aula, completamos o panorama dos instrumentos financeiros do agronegocio b
 
 ## Proxima Aula
 
-Na proxima aula, vamos entender como o dinheiro circula no agronegocio, do investidor ao produtor e de volta, percorrendo todo o ciclo financeiro. Ate la!
+Na proxima aula, vamos percorrer as fases do ciclo produtivo e financeiro do agronegocio, desde a aquisicao de insumos ate a liquidacao do credito. Ate la!
 
 ---
 

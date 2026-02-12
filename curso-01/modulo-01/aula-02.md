@@ -74,7 +74,7 @@ Na maioria dos setores da economia, o empreendedor consegue ajustar sua producao
 
 Dado o descasamento entre investimento e retorno, a grande maioria dos produtores rurais brasileiros nao tem como autofinanciar sua producao integralmente. Mesmo produtores grandes e capitalizados utilizam credito rural para financiar parte significativa de seus custos operacionais. Para produtores medios e pequenos, o credito e absolutamente indispensavel: sem ele, simplesmente nao haveria plantio.
 
-Os numeros confirmam essa realidade. Segundo o Banco Central do Brasil, o volume total de credito rural contratado na safra 2023/2024 ultrapassou R$ 400 bilhoes, abrangendo custeio, investimento e comercializacao. Esse valor representa uma parcela substancial do valor bruto da producao agropecuaria, demonstrando que o credito nao e um acessorio, mas sim o combustivel que permite ao setor funcionar.
+Os numeros confirmam essa realidade. Segundo o Banco Central do Brasil, o volume total de credito rural programado no Plano Safra 2023/2024 atingiu R$ 364 bilhoes para a agricultura empresarial, abrangendo custeio, investimento e comercializacao. Esse valor representa uma parcela substancial do valor bruto da producao agropecuaria, demonstrando que o credito nao e um acessorio, mas sim o combustivel que permite ao setor funcionar.
 
 O credito rural cumpre tres funcoes fundamentais: (a) antecipa recursos para que o produtor possa custear a safra antes da receita; (b) distribui o risco ao longo do tempo, permitindo que o produtor pague o financiamento apos a colheita e a venda; e (c) viabiliza investimentos de longo prazo, como aquisicao de maquinas, correcao de solo, irrigacao e infraestrutura de armazenagem, cujo retorno se dilui ao longo de varios anos.
 

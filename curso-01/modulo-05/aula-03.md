@@ -68,7 +68,7 @@ Os investidores sao a fonte ultima de capital privado no ecossistema do agro. El
 
 Os investidores pessoa fisica acessam o agro por meio de tres instrumentos principais: LCAs (Letras de Credito do Agronegocio, emitidas por bancos, isentas de IR para PF), CRAs (isentos de IR para PF, negociados na B3) e cotas de FIAGROs (fundos listados na B3 que distribuem rendimentos mensais isentos de IR). A isencao fiscal e um atrativo poderoso: um CRA que rende CDI + 2% ao ano isento de IR equivale, para o investidor pessoa fisica na faixa de 15% de aliquota, a um titulo tributado que rendesse CDI + 2,35%.
 
-Os FIAGROs, criados pela Lei 14.130/2021, se tornaram rapidamente um dos instrumentos mais populares entre investidores de varejo. Em 2024, o patrimonio liquido dos FIAGROs listados na B3 ultrapassou R$ 35 bilhoes, com mais de 1 milhao de cotistas. Esses fundos investem em CRAs, CPRs, imoveis rurais e outros ativos do agro, democratizando o acesso ao financiamento do campo.
+Os FIAGROs, criados pela Lei 14.130/2021, se tornaram rapidamente um dos instrumentos mais populares entre investidores de varejo. Em 2024, o patrimonio liquido dos FIAGROs listados na B3 ultrapassou R$ 40 bilhoes, com mais de 500 mil cotistas. Esses fundos investem em CRAs, CPRs, imoveis rurais e outros ativos do agro, democratizando o acesso ao financiamento do campo.
 
 - **Exemplo**: Um investidor pessoa fisica em Sao Paulo aplica R$ 50.000 em cotas de um FIAGRO listado na B3 que investe em CRAs de produtores de soja e milho. O fundo distribui rendimentos mensais de 1,1% ao mes (aproximadamente CDI + 2% ao ano), isentos de imposto de renda. O dinheiro desse investidor, somado ao de outros milhares de cotistas, financia produtores rurais em Mato Grosso, Goias e Bahia. O investidor recebe seu rendimento mensal; o produtor recebe o credito que precisa para plantar. Esse e o circuito completo de financiamento via mercado de capitais.
 
@@ -100,7 +100,7 @@ Nesta aula, mapeamos o ecossistema completo de participantes do financiamento do
 
 ## Proxima Aula
 
-Na proxima aula, vamos encerrar o curso analisando os riscos do sistema, as tendencias de privatizacao do credito rural e a introducao a tokenizacao no agro. Ate la!
+Na proxima aula, vamos analisar os principais riscos que afetam o sistema de credito do agronegocio brasileiro. Ate la!
 
 ---
 

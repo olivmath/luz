@@ -16,11 +16,11 @@ Bem-vindo a aula 3.1! Vamos entender como funciona o credito publico dirigido ao
 
 ### Depositos a vista e a exigibilidade bancaria
 
-A principal fonte de recursos do credito rural brasileiro sao os depositos a vista captados pelos bancos comerciais. Por determinacao do Banco Central, as instituicoes financeiras sao obrigadas a destinar pelo menos 25% do saldo dos depositos a vista para operacoes de credito rural a taxas controladas. Essa regra, conhecida como exigibilidade, e o pilar mais antigo do Sistema Nacional de Credito Rural (SNCR), criado em 1965. Na pratica, isso significa que parte do dinheiro depositado em contas correntes de milhoes de brasileiros e canalizada compulsoriamente para financiar a producao agropecuaria. Os bancos que nao cumprem a exigibilidade devem recolher o valor nao aplicado ao Banco Central, sem remuneracao, o que cria um forte incentivo para que efetivamente emprestem ao setor.
+A principal fonte de recursos do credito rural brasileiro sao os depositos a vista captados pelos bancos comerciais. Por determinacao do Banco Central, as instituicoes financeiras sao obrigadas a destinar pelo menos 34% do saldo dos depositos a vista para operacoes de credito rural a taxas controladas. Essa regra, conhecida como exigibilidade, e o pilar mais antigo do Sistema Nacional de Credito Rural (SNCR), criado em 1965. Na pratica, isso significa que parte do dinheiro depositado em contas correntes de milhoes de brasileiros e canalizada compulsoriamente para financiar a producao agropecuaria. Os bancos que nao cumprem a exigibilidade devem recolher o valor nao aplicado ao Banco Central, sem remuneracao, o que cria um forte incentivo para que efetivamente emprestem ao setor.
 
 A exigibilidade nao e uma opcao: e uma obrigacao regulatoria. O Banco Central monitora mensalmente o cumprimento dessa regra por meio de relatorios detalhados. Bancos de grande porte, como Banco do Brasil, Itau, Bradesco e Santander, sao os maiores operadores dessa modalidade, justamente porque possuem as maiores bases de depositos a vista do sistema. Para o produtor, essa mecanica e transparente — ele simplesmente acessa a linha de credito no banco, sem saber necessariamente que o recurso vem dos depositos a vista de outros clientes.
 
-- **Exemplo**: Se um grande banco possui R$ 400 bilhoes em depositos a vista, ele e obrigado a destinar pelo menos R$ 100 bilhoes para credito rural a taxas controladas pelo Plano Safra. Caso nao consiga aplicar todo esse montante, o saldo remanescente fica retido no Banco Central sem render juros, representando um custo de oportunidade significativo para a instituicao.
+- **Exemplo**: Se um grande banco possui R$ 400 bilhoes em depositos a vista, ele e obrigado a destinar pelo menos R$ 136 bilhoes para credito rural a taxas controladas pelo Plano Safra. Caso nao consiga aplicar todo esse montante, o saldo remanescente fica retido no Banco Central sem render juros, representando um custo de oportunidade significativo para a instituicao.
 
 ### Poupanca rural, FAT e fundos constitucionais
 
@@ -121,9 +121,9 @@ d) Lucros retidos das cooperativas de credito rural
 
 **2. Qual e o percentual minimo dos depositos a vista que os bancos sao obrigados a destinar para operacoes de credito rural a taxas controladas?**
 
-a) 10%
-b) 15%
-c) 25%
+a) 15%
+b) 25%
+c) 34%
 d) 50%
 
 **Resposta: c**

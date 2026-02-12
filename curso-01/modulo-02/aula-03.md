@@ -88,7 +88,7 @@ Nesta aula, compreendemos que o Plano Safra e o instrumento central da politica 
 
 ## Proxima Aula
 
-Na proxima aula, vamos mapear as tres grandes fontes de financiamento do agronegocio: credito publico, credito bancario privado e mercado de capitais. Ate la!
+Na proxima aula, vamos iniciar o estudo das fontes de financiamento do agronegocio, comecando pelo credito publico dirigido e seus mecanismos de subsidio. Ate la!
 
 ---
 

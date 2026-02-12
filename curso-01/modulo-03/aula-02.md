@@ -104,12 +104,12 @@ Na proxima aula, vamos entender como o mercado de capitais entrou no financiamen
 
 ## Questionario
 
-**1. Qual e a principal diferenca entre a CPR fisica e a CPR financeira?**
+**1. Por que os bancos privados preferem utilizar a CPR financeira como instrumento de credito agro em vez de linhas tradicionais?**
 
-a) A CPR fisica e emitida apenas por grandes produtores, enquanto a CPR financeira e exclusiva para pequenos produtores
-b) A CPR fisica e liquidada pela entrega do produto agropecuario, enquanto a CPR financeira e liquidada em dinheiro
-c) A CPR fisica tem prazo maximo de 90 dias, enquanto a CPR financeira pode ter prazo de ate 10 anos
-d) A CPR fisica e regulamentada pelo Banco Central, enquanto a CPR financeira e regulamentada pela CVM
+a) Porque a CPR financeira tem taxa de juros definida pelo Plano Safra, reduzindo o risco do banco
+b) Porque a CPR financeira e um titulo executivo extrajudicial, permite registro em sistemas autorizados e pode ser negociada no mercado secundario
+c) Porque a CPR financeira e garantida pelo Fundo Garantidor de Creditos (FGC)
+d) Porque a CPR financeira e isenta de compulsorio e nao entra no calculo de exigibilidades
 
 **Resposta: b**
 

@@ -17,10 +17,10 @@ export default function CatalogPage() {
         <div className="bg-gradient-to-br from-[var(--green-700)] to-[var(--green-600)] rounded-2xl px-12 py-16 max-md:px-8 max-md:py-12 text-white animate-fade-in-up">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl max-md:text-4xl font-bold mb-6 leading-tight">
-              Agronegocio Financeiro
+              Cursos Especializados
             </h1>
             <p className="text-lg text-white/90 mb-8 leading-relaxed max-w-2xl">
-              Domine o sistema de financiamento do agronegocio brasileiro com cursos praticos e especializados, do nivel introdutorio ao avancado.
+              Domine temas de ponta com cursos praticos e especializados, do nivel introdutorio ao avancado. Agronegocio financeiro e nanotecnologia cosmetica.
             </p>
             <div className="space-y-4 mb-10">
               <div className="flex items-start gap-3">
@@ -28,7 +28,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Cursos do iniciante ao avancado em financas do agro
+                  Trilhas completas do iniciante ao avancado
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -36,7 +36,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Aprenda instrumentos financeiros, securitizacao e gestao de risco
+                  Agronegocio financeiro: instrumentos, securitizacao e gestao de risco
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -44,7 +44,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Conteudo criado por especialistas do mercado financeiro
+                  Nanotecnologia cosmetica: nanomateriais, nanovetores e formulacao avancada
                 </p>
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function CatalogPage() {
             Trilhas disponiveis
           </h2>
           <p className="text-muted-foreground">
-            Escolha sua jornada de aprendizado no agronegocio financeiro
+            Escolha sua jornada de aprendizado
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function CatalogPage() {
             const course = COURSES[cid]
             const prog = progress.getCourseProgress(cid)
             const flat = getFlatLessons(cid)
-            const hasContent = cid === 'curso-01' || cid === 'curso-02'
+            const hasContent = cid === 'curso-01' || cid === 'curso-02' || cid === 'curso-03' || cid === 'curso-04'
             const isComplete = progress.isCourseComplete(cid)
             const pct = prog.total > 0 ? Math.round((prog.completed / prog.total) * 100) : 0
             const locked = !hasContent
@@ -105,7 +105,7 @@ export default function CatalogPage() {
                       {/* Header badges */}
                       <div className="flex items-center gap-3 mb-4 flex-wrap">
                         <span className="font-mono text-xs font-medium tracking-wider uppercase text-muted-foreground">
-                          Agronegocio Financeiro
+                          {cid.startsWith('curso-0') && (cid === 'curso-01' || cid === 'curso-02') ? 'Agronegocio Financeiro' : 'Nanotecnologia Cosmetica'}
                         </span>
                         <span className={cn(
                           "font-mono text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full",
@@ -176,7 +176,7 @@ export default function CatalogPage() {
                     {/* Header badges */}
                     <div className="flex items-center gap-3 mb-4 flex-wrap">
                       <span className="font-mono text-xs font-medium tracking-wider uppercase text-muted-foreground">
-                        Agronegocio Financeiro
+                        {cid.startsWith('curso-0') && (cid === 'curso-01' || cid === 'curso-02') ? 'Agronegocio Financeiro' : 'Nanotecnologia Cosmetica'}
                       </span>
                       <span className={cn(
                         "font-mono text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full",

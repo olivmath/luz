@@ -139,5 +139,143 @@ export const COURSES: Record<string, Course> = {
         ]
       },
     ]
+  },
+  'curso-03': {
+    id: 'curso-03',
+    title: 'Nanotecnologia Aplicada a Cosmeticos',
+    subtitle: 'Fundamentos',
+    level: 'Introdutorio',
+    description: 'Visao completa da nanotecnologia aplicada ao setor cosmetico, desde os fundamentos da nanociencia ate as aplicacoes praticas em diferentes nichos, incluindo aspectos regulatorios e de seguranca.',
+    modules: [
+      {
+        id: 'modulo-01',
+        title: 'Fundamentos de Nanociencia e Nanotecnologia',
+        objective: 'Compreender os conceitos fundamentais da nanociencia e por que a escala nanometrica revoluciona a cosmetologia.',
+        lessons: [
+          { id: 'aula-01', title: 'O que e nanotecnologia: da escala atomica a aplicacao', number: '1.1' },
+          { id: 'aula-02', title: 'Propriedades unicas na nanoescala', number: '1.2' },
+          { id: 'aula-03', title: 'Panorama da nanotecnologia no setor cosmetico', number: '1.3' },
+        ]
+      },
+      {
+        id: 'modulo-02',
+        title: 'Nanomateriais Utilizados em Cosmeticos',
+        objective: 'Conhecer os principais tipos de nanomateriais empregados na industria cosmetica.',
+        lessons: [
+          { id: 'aula-01', title: 'Nanoparticulas inorganicas: oxidos metalicos e metais nobres', number: '2.1' },
+          { id: 'aula-02', title: 'Nanomateriais organicos: lipidicos e polimericos', number: '2.2' },
+          { id: 'aula-03', title: 'Nanoemulsoes e sistemas coloidais', number: '2.3' },
+        ]
+      },
+      {
+        id: 'modulo-03',
+        title: 'Nanotecnologia em Protecao Solar',
+        objective: 'Dominar a aplicacao de nanomateriais em fotoprotetores, mecanismos de acao e regulacao.',
+        lessons: [
+          { id: 'aula-01', title: 'Filtros solares nanometricos: mecanismos e formulacao', number: '3.1' },
+          { id: 'aula-02', title: 'Eficacia, estetica e aceitacao do consumidor', number: '3.2' },
+          { id: 'aula-03', title: 'Seguranca e regulacao de nanofiltros solares', number: '3.3' },
+        ]
+      },
+      {
+        id: 'modulo-04',
+        title: 'Nanotecnologia em Cuidados com a Pele',
+        objective: 'Explorar aplicacoes de nanotecnologia em anti-aging, clareamento, hidratacao e acne.',
+        lessons: [
+          { id: 'aula-01', title: 'Anti-aging nanometrico: retinoides, peptideos e antioxidantes', number: '4.1' },
+          { id: 'aula-02', title: 'Clareamento e tratamento de hiperpigmentacao', number: '4.2' },
+          { id: 'aula-03', title: 'Hidratacao avancada e tratamento de acne', number: '4.3' },
+        ]
+      },
+      {
+        id: 'modulo-05',
+        title: 'Nanotecnologia em Cabelos e Nichos Especiais',
+        objective: 'Conhecer aplicacoes em cuidados capilares, maquiagem, perfumaria e cosmeticos decorativos.',
+        lessons: [
+          { id: 'aula-01', title: 'Nanotecnologia capilar: reparacao, coloracao e protecao', number: '5.1' },
+          { id: 'aula-02', title: 'Maquiagem e cosmeticos decorativos nanometricos', number: '5.2' },
+          { id: 'aula-03', title: 'Perfumaria, desodorantes e nichos emergentes', number: '5.3' },
+        ]
+      },
+      {
+        id: 'modulo-06',
+        title: 'Seguranca, Regulacao e Futuro dos Nanocosmeticos',
+        objective: 'Compreender aspectos toxicologicos, regulatorios e tendencias futuras.',
+        lessons: [
+          { id: 'aula-01', title: 'Toxicologia de nanomateriais cosmeticos', number: '6.1' },
+          { id: 'aula-02', title: 'Marco regulatorio e rotulagem de nanocosmeticos', number: '6.2' },
+          { id: 'aula-03', title: 'Tendencias e futuro da nanotecnologia cosmetica', number: '6.3' },
+        ]
+      },
+    ]
+  },
+  'curso-04': {
+    id: 'curso-04',
+    title: 'Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos',
+    subtitle: 'Abordagem Avancada',
+    level: 'Avancado',
+    description: 'Aprofundamento em design, sintese, caracterizacao e aplicacao de nanovetores e sistemas de nanoencapsulamento em cosmeticos com liberacao controlada e alta performance.',
+    modules: [
+      {
+        id: 'modulo-01',
+        title: 'Arquitetura de Nanovetores Cosmeticos',
+        objective: 'Consolidar a visao dos diferentes tipos de nanovetores e dominar criterios de selecao.',
+        lessons: [
+          { id: 'aula-01', title: 'Taxonomia dos nanovetores: classificacao e principios de design', number: '1.1' },
+          { id: 'aula-02', title: 'Lipossomas e vesiculas lipidicas: da primeira geracao aos sistemas avancados', number: '1.2' },
+          { id: 'aula-03', title: 'Nanoparticulas lipidicas: SLN e NLC em profundidade', number: '1.3' },
+        ]
+      },
+      {
+        id: 'modulo-02',
+        title: 'Nanovetores Polimericos e Sistemas Hibridos',
+        objective: 'Aprofundar nanoparticulas polimericas, dendrimeros e sistemas hibridos.',
+        lessons: [
+          { id: 'aula-01', title: 'Nanoparticulas polimericas: nanoesferas e nanocapsulas', number: '2.1' },
+          { id: 'aula-02', title: 'Dendrimeros, nanocristais e sistemas supramoleculares', number: '2.2' },
+          { id: 'aula-03', title: 'Sistemas hibridos e nanovetores de nova geracao', number: '2.3' },
+        ]
+      },
+      {
+        id: 'modulo-03',
+        title: 'Tecnicas de Nanoencapsulamento',
+        objective: 'Dominar tecnicas laboratoriais e industriais de nanoencapsulamento.',
+        lessons: [
+          { id: 'aula-01', title: 'Metodos de alta energia: homogeneizacao e ultrassom', number: '3.1' },
+          { id: 'aula-02', title: 'Metodos de baixa energia e tecnicas quimicas', number: '3.2' },
+          { id: 'aula-03', title: 'Secagem e processamento pos-encapsulamento', number: '3.3' },
+        ]
+      },
+      {
+        id: 'modulo-04',
+        title: 'Caracterizacao e Controle de Qualidade',
+        objective: 'Dominar tecnicas analiticas de caracterizacao e controle de qualidade de nanovetores.',
+        lessons: [
+          { id: 'aula-01', title: 'Tamanho, distribuicao e potencial zeta', number: '4.1' },
+          { id: 'aula-02', title: 'Morfologia e estrutura interna', number: '4.2' },
+          { id: 'aula-03', title: 'Eficiencia de encapsulacao, liberacao e estabilidade', number: '4.3' },
+        ]
+      },
+      {
+        id: 'modulo-05',
+        title: 'Permeacao Cutanea e Direcionamento de Ativos',
+        objective: 'Compreender mecanismos de permeacao cutanea e estrategias de direcionamento.',
+        lessons: [
+          { id: 'aula-01', title: 'Barreira cutanea e vias de penetracao na nanoescala', number: '5.1' },
+          { id: 'aula-02', title: 'Estrategias de direcionamento cutaneo', number: '5.2' },
+          { id: 'aula-03', title: 'Metodos de avaliacao de permeacao e bioadesao', number: '5.3' },
+        ]
+      },
+      {
+        id: 'modulo-06',
+        title: 'Escalonamento, Inovacao e Fronteiras',
+        objective: 'Dominar escalonamento industrial, propriedade intelectual e fronteiras emergentes.',
+        lessons: [
+          { id: 'aula-01', title: 'Do laboratorio a industria: escalonamento de nanovetores', number: '6.1' },
+          { id: 'aula-02', title: 'Propriedade intelectual e estrategia de inovacao', number: '6.2' },
+          { id: 'aula-03', title: 'Fronteiras da nanotecnologia cosmetica avancada', number: '6.3' },
+        ]
+      },
+    ]
   }
 }

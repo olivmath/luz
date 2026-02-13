@@ -4,3 +4,18 @@ dist
 .DS_Store
 *.local
 .turbo
+
+# Tool caches
+.firecrawl/
+.playwright-mcp/
+.mcp.json
+.claude/
+
+# Screenshots (debug/reference)
+*.png
+*.jpg
+*.jpeg
+
+# Secrets
+.env
+frontend/.env

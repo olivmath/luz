@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { useUser } from '@clerk/nextjs'
 import { COURSES } from '@/lib/courses'
 import type { ProgressData } from '@/types'
 
@@ -20,33 +21,81 @@ const ProgressContext = createContext<ProgressContextType | null>(null)
 const PROGRESS_KEY = 'oken-curso-progress'
 const NAME_KEY = 'oken-student-name'
 
-function loadProgress(): ProgressData {
-  try {
-    return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}')
-  } catch {
-    return {}
-  }
-}
-
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
+  const { user, isLoaded } = useUser()
   const [data, setData] = useState<ProgressData>({})
   const [studentName, setStudentNameState] = useState('')
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setData(loadProgress())
-    try {
-      setStudentNameState(localStorage.getItem(NAME_KEY) || '')
-    } catch {}
-    setMounted(true)
-  }, [])
+  // Derive scoped storage keys based on Clerk userId
+  const progressKey = user?.id ? `oken-curso-progress-${user.id}` : PROGRESS_KEY
+  const nameKey = user?.id ? `oken-student-name-${user.id}` : NAME_KEY
 
+  // Load from localStorage only after Clerk has loaded
+  useEffect(() => {
+    if (!isLoaded) return
+
+    // Load progress data from the scoped key
+    let progress: ProgressData = {}
+    try {
+      const raw = localStorage.getItem(progressKey)
+      progress = raw ? JSON.parse(raw) : {}
+    } catch {
+      progress = {}
+    }
+
+    // Migration: if user is logged in and scoped key was empty, copy from unscoped key
+    if (user?.id && Object.keys(progress).length === 0) {
+      try {
+        const unscopedRaw = localStorage.getItem(PROGRESS_KEY)
+        if (unscopedRaw) {
+          const unscopedProgress = JSON.parse(unscopedRaw)
+          if (Object.keys(unscopedProgress).length > 0) {
+            progress = unscopedProgress
+            localStorage.setItem(progressKey, JSON.stringify(progress))
+          }
+        }
+      } catch {}
+    }
+
+    setData(progress)
+
+    // Load student name from the scoped key
+    let name = ''
+    try {
+      name = localStorage.getItem(nameKey) || ''
+    } catch {}
+
+    // Migration: if user is logged in and scoped name was empty, copy from unscoped key
+    if (user?.id && !name) {
+      try {
+        const unscopedName = localStorage.getItem(NAME_KEY) || ''
+        if (unscopedName) {
+          name = unscopedName
+          localStorage.setItem(nameKey, name)
+        }
+      } catch {}
+    }
+
+    // Auto-fill studentName from Clerk profile if localStorage is still empty
+    if (!name && user?.fullName) {
+      name = user.fullName
+      try {
+        localStorage.setItem(nameKey, name)
+      } catch {}
+    }
+
+    setStudentNameState(name)
+    setMounted(true)
+  }, [isLoaded, user?.id, user?.fullName, progressKey, nameKey])
+
+  // Persist progress data to scoped key
   useEffect(() => {
     if (!mounted) return
     try {
-      localStorage.setItem(PROGRESS_KEY, JSON.stringify(data))
+      localStorage.setItem(progressKey, JSON.stringify(data))
     } catch {}
-  }, [data, mounted])
+  }, [data, mounted, progressKey])
 
   const isCompleted = useCallback((courseId: string, moduleId: string, lessonId: string) => {
     return !!(data[courseId] && data[courseId][`${moduleId}/${lessonId}`])
@@ -108,9 +157,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const setStudentName = useCallback((name: string) => {
     setStudentNameState(name)
     try {
-      localStorage.setItem(NAME_KEY, name)
+      localStorage.setItem(nameKey, name)
     } catch {}
-  }, [])
+  }, [nameKey])
 
   return (
     <ProgressContext.Provider value={{

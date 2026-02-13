@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { ProgressProvider } from '@/context/progress-context'
 import { Header } from '@/components/header'
 import { HashRedirect } from '@/components/hash-redirect'
+import { ClerkProvider } from '@clerk/nextjs'
 
 export const metadata: Metadata = {
   title: 'Oken — Cursos Agro',
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <ClerkProvider appearance={{ cssLayerName: 'clerk' }}>
+      <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -36,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </ProgressProvider>
         </ThemeProvider>
       </body>
-    </html>
+      </html>
+    </ClerkProvider>
   )
 }

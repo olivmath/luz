@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@layer clerk;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -403,6 +404,15 @@
 }
 .dark .certificate-card {
   background: #111419;
+}
+
+/* ============================================
+   SIDEBAR RIGHT (lesson page)
+   ============================================ */
+.sidebar-right {
+  order: 2;
+  border-left: 1px solid var(--border);
+  border-right: none;
 }
 
 /* ============================================

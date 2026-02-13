@@ -12,7 +12,7 @@ import { ReadingProgressBar } from '@/components/reading-progress-bar'
 import { LessonSidebar } from '@/components/lesson-sidebar'
 import { QuizSection } from '@/components/quiz-section'
 import { cn } from '@/lib/utils'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, BookOpen, CheckCircle2 } from 'lucide-react'
 
 export default function LessonPage({
   params,
@@ -65,51 +65,32 @@ export default function LessonPage({
       )}
 
       <div className="flex max-w-[1200px] mx-auto min-h-[calc(100vh-var(--header-h))]">
-        {/* Sidebar */}
-        <div className={cn(
-          "w-[var(--sidebar-w)] shrink-0 border-r border-border bg-sidebar sticky top-[var(--header-h)] h-[calc(100vh-var(--header-h))] overflow-y-auto sidebar-scroll",
-          "max-lg:fixed max-lg:top-[var(--header-h)] max-lg:left-0 max-lg:bottom-0 max-lg:z-[999] max-lg:shadow-[4px_0_24px_rgba(0,0,0,0.08)]",
-          sidebarOpen ? "max-lg:block" : "max-lg:hidden"
-        )}>
-          <div className="flex items-center justify-between p-6 pb-4 border-b border-border">
-            <Link href={`/${courseId}`} className="font-mono text-xs text-muted-foreground tracking-wider hover:text-primary transition-colors flex items-center gap-2">
-              &larr; Curso
-            </Link>
-            <div className="font-mono text-xs text-muted-foreground font-medium">
-              {progress.getCourseProgress(courseId).completed}/{progress.getCourseProgress(courseId).total}
+        {/* Main content - Order 1 */}
+        <div className="flex-1 min-w-0 px-12 py-10 pb-20 max-lg:max-w-full max-lg:px-6 max-lg:py-6 max-lg:pb-12 max-md:px-5 order-1">
+          {/* Topbar with Tabs */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="hidden max-lg:flex items-center gap-2 font-mono text-sm text-muted-foreground px-3 py-2 border border-border rounded-sm bg-card hover:border-primary hover:text-primary transition-all cursor-pointer"
+                aria-label="Abrir menu de aulas"
+              >
+                <Menu className="w-4 h-4" /> Aulas
+              </button>
+              <div className="font-mono text-xs text-muted-foreground tracking-wider max-lg:hidden">
+                {loading ? `Aula ${lesson.number}` : `Aula ${lesson.number} \u00b7 ~${readingTime} min de leitura`}
+              </div>
+              <div className="font-mono text-xs text-muted-foreground/60 tracking-wider">
+                {adj.currentIndex + 1}/{adj.total}
+              </div>
             </div>
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="lg:hidden text-muted-foreground hover:text-foreground"
-              aria-label="Fechar menu de aulas"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-          <LessonSidebar
-            courseId={courseId}
-            activeModuleId={moduleId}
-            activeLessonId={lessonId}
-            onLessonClick={() => setSidebarOpen(false)}
-          />
-        </div>
 
-        {/* Main content */}
-        <div className="flex-1 min-w-0 px-12 py-10 pb-20 max-lg:max-w-full max-lg:px-6 max-lg:py-6 max-lg:pb-12 max-md:px-5">
-          {/* Topbar */}
-          <div className="flex items-center justify-between mb-10 pb-6 border-b border-border/50">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="hidden max-lg:flex items-center gap-2 font-mono text-sm text-muted-foreground px-3 py-2 border border-border rounded-sm bg-card hover:border-primary hover:text-primary transition-all cursor-pointer"
-              aria-label="Abrir menu de aulas"
-            >
-              <Menu className="w-4 h-4" /> Aulas
-            </button>
-            <div className="font-mono text-xs text-muted-foreground tracking-wider">
-              {loading ? `Aula ${lesson.number}` : `Aula ${lesson.number} \u00b7 ~${readingTime} min de leitura`}
-            </div>
-            <div className="font-mono text-xs text-muted-foreground/60 tracking-wider">
-              {adj.currentIndex + 1}/{adj.total}
+            {/* Tabs */}
+            <div className="flex items-center gap-6 border-b border-border">
+              <div className="flex items-center gap-2 px-1 pb-3 border-b-2 border-primary text-primary cursor-pointer">
+                <BookOpen className="w-4 h-4" />
+                <span className="font-mono text-sm font-medium tracking-wide">Aula Escrita</span>
+              </div>
             </div>
           </div>
 
@@ -152,13 +133,15 @@ export default function LessonPage({
             {!hasQuizGate && (
               isCompleted ? (
                 <div className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-success bg-success/5 border border-success/20 rounded-sm flex items-center justify-center gap-3">
-                  &#10003; Aula concluida
+                  <CheckCircle2 className="w-4 h-4" />
+                  Aula concluida
                 </div>
               ) : (
                 <button
                   onClick={handleComplete}
-                  className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-foreground bg-card border border-border rounded-sm hover:bg-primary/5 hover:border-primary hover:text-primary transition-all cursor-pointer flex items-center justify-center gap-3"
+                  className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-white bg-success border-none rounded-sm hover:bg-success/90 transition-all cursor-pointer flex items-center justify-center gap-3"
                 >
+                  <CheckCircle2 className="w-4 h-4" />
                   Marcar como concluida
                 </button>
               )
@@ -194,6 +177,29 @@ export default function LessonPage({
               ) : null}
             </div>
           </div>
+        </div>
+
+        {/* Sidebar - Order 2 (RIGHT side) */}
+        <div className={cn(
+          "w-[var(--sidebar-w)] shrink-0 border-l border-border bg-sidebar sticky top-[var(--header-h)] h-[calc(100vh-var(--header-h))] overflow-y-auto sidebar-scroll order-2",
+          "max-lg:fixed max-lg:top-[var(--header-h)] max-lg:right-0 max-lg:bottom-0 max-lg:z-[999] max-lg:shadow-[-4px_0_24px_rgba(0,0,0,0.08)]",
+          sidebarOpen ? "max-lg:block" : "max-lg:hidden"
+        )}>
+          <div className="flex items-center justify-end p-6 pb-4 border-b border-border lg:hidden">
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="text-muted-foreground hover:text-foreground"
+              aria-label="Fechar menu de aulas"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+          <LessonSidebar
+            courseId={courseId}
+            activeModuleId={moduleId}
+            activeLessonId={lessonId}
+            onLessonClick={() => setSidebarOpen(false)}
+          />
         </div>
       </div>
     </>

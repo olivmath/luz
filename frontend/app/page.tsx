@@ -5,116 +5,272 @@ import { COURSES } from '@/lib/courses'
 import { useProgress } from '@/context/progress-context'
 import { getFlatLessons, getCourseTime, formatTime } from '@/lib/helpers'
 import { cn } from '@/lib/utils'
+import { Check, Clock, BookOpen, BarChart3, ArrowRight, GraduationCap } from 'lucide-react'
 
 export default function CatalogPage() {
   const progress = useProgress()
 
   return (
-    <div className="max-w-[var(--content-max)] mx-auto px-8 pt-16 pb-20 max-md:px-5 max-md:pt-10 max-md:pb-16">
-      <div className="mb-16 animate-fade-in-up">
-        <div className="font-mono text-xs font-medium tracking-[0.15em] uppercase text-primary mb-4">
-          Plataforma de Cursos
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="max-w-[var(--content-max)] mx-auto px-8 pt-8 pb-16 max-md:px-5 max-md:pt-6 max-md:pb-12">
+        <div className="bg-gradient-to-br from-[var(--green-700)] to-[var(--green-600)] rounded-2xl px-12 py-16 max-md:px-8 max-md:py-12 text-white animate-fade-in-up">
+          <div className="max-w-3xl">
+            <h1 className="font-display text-5xl max-md:text-4xl font-bold mb-6 leading-tight">
+              Agronegocio Financeiro
+            </h1>
+            <p className="text-lg text-white/90 mb-8 leading-relaxed max-w-2xl">
+              Domine o sistema de financiamento do agronegocio brasileiro com cursos praticos e especializados, do nivel introdutorio ao avancado.
+            </p>
+            <div className="space-y-4 mb-10">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0">
+                  <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
+                </div>
+                <p className="text-white/95">
+                  Cursos do iniciante ao avancado em financas do agro
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0">
+                  <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
+                </div>
+                <p className="text-white/95">
+                  Aprenda instrumentos financeiros, securitizacao e gestao de risco
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0">
+                  <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
+                </div>
+                <p className="text-white/95">
+                  Conteudo criado por especialistas do mercado financeiro
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/curso-01"
+              className="inline-flex items-center gap-2 bg-white text-[var(--green-700)] px-8 py-3.5 rounded-lg font-semibold hover:bg-white/95 transition-all duration-200 hover:gap-3 shadow-lg"
+            >
+              Comecar a aprender
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
-        <h1 className="font-display text-[2.6rem] max-md:text-[2rem] font-normal text-foreground leading-[1.15] max-w-[550px]">
-          Agronegocio Financeiro
-        </h1>
-        <p className="text-lg text-muted-foreground mt-4 max-w-[500px] leading-relaxed">
-          Cursos especializados sobre o sistema de financiamento do agronegocio brasileiro.
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(380px,1fr))] gap-6">
-        {Object.keys(COURSES).map((cid, i) => {
-          const course = COURSES[cid]
-          const prog = progress.getCourseProgress(cid)
-          const flat = getFlatLessons(cid)
-          const hasContent = cid === 'curso-01' || cid === 'curso-02'
-          const isComplete = progress.isCourseComplete(cid)
-          const pct = prog.total > 0 ? Math.round((prog.completed / prog.total) * 100) : 0
-          const locked = !hasContent
-          const totalTime = getCourseTime(cid)
+      {/* Courses Section */}
+      <div className="max-w-[var(--content-max)] mx-auto px-8 pb-20 max-md:px-5 max-md:pb-16">
+        <div className="mb-10 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          <h2 className="font-display text-3xl max-md:text-2xl font-bold text-foreground mb-2">
+            Trilhas disponiveis
+          </h2>
+          <p className="text-muted-foreground">
+            Escolha sua jornada de aprendizado no agronegocio financeiro
+          </p>
+        </div>
 
-          if (locked) {
+        <div className="space-y-6">
+          {Object.keys(COURSES).map((cid, i) => {
+            const course = COURSES[cid]
+            const prog = progress.getCourseProgress(cid)
+            const flat = getFlatLessons(cid)
+            const hasContent = cid === 'curso-01' || cid === 'curso-02'
+            const isComplete = progress.isCourseComplete(cid)
+            const pct = prog.total > 0 ? Math.round((prog.completed / prog.total) * 100) : 0
+            const locked = !hasContent
+            const totalTime = getCourseTime(cid)
+
+            const levelColors = {
+              Introdutorio: 'bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400',
+              Avancado: 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400',
+            }
+
+            if (locked) {
+              return (
+                <div
+                  key={cid}
+                  className={cn(
+                    "bg-card border border-border rounded-xl overflow-hidden opacity-50 cursor-not-allowed",
+                    "animate-fade-in-up"
+                  )}
+                  style={{ animationDelay: `${(i + 2) * 50}ms` }}
+                >
+                  <div className="flex max-md:flex-col">
+                    {/* Colored accent bar */}
+                    <div className="w-1.5 max-md:w-full max-md:h-1.5 bg-gradient-to-b max-md:bg-gradient-to-r from-gray-400 to-gray-300 flex-shrink-0" />
+
+                    {/* Content */}
+                    <div className="flex-1 p-8 max-md:p-6">
+                      {/* Header badges */}
+                      <div className="flex items-center gap-3 mb-4 flex-wrap">
+                        <span className="font-mono text-xs font-medium tracking-wider uppercase text-muted-foreground">
+                          Agronegocio Financeiro
+                        </span>
+                        <span className={cn(
+                          "font-mono text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full",
+                          levelColors[course.level as keyof typeof levelColors] || levelColors.Introdutorio
+                        )}>
+                          {course.level}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="font-display text-2xl max-md:text-xl font-bold text-foreground mb-2">
+                        {course.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-2">
+                        {course.description}
+                      </p>
+
+                      {/* Metadata */}
+                      <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <BookOpen className="w-4 h-4" />
+                          <span>{course.modules.length} modulos</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <GraduationCap className="w-4 h-4" />
+                          <span>{flat.length} aulas</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          <span>~{formatTime(totalTime)}</span>
+                        </div>
+                      </div>
+
+                      {/* Coming soon label */}
+                      <div className="inline-flex items-center gap-2 font-mono text-sm font-medium text-muted-foreground">
+                        Em breve
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+
             return (
-              <div
+              <Link
                 key={cid}
+                href={isComplete ? `/certificado/${cid}` : `/${cid}`}
                 className={cn(
-                  "bg-card border border-border rounded-md p-10 max-md:p-8 opacity-50 cursor-default",
-                  "animate-fade-in-up"
+                  "bg-card border border-border rounded-xl overflow-hidden",
+                  "transition-all duration-300 hover:border-primary/40 hover:shadow-lg",
+                  "group block animate-fade-in-up"
                 )}
-                style={{ animationDelay: `${(i + 1) * 50}ms` }}
-                aria-disabled="true"
+                style={{ animationDelay: `${(i + 2) * 50}ms` }}
               >
-                <CourseCardContent course={course} flat={flat} totalTime={totalTime} />
-                <div className="font-mono text-sm text-muted-foreground">Em breve</div>
-              </div>
-            )
-          }
+                <div className="flex max-md:flex-col">
+                  {/* Colored accent bar */}
+                  <div className={cn(
+                    "w-1.5 max-md:w-full max-md:h-1.5 flex-shrink-0 transition-all duration-300",
+                    course.level === 'Introdutorio'
+                      ? "bg-gradient-to-b max-md:bg-gradient-to-r from-green-500 to-green-600"
+                      : "bg-gradient-to-b max-md:bg-gradient-to-r from-blue-500 to-blue-600"
+                  )} />
 
-          return (
-            <Link
-              key={cid}
-              href={isComplete ? `/certificado/${cid}` : `/${cid}`}
-              className={cn(
-                "bg-card border border-border rounded-md p-10 max-md:p-8 cursor-pointer",
-                "transition-all duration-500 hover:border-primary/30 hover:shadow-[0_2px_20px_rgba(30,77,56,0.06)]",
-                "dark:hover:shadow-[0_2px_24px_rgba(0,0,0,0.3)]",
-                "group block animate-fade-in-up"
-              )}
-              style={{ animationDelay: `${(i + 1) * 50}ms` }}
-            >
-              <CourseCardContent course={course} flat={flat} totalTime={totalTime} />
-              <div className="mb-6">
-                <div className="w-full h-1 bg-border/50 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-primary rounded-full transition-all duration-500"
-                    style={{ width: `${pct}%` }}
-                  />
+                  {/* Content */}
+                  <div className="flex-1 p-8 max-md:p-6">
+                    {/* Header badges */}
+                    <div className="flex items-center gap-3 mb-4 flex-wrap">
+                      <span className="font-mono text-xs font-medium tracking-wider uppercase text-muted-foreground">
+                        Agronegocio Financeiro
+                      </span>
+                      <span className={cn(
+                        "font-mono text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full",
+                        levelColors[course.level as keyof typeof levelColors] || levelColors.Introdutorio
+                      )}>
+                        {course.level}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-display text-2xl max-md:text-xl font-bold text-foreground mb-2">
+                      {course.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-2">
+                      {course.description}
+                    </p>
+
+                    {/* Metadata */}
+                    <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <BookOpen className="w-4 h-4" />
+                        <span>{course.modules.length} modulos</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <GraduationCap className="w-4 h-4" />
+                        <span>{flat.length} aulas</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        <span>~{formatTime(totalTime)}</span>
+                      </div>
+                    </div>
+
+                    {/* Progress bar */}
+                    <div className="mb-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-medium text-muted-foreground">
+                          Progresso
+                        </span>
+                        <span className="text-xs font-semibold text-foreground">
+                          {pct}%
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-border/50 rounded-full overflow-hidden">
+                        <div
+                          className={cn(
+                            "h-full rounded-full transition-all duration-500",
+                            course.level === 'Introdutorio' ? "bg-green-500" : "bg-blue-500"
+                          )}
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1.5">
+                        {prog.completed} de {prog.total} aulas concluidas
+                        {isComplete && ' — Completo'}
+                      </div>
+                    </div>
+
+                    {/* Action button */}
+                    <div className={cn(
+                      "inline-flex items-center gap-2 font-semibold px-6 py-2.5 rounded-lg transition-all duration-200",
+                      "group-hover:gap-3",
+                      isComplete
+                        ? "bg-primary/10 text-primary border border-primary/20"
+                        : prog.completed > 0
+                        ? "bg-primary text-white"
+                        : "bg-primary text-white"
+                    )}>
+                      {isComplete ? (
+                        <>
+                          Ver certificado
+                          <BarChart3 className="w-4 h-4" />
+                        </>
+                      ) : prog.completed > 0 ? (
+                        <>
+                          Continuar
+                          <ArrowRight className="w-4 h-4" />
+                        </>
+                      ) : (
+                        <>
+                          Comecar
+                          <ArrowRight className="w-4 h-4" />
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className="font-mono text-xs text-muted-foreground mt-2">
-                  {prog.completed} de {prog.total} concluidas{isComplete ? ' — Completo' : ''}
-                </div>
-              </div>
-              <div className="font-mono text-sm font-medium text-primary tracking-wider inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-200">
-                {isComplete ? 'Ver certificado' : prog.completed > 0 ? 'Continuar' : 'Comecar'}{' '}
-                <span>&rarr;</span>
-              </div>
-            </Link>
-          )
-        })}
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </div>
-  )
-}
-
-function CourseCardContent({
-  course,
-  flat,
-  totalTime,
-}: {
-  course: { level: string; title: string; subtitle: string; description: string; modules: { length: number }[] }
-  flat: { length: number }[]
-  totalTime: number
-}) {
-  return (
-    <>
-      <div className="mb-6">
-        <span className="font-mono text-xs font-medium tracking-[0.1em] uppercase inline-block px-3 py-1 rounded-sm bg-primary/5 text-primary border border-primary/20">
-          {course.level}
-        </span>
-      </div>
-      <div className="font-display text-[1.6rem] font-medium text-foreground leading-[1.25] mb-1">
-        {course.title}
-      </div>
-      <div className="font-display text-[1.3rem] font-normal text-muted-foreground mb-6">
-        {course.subtitle}
-      </div>
-      <p className="text-[0.9rem] text-muted-foreground leading-relaxed mb-6">
-        {course.description}
-      </p>
-      <div className="font-mono text-sm text-muted-foreground tracking-wider mb-6">
-        {course.modules.length} modulos &middot; {flat.length} aulas &middot; ~{formatTime(totalTime)}
-      </div>
-    </>
   )
 }

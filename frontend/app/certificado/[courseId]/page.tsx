@@ -3,6 +3,7 @@
 import { use, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useUser } from '@clerk/nextjs'
 import { COURSES } from '@/lib/courses'
 import { useProgress } from '@/context/progress-context'
 import { getFlatLessons, getCourseTime, formatTime } from '@/lib/helpers'
@@ -12,9 +13,16 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
   const course = COURSES[courseId]
   const router = useRouter()
   const progress = useProgress()
+  const { user, isSignedIn } = useUser()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
+
+  useEffect(() => {
+    if (isSignedIn && user?.fullName && !progress.studentName) {
+      progress.setStudentName(user.fullName)
+    }
+  }, [isSignedIn, user?.fullName, progress])
 
   useEffect(() => {
     if (mounted && course && !progress.isCourseComplete(courseId)) {
@@ -33,6 +41,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
   const totalTime = getCourseTime(courseId)
   const now = new Date()
   const dateStr = now.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })
+  const displayName = progress.studentName || user?.fullName || '...'
 
   return (
     <div className="max-w-[800px] mx-auto px-8 pt-12 pb-20 max-md:px-5 max-md:pt-8 max-md:pb-16">
@@ -48,18 +57,31 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
         <div className="font-display text-[2rem] font-medium text-foreground mb-2">
           Certificado de Conclusao
         </div>
-        <div className="text-[0.9rem] text-muted-foreground mb-8">
-          Insira seu nome completo
-        </div>
-        <label htmlFor="cert-name" className="sr-only">Nome completo</label>
-        <input
-          id="cert-name"
-          type="text"
-          className="w-full px-5 py-4 text-lg text-foreground bg-card border border-border rounded-sm text-center outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/50"
-          placeholder="Seu nome completo"
-          value={progress.studentName}
-          onChange={e => progress.setStudentName(e.target.value)}
-        />
+        {isSignedIn ? (
+          <>
+            <div className="text-[0.9rem] text-muted-foreground mb-8">
+              Emitido para
+            </div>
+            <div className="w-full px-5 py-4 text-lg text-foreground">
+              {displayName}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="text-[0.9rem] text-muted-foreground mb-8">
+              Insira seu nome completo
+            </div>
+            <label htmlFor="cert-name" className="sr-only">Nome completo</label>
+            <input
+              id="cert-name"
+              type="text"
+              className="w-full px-5 py-4 text-lg text-foreground bg-card border border-border rounded-sm text-center outline-none transition-colors focus:border-primary placeholder:text-muted-foreground/50"
+              placeholder="Seu nome completo"
+              value={progress.studentName}
+              onChange={e => progress.setStudentName(e.target.value)}
+            />
+          </>
+        )}
       </div>
 
       {/* Certificate card */}
@@ -70,7 +92,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
         </div>
         <div className="text-[0.9rem] text-muted-foreground mb-3">Certificamos que</div>
         <div className="font-display text-[2.6rem] max-md:text-[2rem] font-medium text-foreground mb-6 border-b border-border pb-3 min-h-[3.5rem]">
-          {progress.studentName || '...'}
+          {displayName}
         </div>
         <div className="text-base text-muted-foreground leading-[1.8] mb-2 max-w-[450px] mx-auto">
           concluiu com exito o curso

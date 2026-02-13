@@ -130,7 +130,7 @@ Nesta aula, percorremos os tres grandes sistemas nanoestruturados organicos que 
 
 ## Proxima Aula
 
-Na proxima aula, vamos explorar as nanoemulsoes e os sistemas coloidais — formulacoes com gotiulas de 20 a 200 nm que sao a base de serums, hidratantes e demaquilantes de alta performance. Voce vai entender a diferenca entre nanoemulsoes e microemulsoes, os metodos de preparo de alta e baixa energia, e por que esses sistemas oferecem textura, penetracao e estabilidade superiores as emulsoes convencionais. Ate la!
+Na proxima aula, vamos explorar as nanoemulsoes e os sistemas coloidais — formulacoes com goticulas de 20 a 200 nm que sao a base de serums, hidratantes e demaquilantes de alta performance. Voce vai entender a diferenca entre nanoemulsoes e microemulsoes, os metodos de preparo de alta e baixa energia, e por que esses sistemas oferecem textura, penetracao e estabilidade superiores as emulsoes convencionais. Ate la!
 
 ---
 

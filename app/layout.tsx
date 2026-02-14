@@ -6,6 +6,8 @@ import { Header } from '@/components/header'
 import { HashRedirect } from '@/components/hash-redirect'
 import { ClerkProvider } from '@clerk/nextjs'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Oken — Cursos Especializados',
   description: 'Cursos especializados em agronegocio financeiro e nanotecnologia cosmetica. Do nivel introdutorio ao avancado.',

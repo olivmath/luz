@@ -78,8 +78,8 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
   if (alreadyDone) {
     return (
       <div className="max-w-[var(--reading-max)] mt-12 pt-10 border-t border-border">
-        <div className="font-display text-[1.6rem] font-semibold text-foreground mb-2">Questionario</div>
-        <div className="font-mono text-sm text-success font-medium mt-2">&#10003; Concluido</div>
+        <div className="font-display text-[1.6rem] font-semibold text-foreground mb-2">Questionário</div>
+        <div className="font-mono text-sm text-success font-medium mt-2">&#10003; Concluído</div>
       </div>
     )
   }
@@ -95,7 +95,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
     return (
       <div className="max-w-[var(--reading-max)] mt-12 pt-10 border-t border-border">
         <div className="mb-6">
-          <div className="font-display text-[1.6rem] font-semibold text-foreground mb-2">Questionario</div>
+          <div className="font-display text-[1.6rem] font-semibold text-foreground mb-2">Questionário</div>
         </div>
 
         <div className="flex flex-col items-center py-8">
@@ -126,13 +126,13 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
           </div>
 
           <div className="font-display text-2xl font-semibold text-foreground mb-2">
-            {allCorrect ? 'Parabens!' : 'Quase la!'}
+            {allCorrect ? 'Parabéns!' : 'Quase lá!'}
           </div>
 
           <div className="text-sm text-muted-foreground mb-10 text-center max-w-md">
             {allCorrect
-              ? `Voce acertou todas as ${questions.length} questoes.`
-              : 'Voce completou o questionario! Veja onde focar seus estudos:'
+              ? `Você acertou todas as ${questions.length} questões.`
+              : 'Você completou o questionário! Veja onde focar seus estudos:'
             }
           </div>
 
@@ -141,7 +141,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
             <div className="w-full">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-base">&#128578;</span>
-                <span className="font-mono text-sm font-semibold text-foreground">O que voce sabe</span>
+                <span className="font-mono text-sm font-semibold text-foreground">O que você sabe</span>
               </div>
               <div className="flex flex-col gap-1">
                 {correctQuestions.map((question, i) => (
@@ -162,7 +162,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-base">&#128578;</span>
-                  <span className="font-mono text-sm font-semibold text-foreground">O que voce sabe</span>
+                  <span className="font-mono text-sm font-semibold text-foreground">O que você sabe</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   {correctQuestions.map((question) => (
@@ -223,9 +223,9 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
       {/* Header */}
       <div className="mb-6 flex items-baseline justify-between">
         <div>
-          <div className="font-display text-[1.6rem] font-semibold text-foreground mb-2">Questionario</div>
+          <div className="font-display text-[1.6rem] font-semibold text-foreground mb-2">Questionário</div>
           <div className="font-mono text-sm text-muted-foreground tracking-wider">
-            Questoes: {questions.length}
+            Questões: {questions.length}
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
                 isCurrent && isCorrect && "bg-success ring-2 ring-success/30 ring-offset-2 ring-offset-background",
                 isCurrent && isWrong && "bg-destructive ring-2 ring-destructive/30 ring-offset-2 ring-offset-background"
               )}
-              aria-label={`Questao ${i + 1}`}
+              aria-label={`Questão ${i + 1}`}
             />
           )
         })}
@@ -274,7 +274,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
           {q.number}. {q.text}
         </div>
 
-        <div className="flex flex-col gap-2.5" role="radiogroup" aria-label={`Questao ${q.number}`}>
+        <div className="flex flex-col gap-2.5" role="radiogroup" aria-label={`Questão ${q.number}`}>
           {q.options.map(opt => {
             const isSelected = selected[currentQuestion] === opt.letter
             const isCorrectAnswer = opt.letter === q.correctAnswer
@@ -373,7 +373,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
                 : "bg-primary text-primary-foreground border border-primary hover:bg-primary/90 cursor-pointer"
             )}
           >
-            Proxima
+            Próxima
             <ChevronRight className="w-4 h-4" />
           </button>
         )}

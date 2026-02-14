@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Oken — Cursos Especializados',
-  description: 'Cursos especializados em agronegocio financeiro e nanotecnologia cosmetica. Do nivel introdutorio ao avancado.',
+  description: 'Cursos especializados em agronegócio financeiro e nanotecnologia cosmética. Do nível introdutório ao avançado.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <ProgressProvider>
             <a href="#main-content" className="skip-to-content">
-              Pular para o conteudo
+              Pular para o conteúdo
             </a>
             <HashRedirect />
             <div className="grain" aria-hidden="true" />

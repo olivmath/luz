@@ -17,10 +17,10 @@ export default function CatalogPage() {
         <div className="bg-gradient-to-br from-[var(--green-700)] to-[var(--green-600)] rounded-2xl px-12 py-16 max-md:px-8 max-md:py-12 text-white animate-fade-in-up">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl max-md:text-4xl font-bold mb-6 leading-tight">
-              Conhecimento especializado, do fundamento a pratica
+              Conhecimento especializado, do fundamento à prática
             </h1>
             <p className="text-lg text-white/90 mb-8 leading-relaxed max-w-2xl">
-              Trilhas completas em agronegocio financeiro e nanotecnologia cosmetica. Conteudo tecnico, progressivo e aplicavel — do nivel introdutorio ao avancado.
+              Trilhas completas em agronegócio financeiro e nanotecnologia cosmética. Conteúdo técnico, progressivo e aplicável — do nível introdutório ao avançado.
             </p>
             <div className="space-y-4 mb-10">
               <div className="flex items-start gap-3">
@@ -28,7 +28,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  4 cursos com 72 aulas, questionarios e certificado de conclusao
+                  4 cursos com 72 aulas, questionários e certificado de conclusão
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -36,7 +36,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Agro financeiro: credito rural, CPR, CRA, securitizacao e tokenizacao
+                  Agro financeiro: crédito rural, CPR, CRA, securitização e tokenização
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -44,7 +44,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Nanotecnologia cosmetica: nanomateriais, nanovetores, encapsulamento e permeacao
+                  Nanotecnologia cosmética: nanomateriais, nanovetores, encapsulamento e permeação
                 </p>
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function CatalogPage() {
               href="/curso-01"
               className="inline-flex items-center gap-2 bg-white text-[var(--green-700)] px-8 py-3.5 rounded-lg font-semibold hover:bg-white/95 transition-all duration-200 hover:gap-3 shadow-lg"
             >
-              Comecar a aprender
+              Começar a aprender
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -82,8 +82,8 @@ export default function CatalogPage() {
             const totalTime = getCourseTime(cid)
 
             const levelColors = {
-              Introdutorio: 'bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400',
-              Avancado: 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400',
+              'Introdutório': 'bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400',
+              'Avançado': 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400',
             }
 
             if (locked) {
@@ -105,11 +105,11 @@ export default function CatalogPage() {
                       {/* Header badges */}
                       <div className="flex items-center gap-3 mb-4 flex-wrap">
                         <span className="font-mono text-xs font-medium tracking-wider uppercase text-muted-foreground">
-                          {cid.startsWith('curso-0') && (cid === 'curso-01' || cid === 'curso-02') ? 'Agronegocio Financeiro' : 'Nanotecnologia Cosmetica'}
+                          {cid.startsWith('curso-0') && (cid === 'curso-01' || cid === 'curso-02') ? 'Agronegócio Financeiro' : 'Nanotecnologia Cosmética'}
                         </span>
                         <span className={cn(
                           "font-mono text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full",
-                          levelColors[course.level as keyof typeof levelColors] || levelColors.Introdutorio
+                          levelColors[course.level as keyof typeof levelColors] || levelColors['Introdutório']
                         )}>
                           {course.level}
                         </span>
@@ -129,7 +129,7 @@ export default function CatalogPage() {
                       <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground flex-wrap">
                         <div className="flex items-center gap-2">
                           <BookOpen className="w-4 h-4" />
-                          <span>{course.modules.length} modulos</span>
+                          <span>{course.modules.length} módulos</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <GraduationCap className="w-4 h-4" />
@@ -166,7 +166,7 @@ export default function CatalogPage() {
                   {/* Colored accent bar */}
                   <div className={cn(
                     "w-1.5 max-md:w-full max-md:h-1.5 flex-shrink-0 transition-all duration-300",
-                    course.level === 'Introdutorio'
+                    course.level === 'Introdutório'
                       ? "bg-gradient-to-b max-md:bg-gradient-to-r from-green-500 to-green-600"
                       : "bg-gradient-to-b max-md:bg-gradient-to-r from-blue-500 to-blue-600"
                   )} />
@@ -176,11 +176,11 @@ export default function CatalogPage() {
                     {/* Header badges */}
                     <div className="flex items-center gap-3 mb-4 flex-wrap">
                       <span className="font-mono text-xs font-medium tracking-wider uppercase text-muted-foreground">
-                        {cid.startsWith('curso-0') && (cid === 'curso-01' || cid === 'curso-02') ? 'Agronegocio Financeiro' : 'Nanotecnologia Cosmetica'}
+                        {cid.startsWith('curso-0') && (cid === 'curso-01' || cid === 'curso-02') ? 'Agronegócio Financeiro' : 'Nanotecnologia Cosmética'}
                       </span>
                       <span className={cn(
                         "font-mono text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full",
-                        levelColors[course.level as keyof typeof levelColors] || levelColors.Introdutorio
+                        levelColors[course.level as keyof typeof levelColors] || levelColors['Introdutório']
                       )}>
                         {course.level}
                       </span>
@@ -200,7 +200,7 @@ export default function CatalogPage() {
                     <div className="flex items-center gap-6 mb-6 text-sm text-muted-foreground flex-wrap">
                       <div className="flex items-center gap-2">
                         <BookOpen className="w-4 h-4" />
-                        <span>{course.modules.length} modulos</span>
+                        <span>{course.modules.length} módulos</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <GraduationCap className="w-4 h-4" />
@@ -226,13 +226,13 @@ export default function CatalogPage() {
                         <div
                           className={cn(
                             "h-full rounded-full transition-all duration-500",
-                            course.level === 'Introdutorio' ? "bg-green-500" : "bg-blue-500"
+                            course.level === 'Introdutório' ? "bg-green-500" : "bg-blue-500"
                           )}
                           style={{ width: `${pct}%` }}
                         />
                       </div>
                       <div className="text-xs text-muted-foreground mt-1.5">
-                        {prog.completed} de {prog.total} aulas concluidas
+                        {prog.completed} de {prog.total} aulas concluídas
                         {isComplete && ' — Completo'}
                       </div>
                     </div>
@@ -259,7 +259,7 @@ export default function CatalogPage() {
                         </>
                       ) : (
                         <>
-                          Comecar
+                          Começar
                           <ArrowRight className="w-4 h-4" />
                         </>
                       )}

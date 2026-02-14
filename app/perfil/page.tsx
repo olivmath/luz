@@ -65,7 +65,7 @@ export default function PerfilPage() {
         </div>
         <div className="bg-card border border-border rounded-lg p-5 text-center">
           <div className="font-display text-3xl font-medium text-foreground">{completedLessons}</div>
-          <div className="font-mono text-xs text-muted-foreground mt-1">Aulas concluidas</div>
+          <div className="font-mono text-xs text-muted-foreground mt-1">Aulas concluídas</div>
         </div>
         <div className="bg-card border border-border rounded-lg p-5 text-center">
           <div className="font-display text-3xl font-medium text-foreground">{totalLessons}</div>
@@ -100,12 +100,12 @@ export default function PerfilPage() {
                 </div>
                 {isComplete && (
                   <span className="shrink-0 px-3 py-1 bg-success/10 text-success font-mono text-xs rounded-full border border-success/20">
-                    Concluido
+                    Concluído
                   </span>
                 )}
               </div>
               <div className="font-mono text-xs text-muted-foreground mb-3">
-                {course.modules.length} modulos &middot; {flat.length} aulas &middot; ~{formatTime(time)}
+                {course.modules.length} módulos &middot; {flat.length} aulas &middot; ~{formatTime(time)}
               </div>
               <div className="h-2 bg-secondary rounded-full overflow-hidden mb-2">
                 <div
@@ -138,7 +138,7 @@ export default function PerfilPage() {
                   style={{ animationDelay: `${300 + i * 50}ms` }}
                 >
                   <Diamond className="w-8 h-8 text-primary mb-3" />
-                  <div className="font-mono text-xs text-muted-foreground mb-1">Certificado de Conclusao</div>
+                  <div className="font-mono text-xs text-muted-foreground mb-1">Certificado de Conclusão</div>
                   <div className="font-display text-lg font-medium text-foreground mb-3">{course.title}</div>
                   <div className="font-mono text-xs text-primary">Ver certificado &rarr;</div>
                 </Link>

@@ -103,7 +103,7 @@ export default function LessonPage({
           {error && (
             <div className="text-center py-16 font-mono text-base text-muted-foreground">
               <p className="text-2xl text-muted-foreground/50 mb-4">&#9671;</p>
-              <p>Conteudo ainda nao disponivel.</p>
+              <p>Conteúdo ainda não disponível.</p>
               <p className="text-muted-foreground/50 mt-2">Em breve</p>
             </div>
           )}
@@ -134,7 +134,7 @@ export default function LessonPage({
               isCompleted ? (
                 <div className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-success bg-success/5 border border-success/20 rounded-sm flex items-center justify-center gap-3">
                   <CheckCircle2 className="w-4 h-4" />
-                  Aula concluida
+                  Aula concluída
                 </div>
               ) : (
                 <button
@@ -142,7 +142,7 @@ export default function LessonPage({
                   className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-white bg-success border-none rounded-sm hover:bg-success/90 transition-all cursor-pointer flex items-center justify-center gap-3"
                 >
                   <CheckCircle2 className="w-4 h-4" />
-                  Marcar como concluida
+                  Marcar como concluída
                 </button>
               )
             )}
@@ -163,7 +163,7 @@ export default function LessonPage({
                   href={`/${adj.next.courseId}/${adj.next.moduleId}/${adj.next.lessonId}`}
                   className="font-mono text-xs text-muted-foreground tracking-wider flex flex-col gap-1 px-5 py-4 border border-border/50 rounded-sm hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all max-w-[50%] max-md:max-w-full ml-auto max-md:ml-0 text-right max-md:text-left"
                 >
-                  <span className="text-[0.6rem] uppercase tracking-[0.1em] text-muted-foreground/50">Proxima &rarr;</span>
+                  <span className="text-[0.6rem] uppercase tracking-[0.1em] text-muted-foreground/50">Próxima &rarr;</span>
                   <span className="font-sans text-sm leading-snug">{adj.next.lessonNumber} {adj.next.lessonTitle}</span>
                 </Link>
               ) : (courseComplete || isCompleted) ? (

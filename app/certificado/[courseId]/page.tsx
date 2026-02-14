@@ -55,7 +55,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
       {/* Form */}
       <div className="cert-form-section max-w-[420px] mx-auto mt-8 mb-12 text-center animate-fade-in-up" style={{ animationDelay: '50ms' }}>
         <div className="font-display text-[2rem] font-medium text-foreground mb-2">
-          Certificado de Conclusao
+          Certificado de Conclusão
         </div>
         {isSignedIn ? (
           <>
@@ -88,14 +88,14 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
       <div className="certificate-card bg-card border border-border rounded-md p-16 max-md:p-10 max-md:px-6 text-center relative animate-fade-in-up" style={{ animationDelay: '100ms' }}>
         <div className="text-primary text-lg mb-8">&#9670;</div>
         <div className="font-mono text-sm font-medium tracking-[0.25em] uppercase text-primary mb-10">
-          Certificado de Conclusao
+          Certificado de Conclusão
         </div>
         <div className="text-[0.9rem] text-muted-foreground mb-3">Certificamos que</div>
         <div className="font-display text-[2.6rem] max-md:text-[2rem] font-medium text-foreground mb-6 border-b border-border pb-3 min-h-[3.5rem]">
           {displayName}
         </div>
         <div className="text-base text-muted-foreground leading-[1.8] mb-2 max-w-[450px] mx-auto">
-          concluiu com exito o curso
+          concluiu com êxito o curso
         </div>
         <div className="font-display text-[1.3rem] font-semibold text-foreground mb-1">
           {course.title}
@@ -104,7 +104,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
           {course.subtitle}
         </div>
         <div className="font-mono text-xs text-muted-foreground tracking-wider mb-10">
-          {course.modules.length} modulos &middot; {flat.length} aulas &middot; ~{formatTime(totalTime)} &middot; {dateStr}
+          {course.modules.length} módulos &middot; {flat.length} aulas &middot; ~{formatTime(totalTime)} &middot; {dateStr}
         </div>
         <div className="w-[50px] h-px bg-border mx-auto mb-8" />
         <div className="font-mono text-sm font-semibold tracking-[0.2em] text-muted-foreground">

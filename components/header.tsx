@@ -35,7 +35,7 @@ export function Header({ meta }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 h-[var(--header-h)] z-[1000] bg-background/92 backdrop-blur-xl border-b border-border">
       <nav
         className="max-w-[1400px] mx-auto h-full flex items-center justify-between gap-6 px-8 max-md:px-5"
-        aria-label="Navegacao principal"
+        aria-label="Navegação principal"
       >
         {/* Left section: Logo + Navigation */}
         <div className="flex items-center gap-8">
@@ -43,7 +43,7 @@ export function Header({ meta }: HeaderProps) {
           <Link
             href="/"
             className="flex items-center gap-3 transition-opacity duration-200 hover:opacity-65 shrink-0"
-            aria-label="Pagina inicial"
+            aria-label="Página inicial"
           >
             <span className="text-primary text-[0.7rem]">&#9670;</span>
             <span className="font-mono text-sm font-semibold tracking-[0.18em] text-foreground">
@@ -81,7 +81,7 @@ export function Header({ meta }: HeaderProps) {
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center gap-2 p-1 rounded-lg hover:bg-background/50 border border-transparent hover:border-border transition-all duration-200"
-                aria-label="Menu do usuario"
+                aria-label="Menu do usuário"
               >
                 {user?.imageUrl ? (
                   <Image

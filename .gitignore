@@ -4,6 +4,7 @@ dist
 .DS_Store
 *.local
 .turbo
+*.tsbuildinfo
 
 # Tool caches
 .firecrawl/

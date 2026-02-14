@@ -7,8 +7,8 @@ import { HashRedirect } from '@/components/hash-redirect'
 import { ClerkProvider } from '@clerk/nextjs'
 
 export const metadata: Metadata = {
-  title: 'Oken — Cursos Agro',
-  description: 'Cursos especializados sobre o sistema de financiamento do agronegocio brasileiro.',
+  title: 'Oken — Cursos Especializados',
+  description: 'Cursos especializados em agronegocio financeiro e nanotecnologia cosmetica. Do nivel introdutorio ao avancado.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

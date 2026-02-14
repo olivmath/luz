@@ -6,7 +6,7 @@ export const COURSES: Record<string, Course> = {
     title: 'Sistema Financeiro do Agronegocio Brasileiro',
     subtitle: 'Fundamentos',
     level: 'Introdutorio',
-    description: 'Visao completa e estruturada do sistema de financiamento do agronegocio brasileiro, desde suas bases institucionais ate os instrumentos financeiros, riscos e tendencias de mercado.',
+    description: 'Visao completa do sistema de financiamento do agronegocio brasileiro — bases institucionais, instrumentos financeiros, gestao de risco e tendencias de mercado.',
     modules: [
       {
         id: 'modulo-01',
@@ -75,7 +75,7 @@ export const COURSES: Record<string, Course> = {
     title: 'Sistema Financeiro do Agronegocio Brasileiro',
     subtitle: 'Estruturacao e Mercado Avancado',
     level: 'Avancado',
-    description: 'Aprofundamento em estruturacao de operacoes de credito agro, securitizacao, gestao de risco e veiculos de investimento.',
+    description: 'Aprofundamento em estruturacao de credito agro — securitizacao, gestao de risco, FIAGRO, funding internacional e tokenizacao.',
     modules: [
       {
         id: 'modulo-01',
@@ -145,7 +145,7 @@ export const COURSES: Record<string, Course> = {
     title: 'Nanotecnologia Aplicada a Cosmeticos',
     subtitle: 'Fundamentos',
     level: 'Introdutorio',
-    description: 'Visao completa da nanotecnologia aplicada ao setor cosmetico, desde os fundamentos da nanociencia ate as aplicacoes praticas em diferentes nichos, incluindo aspectos regulatorios e de seguranca.',
+    description: 'Visao completa da nanotecnologia cosmetica — nanomateriais, protecao solar, skincare, haircare, maquiagem, regulacao e seguranca.',
     modules: [
       {
         id: 'modulo-01',
@@ -214,7 +214,7 @@ export const COURSES: Record<string, Course> = {
     title: 'Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos',
     subtitle: 'Abordagem Avancada',
     level: 'Avancado',
-    description: 'Aprofundamento em design, sintese, caracterizacao e aplicacao de nanovetores e sistemas de nanoencapsulamento em cosmeticos com liberacao controlada e alta performance.',
+    description: 'Aprofundamento em nanovetores cosmeticos — design, encapsulamento, caracterizacao, permeacao cutanea, escalonamento industrial e inovacao.',
     modules: [
       {
         id: 'modulo-01',

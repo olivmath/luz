@@ -17,10 +17,10 @@ export default function CatalogPage() {
         <div className="bg-gradient-to-br from-[var(--green-700)] to-[var(--green-600)] rounded-2xl px-12 py-16 max-md:px-8 max-md:py-12 text-white animate-fade-in-up">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl max-md:text-4xl font-bold mb-6 leading-tight">
-              Cursos Especializados
+              Conhecimento especializado, do fundamento a pratica
             </h1>
             <p className="text-lg text-white/90 mb-8 leading-relaxed max-w-2xl">
-              Domine temas de ponta com cursos praticos e especializados, do nivel introdutorio ao avancado. Agronegocio financeiro e nanotecnologia cosmetica.
+              Trilhas completas em agronegocio financeiro e nanotecnologia cosmetica. Conteudo tecnico, progressivo e aplicavel — do nivel introdutorio ao avancado.
             </p>
             <div className="space-y-4 mb-10">
               <div className="flex items-start gap-3">
@@ -28,7 +28,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Trilhas completas do iniciante ao avancado
+                  4 cursos com 72 aulas, questionarios e certificado de conclusao
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -36,7 +36,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Agronegocio financeiro: instrumentos, securitizacao e gestao de risco
+                  Agro financeiro: credito rural, CPR, CRA, securitizacao e tokenizacao
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -44,7 +44,7 @@ export default function CatalogPage() {
                   <Check className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <p className="text-white/95">
-                  Nanotecnologia cosmetica: nanomateriais, nanovetores e formulacao avancada
+                  Nanotecnologia cosmetica: nanomateriais, nanovetores, encapsulamento e permeacao
                 </p>
               </div>
             </div>
@@ -63,10 +63,10 @@ export default function CatalogPage() {
       <div className="max-w-[var(--content-max)] mx-auto px-8 pb-20 max-md:px-5 max-md:pb-16">
         <div className="mb-10 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
           <h2 className="font-display text-3xl max-md:text-2xl font-bold text-foreground mb-2">
-            Trilhas disponiveis
+            Todos os cursos
           </h2>
           <p className="text-muted-foreground">
-            Escolha sua jornada de aprendizado
+            Escolha uma trilha e comece agora
           </p>
         </div>
 

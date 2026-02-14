@@ -34,7 +34,7 @@ export function LessonSidebar({ courseId, activeModuleId, activeLessonId, onLess
           href={`/${courseId}`}
           className="text-xs text-muted-foreground hover:text-primary transition-colors"
         >
-          Agronegocio Financeiro &gt; {course.title}
+          {courseId === 'curso-01' || courseId === 'curso-02' ? 'Agronegocio Financeiro' : 'Nanotecnologia Cosmetica'} &gt; {course.title}
         </Link>
       </div>
 

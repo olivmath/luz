@@ -203,11 +203,8 @@ export default function CatalogPage() {
 
                       {/* Course content — right side */}
                       <div className="flex-1 min-w-0 p-5 flex flex-col">
-                        {/* Top row: category + level badge */}
-                        <div className="flex items-center justify-between gap-2 mb-2">
-                          <span className="text-xs text-muted-foreground truncate">
-                            {cat.label}
-                          </span>
+                        {/* Level badge */}
+                        <div className="flex items-center justify-end mb-2">
                           <span className={cn(
                             "shrink-0 font-mono text-[0.65rem] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full",
                             cat.badgeColor

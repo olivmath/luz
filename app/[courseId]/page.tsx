@@ -219,12 +219,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
                 Conteúdo do curso
               </h2>
 
-              {/* Summary line */}
-              <p className="font-mono text-sm text-muted-foreground mb-8">
-                {totalModules} módulos &bull; {totalLessons} aulas &bull; ~{formatTime(totalTime)} de conteúdo
-              </p>
-
-              {/* Accordion - keep exact same logic */}
+              {/* Accordion */}
               <div className="space-y-3">
                 {course.modules.map((mod, mi) => {
                   const mp = progress.getModuleProgress(courseId, mod.id)
@@ -364,24 +359,9 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
                     <h3 className="font-display text-2xl font-bold text-foreground mb-3">
                       Certificado de conclusão
                     </h3>
-                    <p className="text-muted-foreground mb-6">
+                    <p className="text-muted-foreground">
                       Complete todas as aulas e questionários para receber seu certificado de conclusão.
                     </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">Seu progresso</span>
-                        <span className="font-mono text-sm font-medium text-foreground">{progressPercentage}%</span>
-                      </div>
-                      <div className="w-full h-2.5 bg-secondary rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-primary transition-all duration-500 ease-out rounded-full"
-                          style={{ width: `${progressPercentage}%` }}
-                        />
-                      </div>
-                      <p className="font-mono text-xs text-muted-foreground">
-                        {prog.completed} de {prog.total} aulas concluídas
-                      </p>
-                    </div>
                   </div>
                 )}
               </div>

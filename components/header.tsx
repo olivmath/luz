@@ -51,15 +51,27 @@ export function Header({ meta }: HeaderProps) {
             </span>
           </Link>
 
-          <SignedIn>
-            <Link
-              href="/perfil#certificados"
-              className="hidden md:flex items-center gap-1.5 font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wider"
-            >
-              <Award className="w-3.5 h-3.5" />
-              Certificados
-            </Link>
-          </SignedIn>
+          <Link
+            href="/"
+            className="hidden md:flex items-center gap-1.5 font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wider"
+          >
+            Cursos
+          </Link>
+
+          <Link
+            href="/blog"
+            className="hidden md:flex items-center gap-1.5 font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wider"
+          >
+            Blog
+          </Link>
+
+          <Link
+            href="/glossario"
+            className="hidden md:flex items-center gap-1.5 font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wider"
+          >
+            Glossário
+          </Link>
+
         </div>
 
         {/* Right section: Meta, Auth, Theme toggle */}

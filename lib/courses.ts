@@ -1,8 +1,9 @@
 import type { Course } from '@/types'
 
 export const COURSES: Record<string, Course> = {
-  'curso-01': {
-    id: 'curso-01',
+  'financeiro-agro-fundamentos': {
+    id: 'financeiro-agro-fundamentos',
+    contentDir: 'curso-01',
     title: 'Sistema Financeiro do Agronegócio Brasileiro',
     subtitle: 'Fundamentos',
     level: 'Introdutório',
@@ -71,8 +72,9 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
-  'curso-02': {
-    id: 'curso-02',
+  'financeiro-agro-avancado': {
+    id: 'financeiro-agro-avancado',
+    contentDir: 'curso-02',
     title: 'Sistema Financeiro do Agronegócio Brasileiro',
     subtitle: 'Estruturação e Mercado Avançado',
     level: 'Avançado',
@@ -142,8 +144,9 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
-  'curso-05': {
-    id: 'curso-05',
+  'tokenizacao-agro-fundamentos': {
+    id: 'tokenizacao-agro-fundamentos',
+    contentDir: 'curso-05',
     title: 'Web3 e Tokenização de RWA no Agronegócio',
     subtitle: 'Fundamentos e Implementação',
     level: 'Avançado',
@@ -212,8 +215,9 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
-  'curso-06': {
-    id: 'curso-06',
+  'tokenizacao-agro-avancado': {
+    id: 'tokenizacao-agro-avancado',
+    contentDir: 'curso-06',
     title: 'Web3 e Tokenização de RWA no Agronegócio',
     subtitle: 'Arquitetura Avançada e Integração DeFi',
     level: 'Especialista',
@@ -282,8 +286,9 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
-  'curso-03': {
-    id: 'curso-03',
+  'nanotecnologia-fundamentos': {
+    id: 'nanotecnologia-fundamentos',
+    contentDir: 'curso-03',
     title: 'Nanotecnologia Aplicada a Cosméticos',
     subtitle: 'Fundamentos',
     level: 'Introdutório',
@@ -352,8 +357,9 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
-  'curso-04': {
-    id: 'curso-04',
+  'nanovetores-avancado': {
+    id: 'nanovetores-avancado',
+    contentDir: 'curso-04',
     title: 'Nanovetores e Nanoencapsulamento Aplicados a Cosméticos',
     subtitle: 'Abordagem Avançada',
     level: 'Avançado',

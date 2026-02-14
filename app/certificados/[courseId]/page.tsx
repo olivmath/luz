@@ -26,7 +26,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
 
   useEffect(() => {
     if (mounted && course && !progress.isCourseComplete(courseId)) {
-      router.push(`/${courseId}`)
+      router.push(`/cursos/${courseId}`)
     }
   }, [mounted, courseId, course, progress, router])
 
@@ -46,7 +46,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
   return (
     <div className="max-w-[800px] mx-auto px-8 pt-12 pb-20 max-md:px-5 max-md:pt-8 max-md:pb-16">
       <Link
-        href={`/${courseId}`}
+        href={`/cursos/${courseId}`}
         className="font-mono text-sm text-muted-foreground tracking-wider inline-flex items-center gap-2 hover:text-primary transition-colors animate-fade-in-up"
       >
         &larr; Voltar ao curso
@@ -121,7 +121,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
           Imprimir
         </button>
         <Link
-          href={`/${courseId}`}
+          href={`/cursos/${courseId}`}
           className="font-mono text-sm font-medium px-6 py-3 rounded-sm bg-card text-foreground border border-border hover:border-border/80 hover:bg-secondary transition-all max-sm:w-full text-center"
         >
           Voltar ao curso

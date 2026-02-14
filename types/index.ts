@@ -13,6 +13,7 @@ export interface Module {
 
 export interface Course {
   id: string
+  contentDir: string
   title: string
   subtitle: string
   level: string

@@ -31,10 +31,10 @@ export function LessonSidebar({ courseId, activeModuleId, activeLessonId, onLess
       {/* Breadcrumb */}
       <div className="px-6 pt-4 pb-3 border-b border-border">
         <Link
-          href={`/${courseId}`}
+          href={`/cursos/${courseId}`}
           className="text-xs text-muted-foreground hover:text-primary transition-colors"
         >
-          {courseId === 'curso-01' || courseId === 'curso-02' ? 'Agronegócio Financeiro' : 'Nanotecnologia Cosmética'} &gt; {course.title}
+          {courseId.includes('agro') ? 'Agronegócio Financeiro' : 'Nanotecnologia Cosmética'} &gt; {course.title}
         </Link>
       </div>
 
@@ -88,7 +88,7 @@ export function LessonSidebar({ courseId, activeModuleId, activeLessonId, onLess
                     return (
                       <Link
                         key={lesson.id}
-                        href={`/${courseId}/${mod.id}/${lesson.id}`}
+                        href={`/cursos/${courseId}/${mod.id}/${lesson.id}`}
                         onClick={onLessonClick}
                         className={cn(
                           "flex items-center gap-3 px-6 py-2.5 text-sm text-muted-foreground transition-all border-l-2 border-transparent ml-6",

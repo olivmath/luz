@@ -1,12 +1,15 @@
 import { marked } from 'marked'
 import type { QuizQuestion } from '@/types'
+import { COURSES } from './courses'
 
 marked.setOptions({ breaks: true, gfm: true })
 
 const mdCache = new Map<string, string>()
 
 export async function loadMarkdown(courseId: string, moduleId: string, lessonId: string): Promise<string> {
-  const path = `/${courseId}/${moduleId}/${lessonId}.md`
+  const course = COURSES[courseId]
+  const contentDir = course?.contentDir || courseId
+  const path = `/${contentDir}/${moduleId}/${lessonId}.md`
   const cached = mdCache.get(path)
   if (cached) return cached
   const res = await fetch(path)

@@ -131,7 +131,7 @@ export default function PerfilPage() {
                 return (
                   <Link
                     key={id}
-                    href={isComplete ? `/certificado/${id}` : `/${id}`}
+                    href={isComplete ? `/certificados/${id}` : `/cursos/${id}`}
                     className="block bg-card border border-border rounded-lg p-6 max-sm:p-4 hover:border-primary/30 transition-all animate-fade-in-up"
                     style={{ animationDelay: `${i * 50}ms` }}
                   >
@@ -186,7 +186,7 @@ export default function PerfilPage() {
                   return (
                     <Link
                       key={id}
-                      href={`/certificado/${id}`}
+                      href={`/certificados/${id}`}
                       className="bg-card border border-border rounded-lg p-6 hover:border-primary/30 transition-all animate-fade-in-up"
                       style={{ animationDelay: `${i * 50}ms` }}
                     >

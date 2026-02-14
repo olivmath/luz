@@ -8,19 +8,21 @@ import { useProgress } from '@/context/progress-context'
 import { getFlatLessons, getCourseTime, formatTime } from '@/lib/helpers'
 import { cn } from '@/lib/utils'
 import { Check, Clock, BookOpen, ArrowRight, GraduationCap } from 'lucide-react'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
+import { LandingPage } from '@/components/landing-page'
 
 const CATEGORIES = [
   {
     label: 'Agronegócio Financeiro',
     description: 'Crédito rural, instrumentos financeiros, securitização e tokenização',
-    courses: ['curso-01', 'curso-02', 'curso-05', 'curso-06'],
+    courses: ['financeiro-agro-fundamentos', 'financeiro-agro-avancado', 'tokenizacao-agro-fundamentos', 'tokenizacao-agro-avancado'],
     accent: 'from-green-500 to-green-600',
     badgeColor: 'bg-green-500/10 text-green-700 dark:text-green-400',
   },
   {
     label: 'Nanotecnologia Cosmética',
     description: 'Nanomateriais, nanovetores, encapsulamento e permeação cutânea',
-    courses: ['curso-03', 'curso-04'],
+    courses: ['nanotecnologia-fundamentos', 'nanovetores-avancado'],
     accent: 'from-blue-500 to-blue-600',
     badgeColor: 'bg-blue-500/10 text-blue-700 dark:text-blue-400',
   },
@@ -37,7 +39,7 @@ const SLIDES = [
       'Securitização e mercado de capitais',
       'Tokenização de ativos agro',
     ],
-    cta: { text: 'Explorar trilha', href: '/curso-01' },
+    cta: { text: 'Explorar trilha', href: '/trilha/agronegocio' },
     gradient: 'from-[#1e4d38] to-[#28694d]',
     ctaTextColor: 'text-[#1e4d38]',
   },
@@ -51,7 +53,7 @@ const SLIDES = [
       'Nanovetores e encapsulamento',
       'Permeação cutânea e formulação',
     ],
-    cta: { text: 'Explorar trilha', href: '/curso-03' },
+    cta: { text: 'Explorar trilha', href: '/trilha/nanotecnologia' },
     gradient: 'from-blue-700 to-blue-500',
     ctaTextColor: 'text-blue-700',
   },
@@ -73,6 +75,11 @@ export default function CatalogPage() {
   }, [paused, next])
 
   return (
+    <>
+    <SignedOut>
+      <LandingPage />
+    </SignedOut>
+    <SignedIn>
     <div className="min-h-screen">
       {/* Hero Carousel */}
       <div className="max-w-[var(--content-max)] mx-auto px-8 pt-8 pb-16 max-md:px-5 max-md:pt-6 max-md:pb-12">
@@ -182,7 +189,7 @@ export default function CatalogPage() {
                 return (
                   <Link
                     key={cid}
-                    href={isComplete ? `/certificado/${cid}` : `/${cid}`}
+                    href={isComplete ? `/certificados/${cid}` : `/cursos/${cid}`}
                     aria-label={`${course.title} — ${course.level}`}
                     className={cn(
                       "group bg-card border border-border rounded-xl overflow-hidden",
@@ -281,5 +288,7 @@ export default function CatalogPage() {
         ))}
       </div>
     </div>
+    </SignedIn>
+    </>
   )
 }

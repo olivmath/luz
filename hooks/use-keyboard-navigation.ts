@@ -14,9 +14,9 @@ export function useKeyboardNavigation(adj: AdjacentLessons | null) {
       if ((e.target as HTMLElement).tagName === 'INPUT') return
 
       if (e.key === 'ArrowRight' && adj!.next) {
-        router.push(`/${adj!.next.courseId}/${adj!.next.moduleId}/${adj!.next.lessonId}`)
+        router.push(`/cursos/${adj!.next.courseId}/${adj!.next.moduleId}/${adj!.next.lessonId}`)
       } else if (e.key === 'ArrowLeft' && adj!.prev) {
-        router.push(`/${adj!.prev.courseId}/${adj!.prev.moduleId}/${adj!.prev.lessonId}`)
+        router.push(`/cursos/${adj!.prev.courseId}/${adj!.prev.moduleId}/${adj!.prev.lessonId}`)
       }
     }
 

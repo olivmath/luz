@@ -150,7 +150,7 @@ export default function LessonPage({
             <div className="flex justify-between items-stretch mt-6 gap-4 max-md:flex-col">
               {adj.prev ? (
                 <Link
-                  href={`/${adj.prev.courseId}/${adj.prev.moduleId}/${adj.prev.lessonId}`}
+                  href={`/cursos/${adj.prev.courseId}/${adj.prev.moduleId}/${adj.prev.lessonId}`}
                   className="font-mono text-xs text-muted-foreground tracking-wider flex flex-col gap-1 px-5 py-4 border border-border/50 rounded-sm hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all max-w-[50%] max-md:max-w-full"
                 >
                   <span className="text-[0.6rem] uppercase tracking-[0.1em] text-muted-foreground/50">&larr; Anterior</span>
@@ -160,7 +160,7 @@ export default function LessonPage({
 
               {adj.next ? (
                 <Link
-                  href={`/${adj.next.courseId}/${adj.next.moduleId}/${adj.next.lessonId}`}
+                  href={`/cursos/${adj.next.courseId}/${adj.next.moduleId}/${adj.next.lessonId}`}
                   className="font-mono text-xs text-muted-foreground tracking-wider flex flex-col gap-1 px-5 py-4 border border-border/50 rounded-sm hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all max-w-[50%] max-md:max-w-full ml-auto max-md:ml-0 text-right max-md:text-left"
                 >
                   <span className="text-[0.6rem] uppercase tracking-[0.1em] text-muted-foreground/50">Próxima &rarr;</span>
@@ -168,7 +168,7 @@ export default function LessonPage({
                 </Link>
               ) : (courseComplete || isCompleted) ? (
                 <Link
-                  href={`/certificado/${courseId}`}
+                  href={`/certificados/${courseId}`}
                   className="font-mono text-xs text-muted-foreground tracking-wider flex flex-col gap-1 px-5 py-4 border border-border/50 rounded-sm hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all max-w-[50%] max-md:max-w-full ml-auto max-md:ml-0 text-right max-md:text-left"
                 >
                   <span className="text-[0.6rem] uppercase tracking-[0.1em] text-muted-foreground/50">Concluir &rarr;</span>

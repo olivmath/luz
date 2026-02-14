@@ -90,7 +90,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
             {/* CTA Button */}
             {next && (
               <Link
-                href={`/${next.courseId}/${next.moduleId}/${next.lessonId}`}
+                href={`/cursos/${next.courseId}/${next.moduleId}/${next.lessonId}`}
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 max-md:w-full bg-primary-foreground text-primary font-semibold text-base rounded-lg hover:bg-primary-foreground/90 transition-all shadow-lg mb-6 border border-border"
               >
                 {prog.completed > 0 ? 'Continuar de onde parou' : 'Começar agora'}
@@ -281,7 +281,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
                             return (
                               <Link
                                 key={lesson.id}
-                                href={`/${courseId}/${mod.id}/${lesson.id}`}
+                                href={`/cursos/${courseId}/${mod.id}/${lesson.id}`}
                                 className={cn(
                                   'flex items-center gap-4 px-6 py-4 hover:bg-secondary/70 transition-all group',
                                   li > 0 && 'border-t border-border/50'
@@ -344,7 +344,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
                       </div>
                     </div>
                     <Link
-                      href={`/certificado/${courseId}`}
+                      href={`/certificados/${courseId}`}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all shadow-md shrink-0"
                     >
                       <Award className="w-4 h-4" />

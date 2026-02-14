@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronLeft, ChevronRight, Check, X, RotateCcw } from 'lucide-react'
+import { useProgress } from '@/context/progress-context'
 import type { QuizQuestion } from '@/types'
 
 interface QuizSectionProps {
@@ -14,7 +15,8 @@ interface QuizSectionProps {
   onComplete: () => void
 }
 
-export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionProps) {
+export function QuizSection({ questions, courseId, moduleId, lessonId, alreadyDone, onComplete }: QuizSectionProps) {
+  const { saveQuizResult } = useProgress()
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [selected, setSelected] = useState<Record<number, string>>({})
   const [checked, setChecked] = useState<Record<number, boolean>>({})
@@ -32,6 +34,9 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
   const allCorrect = allChecked && correctCount === questions.length
 
   useEffect(() => {
+    if (allChecked && !completed) {
+      saveQuizResult(courseId, moduleId, lessonId, correctCount, questions.length)
+    }
     if (allCorrect && !completed) {
       setCompleted(true)
       setShowReport(true)
@@ -39,7 +44,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
     } else if (allChecked && !allCorrect) {
       setShowReport(true)
     }
-  }, [allChecked, allCorrect, completed, onComplete])
+  }, [allChecked, allCorrect, completed, onComplete, saveQuizResult, courseId, moduleId, lessonId, correctCount, questions.length])
 
   const handleSelect = useCallback((letter: string) => {
     if (isChecked) return

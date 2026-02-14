@@ -1,150 +1,308 @@
-# Aula 2.2: Garantias e Colaterais Avancados
+# Aula 2.2: ERC-721 — Tokens Nao Fungiveis (NFTs) para Ativos Unicos do Agro
 
 ## Abertura
 
-Bem-vindo a aula 2.2! Na aula anterior, estudamos a estrutura juridica da CPR moderna, incluindo a alienacao fiduciaria como mecanismo de protecao do credor. Agora, vamos expandir o repertorio de garantias disponiveis no credito agro, analisando a cessao fiduciaria de recebiveis futuros, o uso de CDA/WA como colateral e as estrategias de combinacao de garantias que permitem montar pacotes robustos para diferentes perfis de risco. Dominar essas estruturas e o que separa o profissional que apenas opera credito rural do profissional que estrutura operacoes sofisticadas capazes de atrair capital institucional para o agronegocio.
+Bem-vindo a aula 2.2 do Modulo 2! Na aula anterior, dominamos o padrao ERC-20 para tokens fungiveis — ativos identicos e intercambiaveis. Agora, vamos explorar o outro extremo do espectro: o padrao ERC-721, que permite representar ativos digitais unicos e irrepettiveis na blockchain. No agronegocio brasileiro, existem ativos que nao podem ser tratados como unidades intercambiaveis: um titulo de propriedade rural com matricula especifica, um Certificado de Deposito Agropecuario (CDA) vinculado a um lote particular de graos em determinado armazem, ou uma CPR fisica com lastro singular em uma producao especifica. O ERC-721 e o padrao que permite tokenizar cada um desses ativos preservando sua unicidade, rastreabilidade e vinculacao a metadados legais detalhados.
 
 ### Programa da aula:
 
-1. Cessao fiduciaria de recebiveis (introducao)
-2. CDA/WA como colateral (base e aprofundamento)
-3. Combinacao de garantias (conceito principal da aula)
+1. Anatomia do padrao ERC-721: funcoes essenciais e propriedade unica (introducao)
+2. Aplicacoes no agro: CDA, titulo de terra e CPR fisica como NFTs (base e aprofundamento)
+3. Metadados e tokenURI: documentos legais, qualidade e geolocalizacao on-chain (conceito principal da aula)
 
 ---
 
-## 1. Cessao fiduciaria de recebiveis
+## 1. Anatomia do padrao ERC-721: funcoes essenciais e propriedade unica
 
-### Protecao do fluxo futuro: como funciona a cessao fiduciaria
+### O que diferencia um NFT de um token fungivel
 
-A cessao fiduciaria de recebiveis e um mecanismo pelo qual o emissor da CPR ou o tomador de credito transfere ao credor a titularidade fiduciaria dos direitos creditorios que possui ou que vira a possuir em razao de contratos de venda de producao. Em termos simples, o produtor ou a empresa do agro "cede" ao credor o direito de receber os pagamentos futuros de suas vendas, como garantia do emprestimo ou do titulo emitido. Essa cessao e regulada pelo Codigo Civil (artigos 286 a 298) e pela legislacao especifica do mercado financeiro, e sua formalizacao cria um vinculo juridico que impede o cedente de dispor daqueles recebiveis sem autorizacao do credor.
+Enquanto no ERC-20 cada token e identico a qualquer outro do mesmo contrato, no ERC-721 cada token possui um identificador unico (tokenId) que o distingue de todos os outros. Essa unicidade e o que permite representar ativos do mundo real que possuem caracteristicas individuais e nao podem ser substituidos por outro "equivalente". No direito brasileiro, essa distincao corresponde a diferenca entre bens fungiveis (art. 85 do Codigo Civil — podem ser substituidos por outros da mesma especie, qualidade e quantidade) e bens infungiveis (art. 85, a contrario sensu — possuem qualidades individuais que os tornam insubstituiveis).
 
-A cessao fiduciaria de recebiveis difere da alienacao fiduciaria de bens fisicos em um aspecto fundamental: ela incide sobre fluxos financeiros futuros, e nao sobre bens tangiveis. Isso a torna especialmente util em operacoes em que o produto ja foi vendido ou sera vendido a um comprador pre-determinado (uma trading, uma cooperativa, uma agroindustria), mas o pagamento so ocorrera no futuro. O credor que recebe a cessao fiduciaria passa a ter direito prioritario sobre esses pagamentos, que sao direcionados a uma conta vinculada ou conta escrow antes de qualquer outra destinacao. Essa estrutura e amplamente utilizada em operacoes de CPR financeira, em CRAs e em financiamentos estruturados para cooperativas e agroindustrias.
+O padrao ERC-721 foi formalizado na EIP-721, proposta por William Entriken, Dieter Shirley, Jacob Evans e Nastassia Sachs, e publicada em janeiro de 2018. Embora NFTs tenham se tornado populares no mercado de arte digital e colecionaveis, sua aplicacao mais transformadora esta na representacao de ativos reais (RWA) — e o agronegocio brasileiro, com sua enorme diversidade de titulos e ativos, e um dos setores com maior potencial de adocao.
 
-- **Exemplo**: Uma cooperativa de graos no Rio Grande do Sul possui contratos de venda de 500.000 sacas de soja com tres tradings multinacionais, com pagamentos escalonados entre abril e agosto. O valor total dos recebiveis e de R$ 75 milhoes. A cooperativa precisa de capital de giro de R$ 50 milhoes e toma credito junto a um banco, cedendo fiduciariamente esses recebiveis como garantia. Os contratos de venda sao notificados as tradings, que passam a depositar os pagamentos diretamente em conta escrow controlada pelo banco. A cada pagamento recebido, o banco abate o saldo devedor e libera o excedente para a cooperativa. Se a cooperativa inadimplir em qualquer obrigacao, o banco ja detem os recebiveis e nao depende de acao judicial para retencao dos valores.
+- **Exemplo**: Imagine dois lotes de cafe armazenados no mesmo armazem em Franca (SP). O lote A contem 500 sacas de cafe arabica tipo 2, bebida mole, altitude acima de 1.100m, com certificacao UTZ, laudo de qualidade datado de 15/03/2025 e nota 85 na escala SCA. O lote B contem 500 sacas do mesmo arabica tipo 2, mas bebida dura, altitude 800m, sem certificacao e nota 78 SCA. Embora ambos sejam "500 sacas de cafe arabica tipo 2", eles tem valores de mercado completamente diferentes — o lote A pode valer R$ 2.800/saca enquanto o lote B vale R$ 1.900/saca. Um token ERC-20 nao consegue capturar essa diferenca. Um NFT ERC-721 sim: cada lote recebe seu proprio tokenId com metadados unicos que descrevem exatamente suas caracteristicas.
 
-### Uso por tradings, cooperativas e agroindustrias
+### Funcoes obrigatorias do ERC-721
 
-A cessao fiduciaria de recebiveis nao e exclusividade do produtor rural individual. Na verdade, ela e mais frequentemente utilizada por tradings de commodities, cooperativas agropecuarias e agroindustrias, que possuem portfolios diversificados de contratos de venda com prazos e contrapartes variados. Para essas empresas, os recebiveis futuros representam um ativo de alta qualidade — previsivel, diversificado e vinculado a commodities com demanda global — que pode ser cedido fiduciariamente para obter credito em condicoes mais favoraveis do que o credito sem garantia.
+O padrao ERC-721 define um conjunto de funcoes que garantem a gestao de propriedade e transferencia segura de tokens unicos:
 
-No caso das tradings, os recebiveis tipicamente derivam de contratos de exportacao com compradores internacionais (importadores na China, Uniao Europeia, Oriente Medio), denominados em dolares. A cessao desses recebiveis em moeda estrangeira cria uma garantia com dupla protecao: o credor tem o direito ao fluxo financeiro e, simultaneamente, exposicao ao dolar — uma moeda que historicamente se valoriza em momentos de estresse, justamente quando o risco de inadimplencia aumenta. Para cooperativas, os recebiveis derivam das vendas de producao agregada dos cooperados, o que gera um pool diversificado de fluxos que reduz o risco de concentracao. Ja as agroindustrias cedem recebiveis de vendas de produtos processados (farelo de soja, oleo refinado, acucar, etanol) a distribuidores e varejistas, com contratos de fornecimento de medio prazo que garantem previsibilidade ao credor.
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-- **Exemplo**: Uma grande trading brasileira com faturamento anual de R$ 8 bilhoes em exportacoes de soja e milho estrutura uma operacao de pre-pagamento de exportacao (PPE) de US$ 200 milhoes junto a bancos internacionais. Como garantia, a trading cede fiduciariamente os recebiveis de contratos de venda ja firmados com importadores chineses, totalizando US$ 350 milhoes (o excedente serve como sobregarantia). Os pagamentos dos importadores sao direcionados a conta offshore controlada pelo agente fiduciario. A cada embarque confirmado e pagamento recebido, o saldo do PPE e amortizado. Essa estrutura permite que a trading obtenha funding a taxas proximas da Libor/SOFR mais spread reduzido, significativamente mais baratas do que credito domestico em reais, justamente porque a garantia (recebiveis em dolar de compradores investment grade) e de alta qualidade.
+interface IERC721 {
+    // Retorna o numero total de NFTs atribuidos a um endereco
+    function balanceOf(address owner) external view returns (uint256);
+
+    // Retorna o endereco do proprietario de um NFT especifico
+    function ownerOf(uint256 tokenId) external view returns (address);
+
+    // Transferencia segura com verificacao do destinatario
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
+
+    // Transferencia sem verificacao (uso interno)
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
+
+    // Aprova um endereco para gerenciar um NFT especifico
+    function approve(address to, uint256 tokenId) external;
+
+    // Retorna o endereco aprovado para um NFT especifico
+    function getApproved(uint256 tokenId) external view returns (address);
+
+    // Aprova ou revoga um operador para gerenciar todos os NFTs do owner
+    function setApprovalForAll(address operator, bool approved) external;
+
+    // Verifica se um operador esta aprovado para gerenciar todos os NFTs
+    function isApprovedForAll(address owner, address operator)
+        external view returns (bool);
+
+    // Eventos
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+}
+```
+
+A funcao **ownerOf(uint256 tokenId)** e a mais distintiva do ERC-721: dado um tokenId, ela retorna o endereco do proprietario atual. No contexto agro, isso significa que qualquer pessoa pode verificar instantaneamente quem e o titular de um CDA tokenizado, de um titulo de terra digital ou de uma CPR fisica especifica — sem precisar consultar cartorios, registradoras ou custodiantes.
+
+A funcao **safeTransferFrom** e a forma recomendada de transferir NFTs. O prefixo "safe" indica que a funcao verifica se o endereco destinatario e capaz de receber NFTs (implementa a interface IERC721Receiver). Isso previne que tokens sejam enviados para contratos que nao sabem lidar com NFTs, evitando perda permanente de ativos. No agro, onde um unico NFT pode representar um titulo de terra no valor de milhoes de reais, essa verificacao de seguranca e essencial.
+
+- **Exemplo**: Um fundo de investimento em terras agricolas adquire uma fazenda de 5.000 hectares no MATOPIBA por R$ 150 milhoes. O titulo de propriedade e tokenizado como NFT ERC-721 com tokenId #4721. Quando o fundo decide vender a fazenda para outro investidor, a transferencia do NFT via safeTransferFrom automaticamente atualiza o registro de propriedade on-chain. O comprador pode verificar via ownerOf(4721) que ele e o novo proprietario registrado. Esse registro blockchain complementa (e no futuro podera substituir) o registro em cartorio de imoveis.
 
 ---
 
-## 2. CDA/WA como colateral
+## 2. Aplicacoes no agro: CDA, titulo de terra e CPR fisica como NFTs
 
-### Estoque fisico em armazem: a forca juridica do CDA e do Warrant Agropecuario
+### CDA (Certificado de Deposito Agropecuario) como NFT
 
-O Certificado de Deposito Agropecuario (CDA) e o Warrant Agropecuario (WA) sao titulos de credito regulados pela Lei 11.076/2004 e emitidos por armazens credenciados e registrados na CONAB ou em entidades registradoras autorizadas. O CDA representa a propriedade do produto depositado no armazem — ele e a prova documental de que determinada quantidade de commodity esta armazenada em local especifico, com qualidade atestada e sob responsabilidade do depositario. O WA, por sua vez, e emitido junto com o CDA e confere ao seu titular o direito de penhor sobre a mercadoria representada pelo CDA. Em essencia, o CDA prova que o produto existe e esta guardado; o WA permite que esse produto seja usado como garantia de credito.
+O Certificado de Deposito Agropecuario (CDA) e um titulo de credito emitido por armazens gerais ou depositarios, representando a propriedade de produtos agropecuarios depositados. Regulado pela Lei 11.076/2004, o CDA e sempre vinculado a um lote especifico de mercadoria, com caracteristicas individuais de qualidade, peso, localizacao e prazo de deposito. Essa natureza intrinsecamente unica torna o CDA um candidato ideal para tokenizacao via ERC-721.
 
-A forca juridica desses titulos reside em tres pilares: primeiro, o armazem emissor e responsavel civil e criminalmente pela guarda, conservacao e entrega do produto, respondendo por perdas, avarias e desvios; segundo, os titulos sao registrados eletronicamente em entidades autorizadas (como a B3), o que confere publicidade e rastreabilidade; terceiro, o CDA e o WA podem circular independentemente — o CDA pode ser negociado (transferindo a propriedade do produto) enquanto o WA e retido pelo credor como garantia, ou vice-versa. Essa separacao entre propriedade e garantia e o que torna o par CDA/WA tao versatil no financiamento agro.
+Cada CDA emitido como NFT carregaria em seus metadados: a identificacao do armazem depositario (com CNPJ e codigo CONAB), a descricao detalhada da mercadoria (tipo, qualidade, peso, umidade), a localizacao fisica do armazem (coordenadas GPS), a data de deposito, o prazo de validade do certificado e o numero do warrant (WA) associado. Quando o proprietario de um CDA-NFT decide negocia-lo, a transferencia do token automaticamente transfere todos esses atributos, criando uma cadeia de custodia digital completa.
 
-- **Exemplo**: Um produtor de cafe em Minas Gerais deposita 10.000 sacas de cafe arabica tipo 6 (padrao exportacao) em armazem credenciado pela CONAB em Varginha (MG). O armazem emite o CDA, atestando a existencia e qualidade do produto, e o WA correspondente. O produtor vai ao banco e oferece o WA como garantia de um emprestimo de R$ 8 milhoes para financiar a safra seguinte. O banco aceita porque sabe que: (a) o cafe existe fisicamente e esta sob custodia de armazem regulado; (b) o WA lhe da direito de penhor sobre o produto; (c) se o produtor nao pagar, o banco pode executar o WA e vender as 10.000 sacas no mercado, recuperando seu credito. O CDA permanece com o produtor, que mantem a propriedade do cafe ate decidir vende-lo ou ate o banco executar o WA.
+No Brasil, a CONAB (Companhia Nacional de Abastecimento) registra os armazens credenciados e a B3 opera o sistema de registro eletronico de CDA/WA. A tokenizacao via ERC-721 nao substitui esses sistemas, mas cria uma camada adicional de transparencia e interoperabilidade. Uma trading que recebe um CDA-NFT pode verificar instantaneamente todos os atributos do lote depositado, sem precisar solicitar documentos fisicos ao armazem ou consultar sistemas internos do depositario.
 
-### Penhor rural e hipoteca rural: garantias tradicionais complementares
+```solidity
+// Exemplo simplificado: CDA como NFT
+contract CDA_NFT is ERC721, ERC721URIStorage {
+    uint256 private _nextTokenId;
 
-Alem do CDA/WA, o credito agro utiliza dois instrumentos tradicionais de garantia real: o penhor rural e a hipoteca rural. O penhor rural, previsto no Codigo Civil e no Decreto-Lei 167/1967 (que regulamenta os titulos de credito rural), incide sobre bens moveis — safras pendentes, animais, maquinas e equipamentos. O penhor rural cedular, formalizado na propria cedula de credito rural, permite que o credor tenha preferencia sobre os bens empenhados em caso de inadimplencia. A hipoteca rural, por sua vez, incide sobre bens imoveis — a propriedade rural ou parte dela — e e registrada na matricula do imovel no cartorio de registro de imoveis.
+    struct DadosCDA {
+        string armazem;         // Nome e CNPJ do armazem
+        string produto;         // Ex: "Soja em graos"
+        uint256 pesoKg;         // Peso em kg
+        uint256 umidade;        // Umidade em % (x100)
+        string geolocalizacao;  // Coordenadas do armazem
+        uint256 dataDeposito;   // Timestamp do deposito
+        uint256 prazoValidade;  // Timestamp do vencimento
+    }
 
-Esses instrumentos sao mais antigos que a alienacao fiduciaria e possuem uma desvantagem relevante em comparacao com ela: o penhor e a hipoteca nao transferem a propriedade ao credor, apenas conferem direito de preferencia na execucao. Isso significa que, em caso de recuperacao judicial, o credor pignoraticio ou hipotecario e submetido aos efeitos do plano de recuperacao (diferentemente do credor fiduciario, que esta protegido pelo art. 49, par. 3o, da Lei 11.101/2005). Apesar disso, o penhor rural e a hipoteca continuam amplamente utilizados, especialmente em operacoes de credito rural oficial (Plano Safra), onde sao exigidos como garantia padrao. A combinacao desses instrumentos com a alienacao fiduciaria e a cessao de recebiveis cria pacotes de garantia com multiplas camadas de protecao.
+    mapping(uint256 => DadosCDA) public certificados;
 
-- **Exemplo**: Uma operacao de custeio de R$ 30 milhoes para um grupo de produtores de cana-de-acucar em Sao Paulo e estruturada com a seguinte composicao de garantias: hipoteca rural de primeiro grau sobre a fazenda (avaliada em R$ 80 milhoes), penhor rural sobre a safra de cana pendente (estimada em 400.000 toneladas) e aval pessoal dos socios. O banco aceita essa estrutura porque, mesmo que o penhor e a hipoteca sejam submetidos a eventual recuperacao judicial, a razao entre o valor das garantias e o credito (cobertura de 2,7 vezes) proporciona margem confortavel para absorver perdas. Em comparacao, se a operacao fosse estruturada com alienacao fiduciaria sobre a producao, o credor teria protecao adicional contra recuperacao judicial, mas o custo de formalizacao seria maior.
+    function emitirCDA(
+        address proprietario,
+        string memory uri,
+        DadosCDA memory dados
+    ) external returns (uint256) {
+        uint256 tokenId = _nextTokenId++;
+        _safeMint(proprietario, tokenId);
+        _setTokenURI(tokenId, uri);
+        certificados[tokenId] = dados;
+        return tokenId;
+    }
+}
+```
+
+- **Exemplo**: O armazem Cargill em Primavera do Leste (MT) recebe 10.000 toneladas de soja de um produtor e emite um CDA digital. O CDA e tokenizado como NFT ERC-721 com tokenId #8832. Os metadados registram: armazem "Cargill Primavera do Leste - CNPJ XX.XXX.XXX/0001-XX", produto "Soja em graos - padrao ANEC 41c", peso "10.000.000 kg", umidade "13,5%", coordenadas "-15.5489, -54.2958", data deposito "01/04/2025". O produtor decide vender o CDA para uma trading. A transferencia do NFT via safeTransferFrom registra imutavelmente a mudanca de propriedade, e a trading pode verificar instantaneamente todos os dados do lote sem visitar o armazem.
+
+### Titulo de terra e CPR fisica como ativos unicos tokenizados
+
+O titulo de propriedade rural e talvez o ativo mais valioso e complexo do agronegocio brasileiro. O Brasil possui aproximadamente 350 milhoes de hectares de terras agricolas, avaliados em trilhoes de reais. Cada propriedade e unica: possui matricula especifica em cartorio de registro de imoveis, georreferenciamento obrigatorio (Lei 10.267/2001), caracteristicas de solo, topografia, recursos hidricos e infraestrutura que afetam diretamente seu valor.
+
+A tokenizacao de titulos de terra via ERC-721 cria uma representacao digital verificavel de cada propriedade. O NFT nao substitui a matricula no cartorio — a legislacao brasileira ainda exige registro imobiliario para transferencia de propriedade (art. 1.245 do Codigo Civil) —, mas funciona como uma camada digital que facilita negociacao, fracionamento de direitos economicos e acesso a financiamento. Iniciativas como a da Rethink (plataforma brasileira de tokenizacao imobiliaria) ja exploram esse modelo para propriedades urbanas, e a expansao para terras rurais e uma questao de tempo e adequacao regulatoria.
+
+A CPR fisica, por sua vez, compromete a entrega de um produto especifico, em local e prazo determinados. Diferentemente da CPR financeira (que e liquidada em dinheiro e naturalmente fungivel), a CPR fisica esta vinculada a uma producao singular — a safra de uma fazenda especifica, com caracteristicas de qualidade determinadas. Tokenizar uma CPR fisica como NFT ERC-721 permite rastrear nao apenas a titularidade do credito, mas tambem o vinculo com a producao real, incluindo laudos de qualidade, certificados fitossanitarios e comprovantes de seguro.
+
+- **Exemplo**: Uma fazenda de 12.000 hectares em Luis Eduardo Magalhaes (BA), avaliada em R$ 840 milhoes (R$ 70.000/hectare), e tokenizada como NFT ERC-721 para fins de negociacao de participacao societaria. O NFT contem metadados com a matricula do imovel, certificado de georreferenciamento do INCRA, CAR (Cadastro Ambiental Rural) com reserva legal de 20%, analise de solo das 15 glebas, outorga de uso de agua e historico de produtividade (media de 72 sacas/hectare de soja nos ultimos 5 anos). Um fundo de investimento em terras (farmland fund) adquire o NFT e, com ele, o direito economico sobre a propriedade. Todo o historico de negociacao fica registrado imutavelmente na blockchain.
 
 ---
 
-## 3. Combinacao de garantias
+## 3. Metadados e tokenURI: documentos legais, qualidade e geolocalizacao on-chain
 
-### Como montar o pacote ideal para diferentes perfis de risco
+### A funcao tokenURI e o padrao de metadados
 
-Na pratica do mercado, operacoes de credito agro raramente dependem de uma unica garantia. Profissionais de estruturacao combinam diferentes colaterais para criar pacotes que cobrem simultaneamente o risco de producao (a safra pode falhar), o risco de mercado (o preco pode cair), o risco de desvio (o produto pode ser vendido para terceiro) e o risco de insolvencia (o devedor pode nao ter condicoes de pagar). A logica da combinacao segue uma hierarquia: a alienacao fiduciaria sobre a producao cobre o risco de producao e de desvio, com protecao contra recuperacao judicial; a cessao fiduciaria de recebiveis cobre o risco de desvio do fluxo financeiro; o CDA/WA cobre o risco de producao pos-colheita, quando o grao ja esta armazenado; e a hipoteca rural cobre o risco de insolvencia patrimonial, funcionando como garantia residual.
+A funcao tokenURI(uint256 tokenId) e a ponte entre o token on-chain e os dados detalhados do ativo que ele representa. Quando chamada com um tokenId especifico, ela retorna uma URI (Uniform Resource Identifier) que aponta para um documento JSON contendo todos os metadados do ativo. Esse JSON segue tipicamente o padrao de metadados estabelecido pelo OpenSea (que se tornou padrao de facto), com campos como name, description, image e attributes.
 
-O dimensionamento do pacote depende do perfil de risco do emissor e da operacao. Para um grande produtor com historico de credito solido, area propria e contratos de venda firmados, a alienacao fiduciaria sobre a producao combinada com cessao de recebiveis pode ser suficiente. Para um produtor de menor porte, sem area propria (arrendatario) e sem contratos forward, o pacote precisara incluir garantias adicionais, como aval de terceiro, seguro rural obrigatorio e sobrecolateralizacao (exigir garantias cujo valor supere em 130% a 150% o valor do credito). A razao de cobertura (valor das garantias dividido pelo valor do credito) e a metrica central: operacoes de mercado de capitais tipicamente exigem cobertura de 120% a 150%, enquanto operacoes bancarias tradicionais podem aceitar 100% a 120%.
+No contexto do agronegocio, os metadados do tokenURI vao muito alem de nome e imagem. Eles devem conter informacoes legais, tecnicas e logisticas que permitem ao detentor do NFT — e a qualquer auditor ou regulador — verificar completamente o ativo lastrado. Para um CDA tokenizado, por exemplo, o JSON do tokenURI deve incluir:
 
-- **Exemplo**: Um fundo de investimento em direitos creditorios do agronegocio (FIDC-Agro) esta analisando a aquisicao de um portfolio de 100 CPRs emitidas por produtores de soja no Mato Grosso, totalizando R$ 200 milhoes. O comite de credito do fundo exige cobertura minima de 140%. A estruturacao monta o seguinte pacote para cada CPR: alienacao fiduciaria sobre a producao (valor estimado em 110% do credito com base na produtividade historica da area), cessao fiduciaria dos recebiveis do contrato de venda com a trading (cobertura adicional de 100% do credito), seguro rural cobrindo pelo menos 70% da receita esperada, e clausula de sobrecolateralizacao que obriga o emissor a reforcar garantias caso a razao de cobertura caia abaixo de 130% durante a vigencia da operacao. O pacote total oferece cobertura de 180% a 210%, superando com folga o minimo exigido e permitindo que o fundo classifique a operacao como risco moderado.
+```json
+{
+    "name": "CDA #8832 - Soja Primavera do Leste",
+    "description": "Certificado de Deposito Agropecuario - 10.000 ton soja",
+    "image": "ipfs://QmXyz.../foto_armazem.jpg",
+    "external_url": "https://plataforma.exemplo.com/cda/8832",
+    "attributes": [
+        {
+            "trait_type": "Produto",
+            "value": "Soja em graos"
+        },
+        {
+            "trait_type": "Padrao Qualidade",
+            "value": "ANEC 41c"
+        },
+        {
+            "trait_type": "Peso (kg)",
+            "value": 10000000,
+            "display_type": "number"
+        },
+        {
+            "trait_type": "Umidade (%)",
+            "value": 13.5,
+            "display_type": "number"
+        },
+        {
+            "trait_type": "Armazem",
+            "value": "Cargill Primavera do Leste - MT"
+        },
+        {
+            "trait_type": "Geolocalizacao",
+            "value": "-15.5489, -54.2958"
+        },
+        {
+            "trait_type": "Data Deposito",
+            "value": "2025-04-01",
+            "display_type": "date"
+        },
+        {
+            "trait_type": "Laudo Qualidade (IPFS)",
+            "value": "ipfs://QmAbc.../laudo_qualidade.pdf"
+        },
+        {
+            "trait_type": "Certificado Fitossanitario",
+            "value": "ipfs://QmDef.../certificado_fito.pdf"
+        }
+    ]
+}
+```
 
-### Perfis de risco e calibragem de garantias: pequeno, medio e grande produtor
+Observe que documentos legais como laudos de qualidade e certificados fitossanitarios sao armazenados no IPFS (InterPlanetary File System) — um sistema de armazenamento descentralizado que garante imutabilidade e disponibilidade dos documentos. O hash IPFS funciona como uma impressao digital do documento: se alguem alterar um unico byte do laudo de qualidade, o hash muda completamente, tornando qualquer adulteracao detectavel.
 
-A combinacao de garantias deve ser calibrada conforme o perfil do tomador. Grandes produtores (faturamento acima de R$ 50 milhoes anuais) geralmente possuem terra propria, historico bancario consolidado, contratos de venda com tradings de primeira linha e acesso a seguros. Para esses produtores, a estrutura de garantias tende a ser mais enxuta: alienacao fiduciaria sobre a producao, cessao de recebiveis do contrato de exportacao e, eventualmente, penhor sobre maquinario. A taxa de juros e mais baixa porque o risco percebido e menor.
+- **Exemplo**: Um exportador japones deseja comprar 5.000 toneladas de soja brasileira com certificacao de sustentabilidade. Ele acessa a plataforma de negociacao e visualiza o NFT do CDA #8832. Ao consultar o tokenURI, ele verifica instantaneamente: o laudo de qualidade confirmando padrao ANEC 41c, o certificado fitossanitario valido para exportacao, a certificacao de sustentabilidade (RTRS), e as coordenadas do armazem para agendamento logistico. Toda essa informacao esta vinculada imutavelmente ao NFT, eliminando a troca de dezenas de e-mails e documentos em PDF entre compradores, vendedores, corretores e certificadores.
 
-Produtores de medio porte (faturamento entre R$ 5 milhoes e R$ 50 milhoes) representam o segmento mais desafiador. Muitos sao arrendatarios (nao possuem terra propria para hipotecar), operam com margens apertadas e dependem fortemente do credito para custeio. O pacote de garantias para esse perfil tipicamente inclui alienacao fiduciaria sobre a producao, aval pessoal dos socios, seguro rural obrigatorio (exigido pelo credor como condicao de desembolso) e, quando disponivel, CDA/WA sobre estoque de safra anterior. Para pequenos produtores (faturamento ate R$ 5 milhoes), a garantia frequentemente se resume ao penhor rural e ao aval, complementados por programas de garantia publica como o Pronaf e o Fundo Garantidor Solidario (FGS), criado pela Lei do Agro, que oferece garantia complementar para operacoes de credito rural de pequeno e medio porte.
+### Geolocalizacao e rastreabilidade de origem
 
-- **Exemplo**: Considere tres produtores que precisam de R$ 5 milhoes cada para custeio de soja. O Produtor A e um grande fazendeiro com 10.000 hectares proprios em Mato Grosso, contratos de venda com Cargill e Bunge, e historico de 15 safras sem inadimplencia. O banco aceita alienacao fiduciaria sobre a producao e cessao de recebiveis, com taxa de CDI + 2,5% ao ano. O Produtor B e um medio produtor com 1.500 hectares arrendados em Goias, sem contratos forward firmados. O banco exige alienacao fiduciaria sobre a producao, aval pessoal, seguro rural obrigatorio (Proagro ou seguro privado), adesao ao Fundo Garantidor Solidario e taxa de CDI + 4,5% ao ano. O Produtor C e um pequeno produtor com 300 hectares proprios no Parana, enquadrado no Pronamp. Ele acessa credito pelo Plano Safra a taxa controlada de 8% ao ano, com penhor da safra e aval, garantia complementar do FGS e limite maximo de R$ 1,75 milhao por safra. A diferenca de custo e de exigencias entre os tres perfis reflete diretamente a qualidade e a profundidade do pacote de garantias que cada um consegue oferecer.
+A inclusao de coordenadas geograficas nos metadados de NFTs agro e uma inovacao com impacto direto na rastreabilidade de origem e no compliance ambiental. O georreferenciamento obrigatorio de imoveis rurais no Brasil (Lei 10.267/2001 e Decreto 4.449/2002) ja gera dados de coordenadas precisas para cada propriedade. Ao vincular essas coordenadas ao NFT de um titulo de terra, CDA ou CPR, cria-se uma camada de verificacao geografica que permite:
+
+**Verificacao de desmatamento**: cruzando as coordenadas do NFT com dados do INPE (Instituto Nacional de Pesquisas Espaciais) via sistema PRODES/DETER, e possivel verificar automaticamente se a area de producao sofreu desmatamento ilegal. Essa verificacao e crucial para atender ao Regulamento Europeu Anti-Desmatamento (EUDR), que a partir de 2025 exige rastreabilidade ate a parcela de producao para commodities importadas pela Uniao Europeia, incluindo soja, cafe e carne bovina.
+
+**Verificacao de sobreposicao com terras indigenas e areas protegidas**: cruzando coordenadas com dados da FUNAI e do ICMBio, e possivel verificar se a producao lastrada no NFT vem de areas legitimas, sem sobreposicao com terras indigenas demarcadas ou unidades de conservacao.
+
+**Rastreabilidade de cadeia produtiva**: ao vincular NFTs de diferentes etapas (producao no campo → deposito em armazem → transporte → porto), e possivel rastrear a commodity desde a fazenda ate o consumidor final, atendendo a demandas crescentes de rastreabilidade ESG.
+
+```solidity
+// Exemplo: verificacao de geolocalizacao no contrato
+contract CPRFisicaNFT is ERC721URIStorage {
+    struct Geolocalizacao {
+        int256 latitude;   // multiplicado por 10^6
+        int256 longitude;  // multiplicado por 10^6
+        uint256 areaHectares;
+    }
+
+    mapping(uint256 => Geolocalizacao) public localizacoes;
+
+    event OrigemVerificada(
+        uint256 indexed tokenId,
+        int256 latitude,
+        int256 longitude,
+        string statusDesmatamento // "CONFORME" ou "ALERTA"
+    );
+
+    function registrarOrigem(
+        uint256 tokenId,
+        int256 lat,
+        int256 long,
+        uint256 area
+    ) external {
+        require(ownerOf(tokenId) != address(0), "Token inexistente");
+        localizacoes[tokenId] = Geolocalizacao(lat, long, area);
+    }
+}
+```
+
+- **Exemplo**: A Bunge, uma das maiores traders de graos operando no Brasil, precisa comprovar a seus clientes europeus que a soja importada nao provem de areas desmatadas apos 2020, conforme exige o EUDR. Ao adquirir soja representada por NFTs ERC-721 com geolocalizacao embarcada nos metadados, a Bunge pode cruzar automaticamente as coordenadas de cada lote com imagens de satelite do INPE. O sistema gera um certificado digital de conformidade para cada NFT, que e anexado como metadado adicional via atualizacao do tokenURI. O importador europeu recebe o NFT com toda a cadeia de evidencias — coordenadas, imagens de satelite, laudo de conformidade — vinculada imutavelmente ao token. Esse processo, que hoje envolve auditorias presenciais custosas (R$ 50.000 a R$ 200.000 por propriedade), pode ser parcialmente automatizado com NFTs geolocalizados.
 
 ---
 
 ## Conclusao
 
-Nesta aula, expandimos significativamente o entendimento sobre garantias no credito agro. Compreendemos que a cessao fiduciaria de recebiveis protege o fluxo financeiro futuro do credor, sendo amplamente utilizada por tradings, cooperativas e agroindustrias para obter credito em condicoes favoraveis com base em contratos de venda ja firmados. Analisamos o CDA e o WA como instrumentos que convertem estoque fisico armazenado em colateral verificavel e executavel, e revisamos o penhor e a hipoteca rurais como garantias tradicionais que complementam a estrutura, ainda que com menor protecao contra recuperacao judicial. Por fim, aprendemos que a combinacao estrategica de garantias — alienacao fiduciaria, cessao de recebiveis, CDA/WA, seguro e sobrecolateralizacao — permite montar pacotes calibrados para cada perfil de risco, atendendo desde o investidor institucional que exige cobertura de 140% ate o pequeno produtor que depende de garantias publicas complementares.
+Nesta aula, exploramos o padrao ERC-721 e sua capacidade de representar ativos unicos e irrepettiveis do agronegocio brasileiro. Primeiro, entendemos a anatomia do padrao — ownerOf, safeTransferFrom, approve — e como cada NFT possui um tokenId unico que o distingue de todos os demais. Segundo, aplicamos esse padrao a tres ativos fundamentais do agro: o CDA, que representa lotes especificos de mercadoria em armazem; o titulo de terra, que carrega matricula, georreferenciamento e historico produtivo; e a CPR fisica, vinculada a uma producao singular com lastro identificavel. Terceiro, mergulhamos nos metadados via tokenURI — a camada que transforma um simples token numerico em um certificado digital completo, com documentos legais, laudos de qualidade e coordenadas de geolocalizacao que viabilizam compliance ambiental (como o EUDR europeu) e rastreabilidade de origem. Porem, muitos cenarios do agro exigem uma combinacao de tokens fungiveis e nao fungiveis no mesmo contrato. Na proxima aula, veremos como o ERC-1155 resolve essa necessidade com eficiencia.
 
 ---
 
 ## Licao de Casa
 
-1. Pesquise no site da B3 (www.b3.com.br) o volume de CDA/WA registrados no ultimo ano disponivel. Identifique as principais commodities representadas nesses titulos e o volume financeiro correspondente.
-2. Elabore uma tabela comparativa entre alienacao fiduciaria, cessao fiduciaria de recebiveis, penhor rural e hipoteca rural, considerando: objeto da garantia, base legal, protecao em recuperacao judicial, forma de registro e custo de formalizacao.
-3. Simule a montagem de um pacote de garantias para uma operacao de CPR financeira de R$ 15 milhoes emitida por um produtor de milho de medio porte (arrendatario, sem terra propria, com contrato de venda para cooperativa local). Justifique cada garantia escolhida e estime a razao de cobertura total.
-
----
-
-## Proxima Aula
-
-Na proxima aula, vamos explorar a CPR como veiculo estruturado, analisando o uso de commodity pledge e conta escrow, a vinculacao de seguro rural e hedge de preco, e o papel da CPR como lastro para securitizacao via CRA, FIAGRO e FIDC. Ate la!
-
----
-
-## Links para aprofundamento
-
-1. [Lei 11.076/2004 — Cria CDA, WA, CRA e outros titulos do agronegocio](https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l11076.htm)
-2. [Decreto-Lei 167/1967 — Titulos de Credito Rural](https://www.planalto.gov.br/ccivil_03/decreto-lei/del0167.htm)
-3. [B3 — Registro de Titulos do Agronegocio (CDA/WA)](https://www.b3.com.br/pt_br/produtos-e-servicos/registro/renda-fixa-e-valores-mobiliarios/titulos-do-agronegocio/)
-4. [CONAB — Sistema de Cadastro Nacional de Unidades Armazenadoras](https://www.conab.gov.br/armazenagem/cadastro-de-armazens)
-5. [Banco Central do Brasil — Sistema de Registro de Garantias (SGAR)](https://www.bcb.gov.br/estabilidadefinanceira/sgar)
+1. Escolha um produto agropecuario brasileiro (cafe especial, algodao, cacau etc.) e elabore um JSON completo de metadados para um NFT ERC-721 representando um CDA desse produto. Inclua pelo menos 10 atributos relevantes (qualidade, peso, certificacoes, geolocalizacao, documentos legais).
+2. Pesquise o Regulamento Europeu Anti-Desmatamento (EUDR) e explique em 15 linhas como NFTs ERC-721 com geolocalizacao poderiam ajudar exportadores brasileiros de soja a comprovar conformidade com as exigencias europeias.
+3. Compare o fluxo de transferencia de um CDA no sistema tradicional (registro eletronico na B3) com o fluxo de transferencia de um CDA tokenizado como NFT ERC-721. Identifique pelo menos 3 vantagens e 2 limitacoes do modelo tokenizado.
 
 ---
 
 ## Questionario
 
-**1. A cessao fiduciaria de recebiveis incide sobre qual tipo de ativo?**
+**1. Qual funcao do padrao ERC-721 permite verificar quem e o proprietario atual de um ativo unico tokenizado, como um CDA especifico?**
 
-a) Bens imoveis rurais registrados em cartorio
-b) Maquinas e equipamentos agricolas
-c) Direitos creditorios (fluxos financeiros futuros) decorrentes de contratos de venda
-d) Safras pendentes ainda no campo, antes da colheita
-
-**Resposta: c**
-
-**2. Qual titulo comprova a existencia e a qualidade de produto agropecuario depositado em armazem credenciado?**
-
-a) Cedula de Produto Rural (CPR)
-b) Certificado de Deposito Agropecuario (CDA)
-c) Certificado de Recebiveis do Agronegocio (CRA)
-d) Letra de Credito do Agronegocio (LCA)
+a) balanceOf()
+b) ownerOf()
+c) totalSupply()
+d) getApproved()
 
 **Resposta: b**
 
-**3. Qual e a principal diferenca entre o credor com alienacao fiduciaria e o credor com penhor rural em caso de recuperacao judicial do devedor?**
+**2. Por que a funcao safeTransferFrom e preferivel a transferFrom na transferencia de NFTs representando ativos de alto valor, como titulos de terra?**
 
-a) O credor fiduciario recebe antes, mas ambos se submetem ao plano de recuperacao
-b) O credor pignoraticio tem prioridade absoluta sobre o credor fiduciario
-c) O credor fiduciario nao se submete aos efeitos da recuperacao judicial, enquanto o credor pignoraticio e submetido ao plano
-d) Nao ha diferenca pratica, pois ambos sao tratados como credores com garantia real
-
-**Resposta: c**
-
-**4. Por que operacoes de mercado de capitais lastreadas em CPRs tipicamente exigem razao de cobertura de garantias entre 120% e 150%?**
-
-a) Porque a legislacao brasileira fixa esse percentual como obrigatorio para todos os titulos de credito
-b) Para absorver potenciais perdas decorrentes de queda de preco, quebra de safra ou desvalorizacao dos colaterais, mantendo o credor protegido mesmo em cenarios adversos
-c) Porque o Banco Central exige esse nivel minimo de cobertura para autorizar o registro da CPR
-d) Para compensar a ausencia de seguro rural nessas operacoes
+a) Porque safeTransferFrom e mais rapida e consome menos gas
+b) Porque safeTransferFrom verifica se o destinatario e capaz de receber NFTs, prevenindo perda permanente do ativo
+c) Porque safeTransferFrom permite transferir multiplos NFTs simultaneamente
+d) Porque safeTransferFrom dispensa a necessidade de aprovacao previa
 
 **Resposta: b**
 
-**5. Um FIDC-Agro analisa uma CPR de R$ 10 milhoes de um produtor arrendatario (sem terra propria) de milho, sem contrato de venda firmado. Qual combinacao de garantias abaixo e a mais adequada para mitigar os riscos da operacao?**
+**3. No contexto da tokenizacao agro, qual e a funcao da URI retornada pela funcao tokenURI()?**
 
-a) Apenas hipoteca rural sobre a fazenda arrendada e aval pessoal do produtor
-b) Alienacao fiduciaria sobre a producao, seguro rural obrigatorio, aval pessoal, clausula de sobrecolateralizacao e adesao ao Fundo Garantidor Solidario
-c) Cessao fiduciaria de recebiveis do contrato de venda (inexistente) e CDA/WA sobre producao futura
-d) Penhor rural sobre a safra e carta de fianca bancaria de banco de pequeno porte
+a) Armazenar o valor financeiro do ativo diretamente na blockchain
+b) Apontar para um documento JSON com metadados detalhados do ativo, incluindo qualidade, geolocalizacao e documentos legais
+c) Definir o preco minimo de venda do NFT em mercado secundario
+d) Registrar automaticamente o NFT em cartorio de imoveis
 
 **Resposta: b**
+
+**4. Como a geolocalizacao nos metadados de um NFT de CPR fisica pode auxiliar no compliance com o Regulamento Europeu Anti-Desmatamento (EUDR)?**
+
+a) Eliminando a necessidade de qualquer certificacao ambiental
+b) Permitindo o cruzamento automatico das coordenadas de producao com dados de satelite para verificar ausencia de desmatamento ilegal
+c) Transferindo a responsabilidade ambiental do produtor para o detentor do NFT
+d) Substituindo o Cadastro Ambiental Rural (CAR) por um registro blockchain
+
+**Resposta: b**
+
+**5. Um armazem emite um CDA tokenizado como NFT ERC-721 para 10.000 toneladas de soja. O lote e vendido tres vezes em sequencia: do produtor para uma trading, da trading para um fundo, e do fundo para um exportador. Quantas transacoes Transfer sao registradas na blockchain (incluindo a emissao)?**
+
+a) 1 (apenas a emissao inicial)
+b) 2 (emissao e primeira venda)
+c) 3 (emissao e duas vendas)
+d) 4 (emissao e tres vendas)
+
+**Resposta: d**
+
+---
+
+## Proxima Aula
+
+Na proxima aula, vamos estudar o padrao ERC-1155, que combina o melhor dos mundos fungivel e nao fungivel em um unico contrato inteligente. Veremos como esse padrao multi-token permite representar simultaneamente batches de estoques agropecuarios (como 1.000 sacas de milho fungiveis entre si), tranches de CRA com diferentes perfis de risco, e ativos unicos — tudo com eficiencia de gas muito superior ao uso separado de ERC-20 e ERC-721. Ate la!

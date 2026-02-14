@@ -1,152 +1,963 @@
-# Aula 5.1: FIAGRO — Estrutura e Estrategias
+# Aula 5.1: Tokenizacao de CPR com ERC-20
 
 ## Abertura
 
-Bem-vindo a aula 5.1 do Modulo 5! Ate aqui, voce ja domina a arquitetura de funding do agro, a estruturacao avancada de CPR, a mecanica de securitizacao via CRA e os instrumentos de gestao de risco climatico, de preco e de credito. Agora, vamos dar um passo adiante e estudar o veiculo que consolidou a ponte entre o investidor de varejo e o credito agro estruturado: o FIAGRO — Fundo de Investimento nas Cadeias Produtivas Agroindustriais. Criado pela Lei 14.130/2021 e regulamentado pela CVM, o FIAGRO e o instrumento que mais rapidamente democratizou o acesso ao investimento no agronegocio brasileiro. Em menos de tres anos de existencia, acumulou mais de R$ 40 bilhoes em patrimonio liquido e atraiu mais de 1,5 milhao de cotistas na B3. Nesta aula, vamos dissecar sua estrutura juridica, suas modalidades, os ativos que compoe suas carteiras, as estrategias de gestao utilizadas pelos gestores profissionais, o regime tributario e os desafios que o mercado ainda precisa superar.
+Bem-vindo a aula 5.1 do Modulo 5! Ate aqui, voce construiu uma base solida sobre Web3, tokenizacao de RWA, marcos regulatorios e arquitetura de smart contracts aplicados ao agronegocio. Agora, chegou o momento de colocar a mao na massa e implementar, passo a passo, a tokenizacao de uma Cedula de Produto Rural (CPR) utilizando o padrao ERC-20 na blockchain Ethereum. A CPR e o instrumento juridico mais fundamental do credito agro brasileiro — criada pela Lei 8.929/1994 e modernizada pela Lei 13.986/2020 (Lei do Agro) — e sua versao tokenizada representa uma das aplicacoes mais promissoras da tecnologia blockchain no financiamento do agronegocio. Empresas como Agrotoken (Argentina/Brasil), Liqi Digital Assets e MB Tokens ja operam com tokenizacao de recebiveis agro no mercado real. Nesta aula, vamos construir um contrato ERC-20 completo para representar uma CPR financeira tokenizada, integrar um oraculo de preco para atualizar o valor do ativo subjacente e realizar testes basicos com deploy em testnet.
 
 ### Programa da aula:
 
-1. Definicao e modalidades do FIAGRO (introducao)
-2. Ativos investiveis e estrategias de gestao (base e aprofundamento)
-3. Tributacao, desafios e mercado secundario (conceito principal da aula)
+1. Fluxo de tokenizacao: originador, SPV, contrato ERC-20 e distribuicao
+2. Integracao com oraculo de preco (Chainlink)
+3. Testes basicos e deploy em testnet
 
 ---
 
-## 1. Definicao e modalidades do FIAGRO
+## 1. Fluxo de tokenizacao: originador, SPV, contrato ERC-20 e distribuicao
 
-### Base legal e conceito geral
+### Visao geral da arquitetura de tokenizacao de CPR
 
-O FIAGRO foi instituido pela Lei 14.130, de 29 de marco de 2021, que inseriu dispositivos na Lei 8.668/1993 (lei dos fundos de investimento imobiliario) para criar uma categoria especifica de fundo dedicado as cadeias produtivas agroindustriais. A regulamentacao operacional coube a Comissao de Valores Mobiliarios (CVM), que editou a Resolucao CVM 39/2021 — posteriormente atualizada pela Resolucao CVM 175/2022, que unificou o marco regulatorio de todos os fundos de investimento no Brasil. A essencia do FIAGRO e permitir que recursos captados junto a investidores sejam direcionados para ativos relacionados ao agronegocio, incluindo direitos creditorios (CPRs, CRAs, CDCAs), imoveis rurais (fazendas, armazens, silos) e participacoes societarias em empresas do setor agro.
+A tokenizacao de uma CPR segue um fluxo estruturado que conecta o mundo juridico-financeiro tradicional a infraestrutura blockchain. Esse fluxo envolve quatro etapas fundamentais: (i) o originador emite a CPR e a cede a um veiculo juridico; (ii) o SPV (Special Purpose Vehicle) ou a securitizadora recebe a CPR e a registra como lastro; (iii) um smart contract ERC-20 e implantado na blockchain para representar fracoes do valor da CPR; e (iv) os tokens sao distribuidos aos investidores via plataforma regulada.
 
-O FIAGRO opera sob o regime de condominio, podendo ser constituido como fundo aberto (com resgates periodicos) ou fechado (com cotas negociadas em mercado secundario na B3). Na pratica, a grande maioria dos FIAGROs listados na B3 adota a estrutura de fundo fechado, replicando o modelo consagrado pelos Fundos de Investimento Imobiliario (FIIs). Essa escolha se justifica pela natureza dos ativos subjacentes — credito agro e imoveis rurais tem baixa liquidez e prazos longos, o que torna inconveniente a estrutura de fundo aberto com resgate diario. O investidor que deseja se desfazer de sua posicao vende suas cotas no mercado secundario da B3, ao preco determinado pela oferta e demanda.
+O originador e tipicamente o produtor rural, a cooperativa ou a trading agricola que emite a CPR. No Brasil, a CPR pode ser fisica (com entrega de produto) ou financeira (com liquidacao em dinheiro). Para fins de tokenizacao, a CPR financeira e a mais adequada, pois sua liquidacao e em moeda corrente, facilitando a correspondencia com o valor do token. A CPR deve estar registrada em sistema de registro autorizado pelo Banco Central — como a B3, a CERC ou a TAG — conforme exigencia da Lei 13.986/2020. Esse registro confere ao titulo validade juridica, publicidade e oponibilidade perante terceiros.
 
-- **Exemplo**: O KNCA11, gerido pela Kinea Investimentos (grupo Itau), e um dos maiores FIAGROs do mercado brasileiro, com patrimonio liquido superior a R$ 8 bilhoes e mais de 300.000 cotistas. Trata-se de um fundo fechado, listado na B3, que investe predominantemente em CRAs e CPRs financeiras de grandes produtores, cooperativas e agroindustrias. O investidor compra cotas no home broker de sua corretora, recebe rendimentos mensais isentos de IR (desde que cumpridos os requisitos legais) e pode vender as cotas a qualquer momento durante o pregao. O fundo distribui mensalmente os rendimentos oriundos dos juros e amortizacoes dos CRAs que compoe sua carteira.
+O SPV (Sociedade de Proposito Especifico) ou a securitizadora funciona como um intermediario fiduciario que isola o risco do originador do risco do investidor. No modelo brasileiro, a securitizadora (regulada pela CVM conforme Resolucao CVM 60) constitui um patrimonio separado vinculado a emissao, garantindo que os ativos do lastro nao se confundam com os ativos proprios da securitizadora. Esse isolamento patrimonial e fundamental para proteger o investidor em caso de falencia do originador ou da propria securitizadora.
 
-### Modalidades: FIAGRO-FIDC, FIAGRO-FII e FIAGRO-FIP
+- **Exemplo**: A Agrotoken, fundada na Argentina e com operacao no Brasil desde 2022, tokeniza graos (soja, milho, trigo) utilizando um modelo onde o produtor deposita a commodity em um armazem certificado, recebe um token que representa aquele grao, e pode usar esse token como meio de pagamento ou colateral. No modelo que construiremos nesta aula, o fluxo e similar porem aplicado a uma CPR financeira: o produtor emite uma CPR de R$ 1.000.000 lastreada em 5.000 sacas de soja a R$ 200/saca, registra na CERC, cede a um SPV, que entao emite tokens ERC-20 representando fracoes de R$ 100 cada — totalizando 10.000 tokens.
 
-A legislacao e a regulamentacao da CVM previram tres modalidades distintas de FIAGRO, cada uma inspirada em uma categoria de fundo ja existente no mercado brasileiro. O FIAGRO-FII (Fundo de Investimento Imobiliario) e a modalidade mais popular e amplamente adotada. Ele pode investir em imoveis rurais (terras, armazens, silos, plantas agroindustriais), em titulos de credito do agro (CRAs, CPRs, CDCAs, LCAs) e em cotas de outros fundos. A maioria dos FIAGROs listados na B3 segue essa modalidade, combinando credito agro com exposicao imobiliaria rural. A gestao e feita por administradoras e gestoras registradas na CVM, e o fundo possui obrigacao de distribuir pelo menos 95% dos resultados auferidos semestralmente.
+### Contrato ERC-20 para CPR tokenizada
 
-O FIAGRO-FIDC (Fundo de Investimento em Direitos Creditorios) e voltado especificamente para a aquisicao de recebiveis do agronegocio. Sua estrutura segue as regras de FIDCs, com a possibilidade de emissao de cotas subordinadas e cotas senior, criando camadas de protecao equivalentes a uma estrutura de securitizacao. Essa modalidade e particularmente atrativa para investidores institucionais que buscam exposicao a credito agro com mecanismos formais de subordinacao e waterfall de pagamentos. O FIAGRO-FIP (Fundo de Investimento em Participacoes) e a modalidade desenhada para investimentos em equity — ou seja, participacoes societarias em empresas do agronegocio. Ele segue as regras dos FIPs tradicionais, sendo direcionado a investidores qualificados e profissionais, e tem potencial para financiar startups agtech, empresas de processamento agroindustrial e projetos de expansao de grupos agricolas.
+O padrao ERC-20 e o padrao de token fungivel mais utilizado na blockchain Ethereum. Ele define uma interface com funcoes como `transfer`, `approve`, `transferFrom`, `balanceOf` e `totalSupply`, que permitem a criacao, transferencia e gestao de tokens de forma padronizada e interoperavel com qualquer carteira ou exchange compativel. Para a tokenizacao de CPR, o ERC-20 e adequado quando todos os tokens representam fracoes identicas e fungiveis do mesmo ativo — ou seja, cada token vale exatamente o mesmo e tem os mesmos direitos.
 
-- **Exemplo**: O Valora CRA FIAGRO (VGIA11) e um exemplo de FIAGRO-FII focado em credito, com carteira composta quase integralmente por CRAs e CPRs financeiras, indexados ao CDI ou ao IPCA. Ja o FIAGRO-FIDC da Ecoagro foi estruturado com cotas senior e subordinadas, permitindo que investidores conservadores acessem a cota senior (menor rendimento, menor risco) enquanto investidores mais agressivos acessem a cota subordinada (maior rendimento, absorve perdas primeiro). No segmento de FIAGRO-FIP, embora ainda incipiente, ja existem veiculos em estruturacao voltados para a aquisicao de participacoes em empresas de logistica agricola, armazenagem e tecnologia para o campo.
+Abaixo, o contrato Solidity completo para uma CPR tokenizada:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+
+/**
+ * @title CPRToken
+ * @notice Contrato ERC-20 que representa fracoes tokenizadas de uma CPR financeira
+ * @dev Utiliza OpenZeppelin para seguranca e padronizacao
+ *
+ * Fluxo: Originador emite CPR -> SPV recebe e registra -> Deploy deste contrato
+ *        -> Mint de tokens proporcionais ao valor da CPR -> Distribuicao a investidores
+ */
+contract CPRToken is ERC20, AccessControl, Pausable {
+
+    // === ROLES ===
+    bytes32 public constant SPV_ROLE = keccak256("SPV_ROLE");
+    bytes32 public constant COMPLIANCE_ROLE = keccak256("COMPLIANCE_ROLE");
+
+    // === DADOS DA CPR ===
+    string public cprRegistrationId;       // ID de registro na CERC/B3/TAG
+    string public commodity;                // Ex: "SOJA", "MILHO", "CAFE"
+    uint256 public sacas;                   // Quantidade de sacas no lastro
+    uint256 public maturityDate;            // Data de vencimento (timestamp UNIX)
+    uint256 public issuanceDate;            // Data de emissao
+    uint256 public faceValue;               // Valor de face em centavos de BRL (evita decimais)
+    address public originatorAddress;       // Endereco do produtor/cooperativa
+    bool public isRedeemed;                 // Se a CPR ja foi liquidada
+
+    // === WHITELIST (KYC/AML) ===
+    mapping(address => bool) public whitelisted;
+
+    // === EVENTOS ===
+    event CPRCreated(
+        string cprRegistrationId,
+        string commodity,
+        uint256 sacas,
+        uint256 faceValue,
+        uint256 maturityDate
+    );
+    event InvestorWhitelisted(address indexed investor, bool status);
+    event CPRRedeemed(uint256 timestamp, uint256 totalDistributed);
+    event TokensMinted(address indexed to, uint256 amount);
+
+    /**
+     * @notice Construtor do token CPR
+     * @param _name Nome do token (ex: "CPR Soja Fazenda Santa Maria 2025")
+     * @param _symbol Simbolo do token (ex: "CPRSOJA25")
+     * @param _cprRegistrationId ID de registro na registradora (CERC, B3 ou TAG)
+     * @param _commodity Commodity subjacente
+     * @param _sacas Quantidade de sacas que lastreiam a CPR
+     * @param _maturityDate Data de vencimento em timestamp UNIX
+     * @param _faceValue Valor de face total em centavos de BRL
+     * @param _originator Endereco do originador (produtor/cooperativa)
+     * @param _spv Endereco do SPV/securitizadora
+     */
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        string memory _cprRegistrationId,
+        string memory _commodity,
+        uint256 _sacas,
+        uint256 _maturityDate,
+        uint256 _faceValue,
+        address _originator,
+        address _spv
+    ) ERC20(_name, _symbol) {
+        require(_maturityDate > block.timestamp, "Vencimento deve ser futuro");
+        require(_faceValue > 0, "Valor de face deve ser positivo");
+        require(_originator != address(0), "Originador invalido");
+        require(_spv != address(0), "SPV invalido");
+
+        cprRegistrationId = _cprRegistrationId;
+        commodity = _commodity;
+        sacas = _sacas;
+        maturityDate = _maturityDate;
+        faceValue = _faceValue;
+        issuanceDate = block.timestamp;
+        originatorAddress = _originator;
+        isRedeemed = false;
+
+        // Configura roles
+        _grantRole(DEFAULT_ADMIN_ROLE, _spv);
+        _grantRole(SPV_ROLE, _spv);
+        _grantRole(COMPLIANCE_ROLE, _spv);
+
+        // Whitelist o SPV automaticamente
+        whitelisted[_spv] = true;
+
+        emit CPRCreated(
+            _cprRegistrationId,
+            _commodity,
+            _sacas,
+            _faceValue,
+            _maturityDate
+        );
+    }
+
+    // === MODIFICADORES ===
+
+    modifier onlyWhitelisted(address _addr) {
+        require(whitelisted[_addr], "Endereco nao esta na whitelist (KYC/AML)");
+        _;
+    }
+
+    modifier notRedeemed() {
+        require(!isRedeemed, "CPR ja foi liquidada");
+        _;
+    }
+
+    // === FUNCOES DE COMPLIANCE ===
+
+    /**
+     * @notice Adiciona ou remove investidor da whitelist (KYC/AML)
+     * @dev Somente COMPLIANCE_ROLE pode executar
+     * @param _investor Endereco do investidor
+     * @param _status true para adicionar, false para remover
+     */
+    function setWhitelist(address _investor, bool _status)
+        external
+        onlyRole(COMPLIANCE_ROLE)
+    {
+        whitelisted[_investor] = _status;
+        emit InvestorWhitelisted(_investor, _status);
+    }
+
+    /**
+     * @notice Adiciona multiplos investidores a whitelist em lote
+     * @param _investors Array de enderecos
+     */
+    function batchWhitelist(address[] calldata _investors)
+        external
+        onlyRole(COMPLIANCE_ROLE)
+    {
+        for (uint256 i = 0; i < _investors.length; i++) {
+            whitelisted[_investors[i]] = true;
+            emit InvestorWhitelisted(_investors[i], true);
+        }
+    }
+
+    // === FUNCOES DE EMISSAO ===
+
+    /**
+     * @notice Emite tokens para investidores apos verificacao de whitelist
+     * @dev Somente SPV_ROLE pode mintar tokens
+     * @param _to Endereco do investidor (deve estar na whitelist)
+     * @param _amount Quantidade de tokens a emitir
+     */
+    function mint(address _to, uint256 _amount)
+        external
+        onlyRole(SPV_ROLE)
+        onlyWhitelisted(_to)
+        notRedeemed
+        whenNotPaused
+    {
+        require(
+            totalSupply() + _amount <= faceValue,
+            "Emissao excede valor de face da CPR"
+        );
+        _mint(_to, _amount);
+        emit TokensMinted(_to, _amount);
+    }
+
+    // === OVERRIDE DE TRANSFER COM WHITELIST ===
+
+    /**
+     * @notice Override do _beforeTokenTransfer para enforcar whitelist
+     * @dev Garante que apenas enderecos na whitelist podem receber tokens
+     */
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 amount
+    ) internal virtual override whenNotPaused {
+        super._beforeTokenTransfer(from, to, amount);
+
+        // Permite mint (from == address(0)) e burn (to == address(0))
+        if (to != address(0)) {
+            require(
+                whitelisted[to],
+                "Destinatario nao esta na whitelist (KYC/AML)"
+            );
+        }
+    }
+
+    // === FUNCOES DE LIQUIDACAO ===
+
+    /**
+     * @notice Marca a CPR como liquidada no vencimento
+     * @dev Somente SPV_ROLE pode executar. Apos redemption,
+     *      nenhum novo mint e permitido.
+     */
+    function redeem() external onlyRole(SPV_ROLE) notRedeemed {
+        require(
+            block.timestamp >= maturityDate,
+            "CPR ainda nao venceu"
+        );
+        isRedeemed = true;
+        emit CPRRedeemed(block.timestamp, totalSupply());
+    }
+
+    // === FUNCOES DE EMERGENCIA ===
+
+    function pause() external onlyRole(SPV_ROLE) {
+        _pause();
+    }
+
+    function unpause() external onlyRole(SPV_ROLE) {
+        _unpause();
+    }
+
+    // === VIEW FUNCTIONS ===
+
+    /**
+     * @notice Retorna informacoes completas da CPR em uma unica chamada
+     */
+    function getCPRInfo()
+        external
+        view
+        returns (
+            string memory _cprRegistrationId,
+            string memory _commodity,
+            uint256 _sacas,
+            uint256 _faceValue,
+            uint256 _maturityDate,
+            uint256 _issuanceDate,
+            address _originator,
+            bool _isRedeemed,
+            uint256 _totalSupply
+        )
+    {
+        return (
+            cprRegistrationId,
+            commodity,
+            sacas,
+            faceValue,
+            maturityDate,
+            issuanceDate,
+            originatorAddress,
+            isRedeemed,
+            totalSupply()
+        );
+    }
+
+    /**
+     * @notice Retorna quantos dias faltam para o vencimento da CPR
+     */
+    function daysToMaturity() external view returns (uint256) {
+        if (block.timestamp >= maturityDate) return 0;
+        return (maturityDate - block.timestamp) / 1 days;
+    }
+}
+```
+
+### Explicacao detalhada do contrato
+
+O contrato `CPRToken` herda de tres contratos da biblioteca OpenZeppelin, que e o padrao da industria para desenvolvimento seguro de smart contracts. O `ERC20` fornece toda a logica de token fungivel — saldo, transferencia, aprovacao. O `AccessControl` implementa um sistema de roles (papeis) que permite diferenciar quem pode mintar tokens (SPV_ROLE), quem pode gerenciar a whitelist (COMPLIANCE_ROLE) e quem tem poder administrativo total (DEFAULT_ADMIN_ROLE). O `Pausable` permite que o SPV pause todas as transferencias em caso de emergencia — por exemplo, se houver uma disputa judicial sobre a CPR subjacente ou se o regulador determinar a suspensao da negociacao.
+
+Os dados da CPR sao armazenados on-chain como variaveis de estado: o ID de registro na CERC/B3/TAG (`cprRegistrationId`), a commodity subjacente, a quantidade de sacas, a data de vencimento, o valor de face e o endereco do originador. Isso cria um registro imutavel e auditavel que qualquer participante do mercado pode consultar diretamente na blockchain, sem depender de intermediarios. O campo `faceValue` e expresso em centavos de BRL para evitar problemas com decimais em Solidity (que nao suporta ponto flutuante).
+
+A whitelist implementa o controle de KYC/AML exigido pela CVM para oferta de valores mobiliarios. Somente investidores previamente verificados e adicionados a whitelist podem receber tokens — seja via mint inicial ou via transferencia no mercado secundario. O override da funcao `_beforeTokenTransfer` garante que essa verificacao ocorre em toda e qualquer transferencia, incluindo operacoes em DEXs (exchanges descentralizadas). Esse mecanismo e essencial para conformidade com a Resolucao CVM 88/2022, que regulamenta a oferta de tokens de valores mobiliarios no Brasil.
+
+A funcao `redeem` marca a CPR como liquidada apos o vencimento. Na pratica, a liquidacao financeira ocorreria off-chain (o originador paga o valor devido ao SPV, que distribui aos investidores), mas o registro on-chain garante transparencia e imutabilidade do evento. Apos a redemption, nenhum novo token pode ser mintado, preservando a integridade do lastro.
+
+- **Exemplo**: A cooperativa Coamo, sediada em Campo Mourao/PR e uma das maiores cooperativas agropecuarias do Brasil com faturamento superior a R$ 30 bilhoes/ano, poderia tokenizar uma CPR financeira de R$ 5.000.000 lastreada em 25.000 sacas de soja. O SPV implantaria o contrato CPRToken com `faceValue = 500000000` (R$ 5.000.000 em centavos), `sacas = 25000`, `commodity = "SOJA"` e `maturityDate` correspondente a abril de 2026 (pos-colheita). Seriam emitidos 50.000 tokens de R$ 100 cada, distribuidos a investidores qualificados via plataforma regulada como a Liqi ou MB Tokens.
 
 ---
 
-## 2. Ativos investiveis e estrategias de gestao
+## 2. Integracao com oraculo de preco (Chainlink)
 
-### Universo de ativos: CRA, CPR, terras e equity agro
+### O problema do oraculo no agronegocio
 
-O universo de ativos que um FIAGRO pode adquirir e amplo e diversificado, refletindo a complexidade da cadeia produtiva do agronegocio. No segmento de credito, os ativos mais comuns sao os Certificados de Recebiveis do Agronegocio (CRAs), que representam a maior parcela das carteiras dos FIAGROs listados na B3. Os CRAs oferecem remuneracao previsivel — tipicamente CDI + 2% a 5% ao ano ou IPCA + 7% a 10% ao ano — e contam com garantias estruturadas como alienacao fiduciaria de imoveis rurais, penhor de safra e aval de controladores. Em seguida, aparecem as CPRs financeiras, emitidas diretamente por produtores ou cooperativas, que servem como instrumento de credito de curto e medio prazo. Alguns FIAGROs investem tambem em CDCAs (Certificados de Direitos Creditorios do Agronegocio), LCAs (Letras de Credito do Agronegocio) e debentures de empresas do agro.
+Smart contracts na blockchain sao deterministicos e isolados — eles nao conseguem acessar dados externos como precos de commodities, taxas de cambio ou indicadores climaticos. Para que o contrato de CPR tokenizada saiba o preco atual da soja (ou qualquer outra commodity do lastro), ele precisa de um oraculo — um servico que traz dados do mundo real para a blockchain de forma confiavel e verificavel.
 
-No segmento imobiliario, os FIAGROs podem adquirir terras agricolas, armazens, silos, plantas de beneficiamento e outros imoveis ligados a cadeia produtiva. O investimento em terras agricolas no Brasil apresenta historicamente valorizacao real significativa — segundo dados da FNP Consultoria e do IBGE, o valor medio do hectare de terra agricola de alta produtividade no Mato Grosso passou de aproximadamente R$ 15.000 em 2015 para mais de R$ 40.000 em 2024, representando uma valorizacao nominal superior a 160% em nove anos. Alem da valorizacao patrimonial, o arrendamento de terras gera fluxo de caixa recorrente, tipicamente entre 10 e 20 sacas de soja por hectare ao ano, dependendo da regiao e da qualidade do solo.
+No agronegocio brasileiro, os precos de referencia mais utilizados sao o CEPEA/ESALQ (Centro de Estudos Avancados em Economia Aplicada da USP), que publica indicadores diarios de soja, milho, cafe, boi gordo e outras commodities, e os precos da B3 (contratos futuros de soja, milho e cafe). Internacionalmente, os precos da CBOT (Chicago Board of Trade) sao referencia global para soja e milho. O oraculo precisa capturar esses precos e disponibiliza-los on-chain de forma que o smart contract possa consulta-los.
 
-- **Exemplo**: O FIAGRO BTAG11, gerido pelo BTG Pactual, combina investimento em CRAs (cerca de 70% da carteira) com exposicao a terras agricolas e armazens (cerca de 30%). A parcela de credito gera rendimento mensal via juros dos CRAs, enquanto a parcela imobiliaria gera receita via arrendamento de fazendas no MATOPIBA (Maranhao, Tocantins, Piaui e Bahia) e potencial de ganho de capital com a valorizacao da terra. Essa combinacao de renda recorrente e valorizacao patrimonial e uma das estrategias mais sofisticadas do mercado de FIAGROs.
+A Chainlink e a rede de oraculos descentralizados mais utilizada no ecossistema Ethereum, com mais de US$ 10 trilhoes em valor total transacionado desde sua criacao. A Chainlink opera com uma rede de nos independentes que consultam multiplas fontes de dados, agregam os resultados e publicam o preco consensuado on-chain. Isso elimina o risco de um unico ponto de falha ou manipulacao. Para commodities agricolas, a Chainlink ja oferece feeds de preco para soja, milho e trigo referenciados a CBOT, e ha iniciativas para integrar dados do CEPEA/ESALQ.
 
-### Estrategias de gestao e comparacao com REITs
+### Contrato de oraculo para preco de commodity
 
-Os gestores de FIAGRO operam com diferentes estrategias que podem ser classificadas em tres grandes categorias. A estrategia de high grade consiste em investir predominantemente em CRAs de grandes empresas e cooperativas com rating elevado (AA ou AAA), priorizando seguranca e previsibilidade de fluxo de caixa. Esses fundos tendem a oferecer rendimentos mais modestos — na faixa de CDI + 1,5% a 3% — mas com menor volatilidade e risco de inadimplencia. A estrategia de high yield busca CRAs e CPRs de devedores de menor porte ou com perfil de risco mais elevado, oferecendo spreads maiores — CDI + 4% a 7% — em troca de maior exposicao a inadimplencia. A estrategia hibrida combina credito e ativos reais (terras, armazens), buscando diversificacao entre renda fixa e potencial de valorizacao patrimonial.
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-A comparacao com os REITs (Real Estate Investment Trusts) norte-americanos e instrutiva. Os REITs foram criados nos Estados Unidos em 1960 e se tornaram um dos principais veiculos de investimento imobiliario do mundo, com mais de US$ 4 trilhoes em ativos sob gestao. O FIAGRO, em sua modalidade FII, segue principios semelhantes: fundo fechado, listado em bolsa, com obrigacao de distribuicao de resultados, isencao fiscal para pessoa fisica e gestao profissional. Porem, o FIAGRO vai alem do conceito de REIT tradicional porque combina exposicao imobiliaria rural com credito estruturado agro — algo que nao tem equivalente direto no mercado norte-americano. Nos EUA, o investimento em credito agro se da por meio de veiculos separados, como os farmland REITs (Gladstone Land, Farmland Partners) e os fundos de credito rural (Farmer Mac). O FIAGRO unifica essas duas dimensoes em um unico veiculo regulado.
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-- **Exemplo**: A Gladstone Land Corporation (ticker: LAND), um farmland REIT listado na Nasdaq, possuia em 2024 um portfolio de aproximadamente 170 fazendas em 15 estados americanos, totalizando mais de 115.000 acres (cerca de 46.500 hectares) avaliados em aproximadamente US$ 1,8 bilhao. A Gladstone gera receita exclusivamente via arrendamento de terras para produtores. Ja o KNCA11 (Kinea FIAGRO), com patrimonio de mais de R$ 8 bilhoes, gera receita via juros de CRAs e CPRs — um modelo de negocio fundamentalmente diferente. O FIAGRO brasileiro, ao permitir que um unico fundo combine terras, arrendamento e credito estruturado, oferece ao gestor um leque de estrategias mais amplo do que o disponivel para os farmland REITs americanos.
+/**
+ * @title CommodityPriceOracle
+ * @notice Contrato que consulta preco de commodity via Chainlink
+ * @dev Pode ser usado como modulo auxiliar pelo CPRToken
+ *
+ * Em producao, o feed Chainlink de soja/USD seria:
+ *   Mainnet: endereco do feed oficial Chainlink
+ *   Sepolia (testnet): usar mock ou feed disponivel
+ *
+ * O preco e retornado com 8 casas decimais (padrao Chainlink).
+ * Ex: soja a USD 12.50/bushel => 1250000000
+ */
+contract CommodityPriceOracle is Ownable {
+
+    AggregatorV3Interface internal priceFeed;
+
+    // Fator de conversao: bushel -> saca de 60kg
+    // 1 bushel de soja = ~27.216 kg
+    // 1 saca = 60 kg
+    // 1 saca = 60/27.216 = ~2.2046 bushels
+    uint256 public constant BUSHELS_PER_SACA = 22046; // x10000 para precisao
+    uint256 public constant PRECISION = 10000;
+
+    // Taxa de cambio BRL/USD (atualizada via Chainlink ou manualmente)
+    AggregatorV3Interface internal brlUsdFeed;
+
+    // Ultimo preco calculado em centavos de BRL por saca
+    uint256 public lastPriceInBRLCentavos;
+    uint256 public lastUpdateTimestamp;
+
+    // Tolerancia maxima para dados stale (1 hora)
+    uint256 public stalePriceThreshold = 3600;
+
+    event PriceUpdated(
+        uint256 priceUSDPerBushel,
+        uint256 brlUsdRate,
+        uint256 priceInBRLCentavos,
+        uint256 timestamp
+    );
+
+    /**
+     * @param _soybeanFeed Endereco do feed Chainlink para soja/USD
+     * @param _brlUsdFeed Endereco do feed Chainlink para BRL/USD
+     */
+    constructor(address _soybeanFeed, address _brlUsdFeed) {
+        priceFeed = AggregatorV3Interface(_soybeanFeed);
+        brlUsdFeed = AggregatorV3Interface(_brlUsdFeed);
+    }
+
+    /**
+     * @notice Obtem o preco mais recente da soja em USD por bushel
+     * @return price Preco com 8 decimais
+     * @return timestamp Momento da ultima atualizacao
+     */
+    function getSoybeanPriceUSD()
+        public
+        view
+        returns (int256 price, uint256 timestamp)
+    {
+        (
+            /* uint80 roundID */,
+            int256 answer,
+            /* uint256 startedAt */,
+            uint256 updatedAt,
+            /* uint80 answeredInRound */
+        ) = priceFeed.latestRoundData();
+
+        require(answer > 0, "Preco invalido do oraculo");
+        require(
+            block.timestamp - updatedAt <= stalePriceThreshold,
+            "Dados do oraculo estao desatualizados (stale)"
+        );
+
+        return (answer, updatedAt);
+    }
+
+    /**
+     * @notice Obtem a taxa de cambio BRL/USD
+     * @return rate Taxa com 8 decimais
+     */
+    function getBRLUSDRate() public view returns (int256 rate) {
+        (
+            ,
+            int256 answer,
+            ,
+            uint256 updatedAt,
+
+        ) = brlUsdFeed.latestRoundData();
+
+        require(answer > 0, "Taxa de cambio invalida");
+        require(
+            block.timestamp - updatedAt <= stalePriceThreshold,
+            "Taxa de cambio desatualizada (stale)"
+        );
+
+        return answer;
+    }
+
+    /**
+     * @notice Calcula o preco de uma saca de soja em centavos de BRL
+     * @dev Converte: USD/bushel -> USD/saca -> BRL/saca -> centavos BRL/saca
+     *
+     * Exemplo numerico:
+     *   Soja: USD 12.50/bushel (1250000000 com 8 decimais)
+     *   1 saca = 2.2046 bushels
+     *   USD/saca = 12.50 * 2.2046 = USD 27.5575
+     *   Cambio: BRL/USD = 5.10 (510000000 com 8 decimais)
+     *   BRL/saca = 27.5575 * 5.10 = R$ 140.54
+     *   Centavos = 14054
+     */
+    function calculateSacaPriceBRL()
+        public
+        returns (uint256 priceInCentavos)
+    {
+        (int256 soybeanPrice, ) = getSoybeanPriceUSD();
+        int256 brlRate = getBRLUSDRate();
+
+        // soybeanPrice: USD por bushel com 8 decimais
+        // Converter para USD por saca: preco * BUSHELS_PER_SACA / PRECISION
+        // Depois converter para BRL: * brlRate / 1e8
+        // Depois converter para centavos: * 100 / 1e8
+
+        uint256 usdPerSaca = (uint256(soybeanPrice) * BUSHELS_PER_SACA) /
+            PRECISION;
+
+        // usdPerSaca esta com 8 decimais
+        // brlRate esta com 8 decimais
+        // Resultado: (usdPerSaca * brlRate) / 1e8 = BRL por saca com 8 decimais
+        // Dividir por 1e6 para obter centavos (8 decimais - 6 = 2 decimais = centavos)
+
+        uint256 brlPerSacaCentavos = (usdPerSaca * uint256(brlRate)) / 1e14;
+
+        lastPriceInBRLCentavos = brlPerSacaCentavos;
+        lastUpdateTimestamp = block.timestamp;
+
+        emit PriceUpdated(
+            uint256(soybeanPrice),
+            uint256(brlRate),
+            brlPerSacaCentavos,
+            block.timestamp
+        );
+
+        return brlPerSacaCentavos;
+    }
+
+    /**
+     * @notice Calcula o valor total do lastro de uma CPR em centavos de BRL
+     * @param _sacas Numero de sacas que lastreiam a CPR
+     */
+    function calculateCPRValue(uint256 _sacas)
+        external
+        returns (uint256 valueInCentavos)
+    {
+        uint256 pricePerSaca = calculateSacaPriceBRL();
+        return pricePerSaca * _sacas;
+    }
+
+    /**
+     * @notice Atualiza o threshold de dados stale
+     */
+    function setStalePriceThreshold(uint256 _newThreshold)
+        external
+        onlyOwner
+    {
+        stalePriceThreshold = _newThreshold;
+    }
+}
+```
+
+### Explicacao da integracao com oraculo
+
+O contrato `CommodityPriceOracle` utiliza dois feeds Chainlink: um para o preco da soja em USD por bushel (unidade padrao da CBOT) e outro para a taxa de cambio BRL/USD. A combinacao desses dois feeds permite calcular o preco de uma saca de soja de 60kg em reais — a unidade de referencia do mercado brasileiro.
+
+A conversao de bushel para saca e feita usando a constante `BUSHELS_PER_SACA`, que representa a relacao de aproximadamente 2,2046 bushels por saca de 60kg. O calculo completo e: preco em USD/bushel * bushels por saca * taxa BRL/USD = preco em BRL/saca. Todas as operacoes usam aritmetica inteira com fatores de precisao para evitar perda de dados, ja que o Solidity nao suporta numeros de ponto flutuante.
+
+A verificacao de `stalePriceThreshold` e critica para a seguranca do sistema. Se o oraculo Chainlink nao atualizar o preco dentro do periodo configurado (padrao: 1 hora), a funcao reverte para evitar que decisoes financeiras sejam tomadas com dados desatualizados. Em mercados de commodities agricolas, um atraso de horas pode significar variacoes de 2% a 5% no preco — o que em uma CPR de R$ 5.000.000 representaria uma discrepancia de R$ 100.000 a R$ 250.000.
+
+- **Exemplo**: Em janeiro de 2025, o preco da soja na CBOT estava em torno de USD 9,80/bushel. Com cambio de BRL/USD a 6,10, o preco da saca de soja seria: 9,80 * 2,2046 * 6,10 = R$ 131,78/saca. Se a CPR tokenizada tem lastro de 25.000 sacas, o valor total do lastro calculado pelo oraculo seria R$ 3.294.500. Se o token foi emitido com valor de face de R$ 5.000.000, o indice de cobertura seria 3.294.500/5.000.000 = 0,66x — abaixo de 1,0x, o que indicaria que o lastro fisico (ao preco de mercado atual) nao cobre o valor da emissao. Na pratica, a CPR financeira tem remuneracao adicional (taxa de juros) que compensa essa diferenca, mas o oraculo fornece ao investidor transparencia em tempo real sobre a relacao lastro/emissao.
 
 ---
 
-## 3. Tributacao, desafios e mercado secundario
+## 3. Testes basicos e deploy em testnet
 
-### Regime tributario e isencao para pessoa fisica
+### Configuracao do ambiente de desenvolvimento
 
-O regime tributario do FIAGRO e um dos seus maiores atrativos e segue as mesmas regras aplicaveis aos Fundos de Investimento Imobiliario (FIIs). Os rendimentos distribuidos pelo fundo sao isentos de Imposto de Renda para o investidor pessoa fisica, desde que sejam cumpridos simultaneamente tres requisitos: (i) o fundo deve ter no minimo 50 cotistas; (ii) as cotas devem ser negociadas exclusivamente em bolsa de valores ou mercado de balcao organizado; e (iii) o investidor pessoa fisica nao pode deter, isoladamente ou em conjunto com pessoas ligadas, mais de 10% das cotas do fundo ou mais de 10% dos rendimentos distribuidos. O ganho de capital na venda das cotas no mercado secundario e tributado a aliquota de 20%, independentemente do prazo de detencao.
+Para testar e implantar os contratos, utilizaremos o Hardhat — o framework de desenvolvimento Ethereum mais popular, com mais de 6 milhoes de downloads mensais no npm. O Hardhat fornece um ambiente de teste local, compilacao de contratos Solidity, scripts de deploy e integracao com testnets publicas como Sepolia e Goerli.
 
-Para o investidor pessoa juridica, os rendimentos distribuidos sao tributados conforme o regime tributario da empresa (lucro real, presumido ou simples), e o ganho de capital tambem incide a 20%. Essa diferenca de tratamento tributario cria uma forte preferencia de investidores pessoa fisica pelo FIAGRO, o que explica a composicao da base de cotistas: mais de 90% dos cotistas de FIAGROs listados na B3 sao pessoas fisicas. O beneficio fiscal e equivalente ao oferecido pelas LCAs (isentas de IR para PF) e pelos CRAs (isentos de IR para PF), mas com a vantagem adicional de liquidez em bolsa e gestao profissional da carteira.
+Estrutura do projeto:
 
-- **Exemplo**: Um investidor pessoa fisica que aplica R$ 100.000 em cotas do FIAGRO XPCA11 (XP Credito Agricola) e recebe rendimentos mensais de R$ 1.200 (equivalente a 1,2% ao mes ou cerca de 15,4% ao ano) nao paga Imposto de Renda sobre esses rendimentos. Se o mesmo investidor aplicasse R$ 100.000 em um CDB bancario com rentabilidade bruta equivalente, pagaria entre 15% e 22,5% de IR sobre os rendimentos (dependendo do prazo), reduzindo a rentabilidade liquida para aproximadamente 12% a 13% ao ano. Essa diferenca de 2 a 3 pontos percentuais ao ano, acumulada ao longo de varios anos, representa um ganho substancial para o investidor de longo prazo.
+```
+cpr-token/
+  contracts/
+    CPRToken.sol
+    CommodityPriceOracle.sol
+    mocks/
+      MockV3Aggregator.sol
+  test/
+    CPRToken.test.js
+  scripts/
+    deploy.js
+  hardhat.config.js
+  package.json
+```
 
-### Liquidez em mercado secundario, governanca e desafios do setor
+Configuracao do `hardhat.config.js`:
 
-Apesar do crescimento impressionante, o mercado de FIAGROs ainda enfrenta desafios relevantes que precisam ser compreendidos por qualquer profissional que atue no setor. O primeiro desafio e a liquidez no mercado secundario. Embora os maiores FIAGROs — como KNCA11, KNCR11, XPCA11 e VGIA11 — apresentem volume medio diario de negociacao de varios milhoes de reais, fundos menores podem ter liquidez limitada, com spreads elevados entre oferta de compra e venda. Um investidor que detenha R$ 500.000 em cotas de um FIAGRO com patrimonio de R$ 200 milhoes pode levar dias ou semanas para liquidar sua posicao sem impacto significativo no preco. Essa realidade e agravada em momentos de estresse de mercado, quando a liquidez tende a evaporar.
+```javascript
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
 
-O segundo desafio e a governanca e transparencia. Nem todos os FIAGROs publicam informacoes detalhadas sobre a composicao de suas carteiras, as taxas de inadimplencia dos ativos, os criterios de concessao de credito e os conflitos de interesse entre gestora, administradora e cedentes de recebiveis. A CVM tem avancado na exigencia de maior transparencia, mas o mercado ainda esta em processo de maturacao. O terceiro desafio e a concentracao setorial e geografica. Muitos FIAGROs possuem carteiras concentradas em soja e milho do Centro-Oeste, o que os expoe simultaneamente ao risco climatico de uma unica regiao produtora. Uma seca severa no Mato Grosso pode elevar a inadimplencia de dezenas de CRAs em carteira ao mesmo tempo, gerando perdas significativas. A diversificacao por cultura, regiao e tipo de ativo e fundamental, mas nem todos os gestores a praticam de forma adequada.
+module.exports = {
+  solidity: {
+    version: "0.8.20",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  networks: {
+    hardhat: {
+      chainId: 31337,
+    },
+    sepolia: {
+      url: process.env.SEPOLIA_RPC_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined
+          ? [process.env.PRIVATE_KEY]
+          : [],
+    },
+  },
+};
+```
 
-O quarto desafio e a precificacao dos ativos iliquidos. CRAs, CPRs e especialmente terras agricolas nao possuem marcacao a mercado diaria e transparente. A metodologia de avaliacao desses ativos pode variar entre gestoras, gerando discrepancias entre o valor patrimonial das cotas e seu valor real de mercado. A CVM tem trabalhado para padronizar os criterios de avaliacao, mas a questao permanece relevante, especialmente em periodos de queda de precos de commodities ou aumento de inadimplencia.
+### Mock do oraculo para testes locais
 
-- **Exemplo**: No segundo semestre de 2023, varios FIAGROs enfrentaram aumento de inadimplencia em suas carteiras de credito, provocado pela combinacao de queda nos precos da soja (que recuou de R$ 160/saca em 2022 para R$ 110-120/saca em 2023), custos de insumos ainda elevados e condições climaticas adversas em algumas regioes. O FIAGRO VGIA11 reportou elevacao de creditos em atraso para cerca de 8% da carteira, acima da media historica de 2% a 3%. As cotas do fundo chegaram a ser negociadas com desconto de 12% sobre o valor patrimonial, refletindo a percepcao de risco dos investidores. Esse episodio evidenciou a importancia da diversificacao, da qualidade da analise de credito e da gestao ativa de carteira para os FIAGROs.
+Em testes locais, nao temos acesso aos feeds Chainlink reais. Por isso, criamos um mock (simulacao) do aggregator:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/**
+ * @title MockV3Aggregator
+ * @notice Mock do AggregatorV3Interface da Chainlink para testes
+ */
+contract MockV3Aggregator {
+    uint8 public decimals;
+    int256 public latestAnswer;
+    uint256 public latestTimestamp;
+    uint256 public latestRound;
+
+    constructor(uint8 _decimals, int256 _initialAnswer) {
+        decimals = _decimals;
+        updateAnswer(_initialAnswer);
+    }
+
+    function updateAnswer(int256 _answer) public {
+        latestAnswer = _answer;
+        latestTimestamp = block.timestamp;
+        latestRound++;
+    }
+
+    function latestRoundData()
+        external
+        view
+        returns (
+            uint80 roundId,
+            int256 answer,
+            uint256 startedAt,
+            uint256 updatedAt,
+            uint80 answeredInRound
+        )
+    {
+        return (
+            uint80(latestRound),
+            latestAnswer,
+            latestTimestamp,
+            latestTimestamp,
+            uint80(latestRound)
+        );
+    }
+}
+```
+
+### Script de testes completo
+
+```javascript
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+const { time } = require("@nomicfoundation/hardhat-network-helpers");
+
+describe("CPRToken", function () {
+  let cprToken;
+  let owner, spv, investor1, investor2, unauthorized;
+
+  // Dados da CPR de teste
+  const CPR_NAME = "CPR Soja Cooperativa Coamo 2025";
+  const CPR_SYMBOL = "CPRSOJA25";
+  const CPR_REGISTRATION = "CERC-2025-001234";
+  const COMMODITY = "SOJA";
+  const SACAS = 25000;
+  const FACE_VALUE = 500000000; // R$ 5.000.000 em centavos
+  const TOKEN_AMOUNT = ethers.parseUnits("100", 18); // 100 tokens
+
+  beforeEach(async function () {
+    [owner, spv, investor1, investor2, unauthorized] =
+      await ethers.getSigners();
+
+    // Data de vencimento: 180 dias no futuro
+    const maturityDate =
+      (await time.latest()) + 180 * 24 * 60 * 60;
+
+    const CPRToken = await ethers.getContractFactory("CPRToken");
+    cprToken = await CPRToken.deploy(
+      CPR_NAME,
+      CPR_SYMBOL,
+      CPR_REGISTRATION,
+      COMMODITY,
+      SACAS,
+      maturityDate,
+      FACE_VALUE,
+      owner.address, // originador
+      spv.address     // SPV
+    );
+    await cprToken.waitForDeployment();
+  });
+
+  describe("Deploy", function () {
+    it("deve criar o token com os dados corretos da CPR", async function () {
+      expect(await cprToken.name()).to.equal(CPR_NAME);
+      expect(await cprToken.symbol()).to.equal(CPR_SYMBOL);
+      expect(await cprToken.cprRegistrationId()).to.equal(
+        CPR_REGISTRATION
+      );
+      expect(await cprToken.commodity()).to.equal(COMMODITY);
+      expect(await cprToken.sacas()).to.equal(SACAS);
+      expect(await cprToken.faceValue()).to.equal(FACE_VALUE);
+      expect(await cprToken.isRedeemed()).to.equal(false);
+    });
+
+    it("deve atribuir SPV_ROLE ao SPV", async function () {
+      const SPV_ROLE = await cprToken.SPV_ROLE();
+      expect(await cprToken.hasRole(SPV_ROLE, spv.address)).to.be
+        .true;
+    });
+  });
+
+  describe("Whitelist (KYC/AML)", function () {
+    it("deve permitir que COMPLIANCE_ROLE adicione investidor", async function () {
+      await cprToken
+        .connect(spv)
+        .setWhitelist(investor1.address, true);
+      expect(await cprToken.whitelisted(investor1.address)).to.be
+        .true;
+    });
+
+    it("deve rejeitar whitelist por endereco nao autorizado", async function () {
+      await expect(
+        cprToken
+          .connect(unauthorized)
+          .setWhitelist(investor1.address, true)
+      ).to.be.reverted;
+    });
+
+    it("deve permitir whitelist em lote", async function () {
+      await cprToken
+        .connect(spv)
+        .batchWhitelist([investor1.address, investor2.address]);
+      expect(await cprToken.whitelisted(investor1.address)).to.be
+        .true;
+      expect(await cprToken.whitelisted(investor2.address)).to.be
+        .true;
+    });
+  });
+
+  describe("Mint de tokens", function () {
+    beforeEach(async function () {
+      await cprToken
+        .connect(spv)
+        .setWhitelist(investor1.address, true);
+    });
+
+    it("deve permitir que SPV minte tokens para investidor whitelisted", async function () {
+      await cprToken
+        .connect(spv)
+        .mint(investor1.address, TOKEN_AMOUNT);
+      expect(await cprToken.balanceOf(investor1.address)).to.equal(
+        TOKEN_AMOUNT
+      );
+    });
+
+    it("deve rejeitar mint para investidor nao whitelisted", async function () {
+      await expect(
+        cprToken
+          .connect(spv)
+          .mint(investor2.address, TOKEN_AMOUNT)
+      ).to.be.revertedWith(
+        "Endereco nao esta na whitelist (KYC/AML)"
+      );
+    });
+
+    it("deve rejeitar mint acima do valor de face", async function () {
+      const excessAmount = ethers.parseUnits("600000000", 0);
+      await expect(
+        cprToken
+          .connect(spv)
+          .mint(investor1.address, excessAmount)
+      ).to.be.revertedWith(
+        "Emissao excede valor de face da CPR"
+      );
+    });
+  });
+
+  describe("Transferencias com whitelist", function () {
+    beforeEach(async function () {
+      await cprToken
+        .connect(spv)
+        .batchWhitelist([investor1.address, investor2.address]);
+      await cprToken
+        .connect(spv)
+        .mint(investor1.address, TOKEN_AMOUNT);
+    });
+
+    it("deve permitir transferencia entre enderecos whitelisted", async function () {
+      await cprToken
+        .connect(investor1)
+        .transfer(investor2.address, TOKEN_AMOUNT);
+      expect(await cprToken.balanceOf(investor2.address)).to.equal(
+        TOKEN_AMOUNT
+      );
+    });
+
+    it("deve bloquear transferencia para endereco nao whitelisted", async function () {
+      await expect(
+        cprToken
+          .connect(investor1)
+          .transfer(unauthorized.address, TOKEN_AMOUNT)
+      ).to.be.revertedWith(
+        "Destinatario nao esta na whitelist (KYC/AML)"
+      );
+    });
+  });
+
+  describe("Redemption (liquidacao)", function () {
+    it("deve permitir redemption apos vencimento", async function () {
+      await cprToken
+        .connect(spv)
+        .setWhitelist(investor1.address, true);
+      await cprToken
+        .connect(spv)
+        .mint(investor1.address, TOKEN_AMOUNT);
+
+      // Avanca o tempo para apos o vencimento
+      await time.increase(181 * 24 * 60 * 60);
+
+      await cprToken.connect(spv).redeem();
+      expect(await cprToken.isRedeemed()).to.be.true;
+    });
+
+    it("deve bloquear mint apos redemption", async function () {
+      await cprToken
+        .connect(spv)
+        .setWhitelist(investor1.address, true);
+      await time.increase(181 * 24 * 60 * 60);
+      await cprToken.connect(spv).redeem();
+
+      await expect(
+        cprToken
+          .connect(spv)
+          .mint(investor1.address, TOKEN_AMOUNT)
+      ).to.be.revertedWith("CPR ja foi liquidada");
+    });
+  });
+
+  describe("Pause/Unpause", function () {
+    it("deve pausar e bloquear transferencias", async function () {
+      await cprToken
+        .connect(spv)
+        .setWhitelist(investor1.address, true);
+      await cprToken
+        .connect(spv)
+        .mint(investor1.address, TOKEN_AMOUNT);
+
+      await cprToken.connect(spv).pause();
+
+      await expect(
+        cprToken
+          .connect(spv)
+          .mint(investor1.address, TOKEN_AMOUNT)
+      ).to.be.reverted;
+    });
+  });
+});
+```
+
+### Script de deploy em testnet Sepolia
+
+```javascript
+const { ethers } = require("hardhat");
+
+async function main() {
+  console.log("Iniciando deploy da CPR Token na Sepolia...\n");
+
+  const [deployer] = await ethers.getSigners();
+  console.log("Deployer (SPV):", deployer.address);
+  console.log(
+    "Saldo:",
+    ethers.formatEther(
+      await ethers.provider.getBalance(deployer.address)
+    ),
+    "ETH\n"
+  );
+
+  // Parametros da CPR
+  const now = Math.floor(Date.now() / 1000);
+  const maturityDate = now + 180 * 24 * 60 * 60; // 180 dias
+
+  const CPRToken = await ethers.getContractFactory("CPRToken");
+  const cprToken = await CPRToken.deploy(
+    "CPR Soja Cooperativa Coamo 2025",  // nome
+    "CPRSOJA25",                         // simbolo
+    "CERC-2025-001234",                  // registro CERC
+    "SOJA",                              // commodity
+    25000,                               // sacas
+    maturityDate,                        // vencimento
+    500000000,                           // R$ 5.000.000 em centavos
+    deployer.address,                    // originador
+    deployer.address                     // SPV (mesmo endereco para teste)
+  );
+
+  await cprToken.waitForDeployment();
+  const address = await cprToken.getAddress();
+
+  console.log("CPRToken implantado em:", address);
+  console.log("Rede: Sepolia Testnet");
+  console.log("Explorador: https://sepolia.etherscan.io/address/" + address);
+  console.log("\nDados da CPR:");
+  console.log("  Registro: CERC-2025-001234");
+  console.log("  Commodity: SOJA");
+  console.log("  Sacas: 25.000");
+  console.log("  Valor de face: R$ 5.000.000");
+  console.log("  Vencimento:", new Date(maturityDate * 1000).toLocaleDateString());
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+Para executar o deploy:
+
+```bash
+# Instalar dependencias
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
+npm install @openzeppelin/contracts @chainlink/contracts dotenv
+
+# Compilar contratos
+npx hardhat compile
+
+# Executar testes locais
+npx hardhat test
+
+# Deploy na Sepolia (requer ETH de testnet e chave privada no .env)
+npx hardhat run scripts/deploy.js --network sepolia
+```
+
+- **Exemplo**: A Liqi Digital Assets, plataforma brasileira regulada que ja tokenizou mais de R$ 500 milhoes em ativos, utiliza um fluxo semelhante ao descrito nesta aula para suas emissoes de recebiveis agro. O deploy do contrato na blockchain (Ethereum ou Polygon) e feito apos a conclusao de toda a estruturacao juridica e a aprovacao da oferta pela CVM (quando aplicavel). O contrato fica disponivel publicamente no Etherscan ou Polygonscan, permitindo que qualquer investidor audite o codigo, verifique o total de tokens emitidos e confirme que as regras de whitelist estao ativas.
 
 ---
 
 ## Conclusao
 
-Nesta aula, construimos uma visao abrangente do FIAGRO como veiculo de investimento e financiamento do agronegocio. Compreendemos sua base legal na Lei 14.130/2021 e a regulamentacao da CVM, e diferenciamos suas tres modalidades — FIAGRO-FII, FIAGRO-FIDC e FIAGRO-FIP — cada uma voltada para uma classe distinta de ativos. Exploramos o universo de ativos investiveis, que vai de CRAs e CPRs ate terras agricolas e participacoes em empresas agro, e analisamos as estrategias de gestao (high grade, high yield e hibrida) que os gestores profissionais empregam. Comparamos o FIAGRO com os REITs norte-americanos e identificamos que o veiculo brasileiro oferece um escopo mais amplo ao combinar credito estruturado e exposicao imobiliaria rural em um unico fundo regulado. Por fim, detalhamos o regime tributario favoravel para pessoa fisica, os desafios de liquidez, governanca, concentracao e precificacao que o mercado precisa superar para atingir sua maturidade plena. O FIAGRO e, sem duvida, um dos marcos mais importantes da evolucao do financiamento agro no Brasil, e compreende-lo em profundidade e essencial para qualquer profissional que atue ou pretenda atuar neste mercado.
+Nesta aula, construimos do zero a infraestrutura de tokenizacao de uma CPR financeira utilizando o padrao ERC-20. Percorremos o fluxo completo: do originador que emite a CPR, passando pelo SPV que a recebe e constitui o patrimonio separado, ate o smart contract que representa fracoes tokenizadas do ativo. O contrato `CPRToken` implementa controles essenciais de compliance (whitelist KYC/AML), gestao de roles (SPV e compliance), registro on-chain dos dados da CPR e mecanismos de emergencia (pause). Integramos um oraculo Chainlink para fornecer precos de commodities em tempo real, permitindo que investidores avaliem a cobertura do lastro a qualquer momento. Finalmente, configuramos o ambiente de testes com Hardhat, criamos um mock do oraculo para testes locais, escrevemos testes unitarios abrangentes e preparamos o script de deploy para a testnet Sepolia. Na proxima aula, avancaremos para a tokenizacao de CRA com tranches utilizando o padrao ERC-1155.
 
 ---
 
 ## Licao de Casa
 
-1. Selecione dois FIAGROs listados na B3 com estrategias distintas (um focado em credito high grade e outro em credito high yield ou hibrido). Compare: composicao da carteira por tipo de ativo, taxa de inadimplencia reportada, rendimento distribuido nos ultimos 12 meses, desconto ou premio das cotas em relacao ao valor patrimonial, e numero de cotistas. Identifique qual fundo seria mais adequado para um investidor conservador e qual para um investidor com maior apetite a risco.
-2. Pesquise a Resolucao CVM 175/2022 e identifique pelo menos tres regras aplicaveis aos FIAGROs que nao existiam na regulamentacao anterior (Resolucao CVM 39/2021). Para cada regra, explique qual problema ela busca resolver e como impacta o investidor e o gestor.
-3. Monte um quadro comparativo entre o FIAGRO brasileiro (modalidade FII), um farmland REIT norte-americano (Gladstone Land ou Farmland Partners) e um fundo de credito agro tradicional (FIDC agro). Compare: estrutura juridica, tipos de ativo permitidos, regime tributario para pessoa fisica, obrigacao de distribuicao de resultados, liquidez em mercado secundario e regulador responsavel.
-
----
-
-## Proxima Aula
-
-Na proxima aula, vamos ampliar o horizonte para o cenario internacional, analisando como o capital estrangeiro financia o agronegocio brasileiro e quais estruturas cross-border viabilizam essas operacoes. Ate la!
-
----
-
-## Links para aprofundamento
-
-1. [CVM — Resolucao CVM 175 e regulamentacao de fundos de investimento](https://www.gov.br/cvm/pt-br/assuntos/regulamentacao/resolucoes)
-2. [B3 — FIAGROs listados e dados de mercado](https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/fundos-de-investimento/fiagro/)
-3. [ANBIMA — Fundos de Investimento no Agronegocio](https://www.anbima.com.br/pt_br/informar/estatisticas/fundos-de-investimento/fi-consolidado.htm)
-4. [Banco Central do Brasil — Credito Rural e dados do SNCR](https://www.bcb.gov.br/estabilidadefinanceira/creditorural)
-5. [CNA — Confederacao da Agricultura e Pecuaria do Brasil](https://www.cnabrasil.org.br/)
+1. Modifique o contrato `CPRToken` para adicionar uma funcao `addCollateral` que permita ao SPV registrar garantias adicionais on-chain (tipo de garantia, valor estimado e descricao). Implemente como um array de structs e crie uma funcao view para consulta. Teste com pelo menos duas garantias: alienacao fiduciaria de fazenda e penhor de safra.
+2. Pesquise os feeds de preco disponiveis na Chainlink para commodities agricolas (acesse docs.chain.link/data-feeds). Identifique quais commodities do agro brasileiro ja possuem feed direto e quais precisariam de um oraculo customizado. Elabore uma tabela com: commodity, feed disponivel (sim/nao), fonte de preco alternativa e proposta de implementacao.
+3. Faca o deploy do contrato `CPRToken` na testnet Sepolia (obtenha ETH de teste em sepoliafaucet.com). Execute as seguintes operacoes: (a) adicionar dois enderecos a whitelist; (b) mintar 1.000 tokens para cada endereco; (c) transferir 500 tokens entre os enderecos. Registre os hashes das transacoes e os links do Etherscan.
 
 ---
 
 ## Questionario
 
-**1. Qual lei instituiu o FIAGRO no Brasil?**
+**1. No fluxo de tokenizacao de CPR apresentado na aula, qual e a funcao do SPV (Special Purpose Vehicle)?**
 
-a) Lei 8.668/1993
-b) Lei 13.986/2020 (Lei do Agro)
-c) Lei 14.130/2021
-d) Lei 14.430/2022 (Marco da Securitizacao)
+a) Emitir a CPR em nome do produtor rural e registra-la na B3
+b) Isolar o risco do originador do risco do investidor, constituindo patrimonio separado que protege os ativos do lastro
+c) Substituir o produtor rural como devedor da CPR, assumindo integralmente o risco de credito
+d) Operar como exchange descentralizada para negociacao dos tokens no mercado secundario
+
+**Resposta: b**
+
+**2. Por que o contrato CPRToken utiliza o campo `faceValue` em centavos de BRL ao inves de reais com decimais?**
+
+a) Porque a CVM exige que todos os valores em smart contracts sejam expressos em centavos
+b) Porque o Solidity nao suporta numeros de ponto flutuante, e o uso de centavos (inteiros) evita erros de precisao
+c) Porque o padrao ERC-20 obriga o uso de centavos como unidade monetaria
+d) Porque os oraculos Chainlink so fornecem precos em centavos de BRL
+
+**Resposta: b**
+
+**3. Qual e a funcao do mecanismo de whitelist implementado no contrato CPRToken?**
+
+a) Garantir que apenas mineradores autorizados possam validar transacoes do token
+b) Limitar a quantidade maxima de tokens que cada investidor pode possuir
+c) Implementar controle de KYC/AML exigido pela CVM, permitindo que apenas investidores verificados recebam e transfiram tokens
+d) Aumentar a velocidade das transacoes ao reduzir o numero de participantes da rede
 
 **Resposta: c**
 
-**2. Qual das modalidades de FIAGRO permite a emissao de cotas senior e subordinadas, criando camadas de protecao equivalentes a uma estrutura de securitizacao?**
+**4. No contrato CommodityPriceOracle, o que acontece se o feed Chainlink nao atualizar o preco dentro do `stalePriceThreshold` configurado?**
 
-a) FIAGRO-FII
-b) FIAGRO-FIDC
-c) FIAGRO-FIP
-d) FIAGRO-ETF
-
-**Resposta: b**
-
-**3. Para que os rendimentos distribuidos por um FIAGRO sejam isentos de IR para pessoa fisica, e necessario que o fundo tenha no minimo:**
-
-a) 10 cotistas e cotas negociadas em bolsa
-b) 100 cotistas e patrimonio superior a R$ 1 bilhao
-c) 50 cotistas, cotas negociadas em bolsa ou mercado de balcao organizado, e o investidor nao detenha mais de 10% das cotas
-d) 200 cotistas e distribuicao mensal obrigatoria de 100% dos resultados
-
-**Resposta: c**
-
-**4. Qual e a principal diferenca entre o FIAGRO brasileiro (modalidade FII) e os farmland REITs norte-americanos como a Gladstone Land?**
-
-a) Os farmland REITs investem exclusivamente em credito agro, enquanto o FIAGRO investe apenas em terras
-b) O FIAGRO permite combinar credito estruturado agro e exposicao imobiliaria rural em um unico veiculo, enquanto os farmland REITs se limitam a arrendamento de terras
-c) Os farmland REITs sao isentos de tributacao para todos os investidores, enquanto o FIAGRO tributa rendimentos a 20%
-d) O FIAGRO nao pode ser negociado em bolsa, enquanto os farmland REITs possuem liquidez diaria
+a) O contrato retorna automaticamente o ultimo preco valido, sem nenhum aviso
+b) A funcao reverte a transacao, impedindo que decisoes financeiras sejam tomadas com dados desatualizados
+c) O contrato calcula o preco usando uma media dos ultimos 10 valores registrados
+d) O oraculo envia uma notificacao automatica ao SPV para que atualize manualmente o preco
 
 **Resposta: b**
 
-**5. Em 2023, alguns FIAGROs enfrentaram elevacao de inadimplencia e suas cotas foram negociadas com desconto sobre o valor patrimonial. Qual combinacao de fatores melhor explica esse fenomeno?**
+**5. Uma cooperativa quer tokenizar uma CPR financeira de R$ 2.000.000 lastreada em 10.000 sacas de milho. O oraculo indica que o preco atual do milho e R$ 70/saca. Qual e o indice de cobertura do lastro?**
 
-a) Aumento da taxa Selic para 15% ao ano, que tornou os CRAs menos atrativos comparados a titulos publicos
-b) Queda nos precos da soja combinada com custos de insumos elevados e condicoes climaticas adversas, que comprometeram a capacidade de pagamento dos devedores
-c) Mudanca na regulamentacao da CVM que proibiu a distribuicao mensal de rendimentos pelos FIAGROs
-d) Saida massiva de investidores estrangeiros do mercado brasileiro devido a instabilidade politica
+a) 2,86x (o lastro cobre quase tres vezes o valor da emissao)
+b) 1,00x (o lastro cobre exatamente o valor da emissao)
+c) 0,35x (o lastro cobre apenas 35% do valor da emissao)
+d) 0,70x (o lastro cobre 70% do valor da emissao)
 
-**Resposta: b**
+**Resposta: c** — Calculo: 10.000 sacas * R$ 70/saca = R$ 700.000. Indice = R$ 700.000 / R$ 2.000.000 = 0,35x. Na pratica, a CPR financeira inclui taxa de juros que compensa essa diferenca, e garantias adicionais (alienacao fiduciaria, penhor) protegem o investidor.
+
+---
+
+## Proxima Aula
+
+Na proxima aula (5.2), vamos avancar para a tokenizacao de CRA (Certificado de Recebiveis do Agronegocio) utilizando o padrao ERC-1155, que permite representar multiplas tranches — senior e subordinada — no mesmo contrato. Voce aprendera a usar metadados para diferenciar classes de investimento e simulara a distribuicao de rendimentos entre as tranches. Ate la!

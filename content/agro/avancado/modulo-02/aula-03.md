@@ -1,152 +1,366 @@
-# Aula 2.3: CPR como Veiculo Estruturado
+# Aula 2.3: ERC-1155 — Multi-Token Semi-Fungivel para Operacoes Complexas no Agro
 
 ## Abertura
 
-Bem-vindo a aula 2.3! Nas duas aulas anteriores, dominamos a estrutura juridica da CPR e o arsenal de garantias e colaterais disponiveis. Agora, vamos dar o passo final deste modulo: compreender como a CPR deixa de ser um simples titulo de promessa de entrega ou pagamento e se transforma em um veiculo estruturado sofisticado, capaz de segregar fluxos via conta escrow, incorporar protecao climatica e de preco por meio de seguro rural e hedge, e servir como lastro para operacoes de securitizacao que conectam o produtor rural ao mercado de capitais. Esta aula e a ponte entre a CPR individual e o universo da securitizacao agro que estudaremos no proximo modulo.
+Bem-vindo a aula 2.3 do Modulo 2! Nas duas aulas anteriores, dominamos os dois extremos da tokenizacao: o ERC-20 para ativos totalmente fungiveis (como cotas de CRA ou stablecoins) e o ERC-721 para ativos totalmente unicos (como CDAs especificos ou titulos de terra). Agora, vamos explorar o padrao ERC-1155, que unifica ambos os modelos em um unico contrato inteligente, permitindo gerenciar simultaneamente tokens fungiveis, nao fungiveis e semi-fungiveis com eficiencia de gas drasticamente superior. No agronegocio brasileiro, onde operacoes envolvem batches de estoques homogeneos, tranches de CRA com diferentes perfis de risco e ativos unicos — frequentemente na mesma operacao —, o ERC-1155 e o padrao mais adequado para arquiteturas de tokenizacao escalaveis e economicas.
 
 ### Programa da aula:
 
-1. Commodity pledge e conta escrow (introducao)
-2. Seguro rural e hedge de preco vinculados (base e aprofundamento)
-3. CPR como lastro para securitizacao (conceito principal da aula)
+1. Anatomia do ERC-1155: multi-token e eficiencia de gas (introducao)
+2. Aplicacoes no agro: batches de estoques, tranches de CRA e operacoes hibridas (base e aprofundamento)
+3. Distincao entre fungivel e nao fungivel no mesmo contrato (conceito principal da aula)
 
 ---
 
-## 1. Commodity pledge e conta escrow
+## 1. Anatomia do ERC-1155: multi-token e eficiencia de gas
 
-### Segregacao de fluxo: a arquitetura da conta escrow no agro
+### O problema que o ERC-1155 resolve
 
-A conta escrow (conta vinculada ou conta de garantia) e um mecanismo financeiro pelo qual os recursos gerados pela comercializacao da producao sao direcionados a uma conta bancaria controlada por um terceiro independente (o agente escrow), em vez de transitarem livremente pela conta corrente do emissor da CPR. Essa segregacao de fluxo e o elemento estrutural que transforma uma CPR simples em uma operacao estruturada, pois elimina o risco de desvio — ou seja, o risco de que o produtor receba o pagamento pela venda da safra e utilize os recursos para outros fins antes de liquidar a CPR.
+Imagine uma securitizadora que opera no mercado agro brasileiro e precisa tokenizar os seguintes ativos em uma unica operacao estruturada: (1) 50.000 cotas senior de um CRA de R$ 500 milhoes, todas identicas entre si (fungiveis); (2) 10.000 cotas mezanino do mesmo CRA, identicas entre si mas diferentes das senior (outro tipo fungivel); (3) 5 CDAs especificos de lotes de soja em armazens diferentes, cada um com caracteristicas unicas (nao fungiveis); e (4) 1 contrato-mae que consolida toda a operacao (unico).
 
-Na pratica, a conta escrow funciona como um "funil" financeiro: o comprador da producao (trading, cooperativa, agroindustria) e instruido a depositar o pagamento diretamente na conta escrow, e nao na conta do produtor. O agente escrow — geralmente o proprio banco credor ou uma instituicao independente — monitora os depositos e libera os recursos conforme regras pre-definidas no contrato: primeiro, o valor devido na CPR e retido e repassado ao credor; depois, o saldo remanescente e liberado ao produtor. Essa mecanica e conhecida no mercado como waterfall de pagamentos (cascata), pois os recursos "escorrem" por uma sequencia fixa de prioridades, garantindo que o credor seja pago antes de qualquer outro destinatario.
+Usando os padroes anteriores, a securitizadora precisaria implantar pelo menos 3 contratos separados: um ERC-20 para as cotas senior, outro ERC-20 para as cotas mezanino, e um ERC-721 para os CDAs e o contrato-mae. Cada contrato custa gas para deploy (entre 0,01 e 0,05 ETH em periodos de congestionamento da rede Ethereum, equivalente a R$ 100 a R$ 500), e cada interacao entre contratos consome gas adicional. Em uma operacao com dezenas de tipos de ativos, esse modelo se torna caro e complexo.
 
-- **Exemplo**: Um produtor de soja no Mato Grosso emite CPR financeira de R$ 18 milhoes em favor de um fundo de investimento. O contrato preve que toda a receita de venda da safra da area vinculada (4.000 hectares) seja depositada em conta escrow no Banco do Brasil, administrada por agente fiduciario independente. O produtor vende a safra para a Cargill por R$ 24 milhoes. A Cargill deposita o pagamento integralmente na conta escrow. O agente fiduciario retira R$ 18 milhoes mais juros (totalizando R$ 19,4 milhoes) e repassa ao fundo credor. O saldo de R$ 4,6 milhoes e liberado ao produtor. Em nenhum momento o recurso da venda passou pela conta pessoal do produtor, eliminando o risco de desvio. Se o produtor tivesse outras dividas ou bloqueios judiciais em sua conta corrente, o fluxo da conta escrow nao seria afetado.
+O ERC-1155 resolve esse problema permitindo que um unico contrato gerencie um numero ilimitado de tipos de tokens, cada um identificado por um ID unico. O padrao foi proposto por Witek Radomski (fundador da Enjin) na EIP-1155, publicada em junho de 2018, e rapidamente se tornou o padrao preferido para aplicacoes que exigem multiplos tipos de ativos.
 
-### Commodity pledge: garantia sobre o produto fisico em transito e armazenagem
+- **Exemplo**: A Liqi, tokenizadora brasileira que ja movimentou mais de R$ 500 milhoes em ativos tokenizados, poderia utilizar um unico contrato ERC-1155 para representar toda uma operacao de CRA agro: as cotas senior (ID 1, supply 50.000), as cotas mezanino (ID 2, supply 10.000), cada CDA de lastro (IDs 3 a 7, supply 1 cada) e o contrato-mae (ID 8, supply 1). Em vez de 3 contratos separados com custo total de deploy de R$ 1.500, um unico deploy de R$ 500.
 
-O commodity pledge (penhor de commodity) e uma estrutura de garantia real sobre o produto fisico que complementa a conta escrow. Enquanto a conta escrow protege o fluxo financeiro, o commodity pledge protege o produto fisico desde a colheita ate a entrega ao comprador final. Nessa estrutura, o produto colhido e depositado em armazem controlado por um agente de monitoramento (collateral manager), que emite relatorios periodicos sobre quantidade, qualidade e condicoes de armazenagem. O credor detém garantia real (alienacao fiduciaria ou penhor) sobre o produto enquanto ele estiver no armazem, e a liberacao so ocorre mediante autorizacao expressa, geralmente condicionada ao pagamento da parcela correspondente da CPR.
+### Funcoes essenciais do ERC-1155
 
-Essa estrutura e amplamente utilizada em operacoes de financiamento de pre-exportacao e em operacoes de grande porte com tradings internacionais. Empresas especializadas em collateral management, como a Cotecna, a SGS e a Control Union, atuam no Brasil monitorando estoques de soja, milho, cafe e algodao em armazens de terceiros, emitindo certificados de estoque que sao aceitos por credores internacionais. O commodity pledge cria uma camada adicional de seguranca: mesmo que o produtor tente vender o produto a terceiro sem autorizacao, o armazem controlado pelo collateral manager nao libera a mercadoria. A combinacao de commodity pledge (protecao fisica) com conta escrow (protecao financeira) cria o que o mercado denomina "estrutura duplo-lock" — o credor controla tanto o produto quanto o dinheiro.
+O ERC-1155 introduz funcoes que suportam operacoes em lote (batch), uma inovacao que reduz dramaticamente o custo de gas para transferencias multiplas:
 
-- **Exemplo**: Uma trading brasileira de medio porte obteve financiamento de US$ 50 milhoes de um banco internacional para compra de cafe para exportacao. O banco exige commodity pledge: todo o cafe adquirido pela trading e depositado em armazens em Santos (SP) e Vitoria (ES), monitorados pela SGS como collateral manager. A SGS emite relatorios semanais ao banco informando o estoque atual (em sacas e valor de mercado), condicoes de armazenagem e eventuais movimentacoes. A trading so pode retirar cafe do armazem para embarque de exportacao mediante autorizacao do banco, que libera o lote apos confirmar que o comprador internacional depositou o pagamento na conta escrow offshore. O ciclo se completa: o cafe sai do armazem, o comprador paga na conta escrow, o banco amortiza sua exposicao, e o excedente e liberado a trading. Em todo o processo, o banco teve visibilidade e controle sobre o produto fisico e o fluxo financeiro.
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+interface IERC1155 {
+    // Retorna o saldo de um tipo especifico de token para um endereco
+    function balanceOf(address account, uint256 id)
+        external view returns (uint256);
+
+    // Retorna saldos de multiplos tipos para multiplos enderecos
+    function balanceOfBatch(
+        address[] calldata accounts,
+        uint256[] calldata ids
+    ) external view returns (uint256[] memory);
+
+    // Aprova ou revoga um operador para todos os tokens do chamador
+    function setApprovalForAll(address operator, bool approved) external;
+
+    // Verifica se um operador esta aprovado
+    function isApprovedForAll(address account, address operator)
+        external view returns (bool);
+
+    // Transferencia segura de um tipo de token
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 id,
+        uint256 amount,
+        bytes calldata data
+    ) external;
+
+    // Transferencia segura de multiplos tipos em uma unica transacao
+    function safeBatchTransferFrom(
+        address from,
+        address to,
+        uint256[] calldata ids,
+        uint256[] calldata amounts,
+        bytes calldata data
+    ) external;
+
+    // Eventos
+    event TransferSingle(
+        address indexed operator,
+        address indexed from,
+        address indexed to,
+        uint256 id,
+        uint256 value
+    );
+
+    event TransferBatch(
+        address indexed operator,
+        address indexed from,
+        address indexed to,
+        uint256[] ids,
+        uint256[] values
+    );
+
+    event URI(string value, uint256 indexed id);
+}
+```
+
+A funcao **safeBatchTransferFrom** e a grande inovacao do ERC-1155. Ela permite transferir multiplos tipos de tokens em uma unica transacao. No contexto agro, isso significa que um investidor pode receber simultaneamente 100 cotas senior de CRA (ID 1), 20 cotas mezanino (ID 2) e 1 CDA de lastro (ID 5) em uma unica transacao, pagando gas uma unica vez. Comparado a executar 3 transacoes separadas (uma para cada tipo), a economia de gas pode chegar a 50-70%.
+
+A funcao **balanceOfBatch** permite consultar saldos de multiplos tipos de tokens para multiplos enderecos em uma unica chamada. Um gestor de FIAGRO com 500 investidores e 10 tipos de tokens pode consultar todos os saldos em uma unica operacao, em vez de fazer 5.000 chamadas individuais.
+
+O evento **URI(string value, uint256 indexed id)** e emitido quando a URI de metadados de um tipo de token e definida ou atualizada. O ERC-1155 utiliza um padrao de URI com substituicao de ID: a URI base pode ser `https://api.plataforma.com/metadata/{id}.json`, onde `{id}` e substituido pelo ID hexadecimal do token. Isso simplifica a gestao de metadados para milhares de tipos de tokens.
+
+- **Exemplo**: Uma trading que opera no Mato Grosso precisa transferir para uma securitizadora um pacote composto por: 5.000 tokens representando sacas de soja (ID 1), 3.000 tokens representando sacas de milho (ID 2) e 2 CDAs unicos de armazens diferentes (IDs 100 e 101). Com ERC-20/ERC-721, seriam necessarias 4 transacoes separadas em 3 contratos diferentes. Com ERC-1155, uma unica chamada a safeBatchTransferFrom com ids=[1, 2, 100, 101] e amounts=[5000, 3000, 1, 1] resolve tudo em uma transacao, custando aproximadamente R$ 15 em gas em vez de R$ 60.
 
 ---
 
-## 2. Seguro rural e hedge de preco vinculados
+## 2. Aplicacoes no agro: batches de estoques, tranches de CRA e operacoes hibridas
 
-### Protecao climatica embutida: seguro rural como condicao estrutural
+### Batches de estoques agropecuarios
 
-O seguro rural e um instrumento que indeniza o produtor em caso de perdas decorrentes de eventos climaticos (seca, geada, granizo, excesso de chuvas, inundacao) ou biologicos (pragas e doencas). No contexto da CPR como veiculo estruturado, o seguro rural deixa de ser uma opcao do produtor e passa a ser uma exigencia do credor, incorporada como clausula obrigatoria da operacao. Essa vinculacao transforma o seguro de mero instrumento de protecao individual em componente estrutural da operacao de credito, pois garante que, mesmo em caso de quebra de safra, havera recursos para liquidar — ao menos parcialmente — a CPR.
+O conceito de "batch" (lote) e natural no agronegocio. Um produtor de milho no Parana colhe e deposita sua safra em armazem, resultando em lotes homogeneos de graos com as mesmas caracteristicas de qualidade. Dentro de um mesmo lote, cada saca de milho e fungivel com qualquer outra — nao faz diferenca qual saca especifica o comprador recebe, desde que atenda ao padrao de qualidade do lote.
 
-O Brasil possui dois grandes mecanismos de seguro rural: o Proagro (Programa de Garantia da Atividade Agropecuaria), administrado pelo Banco Central e voltado a pequenos e medios produtores que tomam credito de custeio pelo Plano Safra; e o seguro rural privado, oferecido por seguradoras autorizadas pela SUSEP (como Mapfre, Swiss Re, Allianz e Fairfax) e parcialmente subsidiado pelo governo federal por meio do Programa de Subvencao ao Premio do Seguro Rural (PSR). Em operacoes estruturadas de CPR para o mercado de capitais, o seguro exigido e tipicamente o seguro privado, com cobertura de receita (que protege tanto contra queda de produtividade quanto contra queda de preco) em vez de seguro de produtividade simples. A cobertura de receita e mais completa porque combina as duas variaveis que afetam a capacidade de pagamento do emissor: volume produzido e preco obtido.
+O ERC-1155 permite representar esses lotes de forma natural e eficiente. Cada tipo de token (ID) representa um lote especifico, e a quantidade de tokens daquele ID representa o numero de unidades (sacas, toneladas etc.) no lote. Um unico contrato ERC-1155 pode gerenciar simultaneamente:
 
-- **Exemplo**: Um FIAGRO que financia 50 produtores de soja via CPRs financeiras, totalizando R$ 300 milhoes, exige que cada produtor contrate seguro rural privado com cobertura de receita de pelo menos 70% da receita esperada. Um produtor que espera colher 60 sacas por hectare e vender a R$ 130 por saca (receita esperada de R$ 7.800 por hectare) precisa contratar seguro com cobertura minima de R$ 5.460 por hectare. Se uma seca reduzir a produtividade para 35 sacas por hectare (receita efetiva de R$ 4.550), o seguro indenizara a diferenca entre R$ 5.460 e R$ 4.550, ou seja, R$ 910 por hectare. Essa indenizacao sera depositada na conta escrow da operacao e utilizada para amortizar a CPR, protegendo o credor (FIAGRO) contra o risco climatico. Sem o seguro vinculado, o FIAGRO teria que absorver integralmente a perda, o que poderia gerar inadimplencia sistemica em safras com eventos climaticos severos.
+- ID 1: Milho safrinha 2025, padrao CBOT, armazem Cascavel/PR — 50.000 tokens (1 token = 1 saca de 60 kg)
+- ID 2: Milho safrinha 2025, padrao CBOT, armazem Toledo/PR — 30.000 tokens
+- ID 3: Soja safra 2025/26, padrao ANEC 41c, armazem Maringa/PR — 80.000 tokens
+- ID 4: Trigo safra 2025, tipo 1, armazem Ponta Grossa/PR — 20.000 tokens
 
-### Hedge de preco: protecao contra volatilidade embutida na operacao
+Tokens com o mesmo ID sao fungiveis entre si (qualquer saca de milho do lote de Cascavel e equivalente a outra do mesmo lote), mas tokens com IDs diferentes nao sao fungiveis (milho de Cascavel nao e equivalente a soja de Maringa). Essa propriedade de "semi-fungibilidade" e exatamente o que o agro precisa.
 
-O risco de preco e a segunda grande ameaca a capacidade de pagamento de uma CPR. Mesmo que o produtor colha a safra inteira, se o preco da soja cair de R$ 140 para R$ 95 por saca entre a emissao da CPR e o vencimento, a receita obtida pode ser insuficiente para liquidar o titulo. Para mitigar esse risco, operacoes estruturadas frequentemente vinculam instrumentos de hedge de preco a CPR, exigindo que o emissor ou o estruturador contrate protecao contra queda de preco nos mercados de derivativos.
+```solidity
+// Exemplo: Gestao de estoques agro com ERC-1155
+contract EstoqueAgro is ERC1155 {
+    struct Lote {
+        string produto;
+        string armazem;
+        string padraoQualidade;
+        uint256 safra;
+        uint256 pesoUnitarioKg;  // peso por token (ex: 60 kg = 1 saca)
+        uint256 dataDeposito;
+        bool ativo;
+    }
 
-Os instrumentos de hedge mais utilizados sao os contratos futuros de soja, milho e boi gordo na B3, as opcoes de venda (puts) nesses mesmos mercados e os swaps de commodities negociados no mercado de balcao com bancos e tradings. Quando o hedge e vinculado a CPR, o contrato de derivativo e registrado e seus resultados sao direcionados a mesma conta escrow da operacao. Se o preco cair abaixo do nivel protegido (strike da put ou preco do futuro), o ganho no derivativo compensa parcial ou integralmente a perda na receita de venda da safra. Se o preco subir, o produtor abre mao do ganho adicional (no caso de futuros) ou perde apenas o premio pago (no caso de opcoes), mas tem a certeza de que sua receita minima estara garantida.
+    uint256 public proximoLoteId = 1;
+    mapping(uint256 => Lote) public lotes;
 
-A combinacao de seguro rural (protecao contra risco de producao) com hedge de preco (protecao contra risco de mercado) cria o que o mercado chama de "estrutura de dupla protecao" ou "CPR blindada". Nessa configuracao, os dois principais riscos que podem impedir o pagamento da CPR — quebra de safra e queda de preco — estao mitigados por instrumentos financeiros vinculados a operacao. Essa estrutura e o que permite que fundos de investimento e investidores institucionais aceitem CPRs como ativos de risco moderado, comparaveis a debentures corporativas, em vez de classificar o credito agro como operacao de alto risco.
+    constructor() ERC1155("https://api.agro.com/metadata/{id}.json") {}
 
-- **Exemplo**: Uma securitizadora que monta um CRA de R$ 200 milhoes lastreado em CPRs de milho exige que todos os emissores contratem puts (opcoes de venda) de milho na B3 com strike de R$ 55 por saca, cobrindo pelo menos 80% do volume comprometido nas CPRs. O custo do premio das puts e de R$ 3 por saca, pago pelo emissor no momento da contratacao. Se o preco do milho na colheita cair para R$ 42 por saca, o emissor exerce a put e recebe R$ 13 por saca (R$ 55 menos R$ 42) como ganho no derivativo. Esse ganho e depositado na conta escrow e somado a receita de venda, reconstituindo o fluxo necessario para pagar a CPR. Se o preco subir para R$ 68, a put expira sem valor, o produtor perde o premio de R$ 3, mas vende o milho no mercado a R$ 68 — mais do que suficiente para liquidar a CPR. Em ambos os cenarios, o credor esta protegido.
+    function registrarLote(
+        address depositante,
+        string memory produto,
+        string memory armazem,
+        string memory padrao,
+        uint256 safra,
+        uint256 quantidadeTokens
+    ) external returns (uint256) {
+        uint256 loteId = proximoLoteId++;
+        lotes[loteId] = Lote(
+            produto, armazem, padrao, safra,
+            60, // 60 kg por saca
+            block.timestamp,
+            true
+        );
+        _mint(depositante, loteId, quantidadeTokens, "");
+        return loteId;
+    }
+
+    // Retirada parcial do estoque
+    function retirarEstoque(uint256 loteId, uint256 quantidade) external {
+        require(balanceOf(msg.sender, loteId) >= quantidade, "Saldo insuficiente");
+        _burn(msg.sender, loteId, quantidade);
+    }
+}
+```
+
+- **Exemplo**: A cooperativa C.Vale, com sede em Palotina (PR) e faturamento superior a R$ 30 bilhoes, opera dezenas de armazens no Parana e Mato Grosso do Sul. Com um unico contrato ERC-1155, a cooperativa poderia registrar todos os lotes depositados em seus armazens. Um produtor que deposita 10.000 sacas de soja no armazem de Palotina recebe 10.000 tokens do lote ID 47. Se ele quer vender 3.000 sacas para uma trading, transfere 3.000 tokens via safeTransferFrom. A trading pode entao agrupar tokens de diferentes produtores (todos do mesmo lote ID 47, ja que o padrao de qualidade e identico) e negociar o volume consolidado com um exportador. Todo o historico de movimentacao fica registrado on-chain.
+
+### Tranches de CRA com diferentes perfis de risco
+
+Uma operacao de CRA (Certificado de Recebiveis do Agronegocio) tipicamente e estruturada em tranches (parcelas) com diferentes perfis de risco e retorno. A estrutura mais comum inclui:
+
+- **Tranche senior**: menor risco, menor retorno (ex: CDI + 2% a.a.), primeira a receber pagamentos, ultima a absorver perdas. Tipicamente 70-80% do volume total.
+- **Tranche mezanino**: risco intermediario, retorno intermediario (ex: CDI + 5% a.a.), recebe apos a senior, absorve perdas antes dela. Tipicamente 15-20% do volume.
+- **Tranche subordinada (equity)**: maior risco, maior retorno potencial, primeira a absorver perdas. Tipicamente 5-10% do volume, frequentemente retida pelo originador como "skin in the game".
+
+No modelo ERC-1155, cada tranche e representada por um ID diferente, e os tokens dentro de cada tranche sao fungiveis entre si. Isso permite que investidores conservadores comprem tokens da tranche senior, investidores arrojados comprem tokens da tranche mezanino, e o originador retenha tokens da tranche subordinada — tudo dentro de um unico contrato.
+
+A securitizadora Opea (antiga RB Capital), uma das maiores emissoras de CRA do Brasil com mais de R$ 15 bilhoes em emissoes, estruturou CRAs agro com ate 4 tranches em operacoes complexas envolvendo portfolios de CPRs de diferentes commodities e regioes. A tokenizacao via ERC-1155 dessas tranches permitiria negociacao granular de cada perfil de risco, com liquidez independente para cada tranche.
+
+- **Exemplo**: A True Securitizadora emite um CRA de R$ 300 milhoes lastreado em 150 CPRs financeiras de produtores de soja, milho e algodao do MATOPIBA. A estrutura: tranche senior (ID 1) = R$ 210 milhoes = 210.000 tokens, rating AAA pela Fitch, rendimento IPCA + 7% a.a.; tranche mezanino (ID 2) = R$ 60 milhoes = 60.000 tokens, rating A, rendimento IPCA + 10% a.a.; tranche subordinada (ID 3) = R$ 30 milhoes = 30.000 tokens, sem rating, retida pelo originador. Um fundo de pensao (como Previ ou Petros) compra 100.000 tokens senior. Um family office compra 20.000 tokens mezanino. O originador retém todos os 30.000 tokens subordinados. Tudo em um unico contrato ERC-1155, com transferencias e consultas de saldo otimizadas.
 
 ---
 
-## 3. CPR como lastro para securitizacao
+## 3. Distincao entre fungivel e nao fungivel no mesmo contrato
 
-### A cadeia CPR para CRA, FIAGRO e FIDC: como o titulo vira lastro
+### O conceito de semi-fungibilidade
 
-A funcao mais sofisticada da CPR moderna e servir como lastro (ativo subjacente) para operacoes de securitizacao que conectam o produtor rural ao mercado de capitais. A securitizacao e o processo pelo qual creditos individuais (CPRs) sao agrupados em um portfolio, transferidos a um veiculo de proposito especifico (SPE, securitizadora ou fundo) e transformados em titulos negociaveis (CRAs, cotas de FIAGRO ou cotas de FIDC) que sao vendidos a investidores no mercado. Esse processo transforma creditos iliquidos e individuais em ativos padronizados, diversificados e negociaveis.
+O ERC-1155 introduz o conceito de semi-fungibilidade, que e particularmente poderoso para o agronegocio. Um token e semi-fungivel quando comeca fungivel (intercambiavel com outros do mesmo tipo) mas pode se tornar nao fungivel ao longo do tempo, ou vice-versa. O exemplo classico: um ingresso para um show e fungivel antes do evento (qualquer ingresso de pista e equivalente a outro de pista) mas torna-se nao fungivel apos o uso (um ingresso usado e um colecionavel unico com historico proprio).
 
-A cadeia funciona da seguinte forma: na base, dezenas ou centenas de produtores emitem CPRs individuais em favor de uma originadora (banco, trading, cooperativa ou fintech agro). A originadora agrupa essas CPRs e as transfere (por cessao ou endosso) a uma securitizadora ou a um fundo (FIAGRO ou FIDC). A securitizadora emite CRAs (Certificados de Recebiveis do Agronegocio) lastreados nesse portfolio de CPRs. Os CRAs sao ofertados a investidores (fundos de pensao, asset managers, family offices, investidores de varejo qualificados) que recebem os pagamentos conforme os produtores liquidam suas CPRs. A diferenca entre a taxa paga pelos produtores nas CPRs e a taxa remunerada aos investidores nos CRAs e o spread da operacao, que remunera a securitizadora, a originadora e os prestadores de servico (agente fiduciario, custodia, rating, auditoria).
+No agro, a semi-fungibilidade aparece naturalmente em varios cenarios:
 
-- **Exemplo**: A Eco Securitizadora recebe 300 CPRs financeiras de produtores de soja do Mato Grosso, originadas por uma grande cooperativa, totalizando R$ 450 milhoes. As CPRs possuem vencimentos entre abril e junho, taxa media de CDI + 4% ao ano, alienacao fiduciaria sobre a producao e seguro rural obrigatorio. A securitizadora emite uma serie de CRAs no valor de R$ 400 milhoes (a diferenca de R$ 50 milhoes e a sobrecolateralizacao, que funciona como "colchao" para os investidores). Os CRAs sao ofertados ao mercado com remuneracao de CDI + 1,8% ao ano, isentos de IR para pessoas fisicas conforme a Lei 11.033/2004. A diferenca entre CDI + 4% (recebido dos produtores) e CDI + 1,8% (pago aos investidores) — ou seja, 2,2 pontos percentuais — cobre os custos da estruturacao, remuneracao da securitizadora e prestadores de servico. Os investidores compraram CRAs porque o portfolio e diversificado (300 produtores), a sobrecolateralizacao e de 12,5%, ha seguro rural vinculado e a operacao recebeu rating AA por agencia de classificacao de risco.
+**Tokens de estoque que se tornam CDAs individuais**: 1.000 tokens representando sacas de soja em armazem sao fungiveis enquanto as sacas estao no silo. Quando o proprietario solicita a emissao de um CDA para um lote especifico de 500 sacas, esses 500 tokens podem ser "convertidos" em um NFT unico (um novo ID com supply 1) que representa o CDA com seus metadados individuais.
 
-### CPR como "mini veiculo estruturado": a unidade atomica da securitizacao agro
+**Cotas de CRA que vencem em datas diferentes**: em um CRA com amortizacao mensal, as cotas que vencem em janeiro sao fungiveis entre si, mas nao sao fungiveis com as cotas que vencem em fevereiro. Cada mes de vencimento pode ser representado por um ID diferente no ERC-1155.
 
-Cada CPR individual, quando adequadamente estruturada — com alienacao fiduciaria, cessao de recebiveis, conta escrow, seguro rural e hedge de preco —, funciona como um "mini veiculo estruturado", um microcosmo que contem todos os elementos de uma operacao de credito estruturado. Essa visao e fundamental para compreender por que a CPR se tornou o instrumento preferencial do mercado de capitais agro brasileiro: ela permite que o risco de credito de um produtor rural individual seja isolado, mitigado e empacotado de forma padronizada, tornando possivel a agregacao de centenas de CPRs em um portfolio diversificado que atende aos requisitos de investidores institucionais.
+**Safras futuras que se tornam producao real**: tokens representando "soja safra 2026 estimada" sao fungiveis entre si antes da colheita. Apos a colheita, cada lote depositado em armazem tem caracteristicas especificas (qualidade, umidade, localizacao) e se torna nao fungivel.
 
-A evolucao regulatoria recente consolidou essa funcao. A Resolucao CVM 60/2022, que regulamenta a securitizacao de creditos no Brasil, reconhece expressamente a CPR como lastro elegivel para CRAs. A Lei 14.130/2021, que criou o FIAGRO, permitiu que fundos de investimento adquiram CPRs diretamente como ativos de carteira, sem necessidade de securitizacao intermediaria. E a Lei 13.986/2020 fortaleceu as garantias da CPR (alienacao fiduciaria sobre bens fungiveis, registro centralizado), tornando o titulo mais atrativo para investidores. O resultado dessas mudancas e visivel nos numeros: o estoque de CRAs no mercado brasileiro saltou de R$ 48 bilhoes em 2020 para mais de R$ 130 bilhoes em 2024, e o patrimonio liquido dos FIAGROs passou de zero (criacao em 2021) para mais de R$ 40 bilhoes em 2024. A CPR esta no centro dessa expansao, como a unidade atomica que lastreia toda a cadeia de securitizacao agro.
+```solidity
+// Exemplo: conversao de fungivel para NFT no ERC-1155
+contract AgroMultiToken is ERC1155 {
+    uint256 public constant SOJA_FUNGIVEL = 1;  // Sacas fungiveis
+    uint256 private _nextCDAId = 1000;           // CDAs unicos (IDs >= 1000)
 
-- **Exemplo**: Para visualizar a CPR como mini veiculo estruturado, considere uma unica CPR financeira de R$ 3 milhoes emitida por um produtor de algodao no oeste da Bahia. O titulo contem: (a) alienacao fiduciaria sobre 5.000 toneladas de pluma de algodao; (b) cessao fiduciaria dos recebiveis do contrato de venda com uma trading suica; (c) conta escrow no banco custodiante para recebimento do pagamento da trading; (d) seguro rural com cobertura de receita de 75%; (e) opcao de venda (put) de algodao na ICE Futures com strike de 78 centavos de dolar por libra-peso. Cada um desses elementos cobre um risco especifico: a alienacao fiduciaria protege contra desvio do produto; a cessao de recebiveis protege contra desvio do dinheiro; a conta escrow garante a cascata de pagamento; o seguro protege contra quebra de safra; e a put protege contra queda de preco. Quando um FIAGRO adquire 100 CPRs com essa mesma estrutura, ele monta um portfolio de R$ 300 milhoes com risco controlado em cada unidade, diversificacao entre produtores e regioes, e mecanismos de protecao em todas as camadas. E assim que o credito agro individual vira ativo de mercado de capitais.
+    struct MetadadosCDA {
+        uint256 quantidadeSacas;
+        string armazem;
+        string laudoQualidade;
+        uint256 dataEmissao;
+    }
+
+    mapping(uint256 => MetadadosCDA) public cdas;
+
+    // Converte sacas fungiveis em CDA unico
+    function emitirCDA(
+        uint256 quantidadeSacas,
+        string memory armazem,
+        string memory laudo
+    ) external returns (uint256) {
+        // Queima tokens fungiveis
+        require(
+            balanceOf(msg.sender, SOJA_FUNGIVEL) >= quantidadeSacas,
+            "Sacas insuficientes"
+        );
+        _burn(msg.sender, SOJA_FUNGIVEL, quantidadeSacas);
+
+        // Cria NFT unico representando o CDA
+        uint256 cdaId = _nextCDAId++;
+        cdas[cdaId] = MetadadosCDA(
+            quantidadeSacas,
+            armazem,
+            laudo,
+            block.timestamp
+        );
+        _mint(msg.sender, cdaId, 1, ""); // supply = 1 (NFT)
+
+        return cdaId;
+    }
+
+    // Reverte CDA para sacas fungiveis (ex: cancelamento)
+    function cancelarCDA(uint256 cdaId) external {
+        require(balanceOf(msg.sender, cdaId) == 1, "Nao possui este CDA");
+        uint256 sacas = cdas[cdaId].quantidadeSacas;
+
+        _burn(msg.sender, cdaId, 1);
+        _mint(msg.sender, SOJA_FUNGIVEL, sacas, "");
+
+        delete cdas[cdaId];
+    }
+}
+```
+
+- **Exemplo**: Um produtor de soja em Rio Verde (GO) colhe 100.000 sacas e deposita em armazem. Ele recebe 100.000 tokens fungiveis (ID 1 - SOJA_FUNGIVEL). Quando precisa negociar parte do estoque, ele emite um CDA para 30.000 sacas: o contrato queima 30.000 tokens do ID 1 e cria 1 token do ID 1000 (o CDA unico), com metadados do armazem, laudo de qualidade e data. A trading que compra esse CDA-NFT tem certeza de que as 30.000 sacas estao "bloqueadas" (os tokens fungiveis foram queimados) e nao podem ser vendidas duas vezes. Se o negocio for cancelado, a funcao cancelarCDA reverte a operacao: queima o NFT e recria os 30.000 tokens fungiveis.
+
+### Arquitetura de um contrato ERC-1155 para operacoes agro integradas
+
+A verdadeira potencia do ERC-1155 no agro aparece quando combinamos todos os conceitos em uma arquitetura integrada. Um unico contrato pode gerenciar toda a cadeia de valor de uma operacao de securitizacao agro:
+
+**Camada 1 — Estoques (fungiveis)**: IDs 1-99 representam diferentes tipos de commodities em diferentes armazens. Soja tipo A no armazem X (ID 1), milho no armazem Y (ID 2), etc. Tokens fungiveis dentro de cada ID.
+
+**Camada 2 — CDAs (nao fungiveis)**: IDs 100-999 representam CDAs emitidos a partir dos estoques. Cada CDA e um NFT (supply = 1) com metadados unicos vinculados via URI.
+
+**Camada 3 — CPRs (nao fungiveis)**: IDs 1000-9999 representam CPRs fisicas ou financeiras lastreadas nos estoques ou na producao futura. Cada CPR e um NFT com dados do emissor, valor, vencimento e garantias.
+
+**Camada 4 — Tranches de CRA (fungiveis por tranche)**: IDs 10000+ representam tranches de CRA lastreados nas CPRs. Senior (ID 10001), mezanino (ID 10002), subordinada (ID 10003). Tokens fungiveis dentro de cada tranche.
+
+Essa arquitetura em camadas permite rastreabilidade completa do lastro: cada token de CRA senior (ID 10001) e lastreado em CPRs especificas (IDs 1000-9999), que por sua vez sao lastreadas em CDAs (IDs 100-999) ou estoques (IDs 1-99). Um auditor pode percorrer a cadeia de IDs e verificar que o lastro e real, suficiente e nao duplicado.
+
+```solidity
+// Exemplo: estrutura de IDs para operacao integrada
+contract OperacaoCRAAgroIntegrada is ERC1155 {
+    // Ranges de IDs
+    uint256 constant ESTOQUE_MIN = 1;
+    uint256 constant ESTOQUE_MAX = 99;
+    uint256 constant CDA_MIN = 100;
+    uint256 constant CDA_MAX = 999;
+    uint256 constant CPR_MIN = 1000;
+    uint256 constant CPR_MAX = 9999;
+    uint256 constant TRANCHE_MIN = 10000;
+
+    // Mapeamento de lastro: CRA -> CPRs -> CDAs
+    mapping(uint256 => uint256[]) public lastroCRA;    // trancheId => cprIds
+    mapping(uint256 => uint256[]) public lastroCPR;    // cprId => cdaIds
+
+    function verificarLastro(uint256 trancheId)
+        external view returns (uint256 totalLastro)
+    {
+        uint256[] memory cprs = lastroCRA[trancheId];
+        for (uint i = 0; i < cprs.length; i++) {
+            uint256[] memory cdasDaCPR = lastroCPR[cprs[i]];
+            for (uint j = 0; j < cdasDaCPR.length; j++) {
+                // Soma os valores de cada CDA
+                totalLastro += 1; // simplificado
+            }
+        }
+    }
+}
+```
+
+- **Exemplo**: A Ecoagro, uma das maiores originadoras de credito agro do Brasil com portfolio superior a R$ 10 bilhoes, estrutura uma operacao de CRA de R$ 500 milhoes usando um contrato ERC-1155 integrado. O contrato contem: 15 tipos de estoque (IDs 1-15) em armazens do MT, GO e BA, totalizando 2 milhoes de sacas tokenizadas; 45 CDAs (IDs 100-144) emitidos a partir desses estoques; 120 CPRs financeiras (IDs 1000-1119) de produtores da regiao; e 3 tranches de CRA (IDs 10001-10003) lastreadas nessas CPRs. O trustee (agente fiduciario) do CRA — por exemplo, a Vortx ou a Pentagonal — pode verificar on-chain, em tempo real, que cada tranche esta adequadamente lastreada, sem depender de relatorios mensais do servicer. Quando uma CPR e liquidada (produtor paga), o contrato automaticamente atualiza o status e redistribui os pagamentos proporcionalmente entre as tranches, priorizando a senior.
 
 ---
 
 ## Conclusao
 
-Nesta aula, completamos a jornada de estruturacao da CPR ao explorar suas tres dimensoes mais avancadas como veiculo estruturado. Primeiro, compreendemos como a conta escrow e o commodity pledge criam uma arquitetura de segregacao de fluxo e controle fisico que elimina o risco de desvio, dando ao credor visibilidade e poder sobre o produto e sobre o dinheiro. Segundo, vimos como o seguro rural e o hedge de preco, quando vinculados a CPR como exigencia estrutural, criam uma "dupla protecao" que mitiga os dois maiores riscos da operacao agro — quebra de safra e queda de preco — transformando a CPR em ativo de risco controlado. Terceiro, entendemos como a CPR se tornou a unidade atomica da securitizacao agro brasileira, servindo como lastro para CRAs, FIAGROs e FIDCs que canalizam centenas de bilhoes de reais do mercado de capitais para o campo. Com esta aula, concluimos o modulo sobre CPR e estruturacao avancada, preparando o terreno para o proximo modulo, dedicado inteiramente a securitizacao agro.
+Nesta aula, fechamos o ciclo dos padroes fundamentais de tokenizacao com o ERC-1155, o padrao mais versatil e eficiente para operacoes complexas no agronegocio brasileiro. Primeiro, entendemos como o multi-token resolve o problema de custo e complexidade de gerenciar multiplos contratos separados, com funcoes de batch (safeBatchTransferFrom, balanceOfBatch) que reduzem custos de gas em ate 70%. Segundo, aplicamos o padrao a cenarios reais do agro: batches de estoques em armazens representados como tokens fungiveis por lote, tranches de CRA com diferentes perfis de risco em um unico contrato, e operacoes hibridas que combinam commodities, CDAs, CPRs e cotas de securitizacao. Terceiro, exploramos o conceito de semi-fungibilidade — a capacidade de converter tokens fungiveis em NFTs e vice-versa — e desenhamos uma arquitetura em camadas que permite rastreabilidade completa do lastro, desde o estoque fisico ate a cota de CRA nas maos do investidor.
+
+Com os tres padroes — ERC-20, ERC-721 e ERC-1155 — voce agora possui o ferramental tecnico para representar qualquer ativo do agronegocio na blockchain. No proximo modulo, vamos aplicar esse conhecimento na arquitetura completa de uma solucao RWA, integrando smart contracts, oracles, compliance on-chain e integracao com o sistema financeiro tradicional.
 
 ---
 
 ## Licao de Casa
 
-1. Pesquise no site da SUSEP (www.susep.gov.br) os dados do Programa de Subvencao ao Premio do Seguro Rural (PSR) referentes ao ultimo ano disponivel. Identifique o valor total subvencionado, o numero de apolices e as principais culturas cobertas. Calcule o premio medio por apolice.
-2. Acesse o site da B3 (www.b3.com.br) e identifique os contratos futuros de commodities agropecuarias disponiveis para negociacao (soja, milho, cafe, boi gordo, algodao). Para o contrato de soja, consulte o preco do vencimento mais proximo e calcule o custo de uma put com strike 10% abaixo do preco atual, utilizando os dados de opcoes disponiveis.
-3. Analise uma operacao real de CRA lastreado em CPRs (utilize o site da CVM — www.cvm.gov.br — para buscar o prospecto de uma emissao recente). Identifique: volume da emissao, numero de CPRs no lastro, taxa de remuneracao ao investidor, nivel de sobrecolateralizacao, garantias exigidas e rating atribuido. Resuma as informacoes em uma pagina.
-
----
-
-## Proxima Aula
-
-Na proxima aula, iniciaremos o Modulo 3 — Securitizacao Agro, onde vamos estudar em profundidade a estrutura, a regulacao e a mecanica das operacoes de CRA, FIAGRO e FIDC do agronegocio, partindo exatamente do ponto onde este modulo terminou. Ate la!
-
----
-
-## Links para aprofundamento
-
-1. [CVM — Resolucao 60/2022 sobre Securitizacao de Creditos](https://www.gov.br/cvm/pt-br/assuntos/regras-e-normativos/normas/resolucoes)
-2. [B3 — Derivativos Agropecuarios (Futuros e Opcoes)](https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/commodities/)
-3. [SUSEP — Programa de Subvencao ao Premio do Seguro Rural (PSR)](https://www.gov.br/agricultura/pt-br/assuntos/riscos-seguro/seguro-rural)
-4. [ANBIMA — Dados de CRA e FIAGRO no Mercado de Capitais](https://www.anbima.com.br/pt_br/informar/estatisticas/mercado-de-capitais/boletim-de-mercado-de-capitais.htm)
-5. [Lei 14.130/2021 — Institui o FIAGRO](https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14130.htm)
+1. Desenhe (em texto ou diagrama) a arquitetura de IDs de um contrato ERC-1155 para uma operacao de CRA de R$ 100 milhoes lastreado em CPRs de cafe especial do Cerrado Mineiro. Defina pelo menos 4 camadas de IDs (estoques, CDAs, CPRs, tranches) e explique quais IDs sao fungiveis e quais sao NFTs.
+2. Calcule a economia de gas estimada ao usar ERC-1155 em vez de contratos ERC-20 + ERC-721 separados para uma operacao que envolve: 3 tipos de tokens fungiveis (2 tranches de CRA + 1 stablecoin), 10 CDAs unicos e 50 CPRs individuais. Considere custo medio de deploy de contrato = R$ 500 e custo medio por transacao = R$ 15.
+3. Pesquise o conceito de "token-bound accounts" (ERC-6551) e explique em 15 linhas como um NFT ERC-1155 representando um CDA poderia "possuir" outros tokens (como tokens de seguro, certificados de qualidade etc.), criando uma hierarquia de ativos digitais.
 
 ---
 
 ## Questionario
 
-**1. Qual e a funcao principal da conta escrow em uma operacao de CPR estruturada?**
+**1. Qual e a principal vantagem do ERC-1155 sobre o uso combinado de ERC-20 e ERC-721 para operacoes complexas de tokenizacao no agronegocio?**
 
-a) Permitir que o produtor acumule recursos para reinvestimento na proxima safra
-b) Segregar o fluxo financeiro da venda da producao, garantindo que o credor seja pago antes do produtor
-c) Substituir a necessidade de garantias reais sobre a producao
-d) Funcionar como conta de investimento para o credor aplicar os recursos recebidos
-
-**Resposta: b**
-
-**2. O que diferencia o seguro rural com cobertura de receita do seguro de produtividade simples?**
-
-a) O seguro de receita e mais barato porque cobre apenas riscos climaticos
-b) O seguro de receita protege contra queda de produtividade e contra queda de preco simultaneamente
-c) O seguro de produtividade simples oferece cobertura mais ampla que o seguro de receita
-d) Nao ha diferenca pratica entre os dois tipos de cobertura
+a) O ERC-1155 permite criar tokens com valor maximo ilimitado
+b) O ERC-1155 gerencia multiplos tipos de tokens (fungiveis e nao fungiveis) em um unico contrato, reduzindo custos de gas e complexidade
+c) O ERC-1155 elimina a necessidade de metadados para os tokens
+d) O ERC-1155 permite apenas tokens fungiveis, mas com eficiencia superior ao ERC-20
 
 **Resposta: b**
 
-**3. Na cadeia de securitizacao agro, qual e a sequencia correta de transformacao dos creditos?**
+**2. Em um contrato ERC-1155 para uma operacao de CRA agro, como sao representadas as tranches senior e mezanino?**
 
-a) CRA e emitido pelo produtor, que o vende ao investidor e repassa o recurso a securitizadora
-b) O investidor emite CPR, que e transferida ao produtor por meio da securitizadora
-c) Produtores emitem CPRs individuais, que sao agrupadas e transferidas a uma securitizadora, que emite CRAs vendidos a investidores
-d) A securitizadora emite CPRs em nome dos produtores e simultaneamente emite CRAs para os mesmos investidores
-
-**Resposta: c**
-
-**4. Por que a combinacao de seguro rural e hedge de preco vinculados a CPR e denominada "estrutura de dupla protecao" pelo mercado?**
-
-a) Porque ambos os instrumentos protegem exclusivamente contra o risco de inadimplencia do comprador da producao
-b) Porque o seguro mitiga o risco de producao (quebra de safra) e o hedge mitiga o risco de mercado (queda de preco), cobrindo as duas principais ameacas a capacidade de pagamento da CPR
-c) Porque a existencia de dois instrumentos de protecao elimina completamente qualquer risco na operacao
-d) Porque o seguro e o hedge sao contratados em duplicidade para garantir redundancia operacional
+a) Como um unico ID com flag interna distinguindo o tipo de tranche
+b) Como IDs diferentes no mesmo contrato, sendo tokens fungiveis dentro de cada ID (cada tranche)
+c) Como contratos ERC-20 separados vinculados ao contrato ERC-1155
+d) Como metadados do tokenURI, sem distincao no nivel do contrato
 
 **Resposta: b**
 
-**5. Considere uma operacao de CRA de R$ 500 milhoes lastreada em 400 CPRs com sobrecolateralizacao de 15%, seguro rural com cobertura de receita de 70%, hedge via puts com strike 10% abaixo do preco de referencia e conta escrow com waterfall de pagamentos. Se uma seca severa atingir 30% dos produtores, reduzindo a produtividade media desse grupo em 50%, e simultaneamente o preco da soja cair 12% em relacao ao preco de referencia, qual mecanismo de protecao NAO contribuira diretamente para a mitigacao da perda do investidor?**
+**3. O que e a funcao safeBatchTransferFrom do ERC-1155 e qual sua aplicacao pratica no agro?**
 
-a) O seguro rural, que indenizara os produtores afetados pela seca
-b) As puts de preco, que serao exercidas porque o preco caiu abaixo do strike
-c) A sobrecolateralizacao de 15%, que funciona como colchao para absorver perdas residuais
-d) A conta escrow, que por si so nao mitiga perdas, mas garante que os recursos disponiveis sejam direcionados prioritariamente ao pagamento dos CRAs
+a) Uma funcao que transfere apenas NFTs em lote, nao aplicavel a tokens fungiveis
+b) Uma funcao que permite transferir multiplos tipos de tokens em uma unica transacao, reduzindo custos de gas — util para transferir simultaneamente cotas de CRA, CDAs e estoques
+c) Uma funcao exclusiva para queima de tokens vencidos em lote
+d) Uma funcao que verifica a autenticidade de multiplos tokens antes da transferencia
 
-**Resposta: d**
+**Resposta: b**
+
+**4. No conceito de semi-fungibilidade aplicado ao agro, como tokens fungiveis de estoque podem se tornar NFTs?**
+
+a) Os tokens fungiveis sao automaticamente convertidos em NFTs apos 30 dias
+b) O contrato queima tokens fungiveis do estoque e emite um NFT unico (CDA) com metadados especificos do lote, garantindo que as sacas nao sejam vendidas duas vezes
+c) Os tokens fungiveis recebem um carimbo de data que os torna unicos
+d) A conversao e feita fora da blockchain, por um sistema centralizado do armazem
+
+**Resposta: b**
+
+**5. Uma securitizadora usa um contrato ERC-1155 com a seguinte estrutura de IDs: estoques (IDs 1-50), CDAs (IDs 100-200), CPRs (IDs 1000-1500), tranches de CRA (IDs 10001-10003). Um auditor precisa verificar se a tranche senior (ID 10001) esta adequadamente lastreada. Qual abordagem on-chain e a mais eficiente?**
+
+a) Consultar o totalSupply do ID 10001 e comparar com o valor total da operacao
+b) Percorrer o mapeamento de lastro on-chain (tranche → CPRs → CDAs → estoques) para verificar que cada nivel possui ativos reais e suficientes
+c) Verificar o saldo de stablecoin no contrato do CRA
+d) Consultar o balanceOf do emissor para verificar se ele ainda possui tokens
+
+**Resposta: b**
+
+---
+
+## Proxima Aula
+
+No proximo modulo — Modulo 3: Arquitetura de uma Solucao RWA e Smart Contracts —, vamos aplicar os padroes ERC-20, ERC-721 e ERC-1155 que dominamos neste modulo para projetar a arquitetura completa de uma solucao de tokenizacao de ativos reais para o agronegocio. Veremos como integrar oracles (como Chainlink) para alimentar precos de commodities on-chain, como implementar compliance automatizado via smart contracts (KYC/AML on-chain), como conectar a solucao ao sistema financeiro tradicional (incluindo o DREX) e como garantir a validade juridica de toda a operacao sob a regulacao brasileira. Ate la!

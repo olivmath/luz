@@ -7,6 +7,7 @@ export const COURSES: Record<string, Course> = {
     subtitle: 'Fundamentos',
     level: 'Introdutório',
     description: 'Visão completa do sistema de financiamento do agronegócio brasileiro — bases institucionais, instrumentos financeiros, gestão de risco e tendências de mercado.',
+    image: '/images/courses/curso-01.svg',
     modules: [
       {
         id: 'modulo-01',
@@ -76,6 +77,7 @@ export const COURSES: Record<string, Course> = {
     subtitle: 'Estruturação e Mercado Avançado',
     level: 'Avançado',
     description: 'Aprofundamento em estruturação de crédito agro — securitização, gestão de risco, FIAGRO, funding internacional e tokenização.',
+    image: '/images/courses/curso-02.svg',
     modules: [
       {
         id: 'modulo-01',
@@ -140,12 +142,153 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
+  'curso-05': {
+    id: 'curso-05',
+    title: 'Web3 e Tokenização de RWA no Agronegócio',
+    subtitle: 'Fundamentos e Implementação',
+    level: 'Avançado',
+    description: 'Fundamentos de RWA, padrões de tokenização (ERC-20/721/1155), arquitetura de soluções, oráculos, implementação prática e escolha de blockchain.',
+    image: '/images/courses/curso-05.svg',
+    modules: [
+      {
+        id: 'modulo-01',
+        title: 'Fundamentos de RWA e Web3 no Agronegócio',
+        objective: 'Entender o conceito de Real World Assets (RWA), seu potencial e limitações no agro brasileiro.',
+        lessons: [
+          { id: 'aula-01', title: 'O que RWA resolve (e o que não resolve) no agro', number: '1.1' },
+          { id: 'aula-02', title: 'Mercado global de RWA vs. realidade brasileira', number: '1.2' },
+          { id: 'aula-03', title: 'Regulamentação brasileira atualizada', number: '1.3' },
+        ]
+      },
+      {
+        id: 'modulo-02',
+        title: 'Padrões de Tokenização Básicos: ERC-20, ERC-721 e ERC-1155',
+        objective: 'Dominar os padrões fundamentais para representar ativos fungíveis, não-fungíveis e híbridos no agro.',
+        lessons: [
+          { id: 'aula-01', title: 'ERC-20: Tokens fungíveis', number: '2.1' },
+          { id: 'aula-02', title: 'ERC-721: Tokens não-fungíveis (NFTs)', number: '2.2' },
+          { id: 'aula-03', title: 'ERC-1155: Multi-token (semi-fungível)', number: '2.3' },
+        ]
+      },
+      {
+        id: 'modulo-03',
+        title: 'Arquitetura de uma Solução RWA e Smart Contracts',
+        objective: 'Compreender as camadas técnicas envolvidas em uma plataforma de tokenização.',
+        lessons: [
+          { id: 'aula-01', title: 'A pilha tecnológica (The RWA Stack)', number: '3.1' },
+          { id: 'aula-02', title: 'Componentes de um smart contract para RWA', number: '3.2' },
+          { id: 'aula-03', title: 'Ferramentas de desenvolvimento e deploy', number: '3.3' },
+        ]
+      },
+      {
+        id: 'modulo-04',
+        title: 'Oráculos e Integração Off-Chain',
+        objective: 'Conectar o mundo on-chain a dados externos confiáveis (preços, reservas, clima).',
+        lessons: [
+          { id: 'aula-01', title: 'Oráculos de preço e dados', number: '4.1' },
+          { id: 'aula-02', title: 'Proof of Reserve (PoR) para commodities', number: '4.2' },
+          { id: 'aula-03', title: 'Oráculos climáticos e agronômicos', number: '4.3' },
+        ]
+      },
+      {
+        id: 'modulo-05',
+        title: 'Implementação Prática Básica: Tokenização de CPR e CRA',
+        objective: 'Colocar em prática os conceitos com exemplos de tokenização.',
+        lessons: [
+          { id: 'aula-01', title: 'Tokenização de CPR com ERC-20', number: '5.1' },
+          { id: 'aula-02', title: 'Tokenização de CRA com ERC-1155 (tranches)', number: '5.2' },
+          { id: 'aula-03', title: 'Exercícios integradores', number: '5.3' },
+        ]
+      },
+      {
+        id: 'modulo-06',
+        title: 'Infraestrutura Blockchain: Escolha da Rede',
+        objective: 'Comparar blockchains e selecionar a mais adequada para cada operação agro.',
+        lessons: [
+          { id: 'aula-01', title: 'Ethereum e Layer-2s', number: '6.1' },
+          { id: 'aula-02', title: 'Alternativas de alta performance: Solana e XRPL', number: '6.2' },
+          { id: 'aula-03', title: 'Protocolos especializados e permissioned', number: '6.3' },
+        ]
+      },
+    ]
+  },
+  'curso-06': {
+    id: 'curso-06',
+    title: 'Web3 e Tokenização de RWA no Agronegócio',
+    subtitle: 'Arquitetura Avançada e Integração DeFi',
+    level: 'Especialista',
+    description: 'Padrões avançados de compliance (ERC-3643), vaults tokenizados, waterfall on-chain, segurança, governança e integração com o sistema financeiro.',
+    image: '/images/courses/curso-06.svg',
+    modules: [
+      {
+        id: 'modulo-01',
+        title: 'Padrões Avançados de Token Compliance',
+        objective: 'Dominar os padrões que incorporam regras regulatórias e de identidade on-chain.',
+        lessons: [
+          { id: 'aula-01', title: 'ERC-1400: Security tokens com particionamento', number: '1.1' },
+          { id: 'aula-02', title: 'ERC-3643 (T-REX): Tokens permissionados', number: '1.2' },
+          { id: 'aula-03', title: 'Padrões emergentes: ERC-7518, EIP-7943 e EIP-7493', number: '1.3' },
+        ]
+      },
+      {
+        id: 'modulo-02',
+        title: 'Vaults Tokenizados e Estruturas DeFi para RWA',
+        objective: 'Utilizar vaults padronizados para criar fundos tokenizados.',
+        lessons: [
+          { id: 'aula-01', title: 'ERC-4626: Vaults yield-bearing', number: '2.1' },
+          { id: 'aula-02', title: 'ERC-7540: Vaults assíncronos para ativos reais', number: '2.2' },
+          { id: 'aula-03', title: 'ERC-7575: Vaults multi-asset e compliance', number: '2.3' },
+        ]
+      },
+      {
+        id: 'modulo-03',
+        title: 'Waterfall e Automação de Pagamentos',
+        objective: 'Implementar a lógica de cascata de pagamentos de securitizações em smart contracts.',
+        lessons: [
+          { id: 'aula-01', title: 'Waterfall programática', number: '3.1' },
+          { id: 'aula-02', title: 'Credit enhancement on-chain', number: '3.2' },
+          { id: 'aula-03', title: 'Automação do lifecycle', number: '3.3' },
+        ]
+      },
+      {
+        id: 'modulo-04',
+        title: 'Segurança, Auditoria e Governança',
+        objective: 'Garantir a integridade e confiabilidade dos protocolos RWA.',
+        lessons: [
+          { id: 'aula-01', title: 'Riscos específicos de RWA', number: '4.1' },
+          { id: 'aula-02', title: 'Auditoria e certificação', number: '4.2' },
+          { id: 'aula-03', title: 'Governança de protocolos RWA', number: '4.3' },
+        ]
+      },
+      {
+        id: 'modulo-05',
+        title: 'Integração com o Sistema Financeiro Tradicional',
+        objective: 'Conectar a infraestrutura on-chain com registradoras, custodiantes, DREX e mercados secundários.',
+        lessons: [
+          { id: 'aula-01', title: 'Custódia física e jurídica', number: '5.1' },
+          { id: 'aula-02', title: 'KYC/AML e whitelists on-chain', number: '5.2' },
+          { id: 'aula-03', title: 'Mercado secundário e liquidez', number: '5.3' },
+        ]
+      },
+      {
+        id: 'modulo-06',
+        title: 'Projeto Final: Tokenização End-to-End',
+        objective: 'Integrar todos os conhecimentos em um projeto prático completo.',
+        lessons: [
+          { id: 'aula-01', title: 'Briefing e design de arquitetura', number: '6.1' },
+          { id: 'aula-02', title: 'Implementação dos smart contracts core', number: '6.2' },
+          { id: 'aula-03', title: 'Integração, deploy e apresentação', number: '6.3' },
+        ]
+      },
+    ]
+  },
   'curso-03': {
     id: 'curso-03',
     title: 'Nanotecnologia Aplicada a Cosméticos',
     subtitle: 'Fundamentos',
     level: 'Introdutório',
     description: 'Visão completa da nanotecnologia cosmética — nanomateriais, proteção solar, skincare, haircare, maquiagem, regulação e segurança.',
+    image: '/images/courses/curso-03.svg',
     modules: [
       {
         id: 'modulo-01',
@@ -215,6 +358,7 @@ export const COURSES: Record<string, Course> = {
     subtitle: 'Abordagem Avançada',
     level: 'Avançado',
     description: 'Aprofundamento em nanovetores cosméticos — design, encapsulamento, caracterização, permeação cutânea, escalonamento industrial e inovação.',
+    image: '/images/courses/curso-04.svg',
     modules: [
       {
         id: 'modulo-01',

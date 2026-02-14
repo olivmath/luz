@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1e4d"/>
+      <stop offset="100%" stop-color="#061030"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#061030" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="75%" cy="70%" r="40%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#061030" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <rect width="400" height="400" fill="url(#glow)"/>
+  <rect width="400" height="400" fill="url(#glow2)"/>
+
+  <!-- Large molecule (nanoparticle) center -->
+  <circle cx="200" cy="180" r="55" fill="none" stroke="#60a5fa" stroke-width="2" stroke-opacity="0.25"/>
+  <circle cx="200" cy="180" r="40" fill="none" stroke="#60a5fa" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 3"/>
+  <circle cx="200" cy="180" r="20" fill="#60a5fa" fill-opacity="0.08"/>
+
+  <!-- Electron orbits -->
+  <ellipse cx="200" cy="180" rx="80" ry="30" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.12" transform="rotate(-30,200,180)"/>
+  <ellipse cx="200" cy="180" rx="80" ry="30" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.12" transform="rotate(30,200,180)"/>
+  <ellipse cx="200" cy="180" rx="80" ry="30" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.12" transform="rotate(90,200,180)"/>
+
+  <!-- Orbital particles -->
+  <circle cx="250" cy="140" r="4" fill="#38bdf8" fill-opacity="0.3"/>
+  <circle cx="145" cy="205" r="3.5" fill="#38bdf8" fill-opacity="0.25"/>
+  <circle cx="210" cy="110" r="3" fill="#7dd3fc" fill-opacity="0.2"/>
+
+  <!-- Molecular bonds (smaller molecules) -->
+  <g transform="translate(60, 80)" opacity="0.2">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="25" cy="-10" r="6" fill="none" stroke="#93c5fd" stroke-width="1"/>
+    <line x1="7" y1="-3" x2="20" y2="-8" stroke="#93c5fd" stroke-width="0.8"/>
+    <circle cx="-15" cy="20" r="6" fill="none" stroke="#93c5fd" stroke-width="1"/>
+    <line x1="-5" y1="7" x2="-12" y2="15" stroke="#93c5fd" stroke-width="0.8"/>
+  </g>
+
+  <!-- Sunscreen particle (TiO2/ZnO) -->
+  <g transform="translate(310, 100)" opacity="0.18">
+    <circle cx="0" cy="0" r="15" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-width="1"/>
+    <circle cx="0" cy="0" r="8" fill="#fbbf24" fill-opacity="0.1"/>
+    <line x1="-25" y1="-20" x2="-8" y2="-8" stroke="#fbbf24" stroke-width="0.8"/>
+    <line x1="-8" y1="-8" x2="-20" y2="5" stroke="#fbbf24" stroke-width="0.8"/>
+    <line x1="-20" y1="-25" x2="-5" y2="-12" stroke="#fbbf24" stroke-width="0.6"/>
+  </g>
+
+  <!-- Skin layers (cross-section) -->
+  <g transform="translate(40, 280)" opacity="0.15">
+    <path d="M0,0 Q30,-5 60,0 T120,0" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+    <path d="M0,15 Q30,10 60,15 T120,15" fill="none" stroke="#60a5fa" stroke-width="1"/>
+    <path d="M0,28 Q30,24 60,28 T120,28" fill="none" stroke="#3b82f6" stroke-width="0.8"/>
+    <circle cx="60" cy="-8" r="4" fill="#38bdf8" fill-opacity="0.3"/>
+    <circle cx="75" cy="5" r="3" fill="#38bdf8" fill-opacity="0.2"/>
+  </g>
+
+  <!-- Lipid bilayer representation -->
+  <g transform="translate(270, 270)" opacity="0.15">
+    <g fill="#93c5fd">
+      <circle cx="0" cy="0" r="4"/><line x1="0" y1="4" x2="0" y2="20" stroke="#93c5fd" stroke-width="1"/>
+      <circle cx="12" cy="-2" r="4"/><line x1="12" y1="2" x2="12" y2="18" stroke="#93c5fd" stroke-width="1"/>
+      <circle cx="24" cy="0" r="4"/><line x1="24" y1="4" x2="24" y2="20" stroke="#93c5fd" stroke-width="1"/>
+      <circle cx="36" cy="-1" r="4"/><line x1="36" y1="3" x2="36" y2="19" stroke="#93c5fd" stroke-width="1"/>
+    </g>
+    <g fill="#93c5fd" transform="translate(0,50) scale(1,-1)">
+      <circle cx="6" cy="0" r="4"/><line x1="6" y1="4" x2="6" y2="20" stroke="#93c5fd" stroke-width="1"/>
+      <circle cx="18" cy="-2" r="4"/><line x1="18" y1="2" x2="18" y2="18" stroke="#93c5fd" stroke-width="1"/>
+      <circle cx="30" cy="0" r="4"/><line x1="30" y1="4" x2="30" y2="20" stroke="#93c5fd" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- Decorative scattered dots -->
+  <circle cx="350" cy="50" r="2" fill="#60a5fa" fill-opacity="0.15"/>
+  <circle cx="30" cy="350" r="2.5" fill="#93c5fd" fill-opacity="0.12"/>
+  <circle cx="370" cy="360" r="1.5" fill="#38bdf8" fill-opacity="0.1"/>
+  <circle cx="160" cy="350" r="2" fill="#60a5fa" fill-opacity="0.1"/>
+  <circle cx="50" cy="180" r="1.5" fill="#93c5fd" fill-opacity="0.08"/>
+</svg>

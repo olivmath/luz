@@ -17,6 +17,7 @@ export interface Course {
   subtitle: string
   level: string
   description: string
+  image: string
   modules: Module[]
 }
 
@@ -24,10 +25,20 @@ export interface ProgressEntry {
   completedAt: string
 }
 
+export interface QuizResult {
+  correct: number
+  total: number
+  completedAt: string
+}
+
 export interface ProgressData {
   [courseId: string]: {
     [key: string]: ProgressEntry
   }
+}
+
+export interface QuizData {
+  [key: string]: QuizResult
 }
 
 export interface FlatLesson {

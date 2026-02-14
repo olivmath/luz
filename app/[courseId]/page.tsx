@@ -51,15 +51,15 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
         </div>
 
         {/* Title & Subtitle */}
-        <h1 className="font-display text-[2.5rem] max-md:text-[2rem] font-bold text-foreground leading-[1.15] mb-3">
+        <h1 className="font-display text-[2.5rem] max-md:text-[1.75rem] font-bold text-foreground leading-[1.15] mb-3">
           {course.title}
         </h1>
-        <p className="font-display text-[1.25rem] max-md:text-[1.1rem] font-normal text-muted-foreground mb-8 leading-relaxed">
+        <p className="font-display text-[1.25rem] max-md:text-base font-normal text-muted-foreground mb-8 max-md:mb-6 leading-relaxed">
           {course.subtitle}
         </p>
 
         {/* Metadata Row */}
-        <div className="flex flex-wrap items-center gap-6 mb-8 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-4 max-md:gap-3 mb-8 max-md:mb-6 text-sm max-md:text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
             <span className="font-medium">~{formatTime(totalTime)}</span>
@@ -78,7 +78,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
         {next && (
           <Link
             href={`/${next.courseId}/${next.moduleId}/${next.lessonId}`}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold text-base rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 mb-6"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 max-md:w-full bg-primary text-primary-foreground font-semibold text-base rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 mb-6"
           >
             {prog.completed > 0 ? 'Continuar de onde parou' : 'Começar agora'}
             <ArrowRight className="w-5 h-5" />
@@ -103,7 +103,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
       {/* Completion Banner */}
       {isComplete && (
         <div
-          className="w-full p-6 mb-12 bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/30 rounded-xl flex items-center justify-between flex-wrap gap-4 animate-fade-in-up"
+          className="w-full p-6 max-md:p-4 mb-12 bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/30 rounded-xl flex items-center justify-between max-md:flex-col max-md:items-start flex-wrap gap-4 animate-fade-in-up"
           style={{ animationDelay: '100ms' }}
         >
           <div className="flex items-center gap-3">
@@ -175,7 +175,7 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
                 {/* Accordion Header */}
                 <button
                   onClick={() => toggleModule(mod.id)}
-                  className="w-full px-6 py-5 flex items-center gap-4 hover:bg-secondary/50 transition-colors text-left"
+                  className="w-full px-6 py-5 max-md:px-4 max-md:py-4 flex items-center gap-4 max-md:gap-3 hover:bg-secondary/50 transition-colors text-left"
                 >
                   <div className="flex-1 flex items-center gap-4">
                     <span className="font-mono text-lg font-semibold text-primary shrink-0">
@@ -185,11 +185,11 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
                       <h3 className="font-semibold text-foreground mb-1">
                         {mod.title}
                       </h3>
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground font-mono">
+                      <div className="flex items-center gap-4 max-md:gap-2 text-xs text-muted-foreground font-mono flex-wrap">
                         <span>{mod.lessons.length} aulas</span>
-                        <span>•</span>
+                        <span className="max-md:hidden">•</span>
                         <span>~{moduleTotalTime}min</span>
-                        <span>•</span>
+                        <span className="max-md:hidden">•</span>
                         <span className={cn(
                           mp.completed === mp.total && "text-primary font-medium"
                         )}>

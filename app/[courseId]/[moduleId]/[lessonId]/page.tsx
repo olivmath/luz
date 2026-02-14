@@ -66,7 +66,7 @@ export default function LessonPage({
 
       <div className="flex max-w-[1200px] mx-auto min-h-[calc(100vh-var(--header-h))]">
         {/* Main content - Order 1 */}
-        <div className="flex-1 min-w-0 px-12 py-10 pb-20 max-lg:max-w-full max-lg:px-6 max-lg:py-6 max-lg:pb-12 max-md:px-5 order-1">
+        <div className="flex-1 min-w-0 px-12 py-10 pb-20 max-lg:max-w-full max-lg:px-6 max-lg:py-6 max-lg:pb-12 max-md:px-4 max-sm:px-3 order-1">
           {/* Topbar with Tabs */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">

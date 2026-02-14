@@ -203,9 +203,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
   }
 }
 
@@ -358,11 +364,17 @@
   padding: 0;
   color: #dedad2;
 }
+.lesson-content .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+}
 .lesson-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.9rem;
+  min-width: 480px;
 }
 .lesson-content th,
 .lesson-content td {
@@ -401,6 +413,9 @@
   border: 1px solid var(--border);
   border-radius: 3px;
   pointer-events: none;
+}
+@media (max-width: 640px) {
+  .certificate-card::before { inset: 6px; }
 }
 .dark .certificate-card {
   background: #111419;
@@ -503,8 +518,20 @@ input:focus-visible,
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  .lesson-content h1 { font-size: 2rem; }
-  .lesson-content h2 { font-size: 1.3rem; }
+  .lesson-content h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+  .lesson-content h2 { font-size: 1.25rem; margin-top: 2rem; padding-top: 1.5rem; }
+  .lesson-content h3 { font-size: 1.15rem; }
   .lesson-content p,
-  .lesson-content li { font-size: 1rem; }
+  .lesson-content li { font-size: 1rem; line-height: 1.75; }
+  .lesson-content blockquote { padding: 0.75rem 1rem; margin: 1rem 0; }
+  .lesson-content pre { padding: 1rem; margin: 1rem 0; }
+  .lesson-content table { font-size: 0.8rem; }
+  .lesson-content th,
+  .lesson-content td { padding: 0.5rem 0.6rem; }
+}
+@media (max-width: 480px) {
+  .lesson-content h1 { font-size: 1.5rem; }
+  .lesson-content h2 { font-size: 1.15rem; }
+  .lesson-content p,
+  .lesson-content li { font-size: 0.95rem; }
 }

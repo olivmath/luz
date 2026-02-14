@@ -85,25 +85,25 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
       </div>
 
       {/* Certificate card */}
-      <div className="certificate-card bg-card border border-border rounded-md p-16 max-md:p-10 max-md:px-6 text-center relative animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-        <div className="text-primary text-lg mb-8">&#9670;</div>
-        <div className="font-mono text-sm font-medium tracking-[0.25em] uppercase text-primary mb-10">
+      <div className="certificate-card bg-card border border-border rounded-md p-16 max-md:p-8 max-sm:p-5 text-center relative animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+        <div className="text-primary text-lg mb-8 max-md:mb-6">&#9670;</div>
+        <div className="font-mono text-sm max-sm:text-xs font-medium tracking-[0.25em] uppercase text-primary mb-10 max-md:mb-6">
           Certificado de Conclusão
         </div>
         <div className="text-[0.9rem] text-muted-foreground mb-3">Certificamos que</div>
-        <div className="font-display text-[2.6rem] max-md:text-[2rem] font-medium text-foreground mb-6 border-b border-border pb-3 min-h-[3.5rem]">
+        <div className="font-display text-[2.6rem] max-md:text-[1.8rem] max-sm:text-[1.5rem] font-medium text-foreground mb-6 border-b border-border pb-3 min-h-[3.5rem] max-md:min-h-[2.5rem] break-words">
           {displayName}
         </div>
-        <div className="text-base text-muted-foreground leading-[1.8] mb-2 max-w-[450px] mx-auto">
+        <div className="text-base max-sm:text-sm text-muted-foreground leading-[1.8] mb-2 max-w-[450px] mx-auto">
           concluiu com êxito o curso
         </div>
-        <div className="font-display text-[1.3rem] font-semibold text-foreground mb-1">
+        <div className="font-display text-[1.3rem] max-sm:text-lg font-semibold text-foreground mb-1">
           {course.title}
         </div>
-        <div className="font-display text-base text-muted-foreground mb-8">
+        <div className="font-display text-base max-sm:text-sm text-muted-foreground mb-8 max-md:mb-6">
           {course.subtitle}
         </div>
-        <div className="font-mono text-xs text-muted-foreground tracking-wider mb-10">
+        <div className="font-mono text-xs max-sm:text-[0.6rem] text-muted-foreground tracking-wider mb-10 max-md:mb-6">
           {course.modules.length} módulos &middot; {flat.length} aulas &middot; ~{formatTime(totalTime)} &middot; {dateStr}
         </div>
         <div className="w-[50px] h-px bg-border mx-auto mb-8" />
@@ -113,16 +113,16 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
       </div>
 
       {/* Actions */}
-      <div className="cert-actions flex justify-center gap-4 mt-8 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
+      <div className="cert-actions flex justify-center max-sm:flex-col gap-4 max-sm:gap-3 mt-8 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
         <button
           onClick={() => window.print()}
-          className="font-mono text-sm font-medium px-6 py-3 rounded-sm bg-primary text-primary-foreground border border-primary hover:bg-primary/90 transition-all cursor-pointer"
+          className="font-mono text-sm font-medium px-6 py-3 rounded-sm bg-primary text-primary-foreground border border-primary hover:bg-primary/90 transition-all cursor-pointer max-sm:w-full text-center"
         >
           Imprimir
         </button>
         <Link
           href={`/${courseId}`}
-          className="font-mono text-sm font-medium px-6 py-3 rounded-sm bg-card text-foreground border border-border hover:border-border/80 hover:bg-secondary transition-all"
+          className="font-mono text-sm font-medium px-6 py-3 rounded-sm bg-card text-foreground border border-border hover:border-border/80 hover:bg-secondary transition-all max-sm:w-full text-center"
         >
           Voltar ao curso
         </Link>

@@ -269,8 +269,8 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
       </div>
 
       {/* Question card */}
-      <div className="min-h-[280px]">
-        <div className="text-base font-medium text-foreground leading-relaxed mb-5">
+      <div className="min-h-[280px] max-sm:min-h-[240px]">
+        <div className="text-base max-sm:text-[0.9rem] font-medium text-foreground leading-relaxed mb-5">
           {q.number}. {q.text}
         </div>
 
@@ -285,7 +285,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
               <label
                 key={opt.letter}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-3 rounded-sm border transition-all",
+                  "flex items-center gap-3 px-4 py-3 max-sm:px-3 rounded-sm border transition-all",
                   // Before check
                   !isChecked && "border-border cursor-pointer hover:bg-secondary/50",
                   !isChecked && isSelected && "border-primary bg-primary/5",
@@ -318,7 +318,7 @@ export function QuizSection({ questions, alreadyDone, onComplete }: QuizSectionP
                     )} />
                   )}
                 </span>
-                <span className="text-[0.9rem] text-foreground leading-relaxed">
+                <span className="text-[0.9rem] max-sm:text-[0.85rem] text-foreground leading-relaxed">
                   {opt.text}
                 </span>
               </label>

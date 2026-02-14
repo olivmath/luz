@@ -34,7 +34,7 @@ export default function PerfilPage() {
   return (
     <div className="max-w-[900px] mx-auto px-8 pt-12 pb-20 max-md:px-5 max-md:pt-8 max-md:pb-16">
       {/* Profile Header */}
-      <div className="flex items-center gap-6 mb-12 animate-fade-in-up">
+      <div className="flex items-center gap-6 max-sm:gap-4 mb-12 max-sm:mb-8 animate-fade-in-up">
         {user?.imageUrl ? (
           <Image
             src={user.imageUrl}
@@ -49,7 +49,7 @@ export default function PerfilPage() {
           </div>
         )}
         <div>
-          <h1 className="font-display text-3xl font-medium text-foreground">{user?.fullName}</h1>
+          <h1 className="font-display text-3xl max-sm:text-2xl font-medium text-foreground">{user?.fullName}</h1>
           <p className="font-mono text-sm text-muted-foreground mt-1">{user?.primaryEmailAddress?.emailAddress}</p>
           {memberSince && (
             <p className="font-mono text-xs text-muted-foreground mt-1">Membro desde {memberSince}</p>
@@ -58,18 +58,18 @@ export default function PerfilPage() {
       </div>
 
       {/* Stats Row */}
-      <div className="grid grid-cols-3 gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
-        <div className="bg-card border border-border rounded-lg p-5 text-center">
-          <div className="font-display text-3xl font-medium text-foreground">{completedCourses}</div>
-          <div className="font-mono text-xs text-muted-foreground mt-1">Cursos completos</div>
+      <div className="grid grid-cols-3 max-sm:grid-cols-3 gap-4 max-sm:gap-3 mb-12 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
+        <div className="bg-card border border-border rounded-lg p-5 max-sm:p-3 text-center">
+          <div className="font-display text-3xl max-sm:text-2xl font-medium text-foreground">{completedCourses}</div>
+          <div className="font-mono text-xs max-sm:text-[0.6rem] text-muted-foreground mt-1">Cursos completos</div>
         </div>
-        <div className="bg-card border border-border rounded-lg p-5 text-center">
-          <div className="font-display text-3xl font-medium text-foreground">{completedLessons}</div>
-          <div className="font-mono text-xs text-muted-foreground mt-1">Aulas concluídas</div>
+        <div className="bg-card border border-border rounded-lg p-5 max-sm:p-3 text-center">
+          <div className="font-display text-3xl max-sm:text-2xl font-medium text-foreground">{completedLessons}</div>
+          <div className="font-mono text-xs max-sm:text-[0.6rem] text-muted-foreground mt-1">Aulas concluidas</div>
         </div>
-        <div className="bg-card border border-border rounded-lg p-5 text-center">
-          <div className="font-display text-3xl font-medium text-foreground">{totalLessons}</div>
-          <div className="font-mono text-xs text-muted-foreground mt-1">Total de aulas</div>
+        <div className="bg-card border border-border rounded-lg p-5 max-sm:p-3 text-center">
+          <div className="font-display text-3xl max-sm:text-2xl font-medium text-foreground">{totalLessons}</div>
+          <div className="font-mono text-xs max-sm:text-[0.6rem] text-muted-foreground mt-1">Total de aulas</div>
         </div>
       </div>
 

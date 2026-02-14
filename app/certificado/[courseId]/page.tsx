@@ -108,7 +108,7 @@ export default function CertificatePage({ params }: { params: Promise<{ courseId
         </div>
         <div className="w-[50px] h-px bg-border mx-auto mb-8" />
         <div className="font-mono text-sm font-semibold tracking-[0.2em] text-muted-foreground">
-          OKEN
+          LUZ
         </div>
       </div>
 

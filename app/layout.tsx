@@ -9,7 +9,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Oken — Cursos Especializados',
+  title: 'LUZ — Cursos Especializados',
   description: 'Cursos especializados em agronegócio financeiro e nanotecnologia cosmética. Do nível introdutório ao avançado.',
 }
 

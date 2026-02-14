@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState } from 'react'
-import { Moon, Sun, LogIn, LogOut, Award, ChevronDown, User } from 'lucide-react'
+import { Moon, Sun, LogIn, LogOut, Award, ChevronDown, User, Menu, X } from 'lucide-react'
 import { SignInButton, SignedIn, SignedOut, useUser, useClerk } from '@clerk/nextjs'
 
 interface HeaderProps {
@@ -17,6 +17,7 @@ export function Header({ meta }: HeaderProps) {
   const { signOut } = useClerk()
   const [mounted, setMounted] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => setMounted(true), [])
@@ -39,6 +40,15 @@ export function Header({ meta }: HeaderProps) {
       >
         {/* Left section: Logo + Navigation */}
         <div className="flex items-center gap-8">
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-background/50 transition-all duration-200"
+            aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+
           {/* Logo */}
           <Link
             href="/"
@@ -161,6 +171,35 @@ export function Header({ meta }: HeaderProps) {
           )}
         </div>
       </nav>
+
+      {/* Mobile navigation menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-b border-border bg-background backdrop-blur-xl">
+          <div className="flex flex-col px-5 py-3 gap-1">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-lg font-mono text-xs text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors tracking-wider"
+            >
+              Cursos
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-lg font-mono text-xs text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors tracking-wider"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/glossario"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-lg font-mono text-xs text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors tracking-wider"
+            >
+              Glossário
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

@@ -51,16 +51,6 @@ export function Header({ meta }: HeaderProps) {
             </span>
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link
-              href="/"
-              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wider"
-              aria-label="Ver todos os cursos"
-            >
-              Cursos
-            </Link>
-          </div>
         </div>
 
         {/* Right section: Meta, Auth, Theme toggle */}

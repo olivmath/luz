@@ -3,6 +3,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ProgressProvider } from '@/context/progress-context'
 import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 import { HashRedirect } from '@/components/hash-redirect'
 import { ClerkProvider } from '@clerk/nextjs'
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main id="main-content" className="pt-[var(--header-h)] min-h-screen">
               {children}
             </main>
+            <Footer />
           </ProgressProvider>
         </ThemeProvider>
       </body>

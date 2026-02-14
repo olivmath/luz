@@ -208,17 +208,6 @@ export default function CoursePage({ params }: { params: Promise<{ courseId: str
             </div>
           </section>
 
-          {/* Sobre este curso */}
-          <section>
-            <div className="max-w-[var(--reading-max)] mx-auto px-8 max-md:px-5 py-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-6">
-                Sobre este curso
-              </h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                {course.description}
-              </p>
-            </div>
-          </section>
         </div>
       )}
 

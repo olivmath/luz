@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { COURSES } from '@/lib/courses'
-import type { ProgressData } from '@/types'
+import type { ProgressData, QuizData, QuizResult } from '@/types'
 
 interface ProgressContextType {
   isCompleted: (courseId: string, moduleId: string, lessonId: string) => boolean
@@ -12,6 +12,8 @@ interface ProgressContextType {
   getModuleProgress: (courseId: string, moduleId: string) => { completed: number; total: number }
   isCourseComplete: (courseId: string) => boolean
   getNextLesson: (courseId: string) => { courseId: string; moduleId: string; lessonId: string; lesson: { id: string; title: string; number: string } } | null
+  saveQuizResult: (courseId: string, moduleId: string, lessonId: string, correct: number, total: number) => void
+  getQuizStats: () => { totalCorrect: number; totalQuestions: number }
   studentName: string
   setStudentName: (name: string) => void
 }
@@ -19,16 +21,19 @@ interface ProgressContextType {
 const ProgressContext = createContext<ProgressContextType | null>(null)
 
 const PROGRESS_KEY = 'oken-curso-progress'
+const QUIZ_KEY = 'oken-quiz-results'
 const NAME_KEY = 'oken-student-name'
 
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const { user, isLoaded } = useUser()
   const [data, setData] = useState<ProgressData>({})
+  const [quizData, setQuizData] = useState<QuizData>({})
   const [studentName, setStudentNameState] = useState('')
   const [mounted, setMounted] = useState(false)
 
   // Derive scoped storage keys based on Clerk userId
   const progressKey = user?.id ? `oken-curso-progress-${user.id}` : PROGRESS_KEY
+  const quizKey = user?.id ? `oken-quiz-results-${user.id}` : QUIZ_KEY
   const nameKey = user?.id ? `oken-student-name-${user.id}` : NAME_KEY
 
   // Load from localStorage only after Clerk has loaded
@@ -86,8 +91,19 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     }
 
     setStudentNameState(name)
+
+    // Load quiz data
+    let quiz: QuizData = {}
+    try {
+      const rawQuiz = localStorage.getItem(quizKey)
+      quiz = rawQuiz ? JSON.parse(rawQuiz) : {}
+    } catch {
+      quiz = {}
+    }
+    setQuizData(quiz)
+
     setMounted(true)
-  }, [isLoaded, user?.id, user?.fullName, progressKey, nameKey])
+  }, [isLoaded, user?.id, user?.fullName, progressKey, quizKey, nameKey])
 
   // Persist progress data to scoped key
   useEffect(() => {
@@ -96,6 +112,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem(progressKey, JSON.stringify(data))
     } catch {}
   }, [data, mounted, progressKey])
+
+  // Persist quiz data to scoped key
+  useEffect(() => {
+    if (!mounted) return
+    try {
+      localStorage.setItem(quizKey, JSON.stringify(quizData))
+    } catch {}
+  }, [quizData, mounted, quizKey])
 
   const isCompleted = useCallback((courseId: string, moduleId: string, lessonId: string) => {
     return !!(data[courseId] && data[courseId][`${moduleId}/${lessonId}`])
@@ -154,6 +178,24 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return null
   }, [data])
 
+  const saveQuizResult = useCallback((courseId: string, moduleId: string, lessonId: string, correct: number, total: number) => {
+    const key = `${courseId}/${moduleId}/${lessonId}`
+    setQuizData(prev => ({
+      ...prev,
+      [key]: { correct, total, completedAt: new Date().toISOString() },
+    }))
+  }, [])
+
+  const getQuizStats = useCallback(() => {
+    let totalCorrect = 0
+    let totalQuestions = 0
+    for (const result of Object.values(quizData)) {
+      totalCorrect += result.correct
+      totalQuestions += result.total
+    }
+    return { totalCorrect, totalQuestions }
+  }, [quizData])
+
   const setStudentName = useCallback((name: string) => {
     setStudentNameState(name)
     try {
@@ -164,7 +206,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   return (
     <ProgressContext.Provider value={{
       isCompleted, markCompleted, getCourseProgress, getModuleProgress,
-      isCourseComplete, getNextLesson, studentName, setStudentName,
+      isCourseComplete, getNextLesson, saveQuizResult, getQuizStats,
+      studentName, setStudentName,
     }}>
       {children}
     </ProgressContext.Provider>

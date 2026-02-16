@@ -9,7 +9,9 @@ import { getFlatLessons, getCourseTime, formatTime } from '@/lib/helpers'
 import { cn } from '@/lib/utils'
 import { Check, Clock, BookOpen, ArrowRight, GraduationCap } from 'lucide-react'
 import { SignedIn, SignedOut } from '@clerk/nextjs'
+import { useSearchParams } from 'next/navigation'
 import { LandingPage } from '@/components/landing-page'
+import { CheckoutModal } from '@/components/checkout-modal'
 
 const CATEGORIES = [
   {
@@ -105,6 +107,16 @@ export default function CatalogPage() {
   const progress = useProgress()
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
+  const searchParams = useSearchParams()
+
+  // Open checkout modal after sign-in via ?checkout=true
+  useEffect(() => {
+    if (searchParams.get('checkout') === 'true') {
+      setCheckoutOpen(true)
+      window.history.replaceState({}, '', '/')
+    }
+  }, [searchParams])
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % SLIDES.length)
@@ -330,6 +342,7 @@ export default function CatalogPage() {
         ))}
       </div>
     </div>
+    <CheckoutModal open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
     </SignedIn>
     </>
   )

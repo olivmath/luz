@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { SignInButton, SignedIn, SignedOut, useUser } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { CheckoutModal } from '@/components/checkout-modal'
@@ -194,16 +193,6 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 export function LandingPage() {
   const { annual, monthly } = useUsdToBrl()
   const [checkoutOpen, setCheckoutOpen] = useState(false)
-  const { isSignedIn } = useUser()
-  const searchParams = useSearchParams()
-
-  // Open checkout modal automatically after sign-in via ?checkout=true
-  useEffect(() => {
-    if (isSignedIn && searchParams.get('checkout') === 'true') {
-      setCheckoutOpen(true)
-      window.history.replaceState({}, '', '/')
-    }
-  }, [isSignedIn, searchParams])
 
   return (
     <div className="min-h-screen">

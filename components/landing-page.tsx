@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { SignInButton } from '@clerk/nextjs'
 import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
@@ -67,7 +67,6 @@ const STATS = [
 const PLANS = [
   {
     name: 'Gratuito',
-    price: 'R$ 0',
     period: '',
     description: 'Explore a plataforma e veja se é para você.',
     features: [
@@ -80,8 +79,7 @@ const PLANS = [
   },
   {
     name: 'Anual',
-    price: 'R$ 5.200',
-    priceNote: '≈ US$ 1.000 · R$ 433/mês',
+    priceUsd: 1000,
     period: '/ano',
     description: 'Acesso completo a tudo — cursos, certificados e conteúdo sob demanda.',
     features: [
@@ -96,6 +94,28 @@ const PLANS = [
   },
 ]
 
+const USD_PRICE = 1000
+
+function formatBRL(value: number) {
+  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+}
+
+function useUsdToBrl() {
+  const [rate, setRate] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL')
+      .then((r) => r.json())
+      .then((data) => setRate(parseFloat(data.USDBRL.bid)))
+      .catch(() => setRate(null))
+  }, [])
+
+  const annual = rate ? USD_PRICE * rate : null
+  const monthly = annual ? annual / 12 : null
+
+  return { rate, annual, monthly }
+}
+
 const FAQ = [
   {
     q: 'Posso testar antes de pagar?',
@@ -107,7 +127,7 @@ const FAQ = [
   },
   {
     q: 'Qual a forma de pagamento?',
-    a: 'Aceitamos cartão de crédito e PIX. O valor é R$ 5.200/ano (equivalente a US$ 1.000). O pagamento é processado de forma segura via Stripe.',
+    a: 'Aceitamos cartão de crédito e PIX. O valor é calculado automaticamente com base na cotação do dia do dólar. O pagamento é processado de forma segura via Stripe.',
   },
   {
     q: 'Os certificados têm validade?',
@@ -170,6 +190,8 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function LandingPage() {
+  const { annual, monthly } = useUsdToBrl()
+
   return (
     <div className="min-h-screen">
       {/* ===== HERO ===== */}
@@ -358,12 +380,22 @@ export function LandingPage() {
               <p className="mt-1 text-sm text-muted-foreground">{plan.description}</p>
 
               <div className="mt-6 mb-6">
-                <span className="font-display text-4xl font-bold text-foreground">{plan.price}</span>
-                {plan.period && (
-                  <span className="text-muted-foreground text-sm">{plan.period}</span>
-                )}
-                {'priceNote' in plan && plan.priceNote && (
-                  <div className="mt-1 font-mono text-xs text-muted-foreground">{plan.priceNote}</div>
+                {'priceUsd' in plan ? (
+                  annual ? (
+                    <>
+                      <span className="font-display text-4xl font-bold text-foreground">{formatBRL(annual)}</span>
+                      <span className="text-muted-foreground text-sm">{plan.period}</span>
+                      <div className="mt-1 font-mono text-xs text-muted-foreground">
+                        {formatBRL(monthly!)}/mês
+                      </div>
+                    </>
+                  ) : (
+                    <span className="font-display text-4xl font-bold text-foreground animate-pulse">R$ ...</span>
+                  )
+                ) : (
+                  <>
+                    <span className="font-display text-4xl font-bold text-foreground">R$ 0</span>
+                  </>
                 )}
               </div>
 

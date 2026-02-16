@@ -9,11 +9,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Award, Diamond, Clock, BookOpen, Target, CreditCard, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { CheckoutModal } from '@/components/checkout-modal'
 
 export default function PerfilPage() {
   const { user, isLoaded } = useUser()
   const progress = useProgress()
   const [activeTab, setActiveTab] = useState<string>('cursos')
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
 
   if (!isLoaded) return null
 
@@ -274,19 +276,21 @@ export default function PerfilPage() {
                   <p className="text-muted-foreground mb-6 max-w-[360px] mx-auto">
                     Assine o plano anual para ter acesso completo a todos os cursos e certificados.
                   </p>
-                  <Link
-                    href="/checkout"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg"
+                  <button
+                    onClick={() => setCheckoutOpen(true)}
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg cursor-pointer"
                   >
                     <CreditCard className="w-4 h-4" />
                     Assinar agora
-                  </Link>
+                  </button>
                 </div>
               )}
             </div>
           )
         })()}
       </div>
+
+      <CheckoutModal open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
     </div>
   )
 }

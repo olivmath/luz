@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { CheckoutModal } from '@/components/checkout-modal'
 
 const TRACKS = [
   {
@@ -191,6 +192,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 export function LandingPage() {
   const { annual, monthly } = useUsdToBrl()
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
 
   return (
     <div className="min-h-screen">
@@ -411,13 +413,13 @@ export function LandingPage() {
               {plan.highlighted ? (
                 <>
                   <SignedIn>
-                    <Link
-                      href="/checkout"
-                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 bg-primary text-primary-foreground hover:opacity-90 shadow-lg"
+                    <button
+                      onClick={() => setCheckoutOpen(true)}
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-primary text-primary-foreground hover:opacity-90 shadow-lg"
                     >
                       {plan.cta}
                       <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    </button>
                   </SignedIn>
                   <SignedOut>
                     <SignInButton mode="modal">
@@ -483,6 +485,8 @@ export function LandingPage() {
           </div>
         </div>
       </section>
+
+      <CheckoutModal open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
     </div>
   )
 }

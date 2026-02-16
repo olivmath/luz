@@ -9,13 +9,19 @@ const mdCache = new Map<string, string>()
 export async function loadMarkdown(courseId: string, moduleId: string, lessonId: string): Promise<string> {
   const course = COURSES[courseId]
   const contentDir = course?.contentDir || courseId
-  const path = `/${contentDir}/${moduleId}/${lessonId}.md`
-  const cached = mdCache.get(path)
+  const cacheKey = `${contentDir}/${moduleId}/${lessonId}`
+  const cached = mdCache.get(cacheKey)
   if (cached) return cached
-  const res = await fetch(path)
+
+  const isFree = moduleId === 'modulo-01' && lessonId === 'aula-01'
+  const url = isFree
+    ? `/${contentDir}/${moduleId}/${lessonId}.md`
+    : `/api/content/${contentDir}/${moduleId}/${lessonId}`
+
+  const res = await fetch(url)
   if (!res.ok) throw new Error(`${res.status}`)
   const text = await res.text()
-  mdCache.set(path, text)
+  mdCache.set(cacheKey, text)
   return text
 }
 

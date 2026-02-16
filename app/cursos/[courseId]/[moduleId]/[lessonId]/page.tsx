@@ -14,8 +14,6 @@ import { QuizSection } from '@/components/quiz-section'
 import { cn } from '@/lib/utils'
 import { Menu, X, BookOpen, CheckCircle2, Lock } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
-import { useUser } from '@clerk/nextjs'
-import { SignInButton } from '@clerk/nextjs'
 
 export default function LessonPage({
   params,
@@ -39,11 +37,6 @@ export default function LessonPage({
   const searchParams = useSearchParams()
   const highlightTerm = searchParams.get('term')
   const articleRef = useRef<HTMLElement>(null)
-
-  const { user } = useUser()
-  const isAuthorized = user?.publicMetadata?.authorized === true
-  const isFreeLesson = moduleId === 'modulo-01' && lessonId === 'aula-01'
-  const hasAccess = isFreeLesson || isAuthorized
 
   useKeyboardNavigation(adj)
 
@@ -150,7 +143,13 @@ export default function LessonPage({
             </div>
           </div>
 
-          {!hasAccess ? (
+          {loading && (
+            <div className="text-center py-16 font-mono text-sm text-muted-foreground">
+              Carregando...
+            </div>
+          )}
+
+          {error && (
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-6">
                 <Lock className="w-7 h-7 text-muted-foreground" />
@@ -179,47 +178,31 @@ export default function LessonPage({
                 </Link>
               </div>
             </div>
-          ) : (
+          )}
+
+          {!loading && !error && (
             <>
-              {loading && (
-                <div className="text-center py-16 font-mono text-sm text-muted-foreground">
-                  Carregando...
-                </div>
-              )}
+              <article
+                ref={articleRef}
+                className="lesson-content"
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
 
-              {error && (
-                <div className="text-center py-16 font-mono text-base text-muted-foreground">
-                  <p className="text-2xl text-muted-foreground/50 mb-4">&#9671;</p>
-                  <p>Conteúdo ainda não disponível.</p>
-                  <p className="text-muted-foreground/50 mt-2">Em breve</p>
-                </div>
-              )}
-
-              {!loading && !error && (
-                <>
-                  <article
-                    ref={articleRef}
-                    className="lesson-content"
-                    dangerouslySetInnerHTML={{ __html: html }}
-                  />
-
-                  {quiz && (
-                    <QuizSection
-                      questions={quiz}
-                      courseId={courseId}
-                      moduleId={moduleId}
-                      lessonId={lessonId}
-                      alreadyDone={isCompleted}
-                      onComplete={handleQuizComplete}
-                    />
-                  )}
-                </>
+              {quiz && (
+                <QuizSection
+                  questions={quiz}
+                  courseId={courseId}
+                  moduleId={moduleId}
+                  lessonId={lessonId}
+                  alreadyDone={isCompleted}
+                  onComplete={handleQuizComplete}
+                />
               )}
             </>
           )}
 
           {/* Footer */}
-          {hasAccess && <div className="max-w-[var(--reading-max)] mt-16 pt-8 border-t border-border">
+          {!error && !loading && <div className="max-w-[var(--reading-max)] mt-16 pt-8 border-t border-border">
             {!hasQuizGate && (
               isCompleted ? (
                 <div className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-success bg-success/5 border border-success/20 rounded-sm flex items-center justify-center gap-3">

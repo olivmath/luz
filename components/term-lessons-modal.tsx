@@ -80,7 +80,7 @@ export function TermLessonsModal({ termName, lessons, onClose }: TermLessonsModa
                 {group.lessons.map((entry) => (
                   <li key={`${entry.moduleId}-${entry.lessonId}`}>
                     <Link
-                      href={`/cursos/${courseId}/${entry.moduleId}/${entry.lessonId}`}
+                      href={`/cursos/${courseId}/${entry.moduleId}/${entry.lessonId}?term=${encodeURIComponent(termName)}`}
                       className="flex items-baseline gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted transition-colors"
                       onClick={onClose}
                     >

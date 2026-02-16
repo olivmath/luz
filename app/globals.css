@@ -404,6 +404,26 @@
 }
 
 /* ============================================
+   GLOSSARY TERM HIGHLIGHT
+   ============================================ */
+.term-highlight {
+  background: #fbbf2440;
+  color: inherit;
+  border-radius: 2px;
+  padding: 1px 2px;
+  box-shadow: 0 0 0 2px #fbbf2440;
+  animation: highlight-fade 3s ease-out forwards;
+}
+.dark .term-highlight {
+  background: #fbbf2430;
+  box-shadow: 0 0 0 2px #fbbf2430;
+}
+@keyframes highlight-fade {
+  0%, 60% { background: #fbbf2440; box-shadow: 0 0 0 2px #fbbf2440; }
+  100% { background: #fbbf2420; box-shadow: 0 0 0 2px #fbbf2420; }
+}
+
+/* ============================================
    CERTIFICATE (for print)
    ============================================ */
 .certificate-card::before {

@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useState, useCallback } from 'react'
+import { use, useState, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { COURSES } from '@/lib/courses'
@@ -13,6 +13,7 @@ import { LessonSidebar } from '@/components/lesson-sidebar'
 import { QuizSection } from '@/components/quiz-section'
 import { cn } from '@/lib/utils'
 import { Menu, X, BookOpen, CheckCircle2 } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 export default function LessonPage({
   params,
@@ -33,6 +34,9 @@ export default function LessonPage({
   const { html, quiz, readingTime, loading, error } = useMarkdown(courseId, moduleId, lessonId)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [localDone, setLocalDone] = useState(done)
+  const searchParams = useSearchParams()
+  const highlightTerm = searchParams.get('term')
+  const articleRef = useRef<HTMLElement>(null)
 
   useKeyboardNavigation(adj)
 
@@ -46,6 +50,51 @@ export default function LessonPage({
     progress.markCompleted(courseId, moduleId, lessonId)
     setLocalDone(true)
   }, [courseId, moduleId, lessonId, progress])
+
+  useEffect(() => {
+    if (!highlightTerm || loading || error || !articleRef.current) return
+
+    const escaped = highlightTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const regex = new RegExp(`(${escaped})`, 'gi')
+    const walker = document.createTreeWalker(articleRef.current, NodeFilter.SHOW_TEXT)
+    const matches: { node: Text; index: number }[] = []
+
+    while (walker.nextNode()) {
+      const textNode = walker.currentNode as Text
+      if (regex.test(textNode.textContent || '')) {
+        matches.push({ node: textNode, index: 0 })
+      }
+      regex.lastIndex = 0
+    }
+
+    for (const { node } of matches) {
+      const text = node.textContent || ''
+      const parts = text.split(regex)
+      if (parts.length <= 1) continue
+
+      const fragment = document.createDocumentFragment()
+      for (const part of parts) {
+        if (regex.test(part)) {
+          const mark = document.createElement('mark')
+          mark.className = 'term-highlight'
+          mark.textContent = part
+          fragment.appendChild(mark)
+        } else {
+          fragment.appendChild(document.createTextNode(part))
+        }
+        regex.lastIndex = 0
+      }
+      node.parentNode?.replaceChild(fragment, node)
+    }
+
+    // Scroll to first highlight
+    const firstMark = articleRef.current.querySelector('.term-highlight')
+    if (firstMark) {
+      setTimeout(() => {
+        firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 300)
+    }
+  }, [highlightTerm, loading, error, html])
 
   const isCompleted = done || localDone
   const hasQuizGate = quiz && !isCompleted
@@ -111,6 +160,7 @@ export default function LessonPage({
           {!loading && !error && (
             <>
               <article
+                ref={articleRef}
                 className="lesson-content"
                 dangerouslySetInnerHTML={{ __html: html }}
               />

@@ -29,7 +29,7 @@ const CATEGORIES = [
   {
     label: 'Identidade Descentralizada',
     description: 'DIDs, Verifiable Credentials, SSI, criptografia aplicada e interoperabilidade',
-    courses: ['did-fundamentos', 'did-engenharia'],
+    courses: ['did-introducao', 'did-aplicacoes', 'did-criptografia', 'did-seguranca'],
     accent: 'from-purple-500 to-purple-600',
     badgeColor: 'bg-purple-500/10 text-purple-700 dark:text-purple-400',
   },

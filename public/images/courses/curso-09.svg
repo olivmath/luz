@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#0f0520"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0f0520" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <rect width="400" height="400" fill="url(#glow)"/>
+
+  <!-- Globe / world map outline -->
+  <g transform="translate(200, 160)" opacity="0.25">
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+    <ellipse cx="0" cy="0" rx="35" ry="70" fill="none" stroke="#c084fc" stroke-width="1"/>
+    <line x1="-70" y1="0" x2="70" y2="0" stroke="#c084fc" stroke-width="0.8"/>
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#c084fc" stroke-width="0.8"/>
+    <ellipse cx="0" cy="-30" rx="58" ry="15" fill="none" stroke="#c084fc" stroke-width="0.5"/>
+    <ellipse cx="0" cy="30" rx="58" ry="15" fill="none" stroke="#c084fc" stroke-width="0.5"/>
+  </g>
+
+  <!-- Connection nodes on globe -->
+  <g opacity="0.4">
+    <circle cx="155" cy="140" r="5" fill="#a855f7" fill-opacity="0.3" stroke="#c084fc" stroke-width="1"/>
+    <circle cx="230" cy="120" r="5" fill="#a855f7" fill-opacity="0.3" stroke="#c084fc" stroke-width="1"/>
+    <circle cx="250" cy="175" r="5" fill="#a855f7" fill-opacity="0.3" stroke="#c084fc" stroke-width="1"/>
+    <circle cx="175" cy="200" r="5" fill="#a855f7" fill-opacity="0.3" stroke="#c084fc" stroke-width="1"/>
+    <line x1="155" y1="140" x2="230" y2="120" stroke="#c084fc" stroke-width="0.8" opacity="0.4"/>
+    <line x1="230" y1="120" x2="250" y2="175" stroke="#c084fc" stroke-width="0.8" opacity="0.4"/>
+    <line x1="250" y1="175" x2="175" y2="200" stroke="#c084fc" stroke-width="0.8" opacity="0.4"/>
+    <line x1="175" y1="200" x2="155" y2="140" stroke="#c084fc" stroke-width="0.8" opacity="0.4"/>
+  </g>
+
+  <!-- Use case: Healthcare badge -->
+  <g transform="translate(50, 55)" opacity="0.2">
+    <rect x="0" y="0" width="75" height="50" rx="6" fill="none" stroke="#e9d5ff" stroke-width="1.5"/>
+    <path d="M25,15 L25,35 M15,25 L35,25" stroke="#c084fc" stroke-width="2"/>
+    <text x="55" y="20" font-family="monospace" font-size="6" fill="#c084fc">VC</text>
+    <circle cx="55" cy="35" r="6" fill="none" stroke="#a855f7" stroke-width="1"/>
+    <path d="M52,35 L54,37 L58,33" fill="none" stroke="#a855f7" stroke-width="1"/>
+  </g>
+
+  <!-- Use case: Education diploma -->
+  <g transform="translate(290, 60)" opacity="0.2">
+    <rect x="0" y="0" width="70" height="50" rx="6" fill="none" stroke="#e9d5ff" stroke-width="1.5"/>
+    <line x1="10" y1="15" x2="45" y2="15" stroke="#e9d5ff" stroke-width="0.6"/>
+    <line x1="10" y1="22" x2="40" y2="22" stroke="#e9d5ff" stroke-width="0.6"/>
+    <line x1="10" y1="29" x2="35" y2="29" stroke="#e9d5ff" stroke-width="0.6"/>
+    <path d="M50,30 L55,25 L60,30 L55,35Z" fill="#a855f7" fill-opacity="0.15" stroke="#c084fc" stroke-width="1"/>
+  </g>
+
+  <!-- Use case: Supply chain box -->
+  <g transform="translate(60, 280)" opacity="0.2">
+    <path d="M30,5 L60,20 L60,55 L30,70 L0,55 L0,20Z" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+    <line x1="30" y1="5" x2="30" y2="70" stroke="#c084fc" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="20" x2="60" y2="20" stroke="#c084fc" stroke-width="0.8" opacity="0.5"/>
+    <text x="30" y="48" font-family="monospace" font-size="7" fill="#c084fc" text-anchor="middle">DID</text>
+  </g>
+
+  <!-- Use case: Financial / wallet -->
+  <g transform="translate(290, 270)" opacity="0.2">
+    <rect x="0" y="0" width="65" height="45" rx="8" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+    <rect x="35" y="12" width="20" height="12" rx="3" fill="#a855f7" fill-opacity="0.1" stroke="#c084fc" stroke-width="1"/>
+    <circle cx="20" cy="18" r="8" fill="none" stroke="#e9d5ff" stroke-width="1"/>
+    <text x="20" y="21" font-family="monospace" font-size="7" fill="#e9d5ff" text-anchor="middle">$</text>
+  </g>
+
+  <!-- Arrow connections from globe to use cases -->
+  <g opacity="0.1">
+    <line x1="150" y1="110" x2="100" y2="80" stroke="#e9d5ff" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="250" y1="110" x2="310" y2="85" stroke="#e9d5ff" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="155" y1="220" x2="90" y2="280" stroke="#e9d5ff" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="245" y1="220" x2="300" y2="270" stroke="#e9d5ff" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Decorative dots -->
+  <circle cx="370" cy="30" r="2" fill="#a855f7" fill-opacity="0.15"/>
+  <circle cx="30" cy="380" r="1.5" fill="#c084fc" fill-opacity="0.1"/>
+  <circle cx="380" cy="380" r="1.5" fill="#c084fc" fill-opacity="0.08"/>
+</svg>

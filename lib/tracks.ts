@@ -60,7 +60,7 @@ export const TRACKS: Record<string, Track> = {
       'Aplicar criptografia avançada: ZKPs, BBS+ e pós-quântica',
       'Projetar sistemas seguros e interoperáveis com DIDs',
     ],
-    courses: ['did-fundamentos', 'did-engenharia'],
+    courses: ['did-introducao', 'did-aplicacoes', 'did-criptografia', 'did-seguranca'],
     gradient: 'from-purple-700 to-purple-500',
     ctaTextColor: 'text-purple-700',
   },

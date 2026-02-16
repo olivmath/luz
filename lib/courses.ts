@@ -428,13 +428,13 @@ export const COURSES: Record<string, Course> = {
       },
     ]
   },
-  'did-fundamentos': {
-    id: 'did-fundamentos',
+  'did-introducao': {
+    id: 'did-introducao',
     contentDir: 'curso-07',
     title: 'Identidade Descentralizada (DID)',
-    subtitle: 'Fundamentos e Estratégia',
+    subtitle: 'Introdução e Conceitos Fundamentais',
     level: 'Introdutório',
-    description: 'Visão completa da identidade descentralizada — SSI, DIDs, Verifiable Credentials, triângulo da confiança, padrões W3C, casos de uso e governança.',
+    description: 'O que é identidade descentralizada — SSI, DIDs, Verifiable Credentials, triângulo da confiança e arquitetura do ecossistema.',
     image: '/images/courses/curso-07.svg',
     modules: [
       {
@@ -482,59 +482,70 @@ export const COURSES: Record<string, Course> = {
           { id: 'aula-04', title: 'Fluxo completo de criação, resolução e verificação', number: '4.4' },
         ]
       },
+    ]
+  },
+  'did-aplicacoes': {
+    id: 'did-aplicacoes',
+    contentDir: 'curso-09',
+    title: 'Identidade Descentralizada (DID)',
+    subtitle: 'Aplicações e Casos de Uso',
+    level: 'Intermediário',
+    description: 'DID no mundo real — padrões W3C, organizações, casos de uso em saúde, finanças, governo, Web3 e desafios para adoção.',
+    image: '/images/courses/curso-09.svg',
+    modules: [
       {
-        id: 'modulo-05',
+        id: 'modulo-01',
         title: 'Padrões, Organizações e Iniciativas de Mercado',
         objective: 'Conhecer os padrões W3C, organizações-chave e o contexto regulatório.',
         lessons: [
-          { id: 'aula-01', title: 'Padrões W3C: DID Core e Modelo de Dados de VCs', number: '5.1' },
-          { id: 'aula-02', title: 'Organizações-chave: DIF, ToIP e Hyperledger', number: '5.2' },
-          { id: 'aula-03', title: 'Iniciativas da indústria: Microsoft ION, Sovrin, Trinsic', number: '5.3' },
-          { id: 'aula-04', title: 'Contexto regulatório: eIDAS 2.0, GDPR e LGPD', number: '5.4' },
+          { id: 'aula-01', title: 'Padrões W3C: DID Core e Modelo de Dados de VCs', number: '1.1' },
+          { id: 'aula-02', title: 'Organizações-chave: DIF, ToIP e Hyperledger', number: '1.2' },
+          { id: 'aula-03', title: 'Iniciativas da indústria: Microsoft ION, Sovrin, Trinsic', number: '1.3' },
+          { id: 'aula-04', title: 'Contexto regulatório: eIDAS 2.0, GDPR e LGPD', number: '1.4' },
         ]
       },
       {
-        id: 'modulo-06',
-        title: 'Casos de Uso Reais: Pessoas, Educação e Saúde',
+        id: 'modulo-02',
+        title: 'Casos de Uso: Pessoas, Educação e Saúde',
         objective: 'Explorar aplicações práticas de DID em identidade pessoal, educação e saúde.',
         lessons: [
-          { id: 'aula-01', title: 'Identidade pessoal: passaporte digital e KYC sem intermediários', number: '6.1' },
-          { id: 'aula-02', title: 'Credenciais educacionais e profissionais verificáveis', number: '6.2' },
-          { id: 'aula-03', title: 'Saúde: dados médicos soberanos e consentimento do paciente', number: '6.3' },
+          { id: 'aula-01', title: 'Identidade pessoal: passaporte digital e KYC sem intermediários', number: '2.1' },
+          { id: 'aula-02', title: 'Credenciais educacionais e profissionais verificáveis', number: '2.2' },
+          { id: 'aula-03', title: 'Saúde: dados médicos soberanos e consentimento do paciente', number: '2.3' },
         ]
       },
       {
-        id: 'modulo-07',
-        title: 'Casos de Uso Reais: Finanças, IoT, Governo e Web3',
+        id: 'modulo-03',
+        title: 'Casos de Uso: Finanças, IoT, Governo e Web3',
         objective: 'Explorar aplicações de DID em finanças, IoT, governo e Web3.',
         lessons: [
-          { id: 'aula-01', title: 'DeFi e CeFi: KYC reutilizável e compliance automatizado', number: '7.1' },
-          { id: 'aula-02', title: 'Internet das Coisas: identificação de dispositivos', number: '7.2' },
-          { id: 'aula-03', title: 'Governo e cidadania: votação eletrônica e identidade governamental', number: '7.3' },
-          { id: 'aula-04', title: 'Web3: logins descentralizados e reputação portátil', number: '7.4' },
+          { id: 'aula-01', title: 'DeFi e CeFi: KYC reutilizável e compliance automatizado', number: '3.1' },
+          { id: 'aula-02', title: 'Internet das Coisas: identificação de dispositivos', number: '3.2' },
+          { id: 'aula-03', title: 'Governo e cidadania: votação eletrônica e identidade governamental', number: '3.3' },
+          { id: 'aula-04', title: 'Web3: logins descentralizados e reputação portátil', number: '3.4' },
         ]
       },
       {
-        id: 'modulo-08',
+        id: 'modulo-04',
         title: 'Desafios, Governança e Futuro',
         objective: 'Analisar barreiras para adoção, governança e tendências futuras.',
         lessons: [
-          { id: 'aula-01', title: 'Privacidade e proteção de dados em sistemas imutáveis', number: '8.1' },
-          { id: 'aula-02', title: 'Recuperação de chaves: social recovery e multisig', number: '8.2' },
-          { id: 'aula-03', title: 'Barreiras para adoção em massa: UX, interoperabilidade e custos', number: '8.3' },
-          { id: 'aula-04', title: 'Roadmap 2025–2030: tendências e evolução regulatória', number: '8.4' },
+          { id: 'aula-01', title: 'Privacidade e proteção de dados em sistemas imutáveis', number: '4.1' },
+          { id: 'aula-02', title: 'Recuperação de chaves: social recovery e multisig', number: '4.2' },
+          { id: 'aula-03', title: 'Barreiras para adoção em massa: UX, interoperabilidade e custos', number: '4.3' },
+          { id: 'aula-04', title: 'Roadmap 2025–2030: tendências e evolução regulatória', number: '4.4' },
         ]
       },
     ]
   },
-  'did-engenharia': {
-    id: 'did-engenharia',
-    contentDir: 'curso-08',
+  'did-criptografia': {
+    id: 'did-criptografia',
+    contentDir: 'curso-10',
     title: 'Identidade Descentralizada (DID)',
-    subtitle: 'Engenharia e Arquitetura Técnica',
+    subtitle: 'Criptografia e Infraestrutura Técnica',
     level: 'Avançado',
-    description: 'Aprofundamento técnico em DIDs — especificação W3C, criptografia aplicada, métodos DID, resolução, ZKPs, segurança e interoperabilidade.',
-    image: '/images/courses/curso-08.svg',
+    description: 'Engenharia de DIDs — especificação W3C, criptografia aplicada, métodos DID, resolução e infraestrutura técnica.',
+    image: '/images/courses/curso-10.svg',
     modules: [
       {
         id: 'modulo-01',
@@ -583,50 +594,61 @@ export const COURSES: Record<string, Course> = {
           { id: 'aula-05', title: 'Escalabilidade: batching, caching, sidechains e L2s', number: '4.5' },
         ]
       },
+    ]
+  },
+  'did-seguranca': {
+    id: 'did-seguranca',
+    contentDir: 'curso-11',
+    title: 'Identidade Descentralizada (DID)',
+    subtitle: 'Segurança, Privacidade e Integração',
+    level: 'Especialista',
+    description: 'Segurança e fronteiras de DIDs — stack tecnológica, ZKPs, criptografia pós-quântica, modelos de ameaça e interoperabilidade.',
+    image: '/images/courses/curso-11.svg',
+    modules: [
       {
-        id: 'modulo-05',
+        id: 'modulo-01',
         title: 'Stack Tecnológica e Ferramentas de Desenvolvimento',
         objective: 'Conhecer as principais bibliotecas, frameworks e ferramentas para desenvolvimento com DIDs.',
         lessons: [
-          { id: 'aula-01', title: 'Bibliotecas e frameworks: Veramo, Aries e DIDKit', number: '5.1' },
-          { id: 'aula-02', title: 'Linguagens suportadas: TypeScript, Rust, Go e Python', number: '5.2' },
-          { id: 'aula-03', title: 'Integrações de armazenamento: IPFS, Ceramic e Arweave', number: '5.3' },
-          { id: 'aula-04', title: 'DevOps: dockerização de resolvers e monitoramento', number: '5.4' },
+          { id: 'aula-01', title: 'Bibliotecas e frameworks: Veramo, Aries e DIDKit', number: '1.1' },
+          { id: 'aula-02', title: 'Linguagens suportadas: TypeScript, Rust, Go e Python', number: '1.2' },
+          { id: 'aula-03', title: 'Integrações de armazenamento: IPFS, Ceramic e Arweave', number: '1.3' },
+          { id: 'aula-04', title: 'DevOps: dockerização de resolvers e monitoramento', number: '1.4' },
         ]
       },
       {
-        id: 'modulo-06',
+        id: 'modulo-02',
         title: 'Criptografia Avançada e Privacidade',
         objective: 'Dominar técnicas avançadas de privacidade: ZKPs, divulgação seletiva e criptografia pós-quântica.',
         lessons: [
-          { id: 'aula-01', title: 'Zero-Knowledge Proofs: conceitos, zk-SNARKs e zk-STARKs', number: '6.1' },
-          { id: 'aula-02', title: 'Divulgação seletiva e predicados', number: '6.2' },
-          { id: 'aula-03', title: 'Assinaturas BBS+ e AnonCreds', number: '6.3' },
-          { id: 'aula-04', title: 'Criptografia pós-quântica: Dilithium e Falcon', number: '6.4' },
-          { id: 'aula-05', title: 'Desafios de privacidade: correlacionabilidade e rastreamento', number: '6.5' },
+          { id: 'aula-01', title: 'Zero-Knowledge Proofs: conceitos, zk-SNARKs e zk-STARKs', number: '2.1' },
+          { id: 'aula-02', title: 'Divulgação seletiva e predicados', number: '2.2' },
+          { id: 'aula-03', title: 'Assinaturas BBS+ e AnonCreds', number: '2.3' },
+          { id: 'aula-04', title: 'Criptografia pós-quântica: Dilithium e Falcon', number: '2.4' },
+          { id: 'aula-05', title: 'Desafios de privacidade: correlacionabilidade e rastreamento', number: '2.5' },
         ]
       },
       {
-        id: 'modulo-07',
+        id: 'modulo-03',
         title: 'Segurança, Modelos de Ameaça e Ataques',
         objective: 'Analisar modelos de ameaça e implementar boas práticas de segurança em sistemas DID.',
         lessons: [
-          { id: 'aula-01', title: 'Modelos de ameaça: DID hijacking, Sybil e grinding attacks', number: '7.1' },
-          { id: 'aula-02', title: 'Boas práticas: rotação de chaves, multisig e assinaturas limiares', number: '7.2' },
-          { id: 'aula-03', title: 'Comunicação segura: DIDComm v2, CHAPI e Presentation Exchange', number: '7.3' },
-          { id: 'aula-04', title: 'Armazenamento seguro: Encrypted Data Vaults e Identity Hubs', number: '7.4' },
+          { id: 'aula-01', title: 'Modelos de ameaça: DID hijacking, Sybil e grinding attacks', number: '3.1' },
+          { id: 'aula-02', title: 'Boas práticas: rotação de chaves, multisig e assinaturas limiares', number: '3.2' },
+          { id: 'aula-03', title: 'Comunicação segura: DIDComm v2, CHAPI e Presentation Exchange', number: '3.3' },
+          { id: 'aula-04', title: 'Armazenamento seguro: Encrypted Data Vaults e Identity Hubs', number: '3.4' },
         ]
       },
       {
-        id: 'modulo-08',
+        id: 'modulo-04',
         title: 'Interoperabilidade, Integração e Futuro Técnico',
         objective: 'Conectar o ecossistema DID com padrões existentes e projetar o futuro da tecnologia.',
         lessons: [
-          { id: 'aula-01', title: 'Ponte Web2–Web3: OIDC4VC', number: '8.1' },
-          { id: 'aula-02', title: 'Integração com padrões existentes: SIWE e ERC-4337', number: '8.2' },
-          { id: 'aula-03', title: 'Resolução cross-chain e interoperabilidade entre métodos', number: '8.3' },
-          { id: 'aula-04', title: 'Roadmap técnico 2026–2028: DID 2.0 e zkDIDs', number: '8.4' },
-          { id: 'aula-05', title: 'Métricas de adoção e lições aprendidas', number: '8.5' },
+          { id: 'aula-01', title: 'Ponte Web2–Web3: OIDC4VC', number: '4.1' },
+          { id: 'aula-02', title: 'Integração com padrões existentes: SIWE e ERC-4337', number: '4.2' },
+          { id: 'aula-03', title: 'Resolução cross-chain e interoperabilidade entre métodos', number: '4.3' },
+          { id: 'aula-04', title: 'Roadmap técnico 2026–2028: DID 2.0 e zkDIDs', number: '4.4' },
+          { id: 'aula-05', title: 'Métricas de adoção e lições aprendidas', number: '4.5' },
         ]
       },
     ]

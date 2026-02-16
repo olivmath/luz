@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "build:index": "npx tsx scripts/build-term-index.ts"
+    "build:index": "npx tsx scripts/build-term-index.ts",
+    "validate:glossary": "npx tsx scripts/validate-glossary.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.37.4",

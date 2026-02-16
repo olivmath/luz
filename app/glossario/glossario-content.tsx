@@ -115,7 +115,7 @@ export function GlossarioContent() {
                       </button>
                     ) : term.courseId ? (
                       <Link
-                        href={`/${term.courseId}`}
+                        href={`/cursos/${term.courseId}`}
                         className="ml-2 inline-flex items-center gap-1 text-sm font-medium text-green-700 hover:text-green-600 dark:text-green-400 dark:hover:text-green-300"
                       >
                         Ver no curso &rarr;

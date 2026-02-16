@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2a1a"/>
+      <stop offset="100%" stop-color="#062010"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#062010" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <rect width="400" height="400" fill="url(#glow)"/>
+
+  <!-- Architecture layers -->
+  <g transform="translate(80, 60)" opacity="0.25">
+    <rect x="0" y="0" width="240" height="25" rx="4" fill="#059669" fill-opacity="0.06" stroke="#34d399" stroke-width="1"/>
+    <text x="120" y="16" font-family="monospace" font-size="8" fill="#34d399" fill-opacity="0.6" text-anchor="middle">APPLICATION LAYER</text>
+    <rect x="0" y="35" width="240" height="25" rx="4" fill="#059669" fill-opacity="0.06" stroke="#34d399" stroke-width="1"/>
+    <text x="120" y="51" font-family="monospace" font-size="8" fill="#34d399" fill-opacity="0.6" text-anchor="middle">DID / SSI LAYER</text>
+    <rect x="0" y="70" width="240" height="25" rx="4" fill="#059669" fill-opacity="0.06" stroke="#34d399" stroke-width="1"/>
+    <text x="120" y="86" font-family="monospace" font-size="8" fill="#34d399" fill-opacity="0.6" text-anchor="middle">BLOCKCHAIN LAYER</text>
+  </g>
+
+  <!-- Code/terminal window -->
+  <g transform="translate(60, 180)" opacity="0.2">
+    <rect x="0" y="0" width="280" height="80" rx="6" fill="#059669" fill-opacity="0.05" stroke="#34d399" stroke-width="1.5"/>
+    <circle cx="14" cy="12" r="3" fill="#ef4444" fill-opacity="0.4"/>
+    <circle cx="26" cy="12" r="3" fill="#eab308" fill-opacity="0.4"/>
+    <circle cx="38" cy="12" r="3" fill="#22c55e" fill-opacity="0.4"/>
+    <text x="12" y="36" font-family="monospace" font-size="8" fill="#6ee7b7" fill-opacity="0.6">$ veramo did create</text>
+    <text x="12" y="50" font-family="monospace" font-size="8" fill="#34d399" fill-opacity="0.4">did:ethr:0x1234...abcd</text>
+    <text x="12" y="64" font-family="monospace" font-size="8" fill="#6ee7b7" fill-opacity="0.6">$ issue credential --fhir</text>
+  </g>
+
+  <!-- Credential verification flow -->
+  <g transform="translate(100, 300)" opacity="0.2">
+    <rect x="0" y="0" width="50" height="35" rx="4" fill="none" stroke="#34d399" stroke-width="1.2"/>
+    <text x="25" y="14" font-family="monospace" font-size="6" fill="#34d399" text-anchor="middle">MÉDICO</text>
+    <text x="25" y="28" font-family="monospace" font-size="6" fill="#34d399" fill-opacity="0.5" text-anchor="middle">emit VC</text>
+
+    <line x1="55" y1="17" x2="75" y2="17" stroke="#34d399" stroke-width="1" marker-end="url(#arrow)"/>
+
+    <rect x="80" y="0" width="50" height="35" rx="4" fill="none" stroke="#34d399" stroke-width="1.2"/>
+    <text x="105" y="14" font-family="monospace" font-size="6" fill="#34d399" text-anchor="middle">PACIENTE</text>
+    <text x="105" y="28" font-family="monospace" font-size="6" fill="#34d399" fill-opacity="0.5" text-anchor="middle">hold VC</text>
+
+    <line x1="135" y1="17" x2="155" y2="17" stroke="#34d399" stroke-width="1"/>
+
+    <rect x="160" y="0" width="50" height="35" rx="4" fill="none" stroke="#34d399" stroke-width="1.2"/>
+    <text x="185" y="14" font-family="monospace" font-size="6" fill="#34d399" text-anchor="middle">FARMÁCIA</text>
+    <text x="185" y="28" font-family="monospace" font-size="6" fill="#34d399" fill-opacity="0.5" text-anchor="middle">verify</text>
+  </g>
+
+  <!-- Gear/settings icon -->
+  <g transform="translate(340, 300)" opacity="0.15">
+    <circle cx="15" cy="15" r="12" fill="none" stroke="#34d399" stroke-width="1.5"/>
+    <circle cx="15" cy="15" r="5" fill="none" stroke="#34d399" stroke-width="1"/>
+    <line x1="15" y1="0" x2="15" y2="5" stroke="#34d399" stroke-width="1.5"/>
+    <line x1="15" y1="25" x2="15" y2="30" stroke="#34d399" stroke-width="1.5"/>
+    <line x1="0" y1="15" x2="5" y2="15" stroke="#34d399" stroke-width="1.5"/>
+    <line x1="25" y1="15" x2="30" y2="15" stroke="#34d399" stroke-width="1.5"/>
+  </g>
+
+  <!-- Decorative dots -->
+  <circle cx="370" cy="30" r="2" fill="#10b981" fill-opacity="0.15"/>
+  <circle cx="30" cy="380" r="1.5" fill="#34d399" fill-opacity="0.1"/>
+  <circle cx="40" cy="300" r="3" fill="#10b981" fill-opacity="0.08"/>
+</svg>

@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { SignInButton } from '@clerk/nextjs'
-import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse } from 'lucide-react'
+import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const TRACKS = [
@@ -63,6 +64,64 @@ const STATS = [
   { value: '12', label: 'Certificados', icon: Award },
 ]
 
+const PLANS = [
+  {
+    name: 'Gratuito',
+    price: 'US$ 0',
+    period: '',
+    description: 'Explore a plataforma e veja se é para você.',
+    features: [
+      'Acesso às 3 primeiras aulas de cada curso',
+      'Glossário completo',
+      'Blog com artigos técnicos',
+    ],
+    cta: 'Começar grátis',
+    highlighted: false,
+  },
+  {
+    name: 'Anual',
+    price: 'US$ 1.000',
+    period: '/ano',
+    description: 'Acesso completo a tudo — cursos, certificados e conteúdo sob demanda.',
+    features: [
+      'Acesso ilimitado a todos os 12 cursos',
+      'Certificados de conclusão',
+      'Solicitar novos cursos e conteúdos',
+      'Acesso antecipado a novos cursos',
+      'Suporte prioritário por e-mail',
+    ],
+    cta: 'Assinar agora',
+    highlighted: true,
+  },
+]
+
+const FAQ = [
+  {
+    q: 'Posso testar antes de pagar?',
+    a: 'Sim. O plano gratuito dá acesso às 3 primeiras aulas de cada curso, sem precisar de cartão de crédito.',
+  },
+  {
+    q: 'Como funciona a solicitação de conteúdo novo?',
+    a: 'Assinantes anuais podem sugerir temas, cursos ou aprofundamentos. Avaliamos cada pedido e priorizamos com base na demanda.',
+  },
+  {
+    q: 'Qual a forma de pagamento?',
+    a: 'Aceitamos cartão de crédito internacional e PIX. O pagamento é processado de forma segura via Stripe.',
+  },
+  {
+    q: 'Os certificados têm validade?',
+    a: 'Os certificados são emitidos pela Oliveira LTDA e comprovam a conclusão do curso. Não possuem validade acadêmica formal, mas são reconhecidos no mercado como certificação técnica.',
+  },
+  {
+    q: 'Posso cancelar a assinatura?',
+    a: 'Sim, a qualquer momento. Você mantém o acesso até o fim do período já pago. Não há multa de cancelamento.',
+  },
+  {
+    q: 'Os cursos são atualizados?',
+    a: 'Sim. Atualizamos o conteúdo conforme regulações, tecnologias e mercado evoluem. Assinantes recebem todas as atualizações automaticamente.',
+  },
+]
+
 const BENEFITS = [
   {
     title: 'Conteúdo especializado',
@@ -81,6 +140,33 @@ const BENEFITS = [
     description: 'Fixe o conteúdo com questões práticas ao final de cada aula.',
   },
 ]
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="rounded-xl border border-border bg-card overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 max-sm:px-4 max-sm:py-4 text-left cursor-pointer"
+      >
+        <span className="font-semibold text-foreground text-[0.95rem]">{question}</span>
+        <ChevronDown className={cn('w-5 h-5 shrink-0 text-muted-foreground transition-transform duration-200', open && 'rotate-180')} />
+      </button>
+      <div
+        className={cn(
+          'grid transition-all duration-200 ease-in-out',
+          open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+        )}
+      >
+        <div className="overflow-hidden">
+          <p className="px-6 pb-5 max-sm:px-4 max-sm:pb-4 text-sm text-muted-foreground leading-relaxed">
+            {answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function LandingPage() {
   return (
@@ -239,6 +325,88 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* ===== PLANOS ===== */}
+      <section id="planos" className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 py-20 max-md:py-14">
+        <div className="text-center mb-12">
+          <h2 className="font-display text-3xl max-md:text-2xl font-bold text-foreground mb-3">
+            Planos
+          </h2>
+          <p className="text-muted-foreground max-w-[480px] mx-auto">
+            Comece gratuitamente ou desbloqueie tudo com o plano anual.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
+          {PLANS.map((plan) => (
+            <div
+              key={plan.name}
+              className={cn(
+                'relative flex flex-col rounded-2xl border p-8 max-sm:p-6 transition-all duration-300',
+                plan.highlighted
+                  ? 'border-primary bg-card shadow-xl shadow-primary/5 ring-1 ring-primary/20'
+                  : 'border-border bg-card hover:border-border/80',
+              )}
+            >
+              {plan.highlighted && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 font-mono text-[0.65rem] font-semibold tracking-widest uppercase bg-primary text-primary-foreground px-4 py-1 rounded-full">
+                  Recomendado
+                </span>
+              )}
+
+              <h3 className="font-display text-xl font-bold text-foreground">{plan.name}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{plan.description}</p>
+
+              <div className="mt-6 mb-6">
+                <span className="font-display text-4xl font-bold text-foreground">{plan.price}</span>
+                {plan.period && (
+                  <span className="text-muted-foreground text-sm">{plan.period}</span>
+                )}
+              </div>
+
+              <ul className="space-y-3 mb-8 flex-1">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                    <Check className={cn('w-4 h-4 mt-0.5 shrink-0', plan.highlighted ? 'text-primary' : 'text-muted-foreground/60')} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <SignInButton mode="modal">
+                <button
+                  className={cn(
+                    'w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer',
+                    plan.highlighted
+                      ? 'bg-primary text-primary-foreground hover:opacity-90 shadow-lg'
+                      : 'bg-secondary text-foreground hover:bg-secondary/80 border border-border',
+                  )}
+                >
+                  {plan.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </SignInButton>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== FAQ ===== */}
+      <section className="border-y border-border bg-secondary/30">
+        <div className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 py-20 max-md:py-14">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl max-md:text-2xl font-bold text-foreground mb-3">
+              Perguntas frequentes
+            </h2>
+          </div>
+
+          <div className="max-w-[700px] mx-auto space-y-3">
+            {FAQ.map((item) => (
+              <FaqItem key={item.q} question={item.q} answer={item.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== CTA FINAL ===== */}
       <section className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 py-20 max-md:py-14">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e4d38] to-[#28694d] px-12 py-16 max-md:px-6 max-md:py-10 text-center">
@@ -248,14 +416,19 @@ export function LandingPage() {
               Comece sua jornada agora
             </h2>
             <p className="text-white/70 max-w-[420px] mx-auto mb-8">
-              Crie sua conta gratuita e tenha acesso imediato a todos os cursos da plataforma.
+              Teste gratuitamente ou assine o plano anual e desbloqueie todos os cursos, certificados e conteúdo sob demanda.
             </p>
-            <SignInButton mode="modal">
-              <button className="inline-flex items-center justify-center gap-2 bg-white text-[#1e4d38] px-8 py-4 rounded-lg font-semibold hover:bg-white/95 transition-all duration-200 hover:gap-3 shadow-lg cursor-pointer">
-                Criar conta gratuita
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </SignInButton>
+            <div className="flex items-center justify-center gap-4 max-sm:flex-col">
+              <SignInButton mode="modal">
+                <button className="inline-flex items-center justify-center gap-2 bg-white text-[#1e4d38] px-8 py-4 rounded-lg font-semibold hover:bg-white/95 transition-all duration-200 hover:gap-3 shadow-lg cursor-pointer">
+                  Começar grátis
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </SignInButton>
+              <a href="#planos" className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-200 cursor-pointer">
+                Ver planos
+              </a>
+            </div>
           </div>
         </div>
       </section>

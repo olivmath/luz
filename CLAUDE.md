@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-LUZ is a course platform with two content areas: Agronegócio Financeiro (agricultural finance) and Nanotecnologia Cosmética (cosmetic nanotechnology). 4 courses, 72 lessons total.
+LUZ is a course platform with four content areas: Agronegócio Financeiro (agricultural finance), Nanotecnologia Cosmética (cosmetic nanotechnology), Identidade Descentralizada (decentralized identity/DIDs), and Informática da Saúde (health informatics). 12 courses, 216 lessons total.
 
 ## Commands
 
@@ -41,11 +41,12 @@ Package manager: **pnpm** (do not use npm/yarn).
 - Quiz: parsed from `## Questionario` section in markdown files
 
 **Key conventions:**
-- Course IDs: `curso-01` through `curso-04`
+- Content dirs: `curso-01` through `curso-13` (mapped via `contentDir` in `lib/courses.ts`)
+- Course IDs use descriptive slugs (e.g., `financeiro-agro-fundamentos`, `did-introducao`)
 - Module IDs: `modulo-01`, `modulo-02`, etc.
 - Lesson IDs: `aula-01`, `aula-02`, etc.
-- Content paths map directly: `/curso-01/modulo-01/aula-01` → `content/curso-01/modulo-01/aula-01.md`
-- Categories: "Agronegócio Financeiro" (curso-01, curso-02), "Nanotecnologia Cosmética" (curso-03, curso-04)
+- Content paths: `content/{contentDir}/{moduleId}/{lessonId}.md`
+- Categories: "Agronegócio Financeiro" (curso-01, 02, 05, 06), "Nanotecnologia Cosmética" (curso-03, 04), "Identidade Descentralizada" (curso-07, 09, 10, 11), "Informática da Saúde" (curso-12, 13)
 
 **Styling tokens** (defined as CSS variables in `globals.css`):
 - Colors: `--green-700`, `--green-600`, `--cream-*` for light; inverted for dark

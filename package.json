@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:index": "npx tsx scripts/build-term-index.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.37.4",

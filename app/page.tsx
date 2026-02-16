@@ -112,7 +112,7 @@ export default function CatalogPage() {
 
   useEffect(() => {
     if (paused) return
-    const id = setInterval(next, 1000)
+    const id = setInterval(next, 2000)
     return () => clearInterval(id)
   }, [paused, next])
 

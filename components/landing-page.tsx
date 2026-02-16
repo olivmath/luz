@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
+import { useSearchParams } from 'next/navigation'
+import { SignInButton, SignedIn, SignedOut, useUser } from '@clerk/nextjs'
 import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { CheckoutModal } from '@/components/checkout-modal'
@@ -193,6 +194,16 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 export function LandingPage() {
   const { annual, monthly } = useUsdToBrl()
   const [checkoutOpen, setCheckoutOpen] = useState(false)
+  const { isSignedIn } = useUser()
+  const searchParams = useSearchParams()
+
+  // Open checkout modal automatically after sign-in via ?checkout=true
+  useEffect(() => {
+    if (isSignedIn && searchParams.get('checkout') === 'true') {
+      setCheckoutOpen(true)
+      window.history.replaceState({}, '', '/')
+    }
+  }, [isSignedIn, searchParams])
 
   return (
     <div className="min-h-screen">
@@ -422,7 +433,7 @@ export function LandingPage() {
                     </button>
                   </SignedIn>
                   <SignedOut>
-                    <SignInButton mode="modal">
+                    <SignInButton mode="modal" forceRedirectUrl="/?checkout=true">
                       <button className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-primary text-primary-foreground hover:opacity-90 shadow-lg">
                         {plan.cta}
                         <ArrowRight className="w-4 h-4" />

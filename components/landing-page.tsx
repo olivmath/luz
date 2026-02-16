@@ -70,7 +70,7 @@ const PLANS = [
     period: '',
     description: 'Explore a plataforma e veja se é para você.',
     features: [
-      'Acesso às 3 primeiras aulas de cada curso',
+      'Acesso à primeira aula de cada curso',
       'Glossário completo',
       'Blog com artigos técnicos',
     ],
@@ -119,7 +119,7 @@ function useUsdToBrl() {
 const FAQ = [
   {
     q: 'Posso testar antes de pagar?',
-    a: 'Sim. O plano gratuito dá acesso às 3 primeiras aulas de cada curso, sem precisar de cartão de crédito.',
+    a: 'Sim. O plano gratuito dá acesso à primeira aula de cada curso, sem precisar de cartão de crédito.',
   },
   {
     q: 'Como funciona a solicitação de conteúdo novo?',

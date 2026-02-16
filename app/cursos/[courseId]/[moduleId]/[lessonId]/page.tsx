@@ -12,8 +12,10 @@ import { ReadingProgressBar } from '@/components/reading-progress-bar'
 import { LessonSidebar } from '@/components/lesson-sidebar'
 import { QuizSection } from '@/components/quiz-section'
 import { cn } from '@/lib/utils'
-import { Menu, X, BookOpen, CheckCircle2 } from 'lucide-react'
+import { Menu, X, BookOpen, CheckCircle2, Lock } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
+import { useUser } from '@clerk/nextjs'
+import { SignInButton } from '@clerk/nextjs'
 
 export default function LessonPage({
   params,
@@ -37,6 +39,11 @@ export default function LessonPage({
   const searchParams = useSearchParams()
   const highlightTerm = searchParams.get('term')
   const articleRef = useRef<HTMLElement>(null)
+
+  const { user } = useUser()
+  const isAuthorized = user?.publicMetadata?.authorized === true
+  const isFreeLesson = moduleId === 'modulo-01' && lessonId === 'aula-01'
+  const hasAccess = isFreeLesson || isAuthorized
 
   useKeyboardNavigation(adj)
 
@@ -143,43 +150,76 @@ export default function LessonPage({
             </div>
           </div>
 
-          {loading && (
-            <div className="text-center py-16 font-mono text-sm text-muted-foreground">
-              Carregando...
+          {!hasAccess ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-6">
+                <Lock className="w-7 h-7 text-muted-foreground" />
+              </div>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-3">
+                Conteúdo exclusivo para assinantes
+              </h2>
+              <p className="text-muted-foreground max-w-[420px] mb-2">
+                A primeira aula de cada curso é gratuita. Para acessar todas as aulas, assine o plano anual.
+              </p>
+              <p className="text-sm text-muted-foreground/60 mb-8">
+                Aula {lesson.number} · {mod.title}
+              </p>
+              <div className="flex items-center gap-3 max-sm:flex-col">
+                <Link
+                  href="/#planos"
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all"
+                >
+                  Ver planos
+                </Link>
+                <Link
+                  href={`/cursos/${courseId}/modulo-01/aula-01`}
+                  className="inline-flex items-center justify-center gap-2 border border-border px-6 py-3 rounded-lg font-medium text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-all"
+                >
+                  Aula gratuita
+                </Link>
+              </div>
             </div>
-          )}
-
-          {error && (
-            <div className="text-center py-16 font-mono text-base text-muted-foreground">
-              <p className="text-2xl text-muted-foreground/50 mb-4">&#9671;</p>
-              <p>Conteúdo ainda não disponível.</p>
-              <p className="text-muted-foreground/50 mt-2">Em breve</p>
-            </div>
-          )}
-
-          {!loading && !error && (
+          ) : (
             <>
-              <article
-                ref={articleRef}
-                className="lesson-content"
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
+              {loading && (
+                <div className="text-center py-16 font-mono text-sm text-muted-foreground">
+                  Carregando...
+                </div>
+              )}
 
-              {quiz && (
-                <QuizSection
-                  questions={quiz}
-                  courseId={courseId}
-                  moduleId={moduleId}
-                  lessonId={lessonId}
-                  alreadyDone={isCompleted}
-                  onComplete={handleQuizComplete}
-                />
+              {error && (
+                <div className="text-center py-16 font-mono text-base text-muted-foreground">
+                  <p className="text-2xl text-muted-foreground/50 mb-4">&#9671;</p>
+                  <p>Conteúdo ainda não disponível.</p>
+                  <p className="text-muted-foreground/50 mt-2">Em breve</p>
+                </div>
+              )}
+
+              {!loading && !error && (
+                <>
+                  <article
+                    ref={articleRef}
+                    className="lesson-content"
+                    dangerouslySetInnerHTML={{ __html: html }}
+                  />
+
+                  {quiz && (
+                    <QuizSection
+                      questions={quiz}
+                      courseId={courseId}
+                      moduleId={moduleId}
+                      lessonId={lessonId}
+                      alreadyDone={isCompleted}
+                      onComplete={handleQuizComplete}
+                    />
+                  )}
+                </>
               )}
             </>
           )}
 
           {/* Footer */}
-          <div className="max-w-[var(--reading-max)] mt-16 pt-8 border-t border-border">
+          {hasAccess && <div className="max-w-[var(--reading-max)] mt-16 pt-8 border-t border-border">
             {!hasQuizGate && (
               isCompleted ? (
                 <div className="w-full py-4 font-mono text-sm font-medium tracking-[0.08em] uppercase text-success bg-success/5 border border-success/20 rounded-sm flex items-center justify-center gap-3">
@@ -226,7 +266,7 @@ export default function LessonPage({
                 </Link>
               ) : null}
             </div>
-          </div>
+          </div>}
         </div>
 
         {/* Sidebar - Order 2 (RIGHT side) */}

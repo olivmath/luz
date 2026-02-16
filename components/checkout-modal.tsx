@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useUser } from '@clerk/nextjs'
-import { ArrowRight, Check, CreditCard, QrCode, RotateCcw, ShoppingCart, Shield, X } from 'lucide-react'
+import { ArrowRight, Check, CreditCard, QrCode, Shield, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const USD_PRICE = 300
@@ -59,7 +59,6 @@ export function CheckoutModal({ open, onClose }: CheckoutModalProps) {
   const { user, isLoaded } = useUser()
   const { annual, monthly } = useUsdToBrl()
   const [cpfCnpj, setCpfCnpj] = useState('')
-  const [billingType, setBillingType] = useState<'recurring' | 'one-time'>('recurring')
   const [loading, setLoading] = useState(false)
 
   const isAuthorized = user?.publicMetadata?.authorized === true
@@ -226,53 +225,6 @@ export function CheckoutModal({ open, onClose }: CheckoutModalProps) {
               maxLength={18}
               className="w-full px-4 py-3 bg-card border border-border rounded-lg font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
             />
-          </div>
-
-          {/* Billing type toggle */}
-          <div className="mb-6">
-            <span className="block font-mono text-xs text-muted-foreground mb-2">
-              Tipo de cobrança
-            </span>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                onClick={() => setBillingType('recurring')}
-                className={cn(
-                  'flex flex-col items-center gap-1.5 p-3 rounded-xl border text-center transition-all cursor-pointer',
-                  billingType === 'recurring'
-                    ? 'border-primary bg-primary/5 ring-1 ring-primary/20'
-                    : 'border-border bg-card hover:border-border/80',
-                )}
-              >
-                <RotateCcw className={cn('w-4 h-4', billingType === 'recurring' ? 'text-primary' : 'text-muted-foreground')} />
-                <div>
-                  <div className={cn('font-mono text-xs font-medium', billingType === 'recurring' ? 'text-foreground' : 'text-muted-foreground')}>
-                    Recorrente
-                  </div>
-                  <div className="font-mono text-[0.6rem] text-muted-foreground">
-                    Renova automaticamente
-                  </div>
-                </div>
-              </button>
-              <button
-                onClick={() => setBillingType('one-time')}
-                className={cn(
-                  'flex flex-col items-center gap-1.5 p-3 rounded-xl border text-center transition-all cursor-pointer',
-                  billingType === 'one-time'
-                    ? 'border-primary bg-primary/5 ring-1 ring-primary/20'
-                    : 'border-border bg-card hover:border-border/80',
-                )}
-              >
-                <ShoppingCart className={cn('w-4 h-4', billingType === 'one-time' ? 'text-primary' : 'text-muted-foreground')} />
-                <div>
-                  <div className={cn('font-mono text-xs font-medium', billingType === 'one-time' ? 'text-foreground' : 'text-muted-foreground')}>
-                    Pagamento único
-                  </div>
-                  <div className="font-mono text-[0.6rem] text-muted-foreground">
-                    Acesso por 1 ano
-                  </div>
-                </div>
-              </button>
-            </div>
           </div>
 
           {/* Payment methods info */}

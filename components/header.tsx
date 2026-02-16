@@ -57,7 +57,7 @@ export function Header({ meta }: HeaderProps) {
           >
             <span className="text-primary text-[0.7rem]">&#9670;</span>
             <span className="font-mono text-sm font-semibold tracking-[0.18em] text-foreground">
-              LUZ
+              Oliveira LTDA
             </span>
           </Link>
 

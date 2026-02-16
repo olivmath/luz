@@ -33,6 +33,13 @@ const CATEGORIES = [
     accent: 'from-purple-500 to-purple-600',
     badgeColor: 'bg-purple-500/10 text-purple-700 dark:text-purple-400',
   },
+  {
+    label: 'Informática da Saúde',
+    description: 'Blockchain, DID, FHIR e interoperabilidade no SUS',
+    courses: ['saude-blockchain-fundamentos', 'saude-blockchain-avancado'],
+    accent: 'from-emerald-500 to-teal-600',
+    badgeColor: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400',
+  },
 ]
 
 const SLIDES = [
@@ -77,6 +84,20 @@ const SLIDES = [
     cta: { text: 'Explorar trilha', href: '/trilha/identidade-descentralizada' },
     gradient: 'from-purple-700 to-purple-500',
     ctaTextColor: 'text-purple-700',
+  },
+  {
+    label: 'Informática da Saúde',
+    subtitle: 'Blockchain, DID e interoperabilidade no SUS',
+    description:
+      'Do ecossistema digital do SUS à implementação prática — blockchain, identidade descentralizada, FHIR e projetos reais na saúde brasileira.',
+    bullets: [
+      'RNDS, Conecte SUS e padrões FHIR',
+      'Blockchain e DIDs para saúde',
+      'Prototipagem hands-on e escalabilidade',
+    ],
+    cta: { text: 'Explorar trilha', href: '/trilha/informatica-saude' },
+    gradient: 'from-emerald-700 to-teal-500',
+    ctaTextColor: 'text-emerald-700',
   },
 ]
 

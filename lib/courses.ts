@@ -4,8 +4,8 @@ export const COURSES: Record<string, Course> = {
   'financeiro-agro-fundamentos': {
     id: 'financeiro-agro-fundamentos',
     contentDir: 'curso-01',
-    title: 'Sistema Financeiro do Agronegócio Brasileiro',
-    subtitle: 'Fundamentos',
+    title: 'Fundamentos e Instrumentos',
+    subtitle: 'Financiamento do Agronegócio',
     level: 'Introdutório',
     description: 'Visão completa do sistema de financiamento do agronegócio brasileiro — bases institucionais, instrumentos financeiros, gestão de risco e tendências de mercado.',
     image: '/images/courses/curso-01.svg',
@@ -75,8 +75,8 @@ export const COURSES: Record<string, Course> = {
   'financeiro-agro-avancado': {
     id: 'financeiro-agro-avancado',
     contentDir: 'curso-02',
-    title: 'Sistema Financeiro do Agronegócio Brasileiro',
-    subtitle: 'Estruturação e Mercado Avançado',
+    title: 'Estruturação e Mercado de Capitais',
+    subtitle: 'Financiamento do Agronegócio',
     level: 'Avançado',
     description: 'Aprofundamento em estruturação de crédito agro — securitização, gestão de risco, FIAGRO, funding internacional e tokenização.',
     image: '/images/courses/curso-02.svg',
@@ -147,8 +147,8 @@ export const COURSES: Record<string, Course> = {
   'tokenizacao-agro-fundamentos': {
     id: 'tokenizacao-agro-fundamentos',
     contentDir: 'curso-05',
-    title: 'Web3 e Tokenização de RWA no Agronegócio',
-    subtitle: 'Fundamentos e Implementação',
+    title: 'Fundamentos e Smart Contracts',
+    subtitle: 'Tokenização de Ativos Agro',
     level: 'Avançado',
     description: 'Fundamentos de RWA, padrões de tokenização (ERC-20/721/1155), arquitetura de soluções, oráculos, implementação prática e escolha de blockchain.',
     image: '/images/courses/curso-05.svg',
@@ -218,8 +218,8 @@ export const COURSES: Record<string, Course> = {
   'tokenizacao-agro-avancado': {
     id: 'tokenizacao-agro-avancado',
     contentDir: 'curso-06',
-    title: 'Web3 e Tokenização de RWA no Agronegócio',
-    subtitle: 'Arquitetura Avançada e Integração DeFi',
+    title: 'DeFi e Integração Financeira',
+    subtitle: 'Tokenização de Ativos Agro',
     level: 'Especialista',
     description: 'Padrões avançados de compliance (ERC-3643), vaults tokenizados, waterfall on-chain, segurança, governança e integração com o sistema financeiro.',
     image: '/images/courses/curso-06.svg',
@@ -289,8 +289,8 @@ export const COURSES: Record<string, Course> = {
   'nanotecnologia-fundamentos': {
     id: 'nanotecnologia-fundamentos',
     contentDir: 'curso-03',
-    title: 'Nanotecnologia Aplicada a Cosméticos',
-    subtitle: 'Fundamentos',
+    title: 'Fundamentos e Aplicações',
+    subtitle: 'Nanotecnologia Cosmética',
     level: 'Introdutório',
     description: 'Visão completa da nanotecnologia cosmética — nanomateriais, proteção solar, skincare, haircare, maquiagem, regulação e segurança.',
     image: '/images/courses/curso-03.svg',
@@ -360,8 +360,8 @@ export const COURSES: Record<string, Course> = {
   'nanovetores-avancado': {
     id: 'nanovetores-avancado',
     contentDir: 'curso-04',
-    title: 'Nanovetores e Nanoencapsulamento Aplicados a Cosméticos',
-    subtitle: 'Abordagem Avançada',
+    title: 'Nanovetores e Escalonamento',
+    subtitle: 'Nanotecnologia Cosmética',
     level: 'Avançado',
     description: 'Aprofundamento em nanovetores cosméticos — design, encapsulamento, caracterização, permeação cutânea, escalonamento industrial e inovação.',
     image: '/images/courses/curso-04.svg',
@@ -431,8 +431,8 @@ export const COURSES: Record<string, Course> = {
   'did-introducao': {
     id: 'did-introducao',
     contentDir: 'curso-07',
-    title: 'Identidade Descentralizada (DID)',
-    subtitle: 'Introdução e Conceitos Fundamentais',
+    title: 'Fundamentos de SSI',
+    subtitle: 'Identidade Descentralizada',
     level: 'Introdutório',
     description: 'O que é identidade descentralizada — SSI, DIDs, Verifiable Credentials, triângulo da confiança e arquitetura do ecossistema.',
     image: '/images/courses/curso-07.svg',
@@ -487,8 +487,8 @@ export const COURSES: Record<string, Course> = {
   'did-aplicacoes': {
     id: 'did-aplicacoes',
     contentDir: 'curso-09',
-    title: 'Identidade Descentralizada (DID)',
-    subtitle: 'Aplicações e Casos de Uso',
+    title: 'Aplicações no Mundo Real',
+    subtitle: 'Identidade Descentralizada',
     level: 'Intermediário',
     description: 'DID no mundo real — padrões W3C, organizações, casos de uso em saúde, finanças, governo, Web3 e desafios para adoção.',
     image: '/images/courses/curso-09.svg',
@@ -541,8 +541,8 @@ export const COURSES: Record<string, Course> = {
   'did-criptografia': {
     id: 'did-criptografia',
     contentDir: 'curso-10',
-    title: 'Identidade Descentralizada (DID)',
-    subtitle: 'Criptografia e Infraestrutura Técnica',
+    title: 'Criptografia e Infraestrutura',
+    subtitle: 'Identidade Descentralizada',
     level: 'Avançado',
     description: 'Engenharia de DIDs — especificação W3C, criptografia aplicada, métodos DID, resolução e infraestrutura técnica.',
     image: '/images/courses/curso-10.svg',
@@ -599,8 +599,8 @@ export const COURSES: Record<string, Course> = {
   'did-seguranca': {
     id: 'did-seguranca',
     contentDir: 'curso-11',
-    title: 'Identidade Descentralizada (DID)',
-    subtitle: 'Segurança, Privacidade e Integração',
+    title: 'Segurança e Fronteiras',
+    subtitle: 'Identidade Descentralizada',
     level: 'Especialista',
     description: 'Segurança e fronteiras de DIDs — stack tecnológica, ZKPs, criptografia pós-quântica, modelos de ameaça e interoperabilidade.',
     image: '/images/courses/curso-11.svg',
@@ -652,5 +652,149 @@ export const COURSES: Record<string, Course> = {
         ]
       },
     ]
-  }
+  },
+  'saude-blockchain-fundamentos': {
+    id: 'saude-blockchain-fundamentos',
+    contentDir: 'curso-12',
+    title: 'Fundamentos e Regulação',
+    subtitle: 'Saúde Digital com Blockchain',
+    level: 'Intermediário',
+    description: 'Base conceitual, regulatória e contextual sobre saúde digital no Brasil — RNDS, LGPD, blockchain, DIDs, FHIR e casos de uso reais no SUS.',
+    image: '/images/courses/curso-12.svg',
+    modules: [
+      {
+        id: 'modulo-01',
+        title: 'A Revolução Digital no SUS: Do Cartão à RNDS',
+        objective: 'Compreender a evolução da informática em saúde no Brasil e a infraestrutura nacional de dados.',
+        lessons: [
+          { id: 'aula-01', title: 'Evolução da Informática em Saúde no Brasil', number: '1.1' },
+          { id: 'aula-02', title: 'A Infraestrutura Nacional de Dados em Saúde', number: '1.2' },
+          { id: 'aula-03', title: 'Maturidade Digital e Inovação Aberta', number: '1.3' },
+        ]
+      },
+      {
+        id: 'modulo-02',
+        title: 'Navegando no Arcabouço Regulatório Brasileiro',
+        objective: 'Dominar o arcabouço legal e regulatório da saúde digital no Brasil.',
+        lessons: [
+          { id: 'aula-01', title: 'LGPD na Saúde: Muito Além do Consentimento', number: '2.1' },
+          { id: 'aula-02', title: 'Regulações Específicas do Setor', number: '2.2' },
+          { id: 'aula-03', title: 'Governança, Ética e o Futuro do "Open Health"', number: '2.3' },
+        ]
+      },
+      {
+        id: 'modulo-03',
+        title: 'Fundamentos de Blockchain e Criptografia Aplicada',
+        objective: 'Compreender os fundamentos de blockchain e sua aplicação no contexto da saúde brasileira.',
+        lessons: [
+          { id: 'aula-01', title: 'Introdução à Tecnologia Blockchain', number: '3.1' },
+          { id: 'aula-02', title: 'Blockchain na Saúde: Por que essa tecnologia?', number: '3.2' },
+          { id: 'aula-03', title: 'Tipos de Redes para o Cenário Brasileiro', number: '3.3' },
+        ]
+      },
+      {
+        id: 'modulo-04',
+        title: 'Identidade Digital Descentralizada (DID) e SSI',
+        objective: 'Dominar os conceitos de identidade autossoberana e credenciais verificáveis aplicados à saúde.',
+        lessons: [
+          { id: 'aula-01', title: 'O Conceito de Identidade Autossoberana (SSI)', number: '4.1' },
+          { id: 'aula-02', title: 'Credenciais Verificáveis (VCs) na Prática Clínica', number: '4.2' },
+          { id: 'aula-03', title: 'Privacidade Diferencial e Provas de Conhecimento Zero (ZKP)', number: '4.3' },
+        ]
+      },
+      {
+        id: 'modulo-05',
+        title: 'A Linguagem da Interoperabilidade',
+        objective: 'Conhecer os padrões de interoperabilidade essenciais para a troca de dados em saúde.',
+        lessons: [
+          { id: 'aula-01', title: 'Visão Geral dos Padrões de Informação em Saúde', number: '5.1' },
+          { id: 'aula-02', title: 'HL7 FHIR: A Espinha Dorsal da RNDS', number: '5.2' },
+          { id: 'aula-03', title: 'openEHR e IHE: Padrões Complementares', number: '5.3' },
+        ]
+      },
+      {
+        id: 'modulo-06',
+        title: 'Projetos Pilotos e Casos de Uso Reais no Brasil',
+        objective: 'Analisar projetos pioneiros de blockchain e DID na saúde brasileira.',
+        lessons: [
+          { id: 'aula-01', title: 'Pionerismo Estadual: Rede Mineira de Dados em Saúde (RDS-MG)', number: '6.1' },
+          { id: 'aula-02', title: 'Inovação em Rede: Projetos 5G Saúde e CPQD-MedSênior', number: '6.2' },
+          { id: 'aula-03', title: 'Open Source e Colaboração: Minha Saúde Digital II e VacinaSUS', number: '6.3' },
+        ]
+      },
+    ]
+  },
+  'saude-blockchain-avancado': {
+    id: 'saude-blockchain-avancado',
+    contentDir: 'curso-13',
+    title: 'Arquitetura e Implementação',
+    subtitle: 'Saúde Digital com Blockchain',
+    level: 'Avançado',
+    description: 'Capacitação prática — arquitetura de sistemas, prototipagem hands-on, estratégias de implementação, escalabilidade e fomento no SUS.',
+    image: '/images/courses/curso-13.svg',
+    modules: [
+      {
+        id: 'modulo-01',
+        title: 'Arquitetura de Sistemas com Blockchain e DIDs',
+        objective: 'Projetar arquiteturas híbridas integrando blockchain, DIDs e a RNDS.',
+        lessons: [
+          { id: 'aula-01', title: 'Padrões Arquiteturais para Saúde', number: '1.1' },
+          { id: 'aula-02', title: 'Camada de Identidade e DID Methods', number: '1.2' },
+          { id: 'aula-03', title: 'Integração com a RNDS e APIs FHIR', number: '1.3' },
+          { id: 'aula-04', title: 'Segurança Avançada e Conformidade', number: '1.4' },
+        ]
+      },
+      {
+        id: 'modulo-02',
+        title: 'Prototipagem Prática — Hands-on Intensivo',
+        objective: 'Construir protótipos funcionais de credenciais verificáveis e integração FHIR.',
+        lessons: [
+          { id: 'aula-01', title: 'Setup do Ambiente de Desenvolvimento', number: '2.1' },
+          { id: 'aula-02', title: 'Hands-on 1: Emissão e Verificação de Credenciais', number: '2.2' },
+          { id: 'aula-03', title: 'Hands-on 2: Consentimento e Auditoria', number: '2.3' },
+          { id: 'aula-04', title: 'Integração com APIs Reais', number: '2.4' },
+        ]
+      },
+      {
+        id: 'modulo-03',
+        title: 'Jornada de Implementação: Desafios e Estratégias',
+        objective: 'Planejar a adoção de soluções descentralizadas no contexto brasileiro.',
+        lessons: [
+          { id: 'aula-01', title: 'Estratégia, Roadmap e Desafios Brasileiros', number: '3.1' },
+          { id: 'aula-02', title: 'Modelos de Governança e Sustentabilidade', number: '3.2' },
+          { id: 'aula-03', title: 'ROI e Métricas de Impacto', number: '3.3' },
+        ]
+      },
+      {
+        id: 'modulo-04',
+        title: 'Projetos de Alta Complexidade e Tendências Futuras',
+        objective: 'Explorar aplicações avançadas e projetar o futuro da saúde digital no Brasil.',
+        lessons: [
+          { id: 'aula-01', title: 'Supply Chain de Medicamentos com Blockchain', number: '4.1' },
+          { id: 'aula-02', title: 'Lições da Pandemia e Governança de Dados em Larga Escala', number: '4.2' },
+          { id: 'aula-03', title: 'O Futuro: zkDIDs, Medicina de Precisão e IPS Brasil', number: '4.3' },
+        ]
+      },
+      {
+        id: 'modulo-05',
+        title: 'Workshop de Prototipagem e Apresentação de Projetos',
+        objective: 'Desenvolver e apresentar um MVP funcional para um problema real da saúde brasileira.',
+        lessons: [
+          { id: 'aula-01', title: 'Definição do MVP', number: '5.1' },
+          { id: 'aula-02', title: 'Desenvolvimento Guiado do Protótipo', number: '5.2' },
+          { id: 'aula-03', title: 'Pitch e Validação das Soluções', number: '5.3' },
+        ]
+      },
+      {
+        id: 'modulo-06',
+        title: 'Estratégias para Escalabilidade e Fomento',
+        objective: 'Dominar estratégias de escalabilidade, fomento e sustentabilidade de projetos.',
+        lessons: [
+          { id: 'aula-01', title: 'Arquiteturas Escaláveis', number: '6.1' },
+          { id: 'aula-02', title: 'Fontes de Fomento e Editais', number: '6.2' },
+          { id: 'aula-03', title: 'Open Source, Comunidade e Visão de Futuro', number: '6.3' },
+        ]
+      },
+    ]
+  },
 }

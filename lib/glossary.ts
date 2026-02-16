@@ -2,7 +2,7 @@ export interface GlossaryTerm {
   id: string
   term: string
   definition: string
-  category: 'agronegocio' | 'nanotecnologia'
+  category: 'agronegocio' | 'nanotecnologia' | 'did' | 'saude'
   courseId?: string
 }
 
@@ -296,6 +296,134 @@ export const GLOSSARY: GlossaryTerm[] = [
     definition: 'Área da toxicologia dedicada ao estudo dos efeitos adversos de nanomateriais nos organismos vivos e no meio ambiente.',
     category: 'nanotecnologia',
     courseId: 'nanotecnologia-fundamentos',
+  },
+
+  // Informática da Saúde
+  {
+    id: 'blockchain-saude',
+    term: 'Blockchain na Saúde',
+    definition: 'Aplicação de tecnologia de registro distribuído para garantir integridade, rastreabilidade e imutabilidade de dados clínicos, prontuários e cadeias de suprimento farmacêutica.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'consentimento-informado-digital',
+    term: 'Consentimento Informado Digital',
+    definition: 'Mecanismo eletrônico pelo qual o paciente autoriza o uso de seus dados de saúde, com registro auditável e revogável, alinhado à LGPD.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'credencial-verificavel-saude',
+    term: 'Credencial Verificável (VC) na Saúde',
+    definition: 'Atestado digital criptograficamente assinado (ex.: carteira de vacinação, receita médica) que pode ser verificado sem contatar o emissor original.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'fhir',
+    term: 'FHIR (Fast Healthcare Interoperability Resources)',
+    definition: 'Padrão HL7 de interoperabilidade para troca de dados clínicos baseado em recursos RESTful, adotado pela RNDS como espinha dorsal da troca de informações de saúde no Brasil.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'ihe',
+    term: 'IHE (Integrating the Healthcare Enterprise)',
+    definition: 'Iniciativa internacional que define perfis de integração para melhorar a interoperabilidade entre sistemas de informação em saúde.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'interoperabilidade-saude',
+    term: 'Interoperabilidade em Saúde',
+    definition: 'Capacidade de diferentes sistemas de informação em saúde trocarem dados de forma padronizada e compreensível, usando padrões como HL7 FHIR, openEHR e IHE.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'ips',
+    term: 'IPS (International Patient Summary)',
+    definition: 'Resumo padronizado e portátil do histórico de saúde do paciente, projetado para emergências e atendimentos em contextos internacionais.',
+    category: 'saude',
+    courseId: 'saude-blockchain-avancado',
+  },
+  {
+    id: 'lgpd-saude',
+    term: 'LGPD na Saúde',
+    definition: 'Aplicação da Lei Geral de Proteção de Dados ao setor de saúde, que classifica dados médicos como sensíveis e exige bases legais específicas para tratamento.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'maturidade-digital-saude',
+    term: 'Maturidade Digital em Saúde',
+    definition: 'Grau de adoção e integração de tecnologias digitais em estabelecimentos de saúde, avaliado por indicadores como conectividade, prontuário eletrônico e telemedicina.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'mvp-saude',
+    term: 'MVP (Minimum Viable Product) em Saúde Digital',
+    definition: 'Protótipo funcional mínimo de uma solução de saúde digital, usado para validar hipóteses e obter feedback antes do desenvolvimento completo.',
+    category: 'saude',
+    courseId: 'saude-blockchain-avancado',
+  },
+  {
+    id: 'open-health',
+    term: 'Open Health',
+    definition: 'Conceito de compartilhamento padronizado e consentido de dados de saúde entre instituições, inspirado no modelo do Open Banking/Open Finance.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'openehr',
+    term: 'openEHR',
+    definition: 'Plataforma aberta para modelagem de dados clínicos baseada em arquétipos, que separa o modelo de informação do modelo de conhecimento clínico.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'prontuario-eletronico',
+    term: 'Prontuário Eletrônico (PEP)',
+    definition: 'Registro digital do histórico de saúde do paciente, incluindo consultas, exames, diagnósticos e tratamentos, armazenado em sistemas de informação hospitalares.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'rnds',
+    term: 'RNDS (Rede Nacional de Dados em Saúde)',
+    definition: 'Plataforma nacional de interoperabilidade do SUS que conecta estabelecimentos de saúde para troca de dados clínicos padronizados via FHIR.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'ssi-saude',
+    term: 'SSI na Saúde (Self-Sovereign Identity)',
+    definition: 'Modelo de identidade autossoberana aplicado à saúde, onde o paciente controla seus dados médicos e decide com quem compartilhá-los.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'supply-chain-farmaceutica',
+    term: 'Supply Chain Farmacêutica',
+    definition: 'Cadeia de suprimento de medicamentos, do fabricante ao paciente, que pode utilizar blockchain para rastreabilidade e combate à falsificação.',
+    category: 'saude',
+    courseId: 'saude-blockchain-avancado',
+  },
+  {
+    id: 'telemedicina',
+    term: 'Telemedicina',
+    definition: 'Prática médica à distância mediada por tecnologia, regulamentada no Brasil pela Resolução CFM nº 2.314/2022, abrangendo teleconsulta, telediagnóstico e telemonitoramento.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
+  },
+  {
+    id: 'zkp-saude',
+    term: 'ZKP na Saúde (Zero-Knowledge Proof)',
+    definition: 'Prova criptográfica que permite verificar atributos de saúde (ex.: "vacinado contra COVID") sem revelar dados pessoais do paciente.',
+    category: 'saude',
+    courseId: 'saude-blockchain-fundamentos',
   },
 ]
 

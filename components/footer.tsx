@@ -10,6 +10,14 @@ const CATEGORIES = [
     label: 'Nanotecnologia Cosmética',
     courses: ['nanotecnologia-fundamentos', 'nanovetores-avancado'],
   },
+  {
+    label: 'Identidade Descentralizada',
+    courses: ['did-introducao', 'did-aplicacoes', 'did-criptografia', 'did-seguranca'],
+  },
+  {
+    label: 'Informática da Saúde',
+    courses: ['saude-blockchain-fundamentos', 'saude-blockchain-avancado'],
+  },
 ]
 
 const SOCIAL_LINKS = [
@@ -63,17 +71,17 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-card/50">
       <div className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 py-12 max-md:py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-10 max-md:gap-8">
           {/* Brand + Social */}
           <div>
             <Link href="/" className="inline-flex items-center gap-3 mb-4 hover:opacity-70 transition-opacity">
               <span className="text-primary text-[0.7rem]">&#9670;</span>
               <span className="font-mono text-sm font-semibold tracking-[0.18em] text-foreground">
-                LUZ
+                Oliveira LTDA
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-[280px] mb-5">
-              Cursos especializados em agronegócio financeiro e nanotecnologia cosmética.
+              Cursos especializados em agronegócio financeiro, nanotecnologia cosmética, identidade descentralizada e informática da saúde.
             </p>
             <div className="flex items-center gap-3">
               {SOCIAL_LINKS.map((social) => (
@@ -139,7 +147,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-border flex items-center justify-between max-sm:flex-col max-sm:gap-3">
           <p className="font-mono text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} LUZ. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Oliveira LTDA. Todos os direitos reservados.
           </p>
           <p className="font-mono text-xs text-muted-foreground">
             Powered by{' '}

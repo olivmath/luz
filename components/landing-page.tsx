@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { SignInButton } from '@clerk/nextjs'
-import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope } from 'lucide-react'
+import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const TRACKS = [
@@ -30,19 +30,43 @@ const TRACKS = [
     accentBg: 'bg-blue-500/10',
     accentText: 'text-blue-700 dark:text-blue-400',
   },
+  {
+    label: 'Identidade Descentralizada',
+    subtitle: 'Da identidade soberana à engenharia técnica',
+    description: 'DIDs, Verifiable Credentials, SSI, criptografia aplicada, ZKPs e interoperabilidade.',
+    href: '/trilha/identidade-descentralizada',
+    courses: 4,
+    lessons: 69,
+    icon: Fingerprint,
+    gradient: 'from-purple-700 to-purple-500',
+    accentBg: 'bg-purple-500/10',
+    accentText: 'text-purple-700 dark:text-purple-400',
+  },
+  {
+    label: 'Informática da Saúde',
+    subtitle: 'Blockchain, DID e interoperabilidade no SUS',
+    description: 'RNDS, FHIR, LGPD, blockchain, DIDs e projetos reais na saúde brasileira.',
+    href: '/trilha/informatica-saude',
+    courses: 2,
+    lessons: 38,
+    icon: HeartPulse,
+    gradient: 'from-emerald-700 to-teal-500',
+    accentBg: 'bg-emerald-500/10',
+    accentText: 'text-emerald-700 dark:text-emerald-400',
+  },
 ]
 
 const STATS = [
-  { value: '6', label: 'Cursos', icon: BookOpen },
-  { value: '109', label: 'Aulas', icon: GraduationCap },
-  { value: '14h+', label: 'Conteúdo', icon: Clock },
-  { value: '6', label: 'Certificados', icon: Award },
+  { value: '12', label: 'Cursos', icon: BookOpen },
+  { value: '216', label: 'Aulas', icon: GraduationCap },
+  { value: '29h+', label: 'Conteúdo', icon: Clock },
+  { value: '12', label: 'Certificados', icon: Award },
 ]
 
 const BENEFITS = [
   {
     title: 'Conteúdo especializado',
-    description: 'Cursos criados por especialistas do mercado financeiro agro e nanotecnologia cosmética.',
+    description: 'Cursos criados por especialistas em finanças do agro, nanotecnologia, identidade digital e saúde.',
   },
   {
     title: 'Progressão estruturada',
@@ -85,8 +109,8 @@ export function LandingPage() {
 
           {/* Subtitle */}
           <p className="animate-fade-in-up text-lg max-md:text-base text-white/75 leading-relaxed max-w-[560px] mb-10" style={{ animationDelay: '120ms' }}>
-            Agronegócio financeiro e nanotecnologia cosmética — cursos aprofundados em português
-            que você não encontra em nenhuma outra plataforma.
+            Agronegócio financeiro, nanotecnologia cosmética, identidade descentralizada e informática
+            da saúde — cursos aprofundados em português que você não encontra em nenhuma outra plataforma.
           </p>
 
           {/* CTAs */}
@@ -120,14 +144,14 @@ export function LandingPage() {
       <section className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 py-20 max-md:py-14">
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl max-md:text-2xl font-bold text-foreground mb-3">
-            Duas trilhas de especialização
+            Quatro trilhas de especialização
           </h2>
           <p className="text-muted-foreground max-w-[500px] mx-auto">
             Escolha sua área de interesse e siga uma progressão estruturada do básico ao avançado.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {TRACKS.map((track, i) => (
             <Link
               key={track.label}
@@ -186,7 +210,7 @@ export function LandingPage() {
         <div className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 py-20 max-md:py-14">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl max-md:text-2xl font-bold text-foreground mb-3">
-              Por que a LUZ?
+              Por que a Oliveira LTDA?
             </h2>
             <p className="text-muted-foreground max-w-[440px] mx-auto">
               Conteúdo nichado, em português, que não existe em nenhum outro lugar.

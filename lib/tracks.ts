@@ -64,6 +64,23 @@ export const TRACKS: Record<string, Track> = {
     gradient: 'from-purple-700 to-purple-500',
     ctaTextColor: 'text-purple-700',
   },
+  'informatica-saude': {
+    id: 'informatica-saude',
+    slug: 'informatica-saude',
+    title: 'Informática da Saúde',
+    subtitle: 'Blockchain, DID e interoperabilidade no SUS',
+    description:
+      'Do ecossistema digital do SUS à implementação prática — blockchain, identidade descentralizada, FHIR, LGPD e projetos reais na saúde brasileira.',
+    objectives: [
+      'Compreender a infraestrutura digital do SUS (RNDS, Conecte SUS, FHIR)',
+      'Dominar o arcabouço regulatório (LGPD, CFM, Open Health)',
+      'Aplicar blockchain e DIDs para consentimento, auditoria e interoperabilidade',
+      'Prototipar soluções com Veramo, FHIR e redes blockchain',
+    ],
+    courses: ['saude-blockchain-fundamentos', 'saude-blockchain-avancado'],
+    gradient: 'from-emerald-700 to-teal-500',
+    ctaTextColor: 'text-emerald-700',
+  },
 }
 
 export function getTrackStats(trackId: string) {

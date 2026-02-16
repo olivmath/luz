@@ -13,14 +13,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const track = TRACKS[trackId]
   if (!track) return {}
   return {
-    title: `${track.title} — LUZ`,
+    title: `${track.title} — Oliveira LTDA`,
     description: track.description,
-    openGraph: { title: `${track.title} — LUZ`, description: track.description },
+    openGraph: { title: `${track.title} — Oliveira LTDA`, description: track.description },
   }
 }
 
 export function generateStaticParams() {
-  return [{ trackId: 'agronegocio' }, { trackId: 'nanotecnologia' }]
+  return [
+    { trackId: 'agronegocio' },
+    { trackId: 'nanotecnologia' },
+    { trackId: 'identidade-descentralizada' },
+    { trackId: 'informatica-saude' },
+  ]
 }
 
 export default async function TrackPage({ params }: Props) {

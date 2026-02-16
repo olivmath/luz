@@ -16,8 +16,8 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'LUZ — Cursos Especializados',
-  description: 'Cursos especializados em agronegócio financeiro e nanotecnologia cosmética. Do nível introdutório ao avançado.',
+  title: 'Oliveira LTDA — Cursos Especializados',
+  description: 'Cursos especializados em agronegócio financeiro, nanotecnologia cosmética, identidade descentralizada e informática da saúde. Do nível introdutório ao especialista.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,0 +1,2249 @@
+{
+  "cdca": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-02",
+      "lessonTitle": "Por que o agro precisa de crédito estruturado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "CPR: Cédula de Produto Rural",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "CRA: Certificado de Recebíveis do Agronegócio",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Outros instrumentos: LCA, CDCA, CDA/WA",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Ecossistema de participantes",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "cda-wa": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Outros instrumentos: LCA, CDCA, CDA/WA",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-01",
+      "lessonTitle": "Estrutura jurídica da CPR moderna",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Casos de uso e arquitetura técnica",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "cpr": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-02",
+      "lessonTitle": "Por que o agro precisa de crédito estruturado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Agentes financeiros do agro",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-01",
+      "lessonTitle": "Crédito público dirigido",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-02",
+      "lessonTitle": "Crédito bancário comercial",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "CPR: Cédula de Produto Rural",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "CRA: Certificado de Recebíveis do Agronegócio",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Outros instrumentos: LCA, CDCA, CDA/WA",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Fluxo real do capital: do investidor ao produtor",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Ecossistema de participantes",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "Riscos do sistema de crédito agro",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Tendência de privatização do funding agro",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Regulação e marcos legais relevantes",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-01",
+      "lessonTitle": "Estrutura jurídica da CPR moderna",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-03",
+      "lessonTitle": "CPR como veículo estruturado",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "Anatomia de uma operação de CRA",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Patrimônio separado e proteção ao investidor",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Waterfall: fluxo de pagamento e subordinação",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-04",
+      "lessonTitle": "Overcollateral e credit enhancement",
+      "lessonNumber": "3.4"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-01",
+      "lessonTitle": "Risco climático e instrumentos de mitigação",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-02",
+      "lessonTitle": "Risco de preço e hedge de commodities",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-03",
+      "lessonTitle": "Risco de crédito e contraparte na cadeia",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-01",
+      "lessonTitle": "FIAGRO: estrutura e estratégias",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Casos de uso e arquitetura técnica",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "cra": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-02",
+      "lessonTitle": "Por que o agro precisa de crédito estruturado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-01",
+      "lessonTitle": "Crédito público dirigido",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-02",
+      "lessonTitle": "Crédito bancário comercial",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "CPR: Cédula de Produto Rural",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "CRA: Certificado de Recebíveis do Agronegócio",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Outros instrumentos: LCA, CDCA, CDA/WA",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Fluxo real do capital: do investidor ao produtor",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Ecossistema de participantes",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "Riscos do sistema de crédito agro",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Tendência de privatização do funding agro",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Regulação e marcos legais relevantes",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-01",
+      "lessonTitle": "Estrutura jurídica da CPR moderna",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-03",
+      "lessonTitle": "CPR como veículo estruturado",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "Anatomia de uma operação de CRA",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Patrimônio separado e proteção ao investidor",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Waterfall: fluxo de pagamento e subordinação",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-04",
+      "lessonTitle": "Overcollateral e credit enhancement",
+      "lessonNumber": "3.4"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-01",
+      "lessonTitle": "Risco climático e instrumentos de mitigação",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-02",
+      "lessonTitle": "Risco de preço e hedge de commodities",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-03",
+      "lessonTitle": "Risco de crédito e contraparte na cadeia",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-01",
+      "lessonTitle": "FIAGRO: estrutura e estratégias",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-02",
+      "lessonTitle": "Funding internacional e estruturas cross-border",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Casos de uso e arquitetura técnica",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "credit-enhancement": [
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Waterfall: fluxo de pagamento e subordinação",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-04",
+      "lessonTitle": "Overcollateral e credit enhancement",
+      "lessonNumber": "3.4"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-01",
+      "lessonTitle": "Risco climático e instrumentos de mitigação",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-02",
+      "lessonTitle": "Risco de preço e hedge de commodities",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Casos de uso e arquitetura técnica",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "fiagro": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-01",
+      "lessonTitle": "Crédito público dirigido",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "CPR: Cédula de Produto Rural",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Ecossistema de participantes",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "Riscos do sistema de crédito agro",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Tendência de privatização do funding agro",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Regulação e marcos legais relevantes",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-01",
+      "lessonTitle": "Estrutura jurídica da CPR moderna",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-03",
+      "lessonTitle": "CPR como veículo estruturado",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-01",
+      "lessonTitle": "Risco climático e instrumentos de mitigação",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-02",
+      "lessonTitle": "Risco de preço e hedge de commodities",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-03",
+      "lessonTitle": "Risco de crédito e contraparte na cadeia",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-01",
+      "lessonTitle": "FIAGRO: estrutura e estratégias",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-02",
+      "lessonTitle": "Funding internacional e estruturas cross-border",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "funding": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "Riscos do sistema de crédito agro",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Tendência de privatização do funding agro",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Regulação e marcos legais relevantes",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-01",
+      "lessonTitle": "FIAGRO: estrutura e estratégias",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-02",
+      "lessonTitle": "Funding internacional e estruturas cross-border",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    }
+  ],
+  "hedge": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-02",
+      "lessonTitle": "Por que o agro precisa de crédito estruturado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "Fases do ciclo produtivo e financeiro",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "Riscos do sistema de crédito agro",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-03",
+      "lessonTitle": "CPR como veículo estruturado",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Waterfall: fluxo de pagamento e subordinação",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-04",
+      "lessonTitle": "Overcollateral e credit enhancement",
+      "lessonNumber": "3.4"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-01",
+      "lessonTitle": "Risco climático e instrumentos de mitigação",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-02",
+      "lessonTitle": "Risco de preço e hedge de commodities",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-03",
+      "lessonTitle": "Risco de crédito e contraparte na cadeia",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-02",
+      "lessonTitle": "Funding internacional e estruturas cross-border",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "lca": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Plano Safra e programas governamentais",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-01",
+      "lessonTitle": "Crédito público dirigido",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-02",
+      "lessonTitle": "Crédito bancário comercial",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "CRA: Certificado de Recebíveis do Agronegócio",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Instrumentos Financeiros do Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Outros instrumentos: LCA, CDCA, CDA/WA",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Tendência de privatização do funding agro",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Regulação e marcos legais relevantes",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "overcollateral": [
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Waterfall: fluxo de pagamento e subordinação",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-04",
+      "lessonTitle": "Overcollateral e credit enhancement",
+      "lessonNumber": "3.4"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    }
+  ],
+  "plano-safra": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-02",
+      "lessonTitle": "Por que o agro precisa de crédito estruturado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "Sistema Nacional de Crédito Rural (SNCR)",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Agentes financeiros do agro",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Plano Safra e programas governamentais",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-01",
+      "lessonTitle": "Crédito público dirigido",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-02",
+      "lessonTitle": "Crédito bancário comercial",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Fluxo real do capital: do investidor ao produtor",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Ciclo Financeiro e Fluxo de Capital no Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Ecossistema de participantes",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "Riscos do sistema de crédito agro",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Tendência de privatização do funding agro",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-02",
+      "lessonTitle": "Garantias e colaterais avançados",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-03",
+      "lessonTitle": "CPR como veículo estruturado",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Gestão de Risco no Agro Estruturado",
+      "lessonId": "aula-01",
+      "lessonTitle": "Risco climático e instrumentos de mitigação",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "smart-contract": [
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Casos de uso e arquitetura técnica",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "did-introducao",
+      "courseTitle": "Fundamentos de SSI",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Conceitos Fundamentais: DIDs e VCs",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que é um DID? Definição formal e estrutura",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "did-introducao",
+      "courseTitle": "Fundamentos de SSI",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Conceitos Fundamentais: DIDs e VCs",
+      "lessonId": "aula-02",
+      "lessonTitle": "Propriedades essenciais: persistência, resolubilidade e controle criptográfico",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "did-aplicacoes",
+      "courseTitle": "Aplicações no Mundo Real",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Casos de Uso: Pessoas, Educação e Saúde",
+      "lessonId": "aula-01",
+      "lessonTitle": "Identidade pessoal: passaporte digital e KYC sem intermediários",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "did-aplicacoes",
+      "courseTitle": "Aplicações no Mundo Real",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Casos de Uso: Finanças, IoT, Governo e Web3",
+      "lessonId": "aula-01",
+      "lessonTitle": "DeFi e CeFi: KYC reutilizável e compliance automatizado",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "did-aplicacoes",
+      "courseTitle": "Aplicações no Mundo Real",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Desafios, Governança e Futuro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Recuperação de chaves: social recovery e multisig",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "did-criptografia",
+      "courseTitle": "Criptografia e Infraestrutura",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Especificação W3C DID Core e DID Document",
+      "lessonId": "aula-03",
+      "lessonTitle": "Representações: JSON, JSON-LD e CBOR",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "did-criptografia",
+      "courseTitle": "Criptografia e Infraestrutura",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Especificação W3C DID Core e DID Document",
+      "lessonId": "aula-04",
+      "lessonTitle": "Resolução determinística e estratégias de caching",
+      "lessonNumber": "1.4"
+    },
+    {
+      "courseId": "did-criptografia",
+      "courseTitle": "Criptografia e Infraestrutura",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Resolução e Infraestrutura Técnica",
+      "lessonId": "aula-01",
+      "lessonTitle": "Operações de ciclo de vida: Create, Read, Update, Deactivate",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "did-seguranca",
+      "courseTitle": "Segurança e Fronteiras",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Stack Tecnológica e Ferramentas de Desenvolvimento",
+      "lessonId": "aula-03",
+      "lessonTitle": "Integrações de armazenamento: IPFS, Ceramic e Arweave",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "did-seguranca",
+      "courseTitle": "Segurança e Fronteiras",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Segurança, Modelos de Ameaça e Ataques",
+      "lessonId": "aula-01",
+      "lessonTitle": "Modelos de ameaça: DID hijacking, Sybil e grinding attacks",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "did-seguranca",
+      "courseTitle": "Segurança e Fronteiras",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Segurança, Modelos de Ameaça e Ataques",
+      "lessonId": "aula-02",
+      "lessonTitle": "Boas práticas: rotação de chaves, multisig e assinaturas limiares",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "did-seguranca",
+      "courseTitle": "Segurança e Fronteiras",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Interoperabilidade, Integração e Futuro Técnico",
+      "lessonId": "aula-02",
+      "lessonTitle": "Integração com padrões existentes: SIWE e ERC-4337",
+      "lessonNumber": "4.2"
+    }
+  ],
+  "sncr": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-02",
+      "lessonTitle": "Por que o agro precisa de crédito estruturado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-01",
+      "moduleTitle": "O Agronegócio na Economia Brasileira",
+      "lessonId": "aula-03",
+      "lessonTitle": "Origem histórica do crédito rural no Brasil",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "Sistema Nacional de Crédito Rural (SNCR)",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Estrutura Institucional do Financiamento Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Plano Safra e programas governamentais",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-01",
+      "lessonTitle": "Crédito público dirigido",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Fontes de Financiamento do Agronegócio",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mercado de capitais agro",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "As três camadas de financiamento",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Transição estrutural: do público ao privado",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura do Funding Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Regulação e marcos legais relevantes",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-01",
+      "lessonTitle": "FIAGRO: estrutura e estratégias",
+      "lessonNumber": "5.1"
+    }
+  ],
+  "waterfall": [
+    {
+      "courseId": "financeiro-agro-fundamentos",
+      "courseTitle": "Fundamentos e Instrumentos",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Riscos, Tendências e Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Introdução à tokenização no agro",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-02",
+      "moduleTitle": "CPR: Estruturação Avançada",
+      "lessonId": "aula-03",
+      "lessonTitle": "CPR como veículo estruturado",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-01",
+      "lessonTitle": "Anatomia de uma operação de CRA",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-02",
+      "lessonTitle": "Patrimônio separado e proteção ao investidor",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-03",
+      "lessonTitle": "Waterfall: fluxo de pagamento e subordinação",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Securitização Agro",
+      "lessonId": "aula-04",
+      "lessonTitle": "Overcollateral e credit enhancement",
+      "lessonNumber": "3.4"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-01",
+      "lessonTitle": "FIAGRO: estrutura e estratégias",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Veículos de Investimento e Mercado Global",
+      "lessonId": "aula-03",
+      "lessonTitle": "Mentalidade do structurer",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-01",
+      "lessonTitle": "O que a tokenização resolve e o que não resolve",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-02",
+      "lessonTitle": "Casos de uso e arquitetura técnica",
+      "lessonNumber": "6.2"
+    },
+    {
+      "courseId": "financeiro-agro-avancado",
+      "courseTitle": "Estruturação e Mercado de Capitais",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Tokenização e Fronteira de Inovação",
+      "lessonId": "aula-03",
+      "lessonTitle": "Competências do especialista em agro estruturado",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "lipossoma": [
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Nanotecnologia em Cuidados com a Pele",
+      "lessonId": "aula-01",
+      "lessonTitle": "Anti-aging nanométrico: retinoides, peptídeos e antioxidantes",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Nanotecnologia em Cuidados com a Pele",
+      "lessonId": "aula-02",
+      "lessonTitle": "Clareamento e tratamento de hiperpigmentação",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Taxonomia dos nanovetores: classificação e princípios de design",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-02",
+      "lessonTitle": "Lipossomas e vesículas lipídicas: da primeira geração aos sistemas avançados",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Nanopartículas lipídicas: SLN e NLC em profundidade",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-03",
+      "lessonTitle": "Eficiência de encapsulação, liberação e estabilidade",
+      "lessonNumber": "4.3"
+    }
+  ],
+  "nanocristal": [
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Nanomateriais Utilizados em Cosméticos",
+      "lessonId": "aula-02",
+      "lessonTitle": "Nanomateriais orgânicos: lipídicos e poliméricos",
+      "lessonNumber": "2.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Nanovetores Poliméricos e Sistemas Híbridos",
+      "lessonId": "aula-02",
+      "lessonTitle": "Dendrímeros, nanocristais e sistemas supramoleculares",
+      "lessonNumber": "2.2"
+    }
+  ],
+  "nanoesfera": [
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Taxonomia dos nanovetores: classificação e princípios de design",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Nanovetores Poliméricos e Sistemas Híbridos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Nanopartículas poliméricas: nanoesferas e nanocápsulas",
+      "lessonNumber": "2.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-03",
+      "lessonTitle": "Eficiência de encapsulação, liberação e estabilidade",
+      "lessonNumber": "4.3"
+    }
+  ],
+  "nanoparticula": [
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Nanotecnologia em Cuidados com a Pele",
+      "lessonId": "aula-02",
+      "lessonTitle": "Clareamento e tratamento de hiperpigmentação",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Nanotecnologia em Cuidados com a Pele",
+      "lessonId": "aula-03",
+      "lessonTitle": "Hidratação avançada e tratamento de acne",
+      "lessonNumber": "4.3"
+    }
+  ],
+  "nanovetor": [
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Taxonomia dos nanovetores: classificação e princípios de design",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Nanopartículas lipídicas: SLN e NLC em profundidade",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-02",
+      "lessonTitle": "Morfologia e estrutura interna",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-03",
+      "lessonTitle": "Eficiência de encapsulação, liberação e estabilidade",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Permeação Cutânea e Direcionamento de Ativos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Barreira cutânea e vias de penetração na nanoescala",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Permeação Cutânea e Direcionamento de Ativos",
+      "lessonId": "aula-02",
+      "lessonTitle": "Estratégias de direcionamento cutâneo",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Permeação Cutânea e Direcionamento de Ativos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Métodos de avaliação de permeação e bioadesão",
+      "lessonNumber": "5.3"
+    }
+  ],
+  "potencial-zeta": [
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Nanotecnologia em Cuidados com a Pele",
+      "lessonId": "aula-02",
+      "lessonTitle": "Clareamento e tratamento de hiperpigmentação",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Nanotecnologia em Cabelos e Nichos Especiais",
+      "lessonId": "aula-01",
+      "lessonTitle": "Nanotecnologia capilar: reparação, coloração e proteção",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Segurança, Regulação e Futuro dos Nanocosméticos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Tendências e futuro da nanotecnologia cosmética",
+      "lessonNumber": "6.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Taxonomia dos nanovetores: classificação e princípios de design",
+      "lessonNumber": "1.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-02",
+      "lessonTitle": "Lipossomas e vesículas lipídicas: da primeira geração aos sistemas avançados",
+      "lessonNumber": "1.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-01",
+      "moduleTitle": "Arquitetura de Nanovetores Cosméticos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Nanopartículas lipídicas: SLN e NLC em profundidade",
+      "lessonNumber": "1.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-02",
+      "moduleTitle": "Nanovetores Poliméricos e Sistemas Híbridos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Sistemas híbridos e nanovetores de nova geração",
+      "lessonNumber": "2.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Técnicas de Nanoencapsulamento",
+      "lessonId": "aula-01",
+      "lessonTitle": "Métodos de alta energia: homogeneização e ultrassom",
+      "lessonNumber": "3.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Técnicas de Nanoencapsulamento",
+      "lessonId": "aula-02",
+      "lessonTitle": "Métodos de baixa energia e técnicas químicas",
+      "lessonNumber": "3.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-03",
+      "moduleTitle": "Técnicas de Nanoencapsulamento",
+      "lessonId": "aula-03",
+      "lessonTitle": "Secagem e processamento pós-encapsulamento",
+      "lessonNumber": "3.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-01",
+      "lessonTitle": "Tamanho, distribuição e potencial zeta",
+      "lessonNumber": "4.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-02",
+      "lessonTitle": "Morfologia e estrutura interna",
+      "lessonNumber": "4.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-04",
+      "moduleTitle": "Caracterização e Controle de Qualidade",
+      "lessonId": "aula-03",
+      "lessonTitle": "Eficiência de encapsulação, liberação e estabilidade",
+      "lessonNumber": "4.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Permeação Cutânea e Direcionamento de Ativos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Barreira cutânea e vias de penetração na nanoescala",
+      "lessonNumber": "5.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Permeação Cutânea e Direcionamento de Ativos",
+      "lessonId": "aula-02",
+      "lessonTitle": "Estratégias de direcionamento cutâneo",
+      "lessonNumber": "5.2"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-05",
+      "moduleTitle": "Permeação Cutânea e Direcionamento de Ativos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Métodos de avaliação de permeação e bioadesão",
+      "lessonNumber": "5.3"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Escalonamento, Inovação e Fronteiras",
+      "lessonId": "aula-01",
+      "lessonTitle": "Do laboratório à indústria: escalonamento de nanovetores",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "nanovetores-avancado",
+      "courseTitle": "Nanovetores e Escalonamento",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Escalonamento, Inovação e Fronteiras",
+      "lessonId": "aula-03",
+      "lessonTitle": "Fronteiras da nanotecnologia cosmética avançada",
+      "lessonNumber": "6.3"
+    }
+  ],
+  "toxicologia-nano": [
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Segurança, Regulação e Futuro dos Nanocosméticos",
+      "lessonId": "aula-01",
+      "lessonTitle": "Toxicologia de nanomateriais cosméticos",
+      "lessonNumber": "6.1"
+    },
+    {
+      "courseId": "nanotecnologia-fundamentos",
+      "courseTitle": "Fundamentos e Aplicações",
+      "moduleId": "modulo-06",
+      "moduleTitle": "Segurança, Regulação e Futuro dos Nanocosméticos",
+      "lessonId": "aula-03",
+      "lessonTitle": "Tendências e futuro da nanotecnologia cosmética",
+      "lessonNumber": "6.3"
+    }
+  ]
+}

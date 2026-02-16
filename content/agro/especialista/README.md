@@ -1,9 +1,9 @@
-# Curso: Web3 e Tokenizacao de Real World Assets (RWA) no Agronegocio — Arquitetura Avancada e Integracao DeFi
+# Curso: Tokenização de Ativos Agro — DeFi e Integração Financeira
 
 ## Informacoes gerais
 
 - **Nivel**: Especialista
-- **Pre-requisitos**: Conclusao do Curso 3 (Web3 e Tokenizacao de RWA - Fundamentos e Implementacao) ou conhecimento equivalente sobre padroes ERC (20, 721, 1155), arquitetura RWA, oraculos e implementacao basica de tokenizacao. Experiencia com Solidity e smart contracts e necessaria.
+- **Pre-requisitos**: Conclusao do Curso 3 (Tokenização de Ativos Agro - Fundamentos e Smart Contracts) ou conhecimento equivalente sobre padroes ERC (20, 721, 1155), arquitetura RWA, oraculos e implementacao basica de tokenizacao. Experiencia com Solidity e smart contracts e necessaria.
 - **Publico-alvo**: Profissionais de tokenizadoras, securitizadoras, gestoras de ativos, arquitetos de solucoes Web3, desenvolvedores blockchain senior, heads de inovacao e reguladores que desejam dominar a arquitetura avancada de tokenizacao de RWAs agro, integracao com DeFi e o sistema financeiro tradicional.
 - **Objetivo geral**: Capacitar o aluno a projetar, implementar e operar estruturas completas e avancadas de tokenizacao de RWAs agro utilizando padroes de compliance (ERC-3643, ERC-7518), vaults tokenizados (ERC-4626, ERC-7540, ERC-7575), waterfalls programaticas, mecanismos de seguranca e governanca on-chain, alem de integrar com o sistema financeiro tradicional (DREX, registradoras, custodiantes).
 

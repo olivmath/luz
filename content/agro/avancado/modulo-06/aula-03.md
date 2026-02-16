@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 6.3, a ultima aula do Modulo 6 e do Curso 5 (Avancado) do programa "Web3 e Tokenizacao de RWA no Agronegocio — Fundamentos e Implementacao". Nas duas aulas anteriores, voce dominou o ecossistema Ethereum e suas Layer-2s (Polygon, Arbitrum, Base) e analisou as alternativas de alta performance (Solana e XRPL). Agora, vamos completar o panorama com protocolos especializados em tokenizacao de credito privado (Centrifuge), blockchains enterprise (Hedera) e redes customizaveis (Avalanche subnets). Alem disso, vamos abordar uma decisao estrategica fundamental: quando usar uma blockchain publica e quando usar uma permissioned (permissionada). Para encerrar, vamos aplicar todo o conhecimento acumulado em um exercicio pratico de decisao real: escolher a stack completa de infraestrutura para a emissao de R$ 50 milhoes em tokens de soja futura.
+Bem-vindo a aula 6.3, a ultima aula do Modulo 6 e do Curso 5 (Avancado) do programa "Tokenização de Ativos Agro — Fundamentos e Smart Contracts". Nas duas aulas anteriores, voce dominou o ecossistema Ethereum e suas Layer-2s (Polygon, Arbitrum, Base) e analisou as alternativas de alta performance (Solana e XRPL). Agora, vamos completar o panorama com protocolos especializados em tokenizacao de credito privado (Centrifuge), blockchains enterprise (Hedera) e redes customizaveis (Avalanche subnets). Alem disso, vamos abordar uma decisao estrategica fundamental: quando usar uma blockchain publica e quando usar uma permissioned (permissionada). Para encerrar, vamos aplicar todo o conhecimento acumulado em um exercicio pratico de decisao real: escolher a stack completa de infraestrutura para a emissao de R$ 50 milhoes em tokens de soja futura.
 
 ### Programa da aula:
 
@@ -226,7 +226,7 @@ d) XRPL, pois foi desenhada especificamente para consorcios de cooperativas
 
 ## Encerramento do Curso 5 e Proxima Aula
 
-Parabens! Voce concluiu o Curso 5 (Avancado) do programa "Web3 e Tokenizacao de RWA no Agronegocio — Fundamentos e Implementacao".
+Parabens! Voce concluiu o Curso 5 (Avancado) do programa "Tokenização de Ativos Agro — Fundamentos e Smart Contracts".
 
 Ao longo deste curso, voce percorreu um caminho que partiu dos fundamentos de blockchain e smart contracts, passou por estruturacao de tokens regulados, compliance on-chain, mecanismos de governanca, e chegou a infraestrutura blockchain com profundidade tecnica e visao pratica. Neste modulo final, voce dominou as opcoes de rede — Ethereum e Layer-2s (Polygon, Arbitrum, Base), alternativas de alta performance (Solana, XRPL), protocolos especializados (Centrifuge, Hedera, Avalanche subnets) e blockchains permissioned (Drex) — e aplicou esse conhecimento na escolha da stack completa para uma operacao real de R$ 50 milhoes em tokens de soja futura.
 

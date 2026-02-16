@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 1.2 do curso avancado de Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos. Na aula anterior, construimos a taxonomia dos nanovetores e os criterios de selecao. Agora vamos aprofundar o estudo da classe mais iconica de nanovetores cosmeticos: os **lipossomas e vesiculas lipidicas**. Os lipossomas foram os primeiros nanossistemas introduzidos em cosmeticos — a Dior lancou o Capture em 1986, seguida pela L'Oreal com o Niosome em 1987. Desde entao, as limitacoes dos lipossomas classicos impulsionaram o desenvolvimento de vesiculas de segunda e terceira geracao — transfersomas, etossomas, niosomas — com capacidades de penetracao cutanea radicalmente superiores. Compreender essa evolucao e essencial para selecionar e projetar sistemas vesiculares otimizados.
+Bem-vindo a aula 1.2 do curso avancado de Nanotecnologia Cosmética: Nanovetores e Escalonamento. Na aula anterior, construimos a taxonomia dos nanovetores e os criterios de selecao. Agora vamos aprofundar o estudo da classe mais iconica de nanovetores cosmeticos: os **lipossomas e vesiculas lipidicas**. Os lipossomas foram os primeiros nanossistemas introduzidos em cosmeticos — a Dior lancou o Capture em 1986, seguida pela L'Oreal com o Niosome em 1987. Desde entao, as limitacoes dos lipossomas classicos impulsionaram o desenvolvimento de vesiculas de segunda e terceira geracao — transfersomas, etossomas, niosomas — com capacidades de penetracao cutanea radicalmente superiores. Compreender essa evolucao e essencial para selecionar e projetar sistemas vesiculares otimizados.
 
 ### Programa da aula:
 

@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 6.3 — a ultima aula de todo o programa, que abrange o Curso 1 (Fundamentos do Sistema Financeiro do Agronegocio) e o Curso 2 (Estruturacao e Mercado Avancado). Ao longo de doze modulos e trinta e seis aulas, voce percorreu um caminho que partiu da dimensao economica do agronegocio brasileiro e chegou a tokenizacao e a fronteira de inovacao do setor. Nesta aula final, vamos consolidar os pilares de conhecimento que um especialista em agro estruturado precisa dominar, mapear os perfis profissionais demandados pelo mercado e construir um plano de desenvolvimento de carreira para que voce possa aplicar, de forma concreta, tudo o que aprendeu.
+Bem-vindo a aula 6.3 — a ultima aula de todo o programa, que abrange o Curso 1 (Financiamento do Agronegócio: Fundamentos e Instrumentos) e o Curso 2 (Estruturacao e Mercado Avancado). Ao longo de doze modulos e trinta e seis aulas, voce percorreu um caminho que partiu da dimensao economica do agronegocio brasileiro e chegou a tokenizacao e a fronteira de inovacao do setor. Nesta aula final, vamos consolidar os pilares de conhecimento que um especialista em agro estruturado precisa dominar, mapear os perfis profissionais demandados pelo mercado e construir um plano de desenvolvimento de carreira para que voce possa aplicar, de forma concreta, tudo o que aprendeu.
 
 ### Programa da aula:
 

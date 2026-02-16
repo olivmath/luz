@@ -1,4 +1,4 @@
-# Curso: Web3 e Tokenizacao de Real World Assets (RWA) no Agronegocio — Fundamentos e Implementacao
+# Curso: Tokenização de Ativos Agro — Fundamentos e Smart Contracts
 
 ## Informacoes gerais
 

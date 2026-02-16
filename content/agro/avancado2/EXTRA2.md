@@ -2,7 +2,7 @@ Absolutamente. Farei uma análise crítica e detalhada de cada um dos seus ponto
 
 ---
 
-### Análise Crítica do Curso "Web3 e Tokenização de RWA no Agronegócio"
+### Análise Crítica do Curso "Tokenização de Ativos Agro"
 
 #### 1. Os casos de uso são reais em algum lugar do mundo?
 

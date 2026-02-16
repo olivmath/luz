@@ -1,4 +1,4 @@
-# Curso: Nanotecnologia Aplicada a Cosmeticos — Fundamentos
+# Curso: Nanotecnologia Cosmética — Fundamentos e Aplicações
 
 ## Informacoes gerais
 
@@ -247,4 +247,4 @@ Ao concluir este curso, o aluno devera ser capaz de:
 - Avaliar aspectos de seguranca toxicologica e requisitos regulatorios de nanocosmeticos
 - Reconhecer tendencias futuras e formar uma visao critica sobre o papel da nanotecnologia na cosmetologia
 
-**Proximo passo**: Curso 4 — Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos: Abordagem Avancada.
+**Proximo passo**: Curso 2 — Nanotecnologia Cosmética: Nanovetores e Escalonamento.

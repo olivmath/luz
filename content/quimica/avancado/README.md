@@ -1,9 +1,9 @@
-# Curso: Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos — Abordagem Avancada
+# Curso: Nanotecnologia Cosmética — Nanovetores e Escalonamento
 
 ## Informacoes gerais
 
 - **Nivel**: Avancado
-- **Pre-requisitos**: Conclusao do Curso 3 (Fundamentos de Nanotecnologia Aplicada a Cosmeticos) ou conhecimento equivalente sobre nanomateriais, nanosistemas e suas aplicacoes cosmeticas.
+- **Pre-requisitos**: Conclusao do Curso 1 (Nanotecnologia Cosmética - Fundamentos e Aplicações) ou conhecimento equivalente sobre nanomateriais, nanosistemas e suas aplicacoes cosmeticas.
 - **Publico-alvo**: Estudantes avancados de quimica, farmacia e cosmetologia, formuladores cosmeticos, pesquisadores em P&D e profissionais que desejam dominar a ciencia e a engenharia de nanovetores para cosmeticos.
 - **Objetivo geral**: Aprofundar o conhecimento sobre design, sintese, caracterizacao e aplicacao de nanovetores e sistemas de nanoencapsulamento em cosmeticos, capacitando o aluno a desenvolver formulacoes avancadas com liberacao controlada, direcionamento de ativos e alta performance.
 
@@ -262,4 +262,4 @@ Ao concluir este curso, o aluno devera ser capaz de:
 - Avaliar o cenario de propriedade intelectual e estrategias de inovacao
 - Reconhecer e aplicar criticamente as fronteiras emergentes da nanotecnologia cosmetica
 
-**Pre-requisito para este curso**: Curso 3 — Nanotecnologia Aplicada a Cosmeticos: Fundamentos.
+**Pre-requisito para este curso**: Curso 1 — Nanotecnologia Cosmética: Fundamentos e Aplicações.

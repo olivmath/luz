@@ -1,4 +1,4 @@
-# Curso: Sistema Financeiro do Agronegocio Brasileiro — Fundamentos
+# Curso: Financiamento do Agronegócio — Fundamentos e Instrumentos
 
 ## Informacoes gerais
 
@@ -245,4 +245,4 @@ Ao concluir este curso, o aluno devera ser capaz de:
 - Mapear o fluxo de capital do investidor ao produtor e de volta
 - Reconhecer os riscos do sistema e as tendencias de evolucao do mercado
 
-**Proximo passo**: Curso 2 — Sistema Financeiro do Agronegocio Brasileiro: Estruturacao e Mercado Avancado.
+**Proximo passo**: Curso 2 — Financiamento do Agronegócio: Estruturação e Mercado de Capitais.

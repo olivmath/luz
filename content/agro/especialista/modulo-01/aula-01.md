@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo ao Curso Especialista — Web3 e Tokenizacao de RWA no Agronegocio. Este modulo marca a transicao do entendimento conceitual para a implementacao tecnica de tokens regulados on-chain. Ate aqui, voce estudou como CPRs, CRAs e outros titulos do agronegocio funcionam no mundo financeiro tradicional. Agora, vamos mergulhar nos padroes de smart contracts que permitem representar esses instrumentos em blockchain com compliance embutido. Comecamos pelo ERC-1400, o padrao da familia Polymath que introduziu o conceito de security tokens particionados — uma arquitetura que se encaixa naturalmente na logica de tranches de um CRA ou na segregacao de safras dentro de uma CPR. Entender o ERC-1400 e seus subpadroes e o alicerce para dominar os padroes mais modernos que veremos nas proximas aulas.
+Bem-vindo ao Curso Especialista — Tokenização de Ativos Agro. Este modulo marca a transicao do entendimento conceitual para a implementacao tecnica de tokens regulados on-chain. Ate aqui, voce estudou como CPRs, CRAs e outros titulos do agronegocio funcionam no mundo financeiro tradicional. Agora, vamos mergulhar nos padroes de smart contracts que permitem representar esses instrumentos em blockchain com compliance embutido. Comecamos pelo ERC-1400, o padrao da familia Polymath que introduziu o conceito de security tokens particionados — uma arquitetura que se encaixa naturalmente na logica de tranches de um CRA ou na segregacao de safras dentro de uma CPR. Entender o ERC-1400 e seus subpadroes e o alicerce para dominar os padroes mais modernos que veremos nas proximas aulas.
 
 ### Programa da aula:
 

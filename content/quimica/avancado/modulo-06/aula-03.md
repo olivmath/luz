@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 6.3 — a ultima aula de todo o programa, que abrange o Curso 1 (Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos — Fundamentos) e o Curso 2 (Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos — Abordagem Avancada). Ao longo de doze modulos e trinta e seis aulas, voce percorreu um caminho que partiu dos conceitos fundamentais de nanociencia e escala nanometrica e chegou ao escalonamento industrial, a propriedade intelectual e, agora, as fronteiras mais avancadas do campo. Nesta aula final, vamos explorar as tecnologias emergentes que estao redefinindo o que e possivel em nanotecnologia cosmetica: nanovetores responsivos a estimulos, nanorobos e nanomotores, bionanotecnologia com exossomos e vesiculas extracelulares, inteligencia artificial no design de nanoformulacoes, a interface nanotecnologia-microbioma cutaneo e a convergencia nano-bio-IA que representa o horizonte de inovacao do setor.
+Bem-vindo a aula 6.3 — a ultima aula de todo o programa, que abrange o Curso 1 (Nanotecnologia Cosmética — Fundamentos e Aplicações) e o Curso 2 (Nanotecnologia Cosmética — Nanovetores e Escalonamento). Ao longo de doze modulos e trinta e seis aulas, voce percorreu um caminho que partiu dos conceitos fundamentais de nanociencia e escala nanometrica e chegou ao escalonamento industrial, a propriedade intelectual e, agora, as fronteiras mais avancadas do campo. Nesta aula final, vamos explorar as tecnologias emergentes que estao redefinindo o que e possivel em nanotecnologia cosmetica: nanovetores responsivos a estimulos, nanorobos e nanomotores, bionanotecnologia com exossomos e vesiculas extracelulares, inteligencia artificial no design de nanoformulacoes, a interface nanotecnologia-microbioma cutaneo e a convergencia nano-bio-IA que representa o horizonte de inovacao do setor.
 
 ### Programa da aula:
 
@@ -142,7 +142,7 @@ Nesta aula final, exploramos as fronteiras mais avancadas da nanotecnologia cosm
 
 ## Encerramento do Programa
 
-Voce concluiu o programa completo de formacao em Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos — Curso 1 (Fundamentos) e Curso 2 (Abordagem Avancada).
+Voce concluiu o programa completo de formacao em Nanotecnologia Cosmética — Curso 1 (Fundamentos e Aplicações) e Curso 2 (Nanovetores e Escalonamento).
 
 No Curso 1, voce construiu a base: compreendeu o que e nanotecnologia e nanociencia, dominando a escala nanometrica e as abordagens top-down e bottom-up; conheceu as propriedades unicas dos materiais na nanoescala e por que elas transformam a cosmetica; estudou os principais tipos de nanovetores cosmeticos — lipossomas, nanoemulsoes, nanoparticulas lipidicas solidas, carreadores lipidicos nanoestruturados e nanocapsulas polimericas; aprendeu as tecnicas fundamentais de caracterizacao (DLS, potencial zeta, microscopia eletronica, HPLC); analisou os mecanismos de penetracao cutanea e a interacao nanocarreador-pele; e foi introduzido ao marco regulatorio e a seguranca de nanocosmeticos.
 

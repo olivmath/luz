@@ -1,9 +1,9 @@
-# Curso Unificado: Web3 e Tokenização de Real World Assets (RWA) no Agronegócio – Implementação e Arquitetura Avançada
+# Curso Unificado: Tokenização de Ativos Agro – Implementação e Arquitetura Avançada
 
 ## Informações gerais
 
 - **Nível:** Avançado / Técnico-Estratégico  
-- **Pré-requisitos:** Conclusão do curso "Sistema Financeiro do Agronegócio Brasileiro – Estruturação e Mercado Avançado" (ou conhecimento equivalente sobre CPR, CRA, securitização, waterfall, subordinação, credit enhancement e Lei do Agro). Além disso, noções básicas de blockchain (wallets, transações, smart contracts) e familiaridade com programação em Solidity são recomendadas.  
+- **Pré-requisitos:** Conclusão do curso "Financiamento do Agronegócio – Estruturação e Mercado de Capitais" (ou conhecimento equivalente sobre CPR, CRA, securitização, waterfall, subordinação, credit enhancement e Lei do Agro). Além disso, noções básicas de blockchain (wallets, transações, smart contracts) e familiaridade com programação em Solidity são recomendadas.  
 - **Público-alvo:** Profissionais de tokenizadoras, securitizadoras, gestoras de ativos, mesas de crédito agro, bancos, cooperativas, estruturadores financeiros, analistas de risco, arquitetos de soluções Web3, desenvolvedores blockchain e heads de inovação que desejam dominar a tokenização de ativos reais do agronegócio (RWAs) em conformidade com a regulação brasileira e integração com o sistema financeiro tradicional.  
 - **Objetivo geral:** Capacitar o aluno a projetar, implementar e operar estruturas completas de tokenização de RWAs agro (CPR, CRA, CDA/WA, estoques, etc.) utilizando padrões EIP/ERC reconhecidos pelo mercado, integrando oráculos, vaults, waterfalls e mecanismos de compliance on-chain, além de avaliar criticamente riscos e oportunidades no ecossistema Web3 e DeFi.  
 

@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 1.1 do curso de Nanotecnologia Aplicada a Cosmeticos! Esta e a primeira aula do nosso percurso, e vamos comecar pelo principio: entender o que e nanotecnologia, de onde veio esse conceito e por que a escala nanometrica muda completamente as regras do jogo para materiais e substancias. Ao final desta aula, voce tera uma base solida para compreender por que a nanotecnologia revolucionou a industria cosmetica mundial.
+Bem-vindo a aula 1.1 do curso de Nanotecnologia Cosmética! Esta e a primeira aula do nosso percurso, e vamos comecar pelo principio: entender o que e nanotecnologia, de onde veio esse conceito e por que a escala nanometrica muda completamente as regras do jogo para materiais e substancias. Ao final desta aula, voce tera uma base solida para compreender por que a nanotecnologia revolucionou a industria cosmetica mundial.
 
 ### Programa da aula:
 

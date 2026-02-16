@@ -1,4 +1,4 @@
-# Curso: Sistema Financeiro do Agronegocio Brasileiro — Estruturacao e Mercado Avancado
+# Curso: Financiamento do Agronegócio — Estruturação e Mercado de Capitais
 
 ## Informacoes gerais
 
@@ -274,4 +274,4 @@ Ao concluir este curso, o aluno devera ser capaz de:
 - Avaliar criticamente o papel da tokenizacao no agro estruturado
 - Pensar como um estruturador de credito agro profissional
 
-**Pre-requisito para este curso**: Curso 1 — Sistema Financeiro do Agronegocio Brasileiro: Fundamentos.
+**Pre-requisito para este curso**: Curso 1 — Financiamento do Agronegócio: Fundamentos e Instrumentos.

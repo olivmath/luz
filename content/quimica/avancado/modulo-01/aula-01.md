@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 1.1 do curso avancado de Nanovetores e Nanoencapsulamento Aplicados a Cosmeticos. Voce ja domina os fundamentos de quimica cosmetica e agora vai aprofundar sua compreensao sobre a arquitetura dos sistemas nanometricos utilizados para delivery de ativos. Nesta primeira aula, vamos construir uma taxonomia rigorosa dos nanovetores cosmeticos, compreender os principios fisico-quimicos que governam seu design e estabelecer criterios objetivos de selecao para diferentes aplicacoes. Dominar essa taxonomia e essencial porque a escolha do nanovetor correto determina a eficacia, estabilidade e seguranca de qualquer formulacao nanotecnologica.
+Bem-vindo a aula 1.1 do curso avancado de Nanotecnologia Cosmética: Nanovetores e Escalonamento. Voce ja domina os fundamentos de quimica cosmetica e agora vai aprofundar sua compreensao sobre a arquitetura dos sistemas nanometricos utilizados para delivery de ativos. Nesta primeira aula, vamos construir uma taxonomia rigorosa dos nanovetores cosmeticos, compreender os principios fisico-quimicos que governam seu design e estabelecer criterios objetivos de selecao para diferentes aplicacoes. Dominar essa taxonomia e essencial porque a escolha do nanovetor correto determina a eficacia, estabilidade e seguranca de qualquer formulacao nanotecnologica.
 
 ### Programa da aula:
 

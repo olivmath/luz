@@ -90,7 +90,7 @@ Na próxima aula, vamos entender o papel da ... Até lá!
 
 ```
 content/agro/
-├── fundamentos/        # Curso 1: Sistema Financeiro do Agro
+├── fundamentos/        # Curso 1: Financiamento do Agronegócio
 ├── intermediario/      # Curso 2: Estruturação e Mercado Avançado
 ├── avancado/           # Curso 3: Web3 e RWA - Fundamentos
 └── especialista/       # Curso 4: Web3 e RWA - Arquitetura Avançada

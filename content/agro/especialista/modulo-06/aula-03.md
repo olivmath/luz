@@ -2,7 +2,7 @@
 
 ## Abertura
 
-Bem-vindo a aula 6.3 — a ultima aula de todo o programa de quatro cursos sobre Web3 e Tokenizacao de RWA no Agronegocio. Nas aulas anteriores deste modulo, voce definiu a arquitetura completa do projeto (6.1) e implementou os smart contracts core (6.2). Agora, vamos fechar o ciclo: integrar os contratos com sistemas off-chain (KYC, registradora, agente fiduciario), fazer deploy em testnet, simular o ciclo de vida completo da operacao (emissao, pagamentos, default parcial), preparar a apresentacao pitch para um comite de investimento e realizar revisao por pares. Ao final, faremos o encerramento completo do programa, revisando toda a jornada que voce percorreu desde os fundamentos do sistema financeiro do agronegocio ate a implementacao de smart contracts para tokenizacao de RWA.
+Bem-vindo a aula 6.3 — a ultima aula de todo o programa de quatro cursos sobre Tokenização de Ativos Agro. Nas aulas anteriores deste modulo, voce definiu a arquitetura completa do projeto (6.1) e implementou os smart contracts core (6.2). Agora, vamos fechar o ciclo: integrar os contratos com sistemas off-chain (KYC, registradora, agente fiduciario), fazer deploy em testnet, simular o ciclo de vida completo da operacao (emissao, pagamentos, default parcial), preparar a apresentacao pitch para um comite de investimento e realizar revisao por pares. Ao final, faremos o encerramento completo do programa, revisando toda a jornada que voce percorreu desde os fundamentos do sistema financeiro do agronegocio ate a implementacao de smart contracts para tokenizacao de RWA.
 
 ### Programa da aula:
 
@@ -382,9 +382,9 @@ A revisao por pares e um exercicio fundamental em projetos de tokenizacao. Cada 
 
 ### Encerramento do programa: a jornada completa
 
-Voce concluiu o programa completo de quatro cursos sobre Web3 e Tokenizacao de RWA no Agronegocio. Vamos revisitar a jornada inteira para que voce compreenda a dimensao do conhecimento que construiu.
+Voce concluiu o programa completo de quatro cursos sobre Tokenização de Ativos Agro. Vamos revisitar a jornada inteira para que voce compreenda a dimensao do conhecimento que construiu.
 
-**Curso 1 — Fundamentos do Sistema Financeiro do Agronegocio (Modulos 1 a 6):**
+**Curso 1 — Financiamento do Agronegócio: Fundamentos e Instrumentos (Modulos 1 a 6):**
 
 No primeiro curso, voce construiu a base. Compreendeu a dimensao economica do agronegocio brasileiro — o setor que representa 24% do PIB e alimenta mais de um bilhao de pessoas no planeta. Aprendeu como funciona o credito rural no Brasil: o Plano Safra, os recursos obrigatorios dos bancos, o papel do BNDES e a necessidade crescente de funding privado. Dominou os instrumentos juridicos fundamentais — CPR, CRA, LCA, CDCA, CDA e WA — entendendo nao apenas o que sao, mas como cada um funciona na pratica, quais garantias exigem e como se conectam entre si na cadeia de credito agro. Analisou os riscos sistemicos do setor — climatico, de preco, de juros, de insumos e de inadimplencia — e compreendeu por que a "tempestade perfeita" de 2023/2024 gerou uma crise sem precedentes no credito agro. E, ao final, foi introduzido a tokenizacao como a fronteira de inovacao que pode transformar o financiamento do setor.
 
@@ -392,7 +392,7 @@ No primeiro curso, voce construiu a base. Compreendeu a dimensao economica do ag
 
 No segundo curso, voce aprofundou. Estudou a CPR avancada com todas as suas modalidades e garantias. Mergulhou na securitizacao de CRA — waterfall, credit enhancement, subordinacao, rating, ICSD e estruturacao de tranches. Analisou FIAGROs em profundidade, desde os aspectos regulatorios ate a gestao de carteira. Explorou o mercado internacional de credito agro e os instrumentos de hedge (futuros, opcoes, NDF). Desenvolveu competencias de gestao de risco com modelagem quantitativa — simulacao de Monte Carlo, VaR, stress testing. E construiu uma visao de carreira mapeando os perfis profissionais mais demandados pelo mercado.
 
-**Curso 3 — Web3 e Tokenizacao de RWA: Arquitetura Avancada (Modulos 1 a 6 do avancado):**
+**Curso 3 — Tokenização de Ativos Agro: DeFi e Integração Financeira (Modulos 1 a 6 do avancado):**
 
 No terceiro curso, voce entrou no mundo tecnico da Web3. Aprendeu o que RWA resolve e o que nao resolve no agro. Comparou o mercado global de tokenizacao com a realidade brasileira. Dominou os padroes de token para securities — ERC-3643, ERC-1400, ERC-7518 — e entendeu por que compliance on-chain e essencial. Estudou a arquitetura de vaults e pools para credito estruturado, incluindo ERC-4626 e ERC-7540. Analisou oraculos e suas vulnerabilidades, bridges cross-chain e a integracao com provedores de dados off-chain. E explorou o ecossistema DeFi aplicado a RWA: pools de liquidez, AMMs, lending protocols e yield farming com ativos reais.
 
@@ -487,7 +487,7 @@ d) Apenas conhecimentos teoricos sobre tokenizacao, sem capacidade de implementa
 
 ## Encerramento do Programa
 
-Voce concluiu o programa completo de formacao em Web3 e Tokenizacao de RWA no Agronegocio — quatro cursos, vinte e quatro modulos, desde os fundamentos do sistema financeiro do agro ate a implementacao pratica de smart contracts para tokenizacao de ativos reais.
+Voce concluiu o programa completo de formacao em Tokenização de Ativos Agro — quatro cursos, vinte e quatro modulos, desde os fundamentos do sistema financeiro do agro ate a implementacao pratica de smart contracts para tokenizacao de ativos reais.
 
 No Curso 1 (Fundamentos), voce construiu a base: entendeu o agronegocio brasileiro, o credito rural, os instrumentos juridicos e os riscos do setor. No Curso 2 (Intermediario), voce aprofundou: dominou a securitizacao de CRA, waterfall, FIAGROs, mercado internacional e gestao de risco quantitativa. No Curso 3 (Avancado), voce entrou na Web3: aprendeu padroes de token, vaults, oraculos, bridges e DeFi aplicada a RWA. No Curso 4 (Especialista), voce integrou tudo: implementou smart contracts, deployou em testnet e executou um projeto de tokenizacao end-to-end.
 

@@ -1,4 +1,4 @@
-# REVISAO DE COESAO — Nanotecnologia Aplicada a Cosmeticos: Fundamentos
+# REVISAO DE COESAO — Nanotecnologia Cosmética: Fundamentos e Aplicações
 
 **Data da revisao**: 2026-02-13
 **Revisor**: Claude (assistente IA)
@@ -68,7 +68,7 @@ Cadeia de navegacao (secao "Proxima Aula"):
 | 6.2 | 6.3 | Tendencias e futuro | OK |
 | 6.3 | --- | Encerramento do curso (aponta para Curso 4) | OK |
 
-**Resultado**: Navegacao 100% correta. Todas as 17 transicoes apontam corretamente para a aula seguinte e o conteudo descrito corresponde ao conteudo real da proxima aula. Aula 6.3 encerra o curso e indica o proximo curso ("Nanovetores e Nanoencapsulamento").
+**Resultado**: Navegacao 100% correta. Todas as 17 transicoes apontam corretamente para a aula seguinte e o conteudo descrito corresponde ao conteudo real da proxima aula. Aula 6.3 encerra o curso e indica o proximo curso ("Nanotecnologia Cosmética: Nanovetores e Escalonamento").
 
 ---
 
@@ -206,7 +206,7 @@ A progressao segue uma logica pedagogica solida:
 
 ## 10. Veredito Final
 
-O curso "Nanotecnologia Aplicada a Cosmeticos — Fundamentos" apresenta **alta qualidade** em todas as dimensoes avaliadas:
+O curso "Nanotecnologia Cosmética — Fundamentos e Aplicações" apresenta **alta qualidade** em todas as dimensoes avaliadas:
 
 - **Estrutura**: 18/18 aulas em conformidade total com o template.
 - **Navegacao**: 100% correta, sem erros de encadeamento.

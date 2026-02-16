@@ -67,7 +67,7 @@ const STATS = [
 const PLANS = [
   {
     name: 'Gratuito',
-    price: 'US$ 0',
+    price: 'R$ 0',
     period: '',
     description: 'Explore a plataforma e veja se é para você.',
     features: [
@@ -80,8 +80,8 @@ const PLANS = [
   },
   {
     name: 'Anual',
-    price: 'R$ 6.000',
-    priceNote: '≈ US$ 1.000',
+    price: 'R$ 5.200',
+    priceNote: '≈ US$ 1.000 · R$ 433/mês',
     period: '/ano',
     description: 'Acesso completo a tudo — cursos, certificados e conteúdo sob demanda.',
     features: [
@@ -107,7 +107,7 @@ const FAQ = [
   },
   {
     q: 'Qual a forma de pagamento?',
-    a: 'Aceitamos cartão de crédito e PIX. O valor é R$ 6.000/ano (equivalente a US$ 1.000). O pagamento é processado de forma segura via Stripe.',
+    a: 'Aceitamos cartão de crédito e PIX. O valor é R$ 5.200/ano (equivalente a US$ 1.000). O pagamento é processado de forma segura via Stripe.',
   },
   {
     q: 'Os certificados têm validade?',

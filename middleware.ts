@@ -1,6 +1,4 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { clerkClient } from '@clerk/nextjs/server'
-import { NextResponse } from 'next/server'
 
 const isAuthRequired = createRouteMatcher([
   '/perfil(.*)',
@@ -15,10 +13,6 @@ function isFreeLesson(pathname: string): boolean {
   return match[1] === 'modulo-01' && match[2] === 'aula-01'
 }
 
-function needsAuthorization(pathname: string): boolean {
-  return /^\/cursos\/[^/]+\/[^/]+\/[^/]+$/.test(pathname)
-}
-
 export default clerkMiddleware(async (auth, req) => {
   const { pathname } = req.nextUrl
 
@@ -29,19 +23,8 @@ export default clerkMiddleware(async (auth, req) => {
   if (isAuthRequired(req)) {
     const { userId } = await auth.protect()
 
-    // Lesson pages also require authorization via publicMetadata
-    if (needsAuthorization(pathname)) {
-      const client = await clerkClient()
-      const user = await client.users.getUser(userId)
-      const authorized = user.publicMetadata?.authorized === true
-
-      if (!authorized) {
-        const url = req.nextUrl.clone()
-        url.pathname = '/'
-        url.hash = 'planos'
-        return NextResponse.redirect(url)
-      }
-    }
+    // Authorization check is now handled client-side on the lesson page
+    // to show a modal instead of redirecting
   }
 })
 

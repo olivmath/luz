@@ -12,8 +12,10 @@ import { ReadingProgressBar } from '@/components/reading-progress-bar'
 import { LessonSidebar } from '@/components/lesson-sidebar'
 import { QuizSection } from '@/components/quiz-section'
 import { cn } from '@/lib/utils'
-import { Menu, X, BookOpen, CheckCircle2, Lock } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
+import { Menu, X, BookOpen, CheckCircle2, Lock, ArrowRight, CreditCard } from 'lucide-react'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useUser } from '@clerk/nextjs'
+import { CheckoutModal } from '@/components/checkout-modal'
 
 export default function LessonPage({
   params,
@@ -29,14 +31,21 @@ export default function LessonPage({
   if (!lesson) notFound()
 
   const progress = useProgress()
+  const { user } = useUser()
+  const router = useRouter()
   const adj = getAdjacentLessons(courseId, moduleId, lessonId)
   const done = progress.isCompleted(courseId, moduleId, lessonId)
   const { html, quiz, readingTime, loading, error } = useMarkdown(courseId, moduleId, lessonId)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [localDone, setLocalDone] = useState(done)
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
   const searchParams = useSearchParams()
   const highlightTerm = searchParams.get('term')
   const articleRef = useRef<HTMLElement>(null)
+
+  const isFreeLesson = moduleId === 'modulo-01' && lessonId === 'aula-01'
+  const isAuthorized = user?.publicMetadata?.authorized === true
+  const hasAccess = isFreeLesson || isAuthorized
 
   useKeyboardNavigation(adj)
 
@@ -149,33 +158,53 @@ export default function LessonPage({
             </div>
           )}
 
-          {error && (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-6">
-                <Lock className="w-7 h-7 text-muted-foreground" />
-              </div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-3">
-                Conteúdo exclusivo para assinantes
-              </h2>
-              <p className="text-muted-foreground max-w-[420px] mb-2">
-                A primeira aula de cada curso é gratuita. Para acessar todas as aulas, assine o plano anual.
-              </p>
-              <p className="text-sm text-muted-foreground/60 mb-8">
-                Aula {lesson.number} · {mod.title}
-              </p>
-              <div className="flex items-center gap-3 max-sm:flex-col">
-                <Link
-                  href="/#planos"
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all"
-                >
-                  Ver planos
-                </Link>
-                <Link
-                  href={`/cursos/${courseId}/modulo-01/aula-01`}
-                  className="inline-flex items-center justify-center gap-2 border border-border px-6 py-3 rounded-lg font-medium text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-all"
-                >
-                  Aula gratuita
-                </Link>
+          {error && hasAccess && (
+            <div className="text-center py-16 font-mono text-sm text-muted-foreground">
+              Erro ao carregar conteúdo.
+            </div>
+          )}
+
+          {!hasAccess && (
+            <div className="fixed inset-0 z-[1100] flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+              <div className="relative bg-background border border-border rounded-2xl shadow-2xl w-full max-w-[440px] mx-4 animate-fade-in-up">
+                <div className="p-8 text-center">
+                  <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mx-auto mb-5">
+                    <Lock className="w-7 h-7 text-muted-foreground" />
+                  </div>
+                  <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+                    Conteúdo exclusivo
+                  </h2>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    A primeira aula de cada curso é gratuita. Para acessar todas as aulas, assine o plano anual.
+                  </p>
+                  <p className="font-mono text-xs text-muted-foreground/60 mb-6">
+                    Aula {lesson.number} · {mod.title}
+                  </p>
+
+                  <div className="flex flex-col gap-3">
+                    <button
+                      onClick={() => setCheckoutOpen(true)}
+                      className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg cursor-pointer"
+                    >
+                      <CreditCard className="w-4 h-4" />
+                      Assinar agora
+                    </button>
+                    <button
+                      onClick={() => router.push(`/cursos/${courseId}/modulo-01/aula-01`)}
+                      className="w-full inline-flex items-center justify-center gap-2 border border-border px-6 py-3 rounded-lg font-medium text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-all cursor-pointer"
+                    >
+                      Ver aula gratuita
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => router.back()}
+                      className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer mt-1"
+                    >
+                      Voltar
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -275,6 +304,7 @@ export default function LessonPage({
           />
         </div>
       </div>
+      <CheckoutModal open={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
     </>
   )
 }

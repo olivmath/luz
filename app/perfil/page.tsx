@@ -7,17 +7,22 @@ import { COURSES } from '@/lib/courses'
 import { getFlatLessons, getCourseTime, formatTime } from '@/lib/helpers'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Award, Diamond, Clock, BookOpen, Target, CreditCard, AlertCircle } from 'lucide-react'
+import { Award, Diamond, Clock, BookOpen, Target, CreditCard, AlertCircle, ArrowRight, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { CheckoutModal } from '@/components/checkout-modal'
+import { useUsdToBrl, formatBRL } from '@/hooks/use-usd-to-brl'
 
 export default function PerfilPage() {
   const { user, isLoaded } = useUser()
   const progress = useProgress()
   const [activeTab, setActiveTab] = useState<string>('cursos')
   const [checkoutOpen, setCheckoutOpen] = useState(false)
+  const [bannerDismissed, setBannerDismissed] = useState(false)
+  const { annual } = useUsdToBrl()
 
   if (!isLoaded) return null
+
+  const isAuthorized = user?.publicMetadata?.authorized === true
 
   const courseIds = Object.keys(COURSES)
 
@@ -40,6 +45,31 @@ export default function PerfilPage() {
 
   return (
     <div>
+      {/* ===== FREE PLAN BANNER ===== */}
+      {!isAuthorized && !bannerDismissed && (
+        <div className="bg-primary text-primary-foreground">
+          <div className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 flex items-center justify-center gap-3 py-2.5 relative">
+            <span className="font-mono text-xs sm:text-sm tracking-wide text-center">
+              Você está no plano gratuito. Assine o premium para acesso completo.
+            </span>
+            <button
+              onClick={() => setCheckoutOpen(true)}
+              className="shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-md bg-primary-foreground text-primary font-mono text-xs font-semibold hover:opacity-90 transition-all cursor-pointer"
+            >
+              Assinar
+              <ArrowRight className="w-3 h-3" />
+            </button>
+            <button
+              onClick={() => setBannerDismissed(true)}
+              className="absolute right-3 sm:right-5 p-1 rounded text-primary-foreground/70 hover:text-primary-foreground transition-colors cursor-pointer"
+              aria-label="Fechar"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ===== PROFILE HERO ===== */}
       <section className="relative bg-gradient-to-b from-primary/5 to-background border-b border-border">
         <div className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 pt-12 pb-10 max-sm:pt-8 max-sm:pb-8">
@@ -120,64 +150,83 @@ export default function PerfilPage() {
       <div className="max-w-[var(--content-max)] mx-auto px-8 max-md:px-5 pt-10 pb-20">
 
         {/* Meus Cursos Tab */}
-        {activeTab === 'cursos' && (
-          <div className="animate-fade-in-up">
-            <div className="space-y-4">
-              {courseIds.map((id, i) => {
-                const course = COURSES[id]
-                const flat = getFlatLessons(id)
-                const time = getCourseTime(id)
-                const { completed, total } = progress.getCourseProgress(id)
-                const pct = total > 0 ? Math.round((completed / total) * 100) : 0
-                const isComplete = progress.isCourseComplete(id)
+        {activeTab === 'cursos' && (() => {
+          const startedCourses = courseIds.filter(id => {
+            const { completed } = progress.getCourseProgress(id)
+            return completed > 0
+          })
 
-                return (
-                  <Link
-                    key={id}
-                    href={isComplete ? `/certificados/${id}` : `/cursos/${id}`}
-                    className="block bg-card border border-border rounded-lg p-6 max-sm:p-4 hover:border-primary/30 transition-all animate-fade-in-up"
-                    style={{ animationDelay: `${i * 50}ms` }}
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="min-w-0">
-                        <h3 className="font-display text-xl max-sm:text-lg font-medium text-foreground">{course.title}</h3>
-                        <p className="font-mono text-sm text-muted-foreground truncate">{course.subtitle}</p>
-                      </div>
-                      {isComplete ? (
-                        <span className="shrink-0 px-3 py-1 bg-success/10 text-success font-mono text-xs rounded-full border border-success/20">
-                          Concluído
-                        </span>
-                      ) : pct > 0 ? (
-                        <span className="shrink-0 px-3 py-1 bg-primary/10 text-primary font-mono text-xs rounded-full border border-primary/20">
-                          Em andamento
-                        </span>
-                      ) : null}
-                    </div>
-                    <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground mb-3 flex-wrap">
-                      <span>{course.modules.length} módulos</span>
-                      <span>&middot;</span>
-                      <span>{flat.length} aulas</span>
-                      <span>&middot;</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        ~{formatTime(time)}
-                      </span>
-                    </div>
-                    <div className="h-2 bg-secondary rounded-full overflow-hidden mb-2">
-                      <div
-                        className="h-full bg-primary rounded-full transition-all duration-500"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                    <div className="font-mono text-xs text-muted-foreground">
-                      {completed} de {total} aulas &middot; {pct}%
-                    </div>
-                  </Link>
-                )
-              })}
+          return (
+            <div className="animate-fade-in-up">
+              {startedCourses.length === 0 ? (
+                <div className="bg-card border border-border rounded-lg p-12 text-center">
+                  <BookOpen className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+                  <p className="font-body text-muted-foreground mb-2">
+                    Nenhum curso iniciado
+                  </p>
+                  <p className="font-mono text-sm text-muted-foreground">
+                    Comece um curso para vê-lo aqui
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {startedCourses.map((id, i) => {
+                    const course = COURSES[id]
+                    const flat = getFlatLessons(id)
+                    const time = getCourseTime(id)
+                    const { completed, total } = progress.getCourseProgress(id)
+                    const pct = total > 0 ? Math.round((completed / total) * 100) : 0
+                    const isComplete = progress.isCourseComplete(id)
+
+                    return (
+                      <Link
+                        key={id}
+                        href={isComplete ? `/certificados/${id}` : `/cursos/${id}`}
+                        className="block bg-card border border-border rounded-lg p-6 max-sm:p-4 hover:border-primary/30 transition-all animate-fade-in-up"
+                        style={{ animationDelay: `${i * 50}ms` }}
+                      >
+                        <div className="flex items-start justify-between gap-4 mb-4">
+                          <div className="min-w-0">
+                            <h3 className="font-display text-xl max-sm:text-lg font-medium text-foreground">{course.title}</h3>
+                            <p className="font-mono text-sm text-muted-foreground truncate">{course.subtitle}</p>
+                          </div>
+                          {isComplete ? (
+                            <span className="shrink-0 px-3 py-1 bg-success/10 text-success font-mono text-xs rounded-full border border-success/20">
+                              Concluído
+                            </span>
+                          ) : (
+                            <span className="shrink-0 px-3 py-1 bg-primary/10 text-primary font-mono text-xs rounded-full border border-primary/20">
+                              Em andamento
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground mb-3 flex-wrap">
+                          <span>{course.modules.length} módulos</span>
+                          <span>&middot;</span>
+                          <span>{flat.length} aulas</span>
+                          <span>&middot;</span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            ~{formatTime(time)}
+                          </span>
+                        </div>
+                        <div className="h-2 bg-secondary rounded-full overflow-hidden mb-2">
+                          <div
+                            className="h-full bg-primary rounded-full transition-all duration-500"
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                        <div className="font-mono text-xs text-muted-foreground">
+                          {completed} de {total} aulas &middot; {pct}%
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          )
+        })()}
 
         {/* Certificados Tab */}
         {activeTab === 'certificados' && (
@@ -222,9 +271,9 @@ export default function PerfilPage() {
           const subType = (user?.publicMetadata?.subscriptionType as string) || undefined
 
           return (
-            <div className="animate-fade-in-up max-w-[600px]">
+            <div className="animate-fade-in-up">
               {isAuthorized ? (
-                <div className="space-y-6">
+                <div className="max-w-[600px] space-y-6">
                   <div className="bg-card border border-border rounded-xl p-6">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
@@ -268,21 +317,75 @@ export default function PerfilPage() {
                   </div>
                 </div>
               ) : (
-                <div className="bg-card border border-border rounded-xl p-8 text-center">
-                  <AlertCircle className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-                  <h3 className="font-display text-xl font-medium text-foreground mb-2">
-                    Sem assinatura ativa
-                  </h3>
-                  <p className="text-muted-foreground mb-6 max-w-[360px] mx-auto">
-                    Assine o plano anual para ter acesso completo a todos os cursos e certificados.
-                  </p>
-                  <button
-                    onClick={() => setCheckoutOpen(true)}
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg cursor-pointer"
-                  >
-                    <CreditCard className="w-4 h-4" />
-                    Assinar agora
-                  </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-[700px]">
+                  {/* Upgrade — Anual (esquerda) */}
+                  <div className="bg-card border-2 border-primary rounded-xl p-6 flex flex-col relative">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-primary text-primary-foreground font-mono text-[0.65rem] font-semibold tracking-wider uppercase rounded-full">
+                      Recomendado
+                    </div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                        <CreditCard className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-medium text-foreground">Plano Anual</h3>
+                        <p className="font-mono text-xs text-primary">
+                          {annual ? `${formatBRL(annual)}/ano` : 'US$ 300/ano'}
+                        </p>
+                      </div>
+                    </div>
+                    <ul className="space-y-2.5 mb-6 flex-1">
+                      <li className="flex items-start gap-2 text-sm text-foreground">
+                        <span className="mt-0.5 text-primary">&#10003;</span>
+                        Acesso a todos os 12 cursos
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-foreground">
+                        <span className="mt-0.5 text-primary">&#10003;</span>
+                        Certificados de conclusão
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-foreground">
+                        <span className="mt-0.5 text-primary">&#10003;</span>
+                        Suporte prioritário
+                      </li>
+                    </ul>
+                    <button
+                      onClick={() => setCheckoutOpen(true)}
+                      className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg cursor-pointer"
+                    >
+                      <CreditCard className="w-4 h-4" />
+                      Ativar assinatura
+                    </button>
+                  </div>
+
+                  {/* Current plan — Gratuito (direita) */}
+                  <div className="bg-card border border-border rounded-xl p-6 flex flex-col">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                        <BookOpen className="w-5 h-5 text-muted-foreground" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-medium text-foreground">Plano Gratuito</h3>
+                        <p className="font-mono text-xs text-muted-foreground">Plano atual</p>
+                      </div>
+                    </div>
+                    <ul className="space-y-2.5 mb-6 flex-1">
+                      <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="mt-0.5 text-muted-foreground/50">&#9679;</span>
+                        1 aula gratuita por curso
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="mt-0.5 text-muted-foreground/50">&#9679;</span>
+                        Sem certificados
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="mt-0.5 text-muted-foreground/50">&#9679;</span>
+                        Acesso limitado
+                      </li>
+                    </ul>
+                    <div className="px-4 py-2.5 rounded-lg border border-border text-center font-mono text-xs text-muted-foreground">
+                      Ativo
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

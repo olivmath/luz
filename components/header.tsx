@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState } from 'react'
-import { Moon, Sun, LogIn, LogOut, Award, ChevronDown, User, Menu, X } from 'lucide-react'
+import { Moon, Sun, LogIn, LogOut, ChevronDown, User, Menu, X } from 'lucide-react'
 import { SignInButton, SignedIn, SignedOut, useUser, useClerk } from '@clerk/nextjs'
 
 interface HeaderProps {
@@ -137,14 +137,6 @@ export function Header({ meta }: HeaderProps) {
                   >
                     <User className="w-4 h-4 text-muted-foreground" />
                     Meu Perfil
-                  </Link>
-                  <Link
-                    href="/perfil#certificados"
-                    className="flex items-center gap-3 px-4 py-2.5 font-mono text-xs text-foreground hover:bg-secondary transition-colors"
-                    onClick={() => setDropdownOpen(false)}
-                  >
-                    <Award className="w-4 h-4 text-muted-foreground" />
-                    Certificados
                   </Link>
                   <div className="border-t border-border mt-1 pt-1">
                     <button

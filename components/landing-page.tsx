@@ -6,6 +6,7 @@ import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { CheckoutModal } from '@/components/checkout-modal'
+import { useUsdToBrl, formatBRL } from '@/hooks/use-usd-to-brl'
 
 const TRACKS = [
   {
@@ -95,27 +96,7 @@ const PLANS = [
   },
 ]
 
-const USD_PRICE = 300
 
-function formatBRL(value: number) {
-  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 })
-}
-
-function useUsdToBrl() {
-  const [rate, setRate] = useState<number | null>(null)
-
-  useEffect(() => {
-    fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL')
-      .then((r) => r.json())
-      .then((data) => setRate(parseFloat(data.USDBRL.bid)))
-      .catch(() => setRate(null))
-  }, [])
-
-  const annual = rate ? USD_PRICE * rate : null
-  const monthly = annual ? annual / 12 : null
-
-  return { rate, annual, monthly }
-}
 
 const FAQ = [
   {

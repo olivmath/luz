@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server'
 const isAuthRequired = createRouteMatcher([
   '/perfil(.*)',
   '/certificados(.*)',
+  '/checkout(.*)',
   '/cursos/:courseId/:moduleId/:lessonId',
 ])
 

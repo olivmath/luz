@@ -7,7 +7,7 @@ import { COURSES } from '@/lib/courses'
 import { getFlatLessons, getCourseTime, formatTime } from '@/lib/helpers'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Award, Diamond, Clock, BookOpen, Target } from 'lucide-react'
+import { Award, Diamond, Clock, BookOpen, Target, CreditCard, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function PerfilPage() {
@@ -96,6 +96,7 @@ export default function PerfilPage() {
           {[
             { id: 'cursos', label: 'Meus Cursos' },
             { id: 'certificados', label: 'Certificados' },
+            { id: 'assinatura', label: 'Assinatura' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -211,6 +212,80 @@ export default function PerfilPage() {
             )}
           </div>
         )}
+
+        {/* Assinatura Tab */}
+        {activeTab === 'assinatura' && (() => {
+          const isAuthorized = user?.publicMetadata?.authorized === true
+          const expiresAt = user?.publicMetadata?.expiresAt as string | undefined
+          const subType = (user?.publicMetadata?.subscriptionType as string) || undefined
+
+          return (
+            <div className="animate-fade-in-up max-w-[600px]">
+              {isAuthorized ? (
+                <div className="space-y-6">
+                  <div className="bg-card border border-border rounded-xl p-6">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
+                        <CreditCard className="w-5 h-5 text-success" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-medium text-foreground">Plano Anual</h3>
+                        <p className="font-mono text-xs text-success">Assinatura ativa</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center py-3 border-b border-border">
+                        <span className="font-mono text-xs text-muted-foreground">Status</span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-success/10 text-success font-mono text-xs rounded-full border border-success/20">
+                          <span className="w-1.5 h-1.5 rounded-full bg-success" />
+                          Ativo
+                        </span>
+                      </div>
+                      {subType && (
+                        <div className="flex justify-between items-center py-3 border-b border-border">
+                          <span className="font-mono text-xs text-muted-foreground">Tipo</span>
+                          <span className="font-mono text-sm text-foreground">
+                            {subType === 'recurring' ? 'Recorrente' : 'Pagamento único'}
+                          </span>
+                        </div>
+                      )}
+                      {expiresAt && (
+                        <div className="flex justify-between items-center py-3 border-b border-border">
+                          <span className="font-mono text-xs text-muted-foreground">Próxima renovação</span>
+                          <span className="font-mono text-sm text-foreground">
+                            {new Date(expiresAt).toLocaleDateString('pt-BR')}
+                          </span>
+                        </div>
+                      )}
+                      <div className="flex justify-between items-center py-3">
+                        <span className="font-mono text-xs text-muted-foreground">Acesso</span>
+                        <span className="font-mono text-sm text-foreground">12 cursos + certificados</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-card border border-border rounded-xl p-8 text-center">
+                  <AlertCircle className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+                  <h3 className="font-display text-xl font-medium text-foreground mb-2">
+                    Sem assinatura ativa
+                  </h3>
+                  <p className="text-muted-foreground mb-6 max-w-[360px] mx-auto">
+                    Assine o plano anual para ter acesso completo a todos os cursos e certificados.
+                  </p>
+                  <Link
+                    href="/checkout"
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg"
+                  >
+                    <CreditCard className="w-4 h-4" />
+                    Assinar agora
+                  </Link>
+                </div>
+              )}
+            </div>
+          )
+        })()}
       </div>
     </div>
   )

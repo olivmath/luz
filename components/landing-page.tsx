@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { SignInButton } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { ArrowRight, BookOpen, GraduationCap, Award, Clock, Sparkles, TrendingUp, Microscope, Fingerprint, HeartPulse, Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -66,20 +66,8 @@ const STATS = [
 
 const PLANS = [
   {
-    name: 'Gratuito',
-    period: '',
-    description: 'Explore a plataforma e veja se é para você.',
-    features: [
-      'Acesso à primeira aula de cada curso',
-      'Glossário completo',
-      'Blog com artigos técnicos',
-    ],
-    cta: 'Começar grátis',
-    highlighted: false,
-  },
-  {
     name: 'Anual',
-    priceUsd: 1000,
+    priceUsd: 300,
     period: '/ano',
     description: 'Acesso completo a tudo — cursos, certificados e conteúdo sob demanda.',
     features: [
@@ -92,9 +80,21 @@ const PLANS = [
     cta: 'Assinar agora',
     highlighted: true,
   },
+  {
+    name: 'Gratuito',
+    period: '',
+    description: 'Explore a plataforma e veja se é para você.',
+    features: [
+      'Acesso à primeira aula de cada curso',
+      'Glossário completo',
+      'Blog com artigos técnicos',
+    ],
+    cta: 'Começar grátis',
+    highlighted: false,
+  },
 ]
 
-const USD_PRICE = 1000
+const USD_PRICE = 300
 
 function formatBRL(value: number) {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -127,7 +127,7 @@ const FAQ = [
   },
   {
     q: 'Qual a forma de pagamento?',
-    a: 'Aceitamos cartão de crédito e PIX. O valor é calculado automaticamente com base na cotação do dia do dólar. O pagamento é processado de forma segura via Stripe.',
+    a: 'Aceitamos cartão de crédito e PIX. O valor é calculado automaticamente com base na cotação do dia do dólar. O pagamento é processado de forma segura via Asaas.',
   },
   {
     q: 'Os certificados têm validade?',
@@ -408,19 +408,34 @@ export function LandingPage() {
                 ))}
               </ul>
 
-              <SignInButton mode="modal">
-                <button
-                  className={cn(
-                    'w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer',
-                    plan.highlighted
-                      ? 'bg-primary text-primary-foreground hover:opacity-90 shadow-lg'
-                      : 'bg-secondary text-foreground hover:bg-secondary/80 border border-border',
-                  )}
-                >
-                  {plan.cta}
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </SignInButton>
+              {plan.highlighted ? (
+                <>
+                  <SignedIn>
+                    <Link
+                      href="/checkout"
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 bg-primary text-primary-foreground hover:opacity-90 shadow-lg"
+                    >
+                      {plan.cta}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </SignedIn>
+                  <SignedOut>
+                    <SignInButton mode="modal">
+                      <button className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-primary text-primary-foreground hover:opacity-90 shadow-lg">
+                        {plan.cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </SignInButton>
+                  </SignedOut>
+                </>
+              ) : (
+                <SignInButton mode="modal">
+                  <button className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-secondary text-foreground hover:bg-secondary/80 border border-border">
+                    {plan.cta}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </SignInButton>
+              )}
             </div>
           ))}
         </div>

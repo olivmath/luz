@@ -235,7 +235,7 @@ export function CheckoutModal({ open, onClose }: CheckoutModalProps) {
             </div>
             <div className="flex items-center gap-1.5 font-mono text-xs">
               <CreditCard className="w-3.5 h-3.5" />
-              Débito/Crédito
+              Cartão de Débito/Crédito
             </div>
           </div>
 

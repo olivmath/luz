@@ -47,6 +47,23 @@ export const TRACKS: Record<string, Track> = {
     gradient: 'from-blue-700 to-blue-500',
     ctaTextColor: 'text-blue-700',
   },
+  'identidade-descentralizada': {
+    id: 'identidade-descentralizada',
+    slug: 'identidade-descentralizada',
+    title: 'Identidade Descentralizada',
+    subtitle: 'Da identidade soberana à engenharia técnica',
+    description:
+      'Domine os fundamentos e a arquitetura de identidade descentralizada — DIDs, Verifiable Credentials, criptografia aplicada, ZKPs e interoperabilidade.',
+    objectives: [
+      'Compreender Self-Sovereign Identity e o triângulo da confiança',
+      'Dominar DIDs, Verifiable Credentials e padrões W3C',
+      'Aplicar criptografia avançada: ZKPs, BBS+ e pós-quântica',
+      'Projetar sistemas seguros e interoperáveis com DIDs',
+    ],
+    courses: ['did-fundamentos', 'did-engenharia'],
+    gradient: 'from-purple-700 to-purple-500',
+    ctaTextColor: 'text-purple-700',
+  },
 }
 
 export function getTrackStats(trackId: string) {

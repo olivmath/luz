@@ -26,6 +26,13 @@ const CATEGORIES = [
     accent: 'from-blue-500 to-blue-600',
     badgeColor: 'bg-blue-500/10 text-blue-700 dark:text-blue-400',
   },
+  {
+    label: 'Identidade Descentralizada',
+    description: 'DIDs, Verifiable Credentials, SSI, criptografia aplicada e interoperabilidade',
+    courses: ['did-fundamentos', 'did-engenharia'],
+    accent: 'from-purple-500 to-purple-600',
+    badgeColor: 'bg-purple-500/10 text-purple-700 dark:text-purple-400',
+  },
 ]
 
 const SLIDES = [
@@ -56,6 +63,20 @@ const SLIDES = [
     cta: { text: 'Explorar trilha', href: '/trilha/nanotecnologia' },
     gradient: 'from-blue-700 to-blue-500',
     ctaTextColor: 'text-blue-700',
+  },
+  {
+    label: 'Identidade Descentralizada',
+    subtitle: 'DIDs, Verifiable Credentials e SSI',
+    description:
+      'Da identidade soberana à engenharia técnica — domine os padrões W3C, criptografia e arquitetura de sistemas DID.',
+    bullets: [
+      'Self-Sovereign Identity e DIDs',
+      'Verifiable Credentials e ZKPs',
+      'Criptografia, segurança e interoperabilidade',
+    ],
+    cta: { text: 'Explorar trilha', href: '/trilha/identidade-descentralizada' },
+    gradient: 'from-purple-700 to-purple-500',
+    ctaTextColor: 'text-purple-700',
   },
 ]
 

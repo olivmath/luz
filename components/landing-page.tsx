@@ -80,7 +80,8 @@ const PLANS = [
   },
   {
     name: 'Anual',
-    price: 'US$ 1.000',
+    price: 'R$ 6.000',
+    priceNote: '≈ US$ 1.000',
     period: '/ano',
     description: 'Acesso completo a tudo — cursos, certificados e conteúdo sob demanda.',
     features: [
@@ -106,7 +107,7 @@ const FAQ = [
   },
   {
     q: 'Qual a forma de pagamento?',
-    a: 'Aceitamos cartão de crédito internacional e PIX. O pagamento é processado de forma segura via Stripe.',
+    a: 'Aceitamos cartão de crédito e PIX. O valor é R$ 6.000/ano (equivalente a US$ 1.000). O pagamento é processado de forma segura via Stripe.',
   },
   {
     q: 'Os certificados têm validade?',
@@ -360,6 +361,9 @@ export function LandingPage() {
                 <span className="font-display text-4xl font-bold text-foreground">{plan.price}</span>
                 {plan.period && (
                   <span className="text-muted-foreground text-sm">{plan.period}</span>
+                )}
+                {'priceNote' in plan && plan.priceNote && (
+                  <div className="mt-1 font-mono text-xs text-muted-foreground">{plan.priceNote}</div>
                 )}
               </div>
 
